@@ -1,0 +1,72 @@
+﻿:root {
+    --Poppins: "'Poppins', sans-serif";
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    height:100vh;
+    width:100vw;
+    overflow-x:hidden;
+}
+header {
+    position:absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
+    font-family:var(--Poppins);
+    width:100vw;
+    height:4vh;
+    min-height:4vh;
+}
+#fone {
+    font-style: normal;
+    font-weight: 300;
+    color:#fff;
+    margin:15px;
+    position:relative;
+    top:10%;
+}
+.logo{
+  
+    position:absolute;
+    top:10%;
+    left:5%;
+    min-width:150px;
+    max-width:13vw;     
+}
+.login-registro {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    min-width: 150px;
+    max-width: 13vw;
+}
+#login {
+    position: absolute;
+    min-width:2vw;
+    color: #FA7F72;
+   
+    left: 70%;
+    font-family: 'Poppins';
+    top: 10%;
+
+}
+.frase {
+    align-items: center;
+    text-transform: capitalize;
+    color: #2E7C25;
+    position: absolute;
+    top: 15%;
+    left: 33%;
+    min-width: 190px;
+
+    font-family: 'Poppins';
+}
+#aviao{
+    position:relative;
+    top:10px;
+    max-width:3vw;
+}
