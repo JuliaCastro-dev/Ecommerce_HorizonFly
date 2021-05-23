@@ -8,31 +8,71 @@ namespace Ecommerce.Models
 {
     public class Pacote
     {
-        //create table Pacote(
-        //cd_pacote int primary key auto_increment,
-        //voo_ida varchar(50),
-        //hotel varchar(50),
-        //vl_total decimal (10.2),
-        //voo_volta varchar(50)
+        //CREATE TABLE Pacote(
+        //cd_pacote INTEGER PRIMARY KEY auto_increment,
+        //voo_ida INTEGER,
+        //voo_volta INTEGER,
+        //cd_hotel INTEGER,
+        //vl_total DECIMAL(10,2),
+        //img_pacote VARCHAR(300),
+        //foreign key(voo_ida) references Voo(cd_voo),
+        // foreign key(voo_volta) references Voo(cd_voo),
+        //  foreign key(cd_hotel) references Hotel(cd_hotel)
+        //);
 
         [Display(Name = "Código")]
         public string cd_pacote { get; set; }
 
+        [Required]
+        [Display(Name = "Transporte")]
+        public string cd_transporte { get; set; }
 
-        [Display(Name = "Ida")]
-        public string voo_ida { get; set; }
+        [Required]
+        [Display(Name = "Transporte")]
+        public string cd_viagem { get; set; }
 
-
+        [Required]
         [Display(Name = "Hotel")]
-        public string hotel { get; set; }
+        public string cd_hotel { get; set; }
 
 
+        [Required]
+        [Display(Name = "Origem")]
+        public string cd_cidOrigem { get; set; }
+
+        [Required]
+        [Display(Name = "Destino")]
+        public string cd_cidDestino { get; set; }
+
+
+        [Required]
+        [Display(Name = "Pacote")]
+        public string nome_pacote { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Display(Name = "Valor")]
-        public Decimal vl_total { get; set; }
+        public Decimal vl_pacote { get; set; }
 
 
-        [Display(Name = "Volta")]
-        public string voo_volta { get; set; }
+        [Required]
+        [Display(Name = "Tipo de transporte")]
+        public string tipo_transporte { get; set; }
+
+        [Required]
+        [Display(Name = "Descrição do Pacote")]
+        public string descricao_pacote { get; set; }
+
+        [Required]
+        [Display(Name = "Data Chekin Hotel")]
+        public string dt_chekinHotel { get; set; }
+        [Required]
+        [Display(Name = "Data Chekout Hotel")]
+        public string dt_chekoutHotel { get; set; }
+
+        [Required]
+        [Display(Name = "Foto")]
+        public string img_pacote { get; set; }
 
     }
 }

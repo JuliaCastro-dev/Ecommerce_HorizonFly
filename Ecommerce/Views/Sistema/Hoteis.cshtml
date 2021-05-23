@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Ecommerce.Models.Hotel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hoteis</title>
+    <link href="~/Content/Hoteis.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Horizon Fly</h1>
+    <h3>Hotéis</h3>
+    @Html.ActionLink("Novo Hotel", "CadastroHotel", new { htmlAttributes = new { @class = "botaoNovo" } })
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <a href="/Sistema/DetalhesHotel/@item.cd_hotel">
+                @if (@item.img_hotel != null)
+                {
+                    <img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [250x250]" style="width: 250px; height: 250px;" src="@item.img_hotel" data-holder-rendered="true">
+                }
+                else
+                {
+                    <img class="card-img-right flex-auto d-none d-md-block" data-src=" " alt="Thumbnail [250x250]" style="width: 250px; height: 250px;" src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                }
+                <h2>@item.nome_hotel</h2>
+                <h1>@item.diaria_hotel</h1>
+
+            </a>
+
+        </div>
+    }
+
+
+
+</body>
+</html>

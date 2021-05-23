@@ -21,13 +21,54 @@ header {
     height:4vh;
     min-height:4vh;
 }
-#fone {
+
+
+#login-button {
+    display: block;
+    position: relative;
+    border: none;
+    border-bottom: 2px solid #3A7BD5;
+    width: 15vw;
+    margin: 5px;
+    padding: 0;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: #FA7F72;
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+    background: none;
+    left: 2vw;
+    text-align:center;
+        text-transform: none;
+    text-decoration: none;
+}
+#login-buttonR {
+    display: block;
+    position: relative;
+    border: none;
+    width: 15vw;
+    margin: 5px 6vw;
+    padding: 0;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+    background: none;
+}
+#fone{
     font-style: normal;
     font-weight: 300;
-    color:#fff;
-    margin:15px;
-    position:relative;
-    top:10%;
+    color: #fff;
+    margin: 15px;
+    position: relative;
+    top: 10%;
 }
 .logo{
   
@@ -37,13 +78,7 @@ header {
     min-width:150px;
     max-width:13vw;     
 }
-.login-registro {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    min-width: 150px;
-    max-width: 13vw;
-}
+
 #login {
     position: absolute;
     min-width:2vw;
@@ -70,3 +105,99 @@ header {
     top:10px;
     max-width:3vw;
 }
+.search-container {
+    width: 80vw;
+    position: absolute;
+    top: 35%;
+    left: 7%;
+    height: 17vh;
+    display:flex;
+}
+.btn-dpw {
+    color: #fff;
+    border: none;
+    background: #254E70;
+    outline: none !important;
+    width: 7vw;
+    text-decoration: none;
+    height: 5vh;
+    border-radius: 5px 5px 0px 0px;
+}
+    .btn-dpw:active {
+        background: #254E70;
+        color: #fff;
+       voice-duration:5s;
+    }
+    .btn-dpw:checked {
+        background: #254E70;
+        color: #fff;
+    }
+.dropdown-menu {
+    position: relative;
+    border: none !important;
+    width: 69vw;
+    outline: none !;
+    background-color: transparent !important;
+    border-radius: 0px 0px 20px 20px !important;
+    height: 16.5vh;
+    background: #254E70;
+}
+.base {
+    position: absolute;
+    top: 40%;
+    width: 80vw;
+    left: 7%;
+    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
+    border-radius: 0px 0px 20px 20px;
+    height: 18vh;
+}
+
+@media (min-width: 300px) {
+   
+}
+
+@media (max-width: 600px) {
+    #fone {
+        font-style: normal;
+        font-weight: 300;
+        color: #fff;
+        margin: 15px;
+        position: relative;
+        top: 10%;
+        left: 55px;
+    }
+
+
+    .login-registro {
+        position: absolute;
+        top: 10%;
+        left: 2%;
+        min-width: 80px;
+        max-width: 10vw;
+    }
+
+    #login {
+        position: absolute;
+        min-width: 0.5vw;
+        color: #FA7F72;
+        left: 60%;
+        font-family: 'Poppins';
+        top: 10%;
+    }
+    .frase {
+        visibility: hidden;
+    }
+
+    #aviao {
+        visibility: hidden;
+    }
+}
+
+
+    /*Medium devices (tablets, 768px and up)*/
+    @media (min-width: 768px) {
+    }
+
+    /*Large devices (desktops, 992px and up)*/
+    @media (min-width: 992px) {
+    }

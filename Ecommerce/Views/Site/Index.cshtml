@@ -1,4 +1,5 @@
-﻿
+﻿@model Ecommerce.Models.IndexViewModel
+
 @{
     Layout = null;
 }
@@ -10,7 +11,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>Horizon FLY</title>
     <link href="~/Content/Site/Index.css" rel="stylesheet" />
+    <link href="~/Content/Site/loginEregistro.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,11 +31,106 @@
         <img class="logo" src="~/Imagens/LogoHorizon.png" />
     </div>
     <div class="Login-registro">
-        <span id="login">Fazer Login | Registrar - se</span>
+        <span id="login">
+
+            <h5 id="login-button">@Html.ActionLink("Login", "Login", new { htmlAttributes = new { @id = "login-button" } })</h5>
+
+            <h5 id="login-buttonR">@Html.ActionLink("Registre-se", "CadastroCliente", new { htmlAttributes = new { @id = "login-buttonR" } })</h5>
+            
+
+
+        </span>
     </div>
     <div class="frase">
-        <span id="frase"> <img id="aviao" src="~/Imagens/aviao.png" /> Aonde gostaria de ir?</span>
+        <span id="frase"> Aonde gostaria de ir?</span>
     </div>
+    <div class="search-container">
+        <div class="dropdown">
+            <button type="button" class="btn-dpw  " data-toggle="dropdown">
+                Pacotes
+            </button>
+                @using (@Html.BeginForm())
+                {
+                
+                }
+            </div>
+    </div>
+    <div class="base">
+
+    </div>
+
+
+    <div class="modal fade" id="RegistroModal" role="dialog">
+        <div class="modal-dialog" id="registo-body">
+     Modal content
+    <div class="modal-content">
+
+                @using (@Html.BeginForm())
+                {
+                    <div class="modal-body">
+                        <h1 class="text-login">REGISTRO</h1>
+
+                        @Html.AntiForgeryToken()
+                        <span>@ViewBag.Validação</span>
+                        @Html.EditorFor(m => m.nome_cliente, new { htmlAttributes = new { @class = "login", @placeholder = "Nome Completo" } })
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome_cliente)</span>
+                        <br />
+                        @Html.EditorFor(m => m.rg_cliente, new { htmlAttributes = new { @class = "login", @placeholder = "RG" } })
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg_cliente)</span>
+                        <br />
+                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "login", @placeholder = "CPF" } })
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
+                        <br />
+                        @Html.EditorFor(m => m.telefone_cliente, new { htmlAttributes = new { @class = "login", @placeholder = "Telefone", @type = "text", @name = "telefone", @id = "telefone", @maxlength = "17" } })
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone_cliente)</span>
+                        <br />
+                        @Html.EditorFor(m => m.endereco_cliente, new { htmlAttributes = new { @class = "login", @placeholder = "Endereço , N°"} })
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.endereco_cliente)</span>
+                        <br />
+
+                        <input class="entrar" type="submit" value="Entrar" data-backdrop="static" />
+
+                        @Html.ActionLink("Esqueci a senha", "AlterarSenha", new { htmlAttributes = new { @class = "link" } })
+
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+            $(document).ready(function () {
+                $('#myModal').modal('show');
+            });
+            $(document).ready(function () {
+                $('#RegistroModal').modal('show');
+            });
+
+        $(function () {
+            //----- OPEN
+            $('[data-popup-open]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+
+                e.preventDefault();
+            });
+
+            //----- CLOSE
+            $('[data-popup-close]').on('click', function (e) {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+                e.preventDefault();
+            });
+        });
+    </script>
+}
+@Scripts.Render("~/Scripts/Mascaras.js");
 
 </body>
 

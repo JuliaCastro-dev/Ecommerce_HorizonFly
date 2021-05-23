@@ -8,11 +8,13 @@ namespace Ecommerce.Models
 {
     public class Cidade
     {
-        //create table Cidade(
-        //cd_cidade int primary key auto_increment,
-        //cd_estado int,
-        //nm_cidade varchar(50),
-        //foreign key(cd_estado) references Estado(cd_estado));
+        //        CREATE TABLE Cidade(
+        //    cd_cidade INTEGER PRIMARY KEY auto_increment,
+        //    cd_estado INTEGER,
+        //    nm_cidade VARCHAR(50),
+        //    foreign key(cd_estado) references Estado(cd_estado)
+        //);
+
 
 
         [Required]
@@ -20,8 +22,10 @@ namespace Ecommerce.Models
         [Display(Name = "Código Cidade")]
         public string cd_cidade { get; set; }
 
+        [Display(Name = "Estado")]
         public string cd_estado { get; set; }
 
+        [Display(Name = " Cidade")]
         public string cidade { get; set; }
 
         

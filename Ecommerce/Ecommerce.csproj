@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -110,6 +111,7 @@
       <Private>True</Private>
       <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -117,8 +119,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acoes\AcoesCartao.cs" />
     <Compile Include="Acoes\AcoesCliente.cs" />
+    <Compile Include="Acoes\AcoesFuncionario.cs" />
+    <Compile Include="Acoes\AcoesHotel.cs" />
     <Compile Include="Acoes\AcoesLogin.cs" />
+    <Compile Include="Acoes\AcoesPacote.cs" />
+    <Compile Include="Acoes\AcoesReserva.cs" />
+    <Compile Include="Acoes\AcoesSistema.cs" />
+    <Compile Include="Acoes\AcoesTransporte.cs" />
+    <Compile Include="Acoes\AcoesViagem.cs" />
+    <Compile Include="Acoes\conexao.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -127,19 +138,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Aeroporto.cs" />
     <Compile Include="Models\Cartao.cs" />
-    <Compile Include="Models\Cartoes.cs" />
     <Compile Include="Models\Cidade.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Count.cs" />
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Hotel.cs" />
-    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\Itens.cs" />
     <Compile Include="Models\Pacote.cs" />
     <Compile Include="Models\Reserva.cs" />
-    <Compile Include="Models\ReservaPacote.cs" />
-    <Compile Include="Models\Voo.cs" />
+    <Compile Include="Models\Transporte.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Viagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,16 +159,35 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Contas.css" />
+    <Content Include="Content\DashboardGerente.css" />
+    <Content Include="Content\Hoteis.css" />
+    <Content Include="Content\Site\cadCli.css" />
     <Content Include="Content\Site\Index.css" />
+    <Content Include="Content\Site\login.css" />
+    <Content Include="Content\Site\Sobre.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\aviao.png" />
+    <Content Include="Imagens\bag.png" />
+    <Content Include="Imagens\clientes.png" />
+    <Content Include="Imagens\coqueiro.png" />
+    <Content Include="Imagens\FUNCIONARIO.jpg" />
+    <Content Include="Imagens\grafico.png" />
+    <Content Include="Imagens\icon.png" />
+    <Content Include="Imagens\image-not-found.jpg" />
+    <Content Include="Imagens\ImgLogin.jpg" />
     <Content Include="Imagens\LogoHorizon.png" />
+    <Content Include="Imagens\ResumoPng.png" />
+    <Content Include="Imagens\sign-out-alt.png" />
+    <Content Include="Imagens\TURISMO.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Contas.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\BotoesDrop.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -166,6 +197,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Mascaras.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -179,10 +211,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\Site\Login.cshtml" />
+    <Content Include="Views\Site\CadastroCliente.cshtml" />
+    <Content Include="Views\Sistema\Dashboard.cshtml" />
+    <Content Include="Views\Sistema\Pacotes.cshtml" />
+    <Content Include="Views\Sistema\Clientes.cshtml" />
+    <Content Include="Views\Sistema\Funcionarios.cshtml" />
+    <Content Include="Views\Sistema\Transportes.cshtml" />
+    <Content Include="Views\Site\Logout.cshtml" />
+    <Content Include="Views\Sistema\Contas.cshtml" />
+    <Content Include="Views\Site\Sobre.cshtml" />
+    <Content Include="Views\Sistema\Hoteis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Sistema\" />
+    <Folder Include="ImagensCliente\" />
+    <Folder Include="ImagensFuncionario\" />
+    <Folder Include="ImagensPacote\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

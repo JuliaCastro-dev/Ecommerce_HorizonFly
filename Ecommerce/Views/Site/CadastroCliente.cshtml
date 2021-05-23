@@ -1,0 +1,60 @@
+﻿@model Ecommerce.Models.Cliente
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <link href="~/Content/Site/cadCli.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <div class="modal-content">
+               
+                @using (@Html.BeginForm())
+                {
+                <div class="modal-body">
+                    @Html.ActionLink("Voltar", "Index", new { htmlAttributes = new { @class = "link" } })<h1 class="text-login">CADASTRO</h1>
+                    @Html.AntiForgeryToken()
+                    <span>@ViewBag.Validação</span>
+
+                    @Html.EditorFor(m => m.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome_cliente)</span>
+
+                    @Html.EditorFor(m => m.rg_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg_cliente)</span>
+
+                    @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
+
+                    @Html.EditorFor(m => m.email_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.email_cliente)</span>
+
+                    @Html.EditorFor(m => m.telefone_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone_cliente)</span>
+
+                    @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
+
+                    @Html.EditorFor(m => m.img, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Foto", @type = "file" } })
+
+
+                    <input class="entrar" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
+
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+</body>
+</html>

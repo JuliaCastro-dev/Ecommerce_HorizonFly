@@ -9,57 +9,61 @@ namespace Ecommerce.Models
     public class Cliente
     {
 
-        //create table tbl_Cliente(
-        //cd_cliente int primary key auto_increment,
-        //nm_cliente varchar(50),
-        //cd_cartao int,
-        //CPF varchar(11),
-        //RG varchar(20),
-        //tel_cliente varchar(11),
-        //E_mail varchar(20),
-        //Idade int,
-        //foreign key(cd_cartao) references tbl_Cartões(cd_cartoes)
+        //CREATE TABLE Cliente (
+        //nome_cliente VARCHAR(150) not null,
+        //telefone_cliente VARCHAR(11) not null,
+        //endereco_cliente VARCHAR(200) not null,
+        //cpf_cliente VARCHAR(12) not null unique primary key auto_increment,
+        //rg_cliente VARCHAR(9) not null unique,
+        //senha VARCHAR(10) not null unique,
+        //tipo ENUM ('1','2','3') not null
 
-        [Display(Name = "Código")]
+
+
+        [Required]
+        [StringLength(150, MinimumLength = 10, ErrorMessage = "O limite é de 150 caracteres.")]
+        [Display(Name = "Nome")]
+        public string nome { get; set; }
+
+
         [Required]
         [Key]
-        public string cd_cliente { get; set; }
-
-
-        [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
-        [Display(Name = "Nome")]
-        public string nm_cliente { get; set; }
-
-
-        [CreditCard]
-        [Required]
-        [Display(Name = "Código do cartão")]
-        public string cd_cartao { get; set; }
-
-
-        [StringLength(11, ErrorMessage = "O limite é de 11 caracteres.")]
         [Display(Name = "CPF")]
+        [StringLength(14, MinimumLength = 12, ErrorMessage = "CPF Inválido")]
         public string CPF { get; set; }
 
 
-        [StringLength(12, ErrorMessage = "O limite é de 12 caracteres.")]
+        [Required]
         [Display(Name = "Registro geral")]
-        public string RG { get; set; }
-
-
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Telefone")]
-        public string tel_cliente { get; set; }
-
-
-        [EmailAddress]
-        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
-        [Display(Name = "E-mail")]
-        public string E_mail { get; set; }
+        [StringLength(14, MinimumLength = 9, ErrorMessage = "RG Inválido")]
+        public string rg { get; set; }
 
 
         [Required]
-        [Display(Name = "Idade")]
-        public string Idade { get; set; }
+        [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress)]
+        public string email{ get; set; }
+
+
+        [Required]
+        [StringLength(10, ErrorMessage = "O limite é de 10 caracteres.")]
+        [Display(Name = "Senha")]
+        public string senha { get; set; }
+
+
+
+        [Display(Name = "Tipo")]
+        public string tipo { get; set; }
+
+
+        [Display(Name = "Foto de perfil")]
+        public string img { get; set; }
+
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Telefone")]
+        public string telefone { get; set; }
+
     }
 }

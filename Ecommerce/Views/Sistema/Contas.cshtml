@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contas</title>
+    <link href="~/Content/Contas.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="one-half left">
+            <h1>CLIENTE</h1>
+            @Html.ActionLink("VAMOS LÁ", "Index", new { htmlAttributes = new { @class = "opcao" } })
+        </div>
+        <div class="one-half right">
+            <h1>FUNCIONÁRIO</h1>
+            @Html.ActionLink("VAMOS LÁ", "Dashboard", new { htmlAttributes = new { @class = "opcao" } })
+         
+        </div>
+    </div>
+
+    @Styles.Render("~/Content/Contas.scss")
+</body>
+</html>

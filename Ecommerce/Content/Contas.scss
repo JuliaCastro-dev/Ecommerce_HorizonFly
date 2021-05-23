@@ -1,0 +1,11 @@
+﻿$bg-overlay-1: rgba(255,0,120,.5)
+$bg-overlay-2: rgba(25,120,220,.5)
+$opposite-bg-overlay-hover: rgba(0,0,0,.65)
+$bg-width-on-hover: 85%
+$left-bg: url('http://andrewerrico.com/jura-panorama.jpg')
+$right-bg: url('https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b')
+$trans-bg-move: '500ms all ease-in-out'
+    $trans-bg-fade: '500ms all ease-in-out'
+    $trans-h1-underline: '500ms all ease-in-out'
+    trans-cta-underline: '300ms all ease-in-out'
+    html, body width: 100% height: 100% overflow-x: hidden *, *:before, *:after box-sizing: border-box h1 color: #fff position: relative position: absolute left: 50% top: 20% transform: translateX(-50%) white-space: nowrap &:after content: '' position: absolute width: 0 height: 4px left: 0 bottom: -8px background: #fff transition: #{$trans-h1-underline} a.cta display: block position: absolute height: 50px line-height: 50px width: 120px text-align: center color: #fff text-decoration: none left: 50% bottom: 20% transform: translateX(-50%) border: 2px solid #fff font-size: .75em font-weight: 700 letter-spacing: 1px text-transform: uppercase &:before content: '' background: #fff height: 0 width: 100% position: absolute bottom: 0 left: 0 transition: #{$trans-cta-underline} &:hover:before height: 4px .container background: #09f width: 100% height: 100% position: relative .one-half position: absolute width: 50% height: 100% overflow: hidden &.left left: 0 background: $left-bg center center no-repeat background-size: cover &:before content: '' width: 100% height: 100% background: $bg-overlay-1 position: absolute &.right right: 0 background: $right-bg center center no-repeat background-size: cover &:before content: '' width: 100% height: 100% background: $bg-overlay-2 position: absolute &.left, &.right transition: #{$trans-bg-move} &:before transition: #{$trans-bg-fade} &.left-is-hovered .left width: $bg-width-on-hover & h1:after width: 100% .right width: 100% - $bg-width-on-hover &:before background: $opposite-bg-overlay-hover z-index: 2 &.right-is-hovered .right width: $bg-width-on-hover & h1:after width: 100% .left width: 100% - $bg-width-on-hover &:before background: $opposite-bg-overlay-hover z-index: 2

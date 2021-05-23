@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Windows.Input;
 
 namespace Ecommerce.Models
 {
     public class Reserva
     {
-        //cd_reserva int primary key auto_increment,
-        //nm_passagens varchar(50),
-        //voo_ida varchar(50),
-        //vl_total decimal (10.2),
-        //voo_volta varchar(50),
-        //nm_hotel varchar(50),
-        //assento varchar(10),
-        //dt_saidaH date,
-        //dt_entradaH date,
-        //cd_cliente int,
-        //cd_cartao int
-        //);
+        //CREATE TABLE Reserva (
+        //cd_reserva INTEGER not null primary key auto_increment,
+        //cpf_cliente VARCHAR(12) not null,
+        //cd_cartao INTEGER not null,
+        //cd_itensEscolhidos INTEGER not null,
+        //vl_total DECIMAL(10,2) not null,
+        //Status_Reserva BIT,
+        //FOREIGN KEY (cpf_cliente) REFERENCES Cliente (cpf_cliente), /*Referencia */
+        //FOREIGN KEY (cd_cartao) REFERENCES Cartao (cd_cartao), /*Referencia */
+        //FOREIGN KEY (cd_itensEscolhidos) REFERENCES Itens_escolhidos (cd_itensEscolhidos) /*Referencia */
+
+
 
 
         [Required]
@@ -28,14 +29,22 @@ namespace Ecommerce.Models
         public string cd_reserva { get; set; }
 
 
-        [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
-        [Display(Name = "Nome")]
-        public string nm_passagens { get; set; }
+        [Required]
+        [Key]
+        [Display(Name = "CPF")]
+        [StringLength(14, MinimumLength = 12, ErrorMessage = "CPF Inválido")]
+        public string cpf_cliente { get; set; }
 
 
-        [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
-        [Display(Name = "Voo de ida")]
-        public string voo_ida { get; set; }
+        [Required]
+        [Display(Name = "Itens Escolhidos")]
+        public string cd_itensEscolhidos { get; set; }
+
+
+        [CreditCard]
+        [Required]
+        [Display(Name = "Código do cartão")]
+        public string cd_cartao { get; set; }
 
 
 
@@ -45,41 +54,8 @@ namespace Ecommerce.Models
         public Decimal vl_total { get; set; }
 
 
-        [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
-        [Display(Name = "Voo de volta")]
-        public string voo_volta { get; set; }
+        [Display(Name = "Status")]
+        public string Status_Reserva { get; set; }
 
-
-        [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
-        [Display(Name = "Hotel")]
-        public string nm_hotel { get; set; }
-
-
-        [StringLength(10, ErrorMessage = "O limite é de 10 caracteres.")]
-        [Display(Name = "Assento")]
-        public string assento { get; set; }
-
-
-
-        [Required]
-        [Display(Name = "Data de saida")]
-        public string dt_saidaH { get; set; }
-
-
-        [Required]
-        [Display(Name = "Data de entrada")]
-        public string dt_entradaH { get; set; }
-
-
-
-        [Required]
-        [Display(Name = "Código do cliente")]
-        public string cd_cliente { get; set; }
-
-
-        [CreditCard]
-        [Required]
-        [Display(Name = "Código do cartão")]
-        public string cd_cartao { get; set; }
     }
 }

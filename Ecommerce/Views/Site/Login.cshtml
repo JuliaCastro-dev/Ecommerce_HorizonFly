@@ -1,0 +1,45 @@
+﻿@model Ecommerce.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/Site/login.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <div class="modal-content">
+
+                @using (@Html.BeginForm("Login","Site"))
+                {
+                <div class="modal-body">
+                    @Html.ActionLink("Voltar", "Index", new { htmlAttributes = new { @class = "link" } }) <h1 class="text-login">LOGIN</h1>
+                    @Html.AntiForgeryToken()
+                    <span>@ViewBag.Validação</span>
+                    @Html.EditorFor(m => m.cpf, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.cpf)</span>
+                    <br />
+                    @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
+
+                    <input class="entrar" type="submit" value="Entrar"  onclick="ValidaCPF();" />
+
+                    @Html.ActionLink("Esqueci a senha", "AlterarSenha", new { htmlAttributes = new { @class = "link" } })
+                    @ViewBag.usuarioNE
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+</body>
+    </html>

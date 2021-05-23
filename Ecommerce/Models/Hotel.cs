@@ -8,16 +8,16 @@ namespace Ecommerce.Models
 {
     public class Hotel
     {
-        //create table Hotel(
-        //cd_hotel int primary key auto_increment,
-        //nm_hotel varchar(50),
-        //diaria_hotel decimal (10.2),
-        //vl_hotel decimal (10.2),
-        //est_hotel varchar(50),
-        //cid_estado varchar(50),
-        //end_hotel varchar(50),
-        //tel_hotel  varchar(11),
-        //total_quartos int
+        //CREATE TABLE Hotel (
+        //cd_hotel INTEGER not null primary key auto_increment,
+        //cd_cidade INTEGER not null,
+        //nome_hotel VARCHAR(100) not null,
+        //decricao_hotel VARCHAR(400) not null,
+        //telefone_hotel VARCHAR(17) not null,
+        //endereco_hotel VARCHAR(100) not null,
+        //diaria_hotel DECIMAL(10,2) not null,
+        //img_hotel VARCHAR(500) not null,
+        //FOREIGN KEY (cd_cidade) REFERENCES Cidade (cd_cidade) /*Referencia */
 
 
         [Required]
@@ -25,38 +25,42 @@ namespace Ecommerce.Models
         [Display(Name = "Código")]
         public string cd_hotel { get; set; }
 
+        [Required]
+        [Display(Name = "Código")]
+        public string cd_cidade { get; set; }
 
-        [Display(Name = "Nome")]
-        public string nm_hotel { get; set; }
+
+        [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
+        [Display(Name = "Hotel")]
+        public string nome_hotel { get; set; }
 
 
         [Display(Name = "Diaria")]
         public Decimal diaria_hotel { get; set; }
 
 
-        [Display(Name = "Valor")]
-        public Decimal vl_hotel { get; set; }
-
-
-        [Display(Name = "Estado")]
-        public string est_hotel { get; set; }
+        [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]
+        [Display(Name = "Descrição")]
+        public string descricao_hotel { get; set; }
 
 
         [Display(Name = "Cidade")]
-        public string cid_estado { get; set; }
+        public string cidade_hotel { get; set; }
 
 
+        [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
         [Display(Name = "Endereço")]
-        public string end_hotel { get; set; }
+        public string endereco_hotel { get; set; }
 
 
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Telefone")]
-        public string tel_hotel { get; set; }
+        public string telefone_hotel { get; set; }
 
 
         [Required]
-        [Display(Name = "Quartos")]
-        public string total_quartos { get; set; }
+        [Display(Name = "Foto")]
+        public string img_hotel { get; set; }
+
     }
 }

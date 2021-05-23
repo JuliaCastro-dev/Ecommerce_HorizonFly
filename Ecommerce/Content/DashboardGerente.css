@@ -1,0 +1,214 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: 0px;
+}
+@font-face {
+    font-family: neon;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #EDEDED;
+    font-family: 'Poppins',sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+}
+
+body > div > header > a {
+    position: relative;
+    left: 93%;
+    color: #fff;
+    z-index: 5;
+    font-weight:600;
+}
+
+    body > div > header > a:hover {
+        color: #c6e2ff;
+        text-shadow: 0 0 2px rgba(202,228,225,0.92), 0 0 10px rgba(202,228,225,0.34), 0 0 4px rgba(30,132,242,0.52), 0 0 7px rgba(30,132,242,0.92), 0 0 11px rgba(30,132,242,0.78), 0 0 16px rgba(30,132,242,0.92);
+    }
+
+header {
+    background-color: #354555;
+    width: 100%;
+    height: 5%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+.menu {
+    background-color: #354555;
+    height: 100%;
+    color: #fff;
+    position: fixed;
+    left: 0px;
+    top: 2vh;
+    width: 13vw;
+    z-index: 2;
+}
+
+ul {
+    position: relative;
+    top: 10VW;
+}
+
+li {
+    border-bottom: 0.5px solid #fff;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+}
+
+.foto {
+    width: 9vw;
+    height: 13vh;
+    position: absolute;
+    margin: 5px 17px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+}
+
+cite {
+    margin: 5px 50px;
+    position: relative;
+    top: 8vw;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    justify-content: center;
+    align-items: center;
+    display: table-cell;
+    position: absolute;
+    left: 13vw;
+    width: 87%;
+    height: 95vh;
+    top: 2.4vw;
+    background-color: #FDF7F7;
+}
+
+h1 {
+    text-align: center;
+    color: #3A7BD5;
+    font-family: 'Cormorant', serif;
+    position: relative;
+    top: 2vh;
+}
+
+.resumo {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    position: absolute;
+    top: 8vh;
+    left: 2vw;
+}
+
+.imgresumo {
+    width: 10vw;
+    height: 8vw;
+}
+
+table {
+    position: relative;
+    top: 20vh;
+    left: 3%;
+    display: flex;
+}
+
+th {
+    display: inline-block;
+}
+
+li > a:hover {
+    color: #c6e2ff;
+    text-shadow: 0 0 2px rgba(202,228,225,0.92), 0 0 10px rgba(202,228,225,0.38), 0 0 4px rgba(30,132,242,0.60), 0 0 7px rgba(30,132,242,0.92), 0 0 11px rgba(30,132,242,0.85), 0 0 16px rgba(30,132,242,0.92);
+}
+/*.th1{
+    display:inline-block;
+}
+.th2 {
+    display: block;
+}*/
+.div-item {
+    background: rgba(255, 253, 253, 0.91);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    display: flex;
+    height: 18vh;
+    width: 25vw;
+    margin: 10px 10px;
+}
+
+    .div-item h5 {
+        position: relative;
+        top: 2.5vw;
+        left: 5vw;
+        font-weight: 800;
+        font-family: 'Poppins',sans-serif;
+        color: #1da703;
+        font-size: 2vw;
+        animation: neon .08s ease-in-out infinite alternate;
+        text-shadow: 0 0 1px #2356FF;
+        animation: flux 2s linear infinite;
+        -moz-animation: flux 2s linear infinite;
+        -webkit-animation: flux 2s linear infinite;
+        -o-animation: flux 2s linear infinite;
+    }
+@keyframes flux {
+    0%, 100% {
+        color: #06f12d;
+    }
+
+    50% {
+        color: #148053;
+    }
+}
+
+
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 6px rgba(202,228,225,0.92), 0 0 30px rgba(202,228,225,0.34), 0 0 12px rgba(30,132,242,0.52), 0 0 21px rgba(30,132,242,0.92), 0 0 34px rgba(30,132,242,0.78), 0 0 54px rgba(30,132,242,0.92);
+    }
+
+    to {
+        text-shadow: 0 0 6px rgba(202,228,225,0.98), 0 0 30px rgba(202,228,225,0.42), 0 0 12px rgba(30,132,242,0.58), 0 0 22px rgba(30,132,242,0.84), 0 0 38px rgba(30,132,242,0.88), 0 0 60px rgba(30,132,242,1);
+    }
+}
+
+.div-item span {
+    position: relative;
+    top: 3vw;
+    left: 6vw;
+}
+
+.img-item {
+    display: flex;
+    left: 1.5vw;
+    position: relative;
+    top: 1vw;
+    display: flex;
+    width: 6vw;
+    height: 12vh;
+}
+body > div > main > span {
+    z-index: 6;
+    position: relative;
+    top: 12VW;
+    font-weight: 700;
+    left: 30VW;
+    color: #FA7F72;
+}

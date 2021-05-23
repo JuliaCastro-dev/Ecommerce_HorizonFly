@@ -19,8 +19,6 @@ namespace Ecommerce.Models
         public string cd_estado { get; set; }
 
 
-
-
         [StringLength(50, ErrorMessage = "O limite é de 50 caracteres.")]
         [Display(Name = "Estado: ")]
         public string estado { get; set; }
