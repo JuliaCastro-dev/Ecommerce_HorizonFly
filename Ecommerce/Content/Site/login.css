@@ -40,7 +40,9 @@ body {
     background-image: url("../../Imagens/ImgLogin.jpg");
     background-size:30vw;
     background-position:right;
-    background-repeat:no-repeat;}
+    background-repeat:no-repeat;
+
+}
 .login {
     grid-area: login;
 }
@@ -60,60 +62,82 @@ body {
     z-index:0;
     top:10px;
     left:6vw;
-}
-#login-body {
+}#login-body {
     position: relative;
     top: 15%;
     height: 30vh;
 }
+
 #registro-body {
     position: relative;
     top: 10%;
     height: 30vh;
 }
+
+.loginInput {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
    
-    .loginInput {
-        display: block;
-        position: relative;
-        border: none;
-        border-bottom: 2px solid #3A7BD5;
-        width: 20vw;
-        margin: 5px 36%;
-        padding: 0;
-        font-size: 1.5vw;
-        outline: none;
-        font-family: 'Poppins',sans-serif;
-        color: var(--azul-claro);
-        transition: all .3s ease-out;
-        -webkit-transition: all .3s ease-out;
-        -moz-transition: all .3s ease-out;
-        -webkit-appearance: none;
-    }
-    .login::-webkit-input-placeholder {
-        color: rgb(9 22 42 / 0,91);
-        font-weight: 400;
-        
-    }
+    width: 20vw;
+    margin: 10px 36%;
+    padding: 0;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+input:focus {
+    outline: none;
+}
    
-   
+
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+input:focus ~ label, input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+
 .entrar {
     position: relative;
-    border: 2px solid #168FFF;
+   border:none;
     background: transparent;
     display: block;
     width: 20vw;
     margin: 25px 36.5%;
     outline: none;
     font-family: 'Poppins',sans-serif;
-    color:var(--azul-claro);
-    cursor:pointer;
-    font-size:1.5vw;
-    word-spacing:5px;
+    color: var(--azul-claro);
+    cursor: pointer;
+    font-size: 1.5vw;
+    word-spacing: 5px;
 }
+
     .entrar::before {
-        background: #c0c0aa; 
-        content:'';
-       position:absolute;
+        background: #c0c0aa;
+        content: '';s
+        position: absolute;
         width: 0%;
         height: 100%;
         z-index: -1;
@@ -121,18 +145,105 @@ body {
         left: 0;
         transition: all 0.5s ease;
     }
-    .entrar:hover::before{
-        width:100%;
+
+    .entrar:hover::before {
+        width: 100%;
     }
+    .entrar:hover, .entrar:focus {
+        border: 2px solid #0766D6;
+    }
+
 .errorMessage {
     color: #b73535;
     font-size: 1.5vh;
     font-weight: 600;
     font-family: 'Poppins',sans-serif;
-    position:relative;
-    left:1vw;
+    position: relative;
+    left: 1vw;
 }
-a{
-    position:relative;
-    left:4vw;
+
+a {
+    position: relative;
+    left: 4vw;
+    text-decoration: none;
+    top: 2vw;
+    color: #00a928;
 }
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 25vw;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        left:14.8vw;
+        bottom: 9px;
+        position: absolute;
+        background: #5264AE;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 90%;
+    }
+
+    .bar:after {
+        right: 90%;
+    }
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+

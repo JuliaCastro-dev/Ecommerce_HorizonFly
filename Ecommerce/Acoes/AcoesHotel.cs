@@ -60,7 +60,7 @@ namespace Ecommerce.Acoes
                          telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
                          endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
                          diaria_hotel = Convert.ToDecimal(dr["diaria_hotel"]),
-                         img_hotel = Convert.ToString(dr["img_)hotel"])
+                         img_hotel = Convert.ToString(dr["img_hotel"])
 
                      });
             }

@@ -27,19 +27,19 @@
                     <span>@ViewBag.Validação</span>
 
                     @Html.EditorFor(m => m.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome_cliente)</span>
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome)</span>
 
-                    @Html.EditorFor(m => m.rg_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg_cliente)</span>
+                    @Html.EditorFor(m => m.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg)</span>
 
                     @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
                     <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
 
-                    @Html.EditorFor(m => m.email_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.email_cliente)</span>
+                    @Html.EditorFor(m => m.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
 
-                    @Html.EditorFor(m => m.telefone_cliente, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone_cliente)</span>
+                    @Html.EditorFor(m => m.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
 
                     @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
                     <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>

@@ -159,6 +159,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cadastro.css" />
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Hoteis.css" />
@@ -172,9 +173,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\aviao.png" />
     <Content Include="Imagens\bag.png" />
+    <Content Include="Imagens\ButtonDetalhes.png" />
     <Content Include="Imagens\clientes.png" />
     <Content Include="Imagens\coqueiro.png" />
     <Content Include="Imagens\FUNCIONARIO.jpg" />
+    <Content Include="Imagens\FuncionarioTerno.jpg" />
     <Content Include="Imagens\grafico.png" />
     <Content Include="Imagens\icon.png" />
     <Content Include="Imagens\image-not-found.jpg" />
@@ -222,6 +225,7 @@
     <Content Include="Views\Sistema\Contas.cshtml" />
     <Content Include="Views\Site\Sobre.cshtml" />
     <Content Include="Views\Sistema\Hoteis.cshtml" />
+    <Content Include="Views\Sistema\CadastroFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

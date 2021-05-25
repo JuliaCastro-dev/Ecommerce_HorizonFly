@@ -232,8 +232,8 @@ namespace Ecommerce.Controllers
             ModelState.Clear();
             ViewBag.nome = Session["nome"];
             ViewBag.img = Session["img"];
-           
-            return View(acS.ListarQuantidade());
+            acS.ListarQuantidade();
+            return View();
         }
 
         //-------------- VIEWS DE LISTA/ALTERAÇÃO E CONSULTA -----------

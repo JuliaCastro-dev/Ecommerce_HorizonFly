@@ -1,0 +1,123 @@
+﻿@model Ecommerce.Models.Funcionario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CadastroFuncionario</title>
+    <link href="~/Content/Cadastro.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h1 class="text">FUNCIONÁRIO</h1>
+            <div class="bodyInputs">
+                @Html.ActionLink("Voltar", "Funcionarios", new { htmlAttributes = new { @class = "link" } })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="group">
+                    @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Completo" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.cargo_func, new { htmlAttributes = new { @class = "input", @placeholder = "Cargo" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.cargo_func, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "input", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "input", @placeholder = "RG" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.rg, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input", @placeholder = "Seu melhor E-mail" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "input" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.telefone, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "input", @placeholder = "Senha", @type = "password" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.senha, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "input" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "input" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="group">
+
+                    <input type="submit" value="Cadastrar" class="btn btn-default" />
+
+                </div>
+            </div>
+        </div>
+    }
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+</body>
+</html>
