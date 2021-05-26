@@ -1,0 +1,112 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: url("../Imagens/HotelBonito60.png") no-repeat;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+ 
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 6vh;
+    font-weight: 600;
+    left:40vw;
+    position:relative;
+}
+li {
+    list-style: none;
+    letter-spacing: 10px;
+    transition: 8s;
+    font-family: 'Cormorant', serif;
+    color: #3A7BD5;
+    font-size: 2vw;
+   
+}
+
+ul:hover li {
+    transform: rotate(360deg) translateY(-360px);
+    opacity: 0;
+    filter: blur(20px);
+}
+
+ul li:nth-child(1) {
+    transition-delay: 0;
+}
+
+ul li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+ul li:nth-child(3) {
+    transition-delay: 0.2s;
+}
+ul li:nth-child(4) {
+    transition-delay: 0.3s;
+}
+ul li:nth-child(5) {
+    transition-delay: 0.4s;
+}
+ul li:nth-child(6) {
+    transition-delay: 0.5s;
+}
+ul li:nth-child(7) {
+    transition-delay: 0.6s;
+}
+ul li:nth-child(8) {
+    transition-delay: 0.7s;
+}
+ul li:nth-child(9) {
+    transition-delay: 0.8s;
+}
+ul li:nth-child(10) {
+    transition-delay: 0.9s;
+}
+
+h1 {
+    font-size: 15vw;
+    color: #FFFBFB;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 400;
+    position: absolute;
+    left: 22vw;
+    top: 10vw;
+}
+    
+
+a {
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+.voltar a {
+    color: #18C572;
+    position:relative;
+    left:4vw;
+}
+.prosseguir a {
+    background-color: #F2BF08;
+    color: #fff;
+    height: 1.5vw;
+    font-size: 1.7vw;
+    position: relative;
+    font-weight: 400;
+    top: 68vh;
+    left: 38vw;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+    .prosseguir a:hover {
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }

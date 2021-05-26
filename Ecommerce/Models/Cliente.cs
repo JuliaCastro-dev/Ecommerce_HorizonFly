@@ -55,9 +55,9 @@ namespace Ecommerce.Models
         [Display(Name = "Tipo")]
         public string tipo { get; set; }
 
-
         [Display(Name = "Foto de perfil")]
         public string img { get; set; }
+
 
 
         [Required]

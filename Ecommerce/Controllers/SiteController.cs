@@ -161,13 +161,32 @@ namespace Ecommerce.Controllers
             }
             return View();
         }
+        public ActionResult AlterarSenhaEscolha()
+        {
+
+            return View();
+        }
+
+        public ActionResult AlterarSenhaFuncionario(Funcionario func)
+        {
+            acL.AlterarSenhaFuncionario(func);
+            return View();
+        }
 
 
-        public ActionResult Sobre()
+        public ActionResult AlterarSenhaCliente(Cliente cli)
+        {
+            acL.AlterarSenhaCliente(cli);
+            return View();
+        }
+
+       
+        public ActionResult DashboardCliente()
         {
             return View();
         }
-        public ActionResult DashboardCliente()
+
+        public ActionResult Sobre()
         {
             return View();
         }

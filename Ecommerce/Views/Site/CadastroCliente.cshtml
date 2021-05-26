@@ -26,32 +26,58 @@
                     @Html.AntiForgeryToken()
                     <span>@ViewBag.Validação</span>
 
-                    @Html.EditorFor(m => m.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome)</span>
+                    <div class="group">
 
-                    @Html.EditorFor(m => m.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg)</span>
+                        @Html.EditorFor(m => m.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome)</span>
 
-                    @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
+                    </div>
+                    <div class="group">
 
-                    @Html.EditorFor(m => m.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
+                        @Html.EditorFor(m => m.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg)</span>
+                    </div>
+                    <div class="group">
 
-                    @Html.EditorFor(m => m.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
+                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
+                    </div>
+                    <div class="group">
 
-                    @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
-                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
+                        @Html.EditorFor(m => m.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
+                    </div>
+                    <div class="group">
 
-                    @Html.EditorFor(m => m.img, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Foto", @type = "file" } })
+                        @Html.EditorFor(m => m.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
+                    </div>
+                    <div class="group">
+
+                        @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
+                    </div>
+
+                        @Html.EditorFor(m => m.img, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Foto", @type = "file" } })
 
 
-                    <input class="entrar" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
+                        <input class="button" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
 
+                    </div>
+                    }
                 </div>
-                }
-            </div>
         </div>
     </div>
 

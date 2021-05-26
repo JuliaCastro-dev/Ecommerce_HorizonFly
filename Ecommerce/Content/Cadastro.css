@@ -1,4 +1,6 @@
-﻿* {
+﻿@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+* {
     margin: 0PX;
     padding: 0PX;
     box-sizing: border-box;
@@ -9,7 +11,7 @@ body {
     border-radius: 10px 10px 0px 0px;
     height: 100vh;
     overflow: hidden;
-    width:100vw;
+    width: 100vw;
     font-family: 'Poppins',sans-serif;
 }
 
@@ -18,12 +20,12 @@ body {
     margin: 80px 120px 30px 120px;
     border-radius: 10px;
     height: 80vh;
-    width:80%;
+    width: 80%;
     background-image: url("../../Imagens/FuncionarioTerno.jpg");
     background-size: 30vw;
     background-position: right;
     background-repeat: no-repeat;
-    position:absolute;
+    position: absolute;
 }
 
 .bodyInputs {
@@ -34,7 +36,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Poppins',sans-serif;
-    
+    overflow-y:auto;
 }
 
 .text {
@@ -47,7 +49,6 @@ body {
     margin-left: 18%;
     font-weight: 500;
     z-index: 5;
-    
 }
 
 .input {
@@ -58,7 +59,7 @@ body {
     border-bottom: 1px solid #757575;
     position: relative;
     width: 20vw;
-    left:15vw;
+    left: 15vw;
     padding: 0;
     font-size: 1.5vw;
     outline: none;
@@ -70,12 +71,22 @@ body {
     -webkit-appearance: none;
 }
 
-.input:focus{
-    outline: none;
-}
+    .input:focus {
+        outline: none;
+    }
 
 .group {
-    display:block;
+    display: block;
+}
+
+input[type=file] {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 20vw;
+    top:0.5vh;
+
 }
 /*MENSAGEM DE ERRO*/
 .errorMessage {
@@ -91,7 +102,6 @@ a {
     position: relative;
     left: 4vw;
     text-decoration: none;
-
     color: #00a928;
 }
 
@@ -122,6 +132,35 @@ a {
     .bar:after {
         right: 95%;
     }
+
+/* BUTTON*/
+.button {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+width:15vw;
+height:5vh;
+position:relative;
+left:17vw;
+border-radius:10px;
+top:5vh;
+cursor:pointer;
+}
+
+
+.button:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    opacity: 1;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+    color: #79e3b6;
+}
+
+
 
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {

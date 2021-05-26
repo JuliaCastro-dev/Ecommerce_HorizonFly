@@ -26,14 +26,15 @@
         <div class="container">
             <h1 class="text">FUNCIONÁRIO</h1>
             <div class="bodyInputs">
-                @Html.ActionLink("Voltar", "Funcionarios", new { htmlAttributes = new { @class = "link" } })
+                @Html.ActionLink("Voltar", "Funcionarios","Sistema", new { htmlAttributes = new { @class = "link" } })
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="group">
                     @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Completo" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome)</span>
                 </div>
 
 
@@ -42,7 +43,7 @@
                     @Html.EditorFor(model => model.cargo_func, new { htmlAttributes = new { @class = "input", @placeholder = "Cargo" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.cargo_func, "", new { @class = "text-danger" })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cargo_func)</span>
 
                 </div>
 
@@ -51,7 +52,7 @@
                     @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "input", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.CPF)</span>
 
                 </div>
 
@@ -60,7 +61,7 @@
                     @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "input", @placeholder = "RG" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.rg, "", new { @class = "text-danger" })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.rg)</span>
 
                 </div>
 
@@ -69,16 +70,17 @@
                     @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input", @placeholder = "Seu melhor E-mail" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.email)</span>
 
                 </div>
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "input" } })
+                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "input", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.telefone, "", new { @class = "text-danger" })
+                    <span class="errorMessage">  @Html.ValidationMessageFor(model => model.telefone)</span>
+
 
                 </div>
 
@@ -87,31 +89,20 @@
                     @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "input", @placeholder = "Senha", @type = "password" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.senha, "", new { @class = "text-danger" })
+                    <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
 
                 </div>
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "input" } })
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.tipo, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "input", @placeholder = "Foto", @type = "file" } })
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img)</span>
 
                 </div>
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "input" } })
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
-
-                </div>
-
-                <div class="group">
-
-                    <input type="submit" value="Cadastrar" class="btn btn-default" />
+                 <input type="submit" value="Cadastrar" class="button" onclick="ValidaCPF();"  />
 
                 </div>
             </div>

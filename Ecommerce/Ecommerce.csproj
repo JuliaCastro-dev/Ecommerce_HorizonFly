@@ -139,6 +139,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cartao.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cidade.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Count.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Hoteis.css" />
+    <Content Include="Content\HotelPaginaInter.css" />
     <Content Include="Content\Site\cadCli.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
@@ -179,10 +181,13 @@
     <Content Include="Imagens\FUNCIONARIO.jpg" />
     <Content Include="Imagens\FuncionarioTerno.jpg" />
     <Content Include="Imagens\grafico.png" />
+    <Content Include="Imagens\HotelBonito.jpg" />
+    <Content Include="Imagens\HotelBonito60.png" />
     <Content Include="Imagens\icon.png" />
     <Content Include="Imagens\image-not-found.jpg" />
     <Content Include="Imagens\ImgLogin.jpg" />
     <Content Include="Imagens\LogoHorizon.png" />
+    <Content Include="Imagens\marBonito.png" />
     <Content Include="Imagens\ResumoPng.png" />
     <Content Include="Imagens\sign-out-alt.png" />
     <Content Include="Imagens\TURISMO.jpg" />
@@ -226,6 +231,9 @@
     <Content Include="Views\Site\Sobre.cshtml" />
     <Content Include="Views\Sistema\Hoteis.cshtml" />
     <Content Include="Views\Sistema\CadastroFuncionario.cshtml" />
+    <Content Include="Views\Sistema\HoteisPageIntermediaria.cshtml" />
+    <Content Include="Views\Site\AlterarSenhaFuncionario.cshtml" />
+    <Content Include="Views\Site\AlterarSenhaCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

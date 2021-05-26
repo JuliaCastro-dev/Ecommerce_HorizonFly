@@ -15,33 +15,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+
         @Html.ActionLink("Sair", "Logout", new { htmlAttributes = new { @class = "sair" } })
-    </header>
-    <h1 class="horizonFly">Horizon Fly</h1>
-    <h3>Hotéis</h3>
-    <span>&nbsp; @Html.ActionLink("  Novo Hotel ", "CadastroHotel", new { htmlAttributes = new { @class = "botaoNovo" } })&nbsp;</span>
-    @foreach (var item in Model)
-    {
-        <div class="card">
-            <a href="/Sistema/DetalhesHotel/@item.cd_hotel">
-                @if (@item.img_hotel != null)
-                {
-                    <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 150px; height: 150px;" src="@item.img_hotel" data-holder-rendered="true">
-                }
-                else
-                {
-                    <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 250px; height: 250px;" src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                }
-                <h2>@item.nome_hotel</h2>
-                <h1>@item.diaria_hotel</h1>
-                <h2 class="tel">@item.telefone_hotel</h2>
-                <img class="detalhes" src="~/Imagens/ButtonDetalhes.png" />
+    <div class="container">
+        <h1 class="horizonFly">Horizon Fly</h1>
+        <h3>Hotéis</h3>
+        <span>&nbsp; @Html.ActionLink("  Novo Hotel ", "CadastroHotel", new { htmlAttributes = new { @class = "botaoNovo" } })&nbsp;</span>
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <a href="/Sistema/DetalhesHotel/@item.cd_hotel">
+                    @if (@item.img_hotel != null)
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 150px; height: 150px;" src="@item.img_hotel" data-holder-rendered="true">
+                    }
+                    else
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 250px; height: 250px;" src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                    }
+                    <h2>@item.nome_hotel</h2>
+                    <h1>@item.diaria_hotel</h1>
+                    <h2 class="tel">@item.telefone_hotel</h2>
+                    
 
-            </a>
+                </a>
 
-        </div>
-    }
+            </div>
+        }
+    </div>
 
 
 

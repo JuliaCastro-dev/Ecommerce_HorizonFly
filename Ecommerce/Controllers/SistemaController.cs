@@ -51,6 +51,60 @@ namespace Ecommerce.Controllers
             ViewBag.cidade = new SelectList(cidade, "Value", "Text");
         }
 
+
+        public void carregaCategoria()
+        {
+            List<SelectListItem> categoria = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Categoria order by categoria;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    categoria.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.cidade = new SelectList(categoria, "Value", "Text");
+        }
+
+
+        public void carregaTiposTransporte()
+        {
+            List<SelectListItem> categoria = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from TipoTransporte order by tipo_transporte;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    categoria.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.cidade = new SelectList(categoria, "Value", "Text");
+        }
+
         public void carregaHoteis()
         {
             List<SelectListItem> hotel = new List<SelectListItem>();
@@ -232,11 +286,17 @@ namespace Ecommerce.Controllers
             ModelState.Clear();
             ViewBag.nome = Session["nome"];
             ViewBag.img = Session["img"];
-            acS.ListarQuantidade();
-            return View();
+           
+            return View(acS.ListarQuantidade());
         }
 
-        //-------------- VIEWS DE LISTA/ALTERAÇÃO E CONSULTA -----------
+        //-------------- VIEWS DE CARREGAMENTO/ LISTA/ALTERAÇÃO E CONSULTA -----------
+
+        public ActionResult HoteisPageIntermediaria()
+        {
+           
+            return View();
+        }
         public ActionResult Hoteis()
         {
             ModelState.Clear();
