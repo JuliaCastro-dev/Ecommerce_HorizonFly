@@ -19,7 +19,7 @@
         <div class="login">
             <div class="modal-content">
                
-                @using (@Html.BeginForm())
+                @using (@Html.BeginForm("CadastroCliente","Site", FormMethod.Post, new { enctype = "multipart/form-data"}))
                 {
                 <div class="modal-body">
                     @Html.ActionLink("Voltar", "Index", new { htmlAttributes = new { @class = "link" } })<h1 class="text-login">CADASTRO</h1>
@@ -28,54 +28,53 @@
 
                     <div class="group">
 
-                        @Html.EditorFor(m => m.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
+                        @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.nome)</span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.nome)</span>
 
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
+                        @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.rg)</span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.rg)</span>
                     </div>
                     <div class="group">
 
                         @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <span class="errorMessage">@Html.ValidationMessageFor(m => m.CPF)</span>
+                        <span class="errorMessage">@Html.ValidationMessageFor(model => model.CPF)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                        @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
+                        @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Senha", @type = "password" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
                     </div>
 
-                        @Html.EditorFor(m => m.img, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Foto", @type = "file" } })
+                    <input class="loginInput" type="file" name="file" id="file"/>
 
+                    <input class="button" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
 
-                        <input class="button" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
-
-                    </div>
+                </div>
                     }
                 </div>
         </div>

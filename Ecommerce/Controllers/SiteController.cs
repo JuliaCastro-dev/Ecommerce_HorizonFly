@@ -123,43 +123,85 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Index", "Site");
         }
 
+        /* PERFIL CLIENTE */
+
+        public ActionResult PerfilCliente()
+        {
+            ViewBag.nome = Session["nome"];
+            ViewBag.img = Session["img"];
+            ViewBag.email = Session["email"];
+            ViewBag.tel = Session["tel"];
+            ViewBag.cpf = Session["cpf"];
+            ViewBag.rg = Session["rg"];
+            ViewBag.senha = Session["senha"];
+
+            return View();
+        }
+
+
         public ActionResult CadastroCliente()
         {
-            ModelState.Clear();
+           
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CadastroCliente(Cliente cliente, HttpPostedFileBase file)
         {
-
-            if (ModelState.IsValid)
-            {
-                string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
-                file.SaveAs(_path);
-                cliente.img = file2;
-
-                acF.VerificaUsuario(cliente);
+           acF.VerificaUsuario(cliente);
 
 
                 if (cliente.CPF != null && cliente.senha != null)// se houver um funcionário com o mesmo cpf, ele será cadastrado como ClienteFuncionário
                 {
-                    acC.inserirClienteFuncionario(cliente);
 
-                    return RedirectToAction("Login", "Site");
+
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string arquivo = Path.GetFileName(file.FileName);
+                            string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
+                            string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
+                            file.SaveAs(_path);
+                            cliente.img = file2;
+                        acC.inserirClienteFuncionario(cliente);
+
+                        return RedirectToAction("Login", "Site");
+                    }
+                    else
+                    {
+                        acC.inserirClienteFuncionario(cliente);
+
+                        return RedirectToAction("Login", "Site");
+                    }
+                      
+                            
+                        
+
+                  
                 }
                 else
                 {
-                    acC.inserirCliente(cliente);
-                    return RedirectToAction("Login", "Site");
-                }
-                    
-             
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string arquivo = Path.GetFileName(file.FileName);
+                        string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
+                        file.SaveAs(_path);
+                        cliente.img = file2;
+                        acC.inserirCliente(cliente);
+                        return RedirectToAction("Login", "Site");
+                    }
+                    else
+                    {
+                        acC.inserirCliente(cliente);
+                        return RedirectToAction("Login", "Site");
+                    }
+                        
+                        
 
-            }
-            return View();
+
+                }
+ 
         }
         public ActionResult AlterarSenhaEscolha()
         {
@@ -180,11 +222,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-       
-        public ActionResult DashboardCliente()
-        {
-            return View();
-        }
+      
 
         public ActionResult Sobre()
         {

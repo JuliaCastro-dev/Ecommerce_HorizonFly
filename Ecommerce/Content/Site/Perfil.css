@@ -1,0 +1,46 @@
+﻿* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:#fff ;
+    width:100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+}
+header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
+    width: 100vw;
+    height: 4vh;
+    min-height: 4vh;
+}
+.banner {
+    z-index: 1;
+    width: 90%;
+    height: 40%;
+    position: absolute;
+    left:5%;
+    top:4vh;
+}
+/*Tabela de dados*/
+.dados{
+    
+}
+.Titulo {
+    color: #0C3E7C;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+}
+.dado {
+    color: #fff;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+}

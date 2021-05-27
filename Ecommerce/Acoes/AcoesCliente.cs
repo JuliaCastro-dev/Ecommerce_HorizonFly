@@ -16,7 +16,7 @@ namespace Ecommerce.Acoes
         public void inserirCliente(Cliente cliente)
         {
 
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO Cliente(nome,telefone,email,CPF,rg,senha,img,tipo) VALUES (@nm,@tel,@email,@CPF,@rg,@senha,@img,3);)", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Cliente(nome,telefone,email,CPF,rg,senha,img,tipo) VALUES (@nm,@tel,@email,@CPF,@rg,@senha,@img,3)", con.MyConectarBD());
 
             cmd.Parameters.Add("@nm", MySqlDbType.VarChar).Value = cliente.nome;
             cmd.Parameters.Add("@tel", MySqlDbType.VarChar).Value = cliente.telefone;

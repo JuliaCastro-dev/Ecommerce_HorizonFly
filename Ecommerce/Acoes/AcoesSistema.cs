@@ -16,7 +16,7 @@ namespace Ecommerce.Acoes
         {
             List<Count> QTList = new List<Count>();
 
-            MySqlCommand cmd = new MySqlCommand("call ChamaResumo;", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("call ChamaResumo()", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 

@@ -168,6 +168,7 @@
     <Content Include="Content\Site\cadCli.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
+    <Content Include="Content\Site\Perfil.css" />
     <Content Include="Content\Site\Sobre.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -189,6 +190,8 @@
     <Content Include="Imagens\LogoHorizon.png" />
     <Content Include="Imagens\marBonito.png" />
     <Content Include="Imagens\ResumoPng.png" />
+    <Content Include="Imagens\RioDeJaneiroWallpaper.jpg" />
+    <Content Include="Imagens\RJWallpaper.png" />
     <Content Include="Imagens\sign-out-alt.png" />
     <Content Include="Imagens\TURISMO.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -234,6 +237,7 @@
     <Content Include="Views\Sistema\HoteisPageIntermediaria.cshtml" />
     <Content Include="Views\Site\AlterarSenhaFuncionario.cshtml" />
     <Content Include="Views\Site\AlterarSenhaCliente.cshtml" />
+    <Content Include="Views\Site\PerfilCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
