@@ -201,7 +201,7 @@ namespace Ecommerce.Controllers
         public ActionResult CadastroFuncionario(Funcionario func, HttpPostedFileBase file)
         {
 
-            if (ModelState.IsValid)
+            if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
                 string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
@@ -212,7 +212,12 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("Funcionarios", "Sistema");
 
             }
-            return View();
+            else
+            {
+                acF.inserirFuncionario(func);
+                return RedirectToAction("Funcionarios", "Sistema");
+            }
+            
         }
 
         //-------------- CADASTRO DE HOTÉIS -----------
@@ -226,7 +231,7 @@ namespace Ecommerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CadastroHotel(Hotel hotel, AcoesHotel ach, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
                 string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
@@ -237,7 +242,12 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("Hoteis", "Sistema");
 
             }
+            else
+            {
+                ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+            }
             return View();
+           
         }
 
         //-------------- CADASTRO DE PACOTES -----------
@@ -265,7 +275,7 @@ namespace Ecommerce.Controllers
             pacote.cd_transporte = Request["transporte"];
             pacote.cd_viagem = Request["viagem"];
 
-            if (ModelState.IsValid)
+            if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
                 string file2 = "/ImagensPacote/" + Path.GetFileName(file.FileName);
@@ -276,7 +286,12 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("Pacotes", "Sistema");
 
             }
+            else
+            {
+                ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+            }
             return View();
+            
         }
 
 
@@ -286,8 +301,15 @@ namespace Ecommerce.Controllers
             ModelState.Clear();
             ViewBag.nome = Session["nome"];
             ViewBag.img = Session["img"];
-           
-            return View(acS.ListarQuantidade());
+            ViewBag.qtFuncionários = acS.ListarQuantidadeFuncionarios();
+            ViewBag.qtViagens = acS.ListarQuantidadeViagens();
+            ViewBag.qtClientes = acS.ListarQuantidadeClientes();
+            ViewBag.qtTransportes = acS.ListarQuantidadeTransportes();
+            ViewBag.qtPacotes = acS.ListarQuantidadePacotes();
+            ViewBag.qtReservas = acS.ListarQuantidadeReservas();
+            ViewBag.qtHoteis = acS.ListarQuantidadeHoteis();
+
+            return View();
         }
 
         //-------------- VIEWS DE CARREGAMENTO/ LISTA/ALTERAÇÃO E CONSULTA -----------

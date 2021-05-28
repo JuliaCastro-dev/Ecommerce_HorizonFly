@@ -64,6 +64,7 @@ li {
     border-bottom: 0.5px solid #fff;
     align-items: center;
     text-align: center;
+    color:#fff;
     font-weight: 400;
 }
 
@@ -207,7 +208,7 @@ li > a:hover {
 body > div > main > span {
     z-index: 6;
     position: relative;
-    top: 12VW;
+    top: 4VW;
     font-weight: 700;
     left: 30VW;
     color: #FA7F72;

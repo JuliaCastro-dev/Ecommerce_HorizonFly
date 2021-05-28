@@ -95,7 +95,7 @@
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.img, new { htmlAttributes = new { @class = "input", @placeholder = "Foto", @type = "file" } })
+                    <input class="input" type="file" name="file" id="file" />
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img)</span>
 
                 </div>

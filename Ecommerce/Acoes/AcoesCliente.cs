@@ -12,7 +12,53 @@ namespace Ecommerce.Acoes
     {
 
         conexao con = new conexao();
+        public static int VerificaCliente;
+        public List<Usuario>  VerificaUsuarioLogin(Usuario user)
+        {
+            List<Usuario> VUL = new List<Usuario>();
+            MySqlCommand cmd = new MySqlCommand("Select * from Cliente  where CPF = @cpf and senha = @Senha", con.MyConectarBD());
 
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
+            cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
+           
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            con.MyDesconectarBD();
+            sd.Fill(dt);
+           
+            if (leitor.HasRows)
+            {
+                VerificaCliente = 1;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    VUL.Add(
+
+                           new Usuario
+                           {
+
+                               cpf = Convert.ToString(dr["CPF"]),
+                               nome = Convert.ToString(dr["nome"]),
+                               email = Convert.ToString(dr["email"]),
+                               telefone = Convert.ToString(dr["telefone"]),
+                               rg = Convert.ToString(dr["rg"]),
+                               senha = Convert.ToString(dr["senha"]),
+                               img = Convert.ToString(dr["img"])
+
+                           });
+                }
+                return VUL;
+            }
+            else
+            {
+                VerificaCliente = 0;
+                return VUL;
+            }
+
+        }
         public void inserirCliente(Cliente cliente)
         {
 
@@ -34,8 +80,7 @@ namespace Ecommerce.Acoes
         public void inserirClienteFuncionario(Cliente cliente)
         {
 
-            MySqlCommand cmd = new MySqlCommand("START TRANSACTION; INTO CLiente(nome, senha, CPF, tipo, telefone, email, rg, img)" +
-                "VALUES(@nm,@senha,@CPF, '4',@tel,@email,@rg,@img);" +
+            MySqlCommand cmd = new MySqlCommand("START TRANSACTION; INSERT INTO Cliente(nome, senha, CPF, tipo, telefone, email, rg, img)VALUES(@nm,@senha,@CPF, '4',@tel,@email,@rg,@img);" +
                 "UPDATE Funcionario SET tipo = '4'  WHERE CPF = @CPF;COMMIT; ", con.MyConectarBD());
 
             cmd.Parameters.Add("@nm", MySqlDbType.VarChar).Value = cliente.nome;

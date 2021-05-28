@@ -11,13 +11,64 @@ namespace Ecommerce.Acoes
     public class AcoesFuncionario
     {
         conexao con = new conexao();
+        public static int Verifica;
+        public static int VerificaFuncionario;
 
         // Verifica usuario para ver se o cliente a ser cadastrado é um funcionário
-        public void VerificaUsuario(Cliente user)
+        public List<Usuario> VerificaUsuarioCadastroCliente(Usuario user)
         {
-            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha - @Senha", con.MyConectarBD());
+            List<Usuario> VUL = new List<Usuario>();
+            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha = @Senha", con.MyConectarBD());
 
-            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.CPF;
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
+            cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
+
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+
+            sd.Fill(dt);
+         
+            if (leitor.HasRows)
+            {
+                Verifica= 1;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    VUL.Add(
+
+                           new Usuario
+                           {
+
+                               cpf = Convert.ToString(dr["CPF"]),
+                               nome = Convert.ToString(dr["nome"]),
+                               email = Convert.ToString(dr["email"]),
+                               telefone = Convert.ToString(dr["telefone"]),
+                               rg = Convert.ToString(dr["rg"]),
+                               senha = Convert.ToString(dr["senha"]),
+                               img = Convert.ToString(dr["img"])
+
+                           });
+                }
+                return VUL;
+            }
+            else
+            {
+                Verifica = 0;
+                return VUL;
+            }
+            
+
+        }
+
+
+        public void VerificaUsuarioLogin(Usuario user)
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha = @Senha", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
             cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = user.senha;
 
             MySqlDataReader leitor;
@@ -26,32 +77,11 @@ namespace Ecommerce.Acoes
 
             if (leitor.HasRows)
             {
-                while (leitor.Read())
-                {
-                    user.CPF = Convert.ToString(leitor["CPF"]);
-                    user.senha = Convert.ToString(leitor["senha"]);
-                    user.tipo = Convert.ToString(leitor["tipo"]);
-                    user.nome = Convert.ToString(leitor["nome"]);
-                    user.telefone = Convert.ToString(leitor["telefone"]);
-                    user.email = Convert.ToString(leitor["email"]);
-                    user.rg = Convert.ToString(leitor["rg"]);
-                    user.img = Convert.ToString(leitor["img"]);
-
-
-                }
+                VerificaFuncionario = 1;
             }
             else
             {
-                user.CPF = null;
-                user.senha = null;
-                user.tipo = null;
-                user.nome = null;
-                user.telefone = null;
-                user.email = null;
-                user.rg = null;
-                user.img = null;
-
-
+                VerificaFuncionario = 0;
             }
 
             con.MyDesconectarBD();
