@@ -1,0 +1,72 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(270.13deg, #13201F 1.02%, #607E76 49.33%, #5C747A 79.72%, #5C747A 90.47%);
+    border-radius: 10px 10px 0px 0px;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    font-family: 'Poppins',sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    margin: 80px 120px 30px 120px;
+    border-radius: 10px;
+    height: 80vh;
+    width: 80%;
+    background-image: url("../../Imagens/FuncionarioTerno.jpg");
+    background-size: 30vw;
+    background-position: right;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.bodyInputs {
+    position: absolute;
+    background: #FFFDFD;
+    height: 70vh;
+    width: 50vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+    overflow-y: auto;
+}
+
+.text {
+    position: relative;
+    background: linear-gradient(180deg, #0766D6 0%, #FFFFFF 29.17%, #22A787 77.6%, #0C3E7C 100%, #384D49 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    bottom: 4.5vh;
+    font-size: 3.5vw;
+    margin-left: 18%;
+    font-weight: 500;
+    z-index: 5;
+}
+
+.Input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    left: 15vw;
+    padding: 0;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}

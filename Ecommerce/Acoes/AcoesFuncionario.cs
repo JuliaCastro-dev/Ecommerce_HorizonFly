@@ -64,28 +64,56 @@ namespace Ecommerce.Acoes
         }
 
 
-        public void VerificaUsuarioLogin(Usuario user)
+        public List<Usuario> VerificaLogin(Usuario user)
         {
+            List<Usuario> VUL = new List<Usuario>();
             MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha = @Senha", con.MyConectarBD());
 
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
-            cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = user.senha;
+            cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
 
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
             MySqlDataReader leitor;
 
             leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+
+            sd.Fill(dt);
 
             if (leitor.HasRows)
             {
                 VerificaFuncionario = 1;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    VUL.Add(
+
+                           new Usuario
+                           {
+
+                               cpf = Convert.ToString(dr["CPF"]),
+                               nome = Convert.ToString(dr["nome"]),
+                               email = Convert.ToString(dr["email"]),
+                               telefone = Convert.ToString(dr["telefone"]),
+                               rg = Convert.ToString(dr["rg"]),
+                               senha = Convert.ToString(dr["senha"]),
+                               img = Convert.ToString(dr["img"])
+
+                           });
+                }
+                return VUL;
             }
             else
             {
                 VerificaFuncionario = 0;
+                return VUL;
             }
 
-            con.MyDesconectarBD();
+
         }
+
+
+
 
         public void inserirFuncionario(Funcionario func)
 

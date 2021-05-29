@@ -41,23 +41,14 @@ namespace Ecommerce.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Usuario user, Funcionario func)
+        public ActionResult Login(Usuario user)
         {
 
-
-
-            acL.TestarUsuario(user);
+            acF.VerificaLogin(user);
             if (user.cpf != null && user.senha != null)
             {
-
                 FormsAuthentication.SetAuthCookie(user.cpf, false);
-                Session["UsuarioLogado"] = user.cpf.ToString();
-                Session["senhaLogado"] = user.senha.ToString();
-                Session["cpf"] = user.cpf.ToString();
-                Session["senha"] = user.senha.ToString();
-                Session["nome"] = user.nome.ToString();
-                Session["img"] = user.img.ToString();
-                Session["tipo"] = user.tipo.ToString();
+               
 
 
                 // USUARIO TIPO 1 = GERENTE
@@ -67,11 +58,7 @@ namespace Ecommerce.Controllers
 
 
 
-                //if (AcoesFuncionario.VerificaFuncionario == 1)
-                //{
-
-
-                if (user.tipo == "2")
+                if (AcoesFuncionario.VerificaFuncionario == 1)
                 {
                     Session["UsuarioLogado"] = user.cpf.ToString();
                     Session["senhaLogado"] = user.senha.ToString();
@@ -79,50 +66,58 @@ namespace Ecommerce.Controllers
                     Session["senha"] = user.senha.ToString();
                     Session["nome"] = user.nome.ToString();
                     Session["img"] = user.img.ToString();
-                    Session["tipoLogado2"] = user.tipo.ToString();//=2
+                    Session["tipo"] = user.tipo.ToString();
 
-                    return RedirectToAction("Dashboard", "Sistema");
+                    if (user.tipo == "2")
+                    {
+
+                        Session["tipoLogado2"] = user.tipo.ToString();//=2
+
+                        return RedirectToAction("Dashboard", "Sistema");
+                    }
+                    else if (user.tipo == "1")
+                    {
+
+                        Session["tipoLogado1"] = user.tipo.ToString();//=1
+
+                        return RedirectToAction("Dashboard", "Sistema");
+                    }
+                    else if (user.tipo == "4"/* && AcoesCliente.VerificaCliente == 1*/)
+                    {
+
+                        Session["tipoLogado4"] = user.tipo.ToString();//=4
+
+                        return RedirectToAction("Contas", "Sistema");
+                    }
                 }
-                else if (user.tipo == "1")
+                else
                 {
-                    Session["UsuarioLogado"] = user.cpf.ToString();
-                    Session["senhaLogado"] = user.senha.ToString();
-                    Session["cpf"] = user.cpf.ToString();
-                    Session["senha"] = user.senha.ToString();
-                    Session["nome"] = user.nome.ToString();
-                    Session["img"] = user.img.ToString();
-                    Session["tipoLogado1"] = user.tipo.ToString();//=1
+                    acC.VerificaUsuarioLogin(user);
+                    if(AcoesCliente.VerificaCliente == 1)
+                    {
+                        Session["UsuarioLogado"] = user.cpf.ToString();
+                        Session["senhaLogado"] = user.senha.ToString();
+                        Session["cpf"] = user.cpf.ToString();
+                        Session["senha"] = user.senha.ToString();
+                        Session["nome"] = user.nome.ToString();
+                        Session["img"] = user.img.ToString();
+                        Session["tipo"] = user.tipo.ToString();
+                        if (user.tipo == "3")
+                        {
 
+                            Session["tipoLogado3"] = user.tipo.ToString(); //=3;
 
+                            return RedirectToAction("PerfilCliente", "Site");
+                        }
+                      
 
-                    return RedirectToAction("Dashboard", "Sistema");
+                    }
+                    else
+                    {
+                        ViewBag.usuarioNE = "Usuário não encontrado";
+                        return View();
+                    }
                 }
-                else if (user.tipo == "4"/* && AcoesCliente.VerificaCliente == 1*/)
-                {
-                    Session["UsuarioLogado"] = user.cpf.ToString();
-                    Session["senhaLogado"] = user.senha.ToString();
-                    Session["cpf"] = user.cpf.ToString();
-                    Session["senha"] = user.senha.ToString();
-                    Session["nome"] = user.nome.ToString();
-                    Session["img"] = user.img.ToString();
-                    Session["tipoLogado4"] = user.tipo.ToString();//=4
-
-                    return RedirectToAction("Contas", "Sistema");
-                }
-                else if (user.tipo == "3")
-                {
-                    Session["UsuarioLogado"] = user.cpf.ToString();
-                    Session["senhaLogado"] = user.senha.ToString();
-                    Session["cpf"] = user.cpf.ToString();
-                    Session["senha"] = user.senha.ToString();
-                    Session["nome"] = user.nome.ToString();
-                    Session["img"] = user.img.ToString();
-                    Session["tipoLogado3"] = user.tipo.ToString(); //=3;
-
-                    return RedirectToAction("PerfilCliente", "Site");
-                }
-
-
 
             }
             else
@@ -237,18 +232,47 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        public ActionResult AlterarSenhaFuncionario(Funcionario func)
+
+
+        public ActionResult AlterarSenhaCliente()
         {
-            acL.AlterarSenhaFuncionario(func);
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AlterarSenhaCliente(Cliente smodel)
+        {
+            if (smodel.CPF != null && smodel.senha != null)
+            {
+                acL.AlterarSenhaCliente(smodel);
+            }
+            else
+            {
+                ViewBag.usuarioNE = "Usuario não enconrado";
+            }
             return View();
         }
 
-
-        public ActionResult AlterarSenhaCliente(Cliente cli)
+        public ActionResult AlterarSenhaFuncionario()
         {
-            acL.AlterarSenhaCliente(cli);
+
             return View();
         }
+        [HttpPost]
+        public ActionResult AlterarSenhaFuncionario(Funcionario smodel)
+        {
+            if(smodel.CPF != null && smodel.senha != null)
+            {
+                acL.AlterarSenhaFuncionario(smodel);
+            }
+            else
+            {
+                ViewBag.usuarioNE = "Usuario não enconrado";
+            }
+          
+            return View() ;
+        }
+
 
 
 

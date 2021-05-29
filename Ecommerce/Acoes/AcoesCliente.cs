@@ -13,49 +13,48 @@ namespace Ecommerce.Acoes
 
         conexao con = new conexao();
         public static int VerificaCliente;
-        public List<Usuario>  VerificaUsuarioLogin(Usuario user)
+        public void VerificaUsuarioLogin(Usuario user)
         {
-            List<Usuario> VUL = new List<Usuario>();
+            
             MySqlCommand cmd = new MySqlCommand("Select * from Cliente  where CPF = @cpf and senha = @Senha", con.MyConectarBD());
 
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
             cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
-           
 
             MySqlDataReader leitor;
 
             leitor = cmd.ExecuteReader();
-            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            con.MyDesconectarBD();
-            sd.Fill(dt);
-           
+
             if (leitor.HasRows)
             {
                 VerificaCliente = 1;
-                foreach (DataRow dr in dt.Rows)
+                while (leitor.Read())
                 {
-                    VUL.Add(
+                    user.cpf = Convert.ToString(leitor["CPF"]);
+                    user.senha = Convert.ToString(leitor["senha"]);
+                    user.tipo = Convert.ToString(leitor["tipo"]);
+                    user.nome = Convert.ToString(leitor["nome"]);
+                    user.telefone = Convert.ToString(leitor["telefone"]);
+                    user.email = Convert.ToString(leitor["email"]);
+                    user.rg = Convert.ToString(leitor["rg"]);
+                    user.img = Convert.ToString(leitor["img"]);
 
-                           new Usuario
-                           {
 
-                               cpf = Convert.ToString(dr["CPF"]),
-                               nome = Convert.ToString(dr["nome"]),
-                               email = Convert.ToString(dr["email"]),
-                               telefone = Convert.ToString(dr["telefone"]),
-                               rg = Convert.ToString(dr["rg"]),
-                               senha = Convert.ToString(dr["senha"]),
-                               img = Convert.ToString(dr["img"])
-
-                           });
                 }
-                return VUL;
             }
             else
             {
                 VerificaCliente = 0;
-                return VUL;
+                user.cpf = null;
+                user.senha = null;
+                user.tipo = null;
+                user.nome = null;
+                user.telefone = null;
+                user.email = null;
+                user.rg = null;
+                user.img = null;
+
+
             }
 
         }

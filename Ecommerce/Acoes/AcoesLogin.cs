@@ -15,10 +15,8 @@ namespace Ecommerce.Acoes
 
         public void TestarUsuario(Usuario user)
         {
-            MySqlCommand cmd = new MySqlCommand("START TRANSACTION; SELECT * FROM Funcionario  WHERE CPF = CPF and senha = Senha; " +
-                "SELECT* FROM Cliente WHERE CPF = CPF and senha = Senha; " +
-                "COMMIT; ", con.MyConectarBD());
-
+            MySqlCommand cmd = new MySqlCommand("call Login(@cpf, @senha)", con.MyConectarBD());
+           
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
             cmd.Parameters.Add("@Senha", MySqlDbType.VarChar).Value = user.senha;
 
