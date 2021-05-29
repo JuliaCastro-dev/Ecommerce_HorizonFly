@@ -64,51 +64,43 @@ namespace Ecommerce.Acoes
         }
 
 
-        public List<Usuario> VerificaLogin(Usuario user)
+        public void VerificaLogin(Usuario user)
         {
-            List<Usuario> VUL = new List<Usuario>();
+
             MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha = @Senha", con.MyConectarBD());
 
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
             cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
 
-            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
             MySqlDataReader leitor;
 
             leitor = cmd.ExecuteReader();
-            con.MyDesconectarBD();
-
-            sd.Fill(dt);
 
             if (leitor.HasRows)
             {
-                VerificaFuncionario = 1;
-                foreach (DataRow dr in dt.Rows)
+                VerificaFuncionario= 1;
+                while (leitor.Read())
                 {
-                    VUL.Add(
+                    user.cpf = Convert.ToString(leitor["CPF"]);
+                    user.senha = Convert.ToString(leitor["senha"]);
+                    user.tipo = Convert.ToString(leitor["tipo"]);
+                    user.nome = Convert.ToString(leitor["nome"]);
+                    user.telefone = Convert.ToString(leitor["telefone"]);
+                    user.email = Convert.ToString(leitor["email"]);
+                    user.rg = Convert.ToString(leitor["rg"]);
+                    user.img = Convert.ToString(leitor["img"]);
 
-                           new Usuario
-                           {
 
-                               cpf = Convert.ToString(dr["CPF"]),
-                               nome = Convert.ToString(dr["nome"]),
-                               email = Convert.ToString(dr["email"]),
-                               telefone = Convert.ToString(dr["telefone"]),
-                               rg = Convert.ToString(dr["rg"]),
-                               senha = Convert.ToString(dr["senha"]),
-                               img = Convert.ToString(dr["img"])
-
-                           });
                 }
-                return VUL;
             }
             else
             {
                 VerificaFuncionario = 0;
-                return VUL;
-            }
+                
+                
 
+
+            }
 
         }
 

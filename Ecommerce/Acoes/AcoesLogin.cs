@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,9 @@ namespace Ecommerce.Acoes
     public class AcoesLogin
     {
 
-
+        
         conexao con = new conexao();
+    
 
         public void TestarUsuario(Usuario user)
         {
@@ -57,16 +59,60 @@ namespace Ecommerce.Acoes
             con.MyDesconectarBD();
         }
 
+        public static int VerificaSenhaUsu;
+        public List<Usuario> VerificaSenha(Funcionario func)// verifica se existe um funcionário para mudar  senha
+        {
+            List<Usuario> VUA = new List<Usuario>();
+            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf ", con.MyConectarBD());
 
-        public void AlterarSenhaCliente(Cliente cli)
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = func.CPF;
+
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+
+            sd.Fill(dt);
+
+            if (leitor.HasRows)
+            {
+                VerificaSenhaUsu = 1;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    VUA.Add(
+
+                           new Usuario
+                           {
+
+                               cpf = Convert.ToString(dr["CPF"])
+                              
+
+                           });
+                }
+                return VUA;
+            }
+            else
+            {
+                VerificaSenhaUsu = 0;
+                
+                return VUA;
+            }
+
+
+        }
+
+
+        public void AlterarSenhaCliente(Usuario cli)
 
         {
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Cliente SET senha = @senha WHERE CPF = @usuario; ", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("UPDATE Cliente SET senha = @senha WHERE CPF = @usuario ", con.MyConectarBD());
 
 
 
-            cmd.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = cli.CPF;
+            cmd.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = cli.cpf;
 
             cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = cli.senha;
 
@@ -77,15 +123,15 @@ namespace Ecommerce.Acoes
         }
 
 
-        public void AlterarSenhaFuncionario(Funcionario func)
+        public void AlterarSenhaFuncionario(Usuario func)
 
         {
 
-            MySqlCommand cmd = new MySqlCommand("UPDATE Funcionario SET senha = @senha WHERE CPF = @usuario; ", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("UPDATE Funcionario SET senha = @senha WHERE CPF = @usuario ", con.MyConectarBD());
 
 
 
-            cmd.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = func.CPF;
+            cmd.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = func.cpf;
 
             cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = func.senha;
 

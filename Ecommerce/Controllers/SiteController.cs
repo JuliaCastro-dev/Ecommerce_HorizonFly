@@ -48,7 +48,7 @@ namespace Ecommerce.Controllers
             if (user.cpf != null && user.senha != null)
             {
                 FormsAuthentication.SetAuthCookie(user.cpf, false);
-               
+
 
 
                 // USUARIO TIPO 1 = GERENTE
@@ -93,7 +93,7 @@ namespace Ecommerce.Controllers
                 else
                 {
                     acC.VerificaUsuarioLogin(user);
-                    if(AcoesCliente.VerificaCliente == 1)
+                    if (AcoesCliente.VerificaCliente == 1)
                     {
                         Session["UsuarioLogado"] = user.cpf.ToString();
                         Session["senhaLogado"] = user.senha.ToString();
@@ -109,7 +109,7 @@ namespace Ecommerce.Controllers
 
                             return RedirectToAction("PerfilCliente", "Site");
                         }
-                      
+
 
                     }
                     else
@@ -226,52 +226,92 @@ namespace Ecommerce.Controllers
             }
 
         }
-        public ActionResult AlterarSenhaEscolha()
+        public ActionResult AlterarSenha()
         {
-
             return View();
         }
 
-
-
-        public ActionResult AlterarSenhaCliente()
-        {
-
-            return View();
-        }
         [HttpPost]
-        public ActionResult AlterarSenhaCliente(Cliente smodel)
+        public ActionResult AlterarSenha(Usuario smodel, Funcionario FUNC)
         {
-            if (smodel.CPF != null && smodel.senha != null)
+            if (smodel.cpf != null && smodel.senha != null)
             {
-                acL.AlterarSenhaCliente(smodel);
+                acL.VerificaSenha(FUNC);
+                if (AcoesLogin.VerificaSenhaUsu == 1)
+                {
+                    try
+                    {
+                        acL.AlterarSenhaFuncionario(smodel);
+                        ViewBag.certo = "Mudança Realizada com Sucesso!";
+                    }
+                    catch
+                    {
+                        ViewBag.usuarioNE = "Usuario não encontrado";
+                    }
+
+                    return View();
+                }
+                else // se não ele entende que é um cliente
+                {
+
+                    try
+                    {
+                        acL.AlterarSenhaCliente(smodel);
+                        ViewBag.certo = "Mudança Realizada com Sucesso!";
+                    }
+                    catch
+                    {
+                        ViewBag.usuarioNE = "Usuario não encontrado";
+                    }
+
+                    return View();
+                }
             }
             else
             {
-                ViewBag.usuarioNE = "Usuario não enconrado";
+                return View();
             }
-            return View();
+      
+
         }
 
-        public ActionResult AlterarSenhaFuncionario()
-        {
 
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AlterarSenhaFuncionario(Funcionario smodel)
-        {
-            if(smodel.CPF != null && smodel.senha != null)
-            {
-                acL.AlterarSenhaFuncionario(smodel);
-            }
-            else
-            {
-                ViewBag.usuarioNE = "Usuario não enconrado";
-            }
-          
-            return View() ;
-        }
+
+        //public ActionResult AlterarSenhaCliente()
+        //{
+
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult AlterarSenhaCliente(Cliente smodel)
+        //{
+        //    if (smodel.CPF != null && smodel.senha != null)
+        //    {
+        //        acL.AlterarSenhaCliente(smodel);
+        //    }
+
+        //    return View();
+        //}
+
+        //public ActionResult AlterarSenhaFuncionario()
+        //{
+
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult AlterarSenhaFuncionario(Funcionario smodel)
+        //{
+        //    if (smodel.CPF != null && smodel.senha != null)
+        //    {
+
+        //    }
+        //    else
+        //    {
+        //        ViewBag.usuarioNE = "Usuario não enconrado";
+        //    }
+
+        //    return View();
+        //}
 
 
 

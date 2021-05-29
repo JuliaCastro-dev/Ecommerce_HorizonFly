@@ -1,0 +1,72 @@
+﻿@model Ecommerce.Models.ViewsModels.AlterarSenhaViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AlterarSenha</title>
+    <link href="~/Content/AlterarSenha.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("AlterarSenha", "Site"))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h1 class="text">Nova senha</h1>
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="group">
+            @Html.EditorFor(m => m.cpf, new { htmlAttributes = new { @class = "Input", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.cpf)</span>
+        </div>
+        <h2  class="msg"style="color:#005c80">@ViewBag.certo</h2>
+        <br />
+        <div class="group">
+
+            @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "Input", @placeholder = "Senha", @type = "password" } })
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.senha)</span>
+
+        </div>
+        <br />
+        <div class="group">
+
+            @Html.EditorFor(model => model.Confirmsenha, new { htmlAttributes = new { @class = "Input", @placeholder = "Comfirma Senha", @type = "password" } })
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <span class="errorMessage">@Html.ValidationMessageFor(model => model.Confirmsenha)</span>
+
+        </div>
+        <div class="group">
+            <div class="dica">
+                <h2 style="color:#02c600">Dica:&nbsp;</h2>
+                <h2>Anote sua senha em notas &nbsp; </h2>
+                <img class="nota" src="~/Imagens/Nota.png" />
+            </div>
+        </div>
+        <div class="group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="button" />
+            </div>
+
+
+        </div>
+        <span class="tel">Ligue +55 (11) 3888-5735</span>
+
+
+    </div>
+    }
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+</body>
+</html>

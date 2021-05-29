@@ -10,6 +10,7 @@ body {
     height: 100vh;
     overflow-x: hidden;
     font-family: 'Poppins',sans-serif;
+    z-index:2;
 }
 header {
     position: absolute;
@@ -19,27 +20,54 @@ header {
     width: 100vw;
     height: 4vh;
     min-height: 4vh;
+    z-index: 2;
+}
+.container {
+    height: 90%;
+    width: 70%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    left: 15%;
+    position: relative;
+    z-index: 1;
 }
 .banner {
-    z-index: 1;
-    width: 90%;
+   
+    width: 100%;
     height: 40%;
     position: absolute;
-    left:5%;
     top:4vh;
 }
+.foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    left: 10%;
+    object-fit: cover;
+    bottom: 40px;
+    position: relative;
+    object-position: center;
+    top:13vw;
+}
 /*Tabela de dados*/
-.dados{
-    
+thead{
+  width:10vw;
+}
+.dados {
+    position: absolute;
+    top: 25vw;
+    left: 5vw;
 }
 .Titulo {
     color: #0C3E7C;
     font-family: Poppins;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
+    margin-left: 2vw;
 }
 .dado {
-    color: #fff;
+    color: #0C3E7C;
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
