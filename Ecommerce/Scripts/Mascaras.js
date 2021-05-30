@@ -73,3 +73,15 @@ function mCPF(cpf) {
     cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
     return cpf
 }
+
+//DROPDOWN COM PESQUISA
+$(function () {
+
+    $("#cidade").chosen();
+
+});
+$(function () {
+
+    $("#tipo").chosen();
+
+});

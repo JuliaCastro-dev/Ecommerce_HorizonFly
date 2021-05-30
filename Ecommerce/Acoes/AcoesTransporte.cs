@@ -16,8 +16,8 @@ namespace Ecommerce.Acoes
 
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Transporte(cidade_trasnporte, nome_trasnporte, tipo_transporte, img_trasnporte )" +
-                "values(@cid, @transporte, @tipo, @descri, @cidade, @end , @tel, @img )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Transporte(cidade_transporte, nome_transporte, cd_tipotransporte, img_transporte )" +
+                "values(@cid, @transporte, @tipo, @img )", con.MyConectarBD());
 
 
             cmd.Parameters.Add("@cid", MySqlDbType.VarChar).Value = tran.cidade_transporte;

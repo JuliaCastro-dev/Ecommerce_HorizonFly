@@ -1,0 +1,79 @@
+﻿@model Ecommerce.Models.Transporte
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastro de Transporte</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="~/Content/CadastroTransporte.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+</head>
+
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    @using (Html.BeginForm("CadastroTransportes", "Sistema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h1 class="text">TRANSPORTE</h1>
+            <div class="bodyInputs">
+                @Html.ActionLink("Voltar", "Transportes", "Sistema", new { htmlAttributes = new { @class = "link" } })
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="comrfimacao"> @ViewBag.sucesso</span> 
+                <div class="group">
+                    @Html.EditorFor(model => model.nome_transporte, new { htmlAttributes = new { @class = "input", @placeholder = "Nome " } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_transporte)</span>
+                </div>
+
+
+                <div class="group">
+                    <div class="dropdown">
+                        @Html.DropDownList("cidade", "cidade")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cidade_transporte)</span>
+                        @Html.DropDownList("tipo", "Tipo do Transporte")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.tipo_transporte)</span>
+                    </div>
+                  
+                   
+
+                </div>
+              
+
+
+                <div class="group">
+
+                    <input class="input" type="file" name="file" id="file" />
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img_transporte)</span>
+
+                </div>
+
+                <div class="group">
+
+                    <input type="submit" value="Cadastrar" class="button" />
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+<script src="~/Scripts/chosen.jquery.js"></script>
+</body>
+</html>

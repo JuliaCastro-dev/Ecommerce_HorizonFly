@@ -158,11 +158,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AlterarSenha.css" />
+    <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Cadastro.css" />
+    <Content Include="Content\CadastroTransporte.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Hoteis.css" />
@@ -191,6 +195,7 @@
     <Content Include="Imagens\ImgLogin.jpg" />
     <Content Include="Imagens\LogoHorizon.png" />
     <Content Include="Imagens\marBonito.png" />
+    <Content Include="Imagens\navio1.jpg" />
     <Content Include="Imagens\Nota.png" />
     <Content Include="Imagens\password.png" />
     <Content Include="Imagens\posterChance.jpeg" />
@@ -202,8 +207,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Contas.scss" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\BotoesDrop.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -244,13 +253,15 @@
     <Content Include="Views\Site\AlterarSenhaCliente.cshtml" />
     <Content Include="Views\Site\PerfilCliente.cshtml" />
     <Content Include="Views\Site\AlterarSenha.cshtml" />
+    <Content Include="Views\Sistema\CadastroTransportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImagensCliente\" />
     <Folder Include="ImagensFuncionario\" />
+    <Folder Include="ImagensHoteis\" />
     <Folder Include="ImagensPacote\" />
-    <Folder Include="NewFolder1\" />
+    <Folder Include="ImagensTransporte\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

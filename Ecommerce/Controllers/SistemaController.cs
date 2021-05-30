@@ -32,15 +32,16 @@ namespace Ecommerce.Controllers
             using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from Cidade order by cidade;", con);
+                MySqlCommand cmd = new MySqlCommand("select * from Cidade;", con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
                     cidade.Add(new SelectListItem
                     {
-                        Text = rdr[1].ToString(),
-                        Value = rdr[0].ToString()
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString(),
+                        
                     });
                 }
                 con.Close();
@@ -81,7 +82,7 @@ namespace Ecommerce.Controllers
 
         public void carregaTiposTransporte()
         {
-            List<SelectListItem> categoria = new List<SelectListItem>();
+            List<SelectListItem>tipo= new List<SelectListItem>();
 
             using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
             {
@@ -91,7 +92,7 @@ namespace Ecommerce.Controllers
 
                 while (rdr.Read())
                 {
-                    categoria.Add(new SelectListItem
+                    tipo.Add(new SelectListItem
                     {
                         Text = rdr[1].ToString(),
                         Value = rdr[0].ToString()
@@ -102,7 +103,7 @@ namespace Ecommerce.Controllers
             }
 
 
-            ViewBag.cidade = new SelectList(categoria, "Value", "Text");
+            ViewBag.tipo = new SelectList(tipo, "Value", "Text");
         }
 
         public void carregaHoteis()
@@ -218,6 +219,44 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("Funcionarios", "Sistema");
             }
             
+        }
+
+
+        //-------------- CADASTRO FUNCIONÁRIOS -----------
+        public ActionResult CadastroTransportes()
+        {
+            carregaTiposTransporte();
+            carregaCidades();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastroTransportes(Transporte trans, HttpPostedFileBase file)
+        {
+            ModelState.Clear();
+            carregaTiposTransporte();
+            carregaCidades();
+            trans.tipo_transporte = Request["tipo"];
+            trans.cidade_transporte = Request["cidade"];
+
+            if (file != null && file.ContentLength > 0)
+            {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensTransporte/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
+                file.SaveAs(_path);
+                trans.img_transporte = file2;
+                acT.inserirTransporte(trans);
+                ViewBag.sucesso = "Transporte Cadastrado com Sucesso";
+                return View();
+
+            }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
+
         }
 
         //-------------- CADASTRO DE HOTÉIS -----------
