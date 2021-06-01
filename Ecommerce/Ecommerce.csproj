@@ -157,21 +157,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AlterarSenha.css" />
+    <Content Include="Content\Cadastros\AlterarSenha.css" />
     <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Cadastro.css" />
-    <Content Include="Content\CadastroTransporte.css" />
+    <Content Include="Content\Cadastros\CadastroFuncionario.css" />
+    <Content Include="Content\Cadastros\CadastroHoteis.css" />
+    <Content Include="Content\Cadastros\CadastroTransporte.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Hoteis.css" />
     <Content Include="Content\HotelPaginaInter.css" />
-    <Content Include="Content\Site\cadCli.css" />
+    <Content Include="Content\Cadastros\cadCli.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
     <Content Include="Content\Site\Perfil.css" />
@@ -190,6 +191,7 @@
     <Content Include="Imagens\grafico.png" />
     <Content Include="Imagens\HotelBonito.jpg" />
     <Content Include="Imagens\HotelBonito60.png" />
+    <Content Include="Imagens\hotelcomareia.jpg" />
     <Content Include="Imagens\icon.png" />
     <Content Include="Imagens\image-not-found.jpg" />
     <Content Include="Imagens\ImgLogin.jpg" />
@@ -254,6 +256,7 @@
     <Content Include="Views\Site\PerfilCliente.cshtml" />
     <Content Include="Views\Site\AlterarSenha.cshtml" />
     <Content Include="Views\Sistema\CadastroTransportes.cshtml" />
+    <Content Include="Views\Sistema\CadastroHoteis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

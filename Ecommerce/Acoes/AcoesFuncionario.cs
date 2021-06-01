@@ -96,9 +96,6 @@ namespace Ecommerce.Acoes
             else
             {
                 VerificaFuncionario = 0;
-                
-                
-
 
             }
 

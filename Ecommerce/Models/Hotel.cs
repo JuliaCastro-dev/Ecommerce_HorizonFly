@@ -36,7 +36,9 @@ namespace Ecommerce.Models
 
 
         [Display(Name = "Diaria")]
-        public Decimal diaria_hotel { get; set; }
+
+       
+        public string diaria_hotel { get; set; }
 
 
         [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]

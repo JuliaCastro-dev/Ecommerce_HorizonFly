@@ -11,6 +11,8 @@ namespace Ecommerce.Acoes
     public class AcoesHotel
     {
         conexao con = new conexao();
+        public static string cidade;
+        public static string cd_cidade;
         public void inserirHotel(Hotel hotel)
 
         {
@@ -59,7 +61,7 @@ namespace Ecommerce.Acoes
                          descricao_hotel = Convert.ToString(dr["descricao_hotel"]),
                          telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
                          endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
-                         diaria_hotel = Convert.ToDecimal(dr["diaria_hotel"]),
+                         diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
                          img_hotel = Convert.ToString(dr["img_hotel"])
 
                      });
@@ -114,6 +116,32 @@ namespace Ecommerce.Acoes
                 return true;
             else
                 return false;
+        }
+
+
+        public void RetornaCidade(Hotel hotel)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Cidade where cd_cidade = @cd ", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = hotel.cd_cidade;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                   cidade = Convert.ToString(leitor["cidade"]);
+                   cd_cidade = Convert.ToString(leitor["cd_cidade"]);
+
+                }
+            }
+            
         }
 
     }

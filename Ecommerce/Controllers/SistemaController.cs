@@ -225,8 +225,8 @@ namespace Ecommerce.Controllers
         //-------------- CADASTRO FUNCIONÁRIOS -----------
         public ActionResult CadastroTransportes()
         {
-            carregaTiposTransporte();
-            carregaCidades();
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaCidades(); // carrega a lista de cidades
             return View();
         }
         [HttpPost]
@@ -234,8 +234,9 @@ namespace Ecommerce.Controllers
         public ActionResult CadastroTransportes(Transporte trans, HttpPostedFileBase file)
         {
             ModelState.Clear();
-            carregaTiposTransporte();
-            carregaCidades();
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaCidades(); // carrega a lista de cidades
+            // ----------------------------------------------
             trans.tipo_transporte = Request["tipo"];
             trans.cidade_transporte = Request["cidade"];
 
@@ -246,7 +247,9 @@ namespace Ecommerce.Controllers
                 string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
                 file.SaveAs(_path);
                 trans.img_transporte = file2;
+                // -------------------
                 acT.inserirTransporte(trans);
+                // -------------------
                 ViewBag.sucesso = "Transporte Cadastrado com Sucesso";
                 return View();
 
@@ -260,33 +263,46 @@ namespace Ecommerce.Controllers
         }
 
         //-------------- CADASTRO DE HOTÉIS -----------
-
-        public ActionResult CadastroHotel(Hotel hotel)
+        public ActionResult CadastroHoteis()
         {
-            carregaCidades();
+            
+            carregaCidades(); // carrega a lista de cidades
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastroHotel(Hotel hotel, AcoesHotel ach, HttpPostedFileBase file)
+        public ActionResult CadastroHoteis(Hotel hotel, HttpPostedFileBase file)
         {
+            ModelState.Clear();
+            
+            carregaCidades(); // carrega a lista de cidades
+            hotel.cd_cidade = Request["cidade"];
+
             if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensFuncionario"), arquivo);
+                string file2 = "/ImagensTransporte/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
                 file.SaveAs(_path);
                 hotel.img_hotel = file2;
+                // pega nome da cidade escolhida 
+                acH.RetornaCidade(hotel);
+                Session["cidadeEscolhida"] = AcoesHotel.cidade.ToString();
+                Session["cdcidadeEscolhida"] = AcoesHotel.cd_cidade.ToString();
+                // Inseri hOTEL
+                hotel.cd_cidade = Session["cdcidadeEscolhida"].ToString();
+                hotel.cidade_hotel = Session["cidadeEscolhida"].ToString();
                 acH.inserirHotel(hotel);
-                return RedirectToAction("Hoteis", "Sistema");
+                ViewBag.sucesso = "Hotel Cadastrado com Sucesso";
+                return View();
 
             }
             else
             {
-                ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
             }
-            return View();
-           
+
         }
 
         //-------------- CADASTRO DE PACOTES -----------

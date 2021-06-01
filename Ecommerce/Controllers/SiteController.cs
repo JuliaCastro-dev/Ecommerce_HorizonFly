@@ -239,6 +239,8 @@ namespace Ecommerce.Controllers
                 acL.VerificaSenha(FUNC);
                 if (AcoesLogin.VerificaSenhaUsu == 1)
                 {
+
+
                     try
                     {
                         acL.AlterarSenhaFuncionario(smodel);
