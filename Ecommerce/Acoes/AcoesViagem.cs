@@ -17,12 +17,13 @@ namespace Ecommerce.Acoes
         public void inserirViagem(Viagem viagem)
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Viagem(cd_viagem, tipo_transporte, origem,destino,  dt_ida, dt_chegada, duracao ,descricao, vl_total, img_viagem)" +
-                "values(@cdV, @tpTrans, @orig, @dest, @dtI, @dtC , @Dura, @desc, @vlTotal, @img )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Viagem(cd_viagem, nome_viagem,  tipo_transporte, origem,destino,  dt_ida, dt_chegada, duracao ,descricao, vl_total, img_viagem)" +
+                "values(@cdV, @nm, @tpTrans, @orig, @dest, @dtI, @dtC , @Dura, @desc, @vlTotal, @img )", con.MyConectarBD());
 
 
 
             cmd.Parameters.Add("@cdV", MySqlDbType.VarChar).Value = viagem.cd_viagem;
+            cmd.Parameters.Add("@nm", MySqlDbType.VarChar).Value = viagem.nome_viagem;
             cmd.Parameters.Add("@tpTrans", MySqlDbType.VarChar).Value = viagem.tipo_transporte;
             cmd.Parameters.Add("@orig", MySqlDbType.VarChar).Value = viagem.origem;
             cmd.Parameters.Add("@dest", MySqlDbType.VarChar).Value = viagem.destino;
@@ -61,6 +62,7 @@ namespace Ecommerce.Acoes
                      {
                          origem = Convert.ToString(dr["origem"]),
                          destino = Convert.ToString(dr["destino"]),
+                         nome_viagem = Convert.ToString(dr["nome_viagem"]),
                          descricao = Convert.ToString(dr["descricao"]),
                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
                          dt_ida = Convert.ToString(dr["dt_ida"]),
@@ -80,9 +82,11 @@ namespace Ecommerce.Acoes
         public bool atualizarViagem(Viagem viag)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Viagem set tipo_transporte=@tipo_transporte,origem=@origem,destino=@destino,dt_ida=@dt_ida,dt_chegada=@dt_chegada,duracao=@duracao,descricao=@descricao,vl_total@vl_total,img_viagem=@img_viagem  where cd_viagem=@viagem,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Viagem set nome_viagem=@nm tipo_transporte=@tipo_transporte,origem=@origem,destino=@destino,dt_ida=@dt_ida,dt_chegada=@dt_chegada,duracao=@duracao,descricao=@descricao,vl_total@vl_total,img_viagem=@img_viagem  where cd_viagem=@viagem,", con.MyConectarBD());
 
+            cmd.Parameters.Add("@viagem", MySqlDbType.VarChar).Value = viag.cd_viagem;
 
+            cmd.Parameters.Add("@nm", MySqlDbType.VarChar).Value = viag.nome_viagem;
 
             cmd.Parameters.Add("@tipo_transporte", MySqlDbType.VarChar).Value = viag.tipo_transporte;
 

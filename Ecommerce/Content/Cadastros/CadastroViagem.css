@@ -1,0 +1,303 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(270.13deg, #13201F 1.02%, #607E76 49.33%, #5C747A 79.72%, #5C747A 90.47%);
+    border-radius: 10px 10px 0px 0px;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    font-family: 'Poppins',sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    margin: 80px 120px 30px 120px;
+    border-radius: 10px;
+    height: 80vh;
+    width: 80%;
+    background-image: url("../../Imagens/viagemItaly.jpg");
+    background-size: 30vw;
+    background-position: right;
+    background-repeat: no-repeat;
+    position: absolute;
+    
+}
+
+.bodyInputs {
+    position: absolute;
+    background: #FFFDFD;
+    height: 70vh;
+    width: 50vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+span.comrfimacao {
+    position: relative;
+    left: 12vw;
+    top: 20vw;
+    color: darkblue;
+    font-size: 1vw;
+}
+
+.text {
+    position: relative;
+    background: linear-gradient(180deg, #0766D6 0%, #FFFFFF 29.17%, #22A787 77.6%, #0C3E7C 100%, #384D49 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    bottom: 6vh;
+    font-size: 4vw;
+    margin-left: 21%;
+    font-weight: 500;
+    z-index: 5;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    left: 15vw;
+    font-size: 1.3vw;
+}
+
+.input {
+    
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    left: 15vw;
+    padding: 0;
+    font-size: 1.3vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+
+    .input:focus {
+        outline: none;
+    }
+textarea {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    left: 15vw;
+    padding: 0;
+    font-size: 1.2vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+
+    textarea:focus {
+        border-bottom: 1px solid #004acf;
+        border-left: 1px solid #004acf;
+        border-right: 1px solid #004acf;
+    }
+
+.group {
+    display: block;
+}
+
+input[type=file] {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 20vw;
+    top: 6vh;
+}
+/*MENSAGEM DE ERRO*/
+.errorMessage {
+    color: #b73535;
+    font-size: 1.5vh;
+    font-weight: 600;
+    font-family: 'Poppins',sans-serif;
+    position: relative;
+    left: 1vw;
+}
+/*LINKS*/
+a {
+    position: relative;
+    left: 4vw;
+    text-decoration: none;
+    color: #00a928;
+}
+
+/*dropdown */
+.dropdown {
+    position: relative;
+    left: 14vw;
+    top: 2vw;
+}
+
+#transportesOrigem {
+    width: 13vw;
+    color: #6f6cde;
+    position: relative;
+   
+}
+
+#transportes {
+    width: 13vw;
+    color: #6f6cde;
+    position: relative;
+   
+}
+
+#tipo {
+    width: 13vw;
+    color: #6f6cde;
+    position: relative;
+    left: 4vw;
+  
+}
+/*BARRA DE EFEITO INPUT*/
+.bar {
+    position: relative;
+    display: block;
+    width: 24.5vw;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        left: 15vw;
+        bottom: 0.2PX;
+        position: absolute;
+        background: #5264AE;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 95%;
+    }
+
+    .bar:after {
+        right: 95%;
+    }
+
+/* BUTTON*/
+.button {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    left: 17vw;
+    border-radius: 10px;
+    top: 9vh;
+    cursor: pointer;
+  
+
+}
+
+
+    .button:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+/* barra de rolagem */
+.bodyInputs::-webkit-scrollbar {
+    width: 10px;
+    height: 15px;
+   
+}
+
+
+
+.bodyInputs::-webkit-scrollbar-thumb {
+    background: rgb(20,100,128);
+    border-radius: 5px;
+    height: 1vw;
+}
+
+
+
+.form-comment textarea::-webkit-resizer {
+    border: 1px #FF0000 dashed;
+}

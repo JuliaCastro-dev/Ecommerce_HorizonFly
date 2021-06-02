@@ -82,9 +82,41 @@ $(function () {
 });
 $(function () {
 
+    $("#cidadeOrigem").chosen();
+
+
+});
+$(function () {
+
     $("#tipo").chosen();
 
 });
+$(function () {
+
+    $("#transportes").chosen();
+
+});
+$(function () {
+
+    $("#transportesOrigem").chosen();
+ 
+
+});
+$(function () {
+
+    $("#hotel").chosen();
+
+
+});
+$(function () {
+
+    $("#viagem").chosen();
+
+
+});
+
+
+
 
 // mascara para moeda
 var currencyInput = document.getElementById("currency")

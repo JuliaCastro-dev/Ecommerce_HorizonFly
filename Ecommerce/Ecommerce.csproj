@@ -165,7 +165,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Cadastros\CadastroFuncionario.css" />
     <Content Include="Content\Cadastros\CadastroHoteis.css" />
+    <Content Include="Content\Cadastros\CadastroPacote.css" />
     <Content Include="Content\Cadastros\CadastroTransporte.css" />
+    <Content Include="Content\Cadastros\CadastroViagem.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
@@ -206,6 +208,7 @@
     <Content Include="Imagens\RJWallpaper.png" />
     <Content Include="Imagens\sign-out-alt.png" />
     <Content Include="Imagens\TURISMO.jpg" />
+    <Content Include="Imagens\viagemItaly.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Contas.scss" />
@@ -257,6 +260,8 @@
     <Content Include="Views\Site\AlterarSenha.cshtml" />
     <Content Include="Views\Sistema\CadastroTransportes.cshtml" />
     <Content Include="Views\Sistema\CadastroHoteis.cshtml" />
+    <Content Include="Views\Sistema\CadastroViagens.cshtml" />
+    <Content Include="Views\Sistema\CadastroPacote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,6 +270,7 @@
     <Folder Include="ImagensHoteis\" />
     <Folder Include="ImagensPacote\" />
     <Folder Include="ImagensTransporte\" />
+    <Folder Include="ImagensViagem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

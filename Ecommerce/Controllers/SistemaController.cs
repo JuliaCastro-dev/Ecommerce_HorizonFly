@@ -25,6 +25,8 @@ namespace Ecommerce.Controllers
         AcoesTransporte acT = new AcoesTransporte();
         AcoesViagem acV = new AcoesViagem();
 
+
+        //-------------- CARREGA CIDADES ---------------------------------------------------
         public void carregaCidades()
         {
             List<SelectListItem> cidade = new List<SelectListItem>();
@@ -52,7 +54,35 @@ namespace Ecommerce.Controllers
             ViewBag.cidade = new SelectList(cidade, "Value", "Text");
         }
 
+        //-------------- CARREGA CIDADES PARA ORIGEM ---------------------------------------------------
 
+        public void carregaCidadesOrigem()
+        {
+            List<SelectListItem> cidadeOrigem = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Cidade;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cidadeOrigem.Add(new SelectListItem
+                    {
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString(),
+
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.cidadeOrigem = new SelectList(cidadeOrigem, "Value", "Text");
+        }
+        //-------------- CARREGA CATEGORIAS---------------------------------------------------
         public void carregaCategoria()
         {
             List<SelectListItem> categoria = new List<SelectListItem>();
@@ -78,7 +108,7 @@ namespace Ecommerce.Controllers
 
             ViewBag.cidade = new SelectList(categoria, "Value", "Text");
         }
-
+        //-------------- CARREGA TIPO DE TRANSPORTE ---------------------------------------------------
 
         public void carregaTiposTransporte()
         {
@@ -105,7 +135,7 @@ namespace Ecommerce.Controllers
 
             ViewBag.tipo = new SelectList(tipo, "Value", "Text");
         }
-
+        //-------------- CARREGA HOTEIS ---------------------------------------------------
         public void carregaHoteis()
         {
             List<SelectListItem> hotel = new List<SelectListItem>();
@@ -131,7 +161,7 @@ namespace Ecommerce.Controllers
 
             ViewBag.hotel = new SelectList(hotel, "Value", "Text");
         }
-
+        //-------------- CARREGA VIAGENS --------------------------------------------
         public void carregaViagens()
         {
             List<SelectListItem> Viagem = new List<SelectListItem>();
@@ -157,10 +187,10 @@ namespace Ecommerce.Controllers
 
             ViewBag.viagem = new SelectList(Viagem, "Value", "Text");
         }
-
+        //-------------- CARREGA TRANSPORTES-------------------------------------------
         public void carregaTransportes()
         {
-            List<SelectListItem> Transporte = new List<SelectListItem>();
+            List<SelectListItem> transportes = new List<SelectListItem>();
 
             using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
             {
@@ -170,9 +200,9 @@ namespace Ecommerce.Controllers
 
                 while (rdr.Read())
                 {
-                    Transporte.Add(new SelectListItem
+                    transportes.Add(new SelectListItem
                     {
-                        Text = rdr[1].ToString(),
+                        Text = rdr[2].ToString(),
                         Value = rdr[0].ToString()
                     });
                 }
@@ -181,17 +211,43 @@ namespace Ecommerce.Controllers
             }
 
 
-            ViewBag.transporte = new SelectList(Transporte, "Value", "Text");
+            ViewBag.transportes = new SelectList(transportes, "Value", "Text");
         }
-        //-------------- VIEW ESCOLHA DE CONTAS CLIENTE E FUNCIONÁRIO -----------
+        // DUPLICAÇÃO DE LISTA PARA DIFERENCIAR ELEMENTOS NO ARQUIVO MASCARAS.JS
+        public void carregaTransportesOrigem()
+        {
+            List<SelectListItem> transportesOrigem = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Transporte order by nome_transporte;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    transportesOrigem.Add(new SelectListItem
+                    {
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.transportesOrigem = new SelectList(transportesOrigem, "Value", "Text");
+        }
+        //------------------------- VIEW ESCOLHA DE CONTAS CLIENTE E FUNCIONÁRIO -----------------------
         public ActionResult Contas()
         {
 
             return View();
         }
-        //-------------- VIEWS CADASTRO -----------
+        //-------------------------- VIEWS CADASTRO ----------------------------------------------------
 
-        //-------------- CADASTRO FUNCIONÁRIOS -----------
+        //---------------------- CADASTRO FUNCIONÁRIOS -------------------------------------------------
         public ActionResult CadastroFuncionario()
         {
            
@@ -222,7 +278,7 @@ namespace Ecommerce.Controllers
         }
 
 
-        //-------------- CADASTRO FUNCIONÁRIOS -----------
+        //------------------ CADASTRO TRANSPORTES ----------------------------------------------
         public ActionResult CadastroTransportes()
         {
             carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
@@ -262,7 +318,50 @@ namespace Ecommerce.Controllers
 
         }
 
-        //-------------- CADASTRO DE HOTÉIS -----------
+        //--------------------- CADASTRO TRANSPORTES ------------------------------------------
+        public ActionResult CadastroViagens()
+        {
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaTransportes(); // carrega a lista de Transportes para o destino 
+            carregaTransportesOrigem(); // carrega a lista de Transportes para a Origem
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastroViagens(Viagem viagem, HttpPostedFileBase file)
+        {
+            ModelState.Clear();
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaTransportes();// carrega a lista de Transportes
+            // ----------------------------------------------
+            viagem.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
+            viagem.destino = Request["transportes"];  // Atribui o Transporte escolhido ao campo Destino
+            viagem.origem = Request["transportes"];  // Atribui o Tipo escolhido ao campo  Origem
+
+
+            if (file != null && file.ContentLength > 0)
+            {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensViagem/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensViagem"), arquivo);
+                file.SaveAs(_path);
+                viagem.img_viagem = file2;
+                // -------------------
+                acV.inserirViagem(viagem);
+                // -------------------
+                ViewBag.sucesso = "Viagem Cadastrada com Sucesso";
+                return View();
+
+            }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
+
+        }
+
+        //------------------------- CADASTRO DE HOTÉIS ----------------------------------
         public ActionResult CadastroHoteis()
         {
             
@@ -305,13 +404,15 @@ namespace Ecommerce.Controllers
 
         }
 
-        //-------------- CADASTRO DE PACOTES -----------
+        //---------------------- CADASTRO DE PACOTES --------------------------------
 
         public ActionResult CadastroPacote(Pacote pacote)
         {
             carregaCidades();
+            carregaCidadesOrigem();
             carregaHoteis();
             carregaTransportes();
+            carregaTiposTransporte();
             carregaViagens();
             return View();
         }
@@ -321,14 +422,17 @@ namespace Ecommerce.Controllers
         {
             carregaCidades();
             carregaHoteis();
+            carregaTiposTransporte();
             carregaTransportes();
             carregaViagens();
+            carregaCidadesOrigem();
 
             pacote.cd_cidDestino = Request["cidade"];
             pacote.cd_cidOrigem = Request["cidade"];
             pacote.cd_hotel = Request["hotel"];
             pacote.cd_transporte = Request["transporte"];
             pacote.cd_viagem = Request["viagem"];
+            pacote.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
 
             if (file != null && file.ContentLength > 0)
             {

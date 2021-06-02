@@ -1,0 +1,127 @@
+﻿@model Ecommerce.Models.Pacote
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastro de Pacotes</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+
+
+    <link href="~/Content/Cadastros/CadastroPacote.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    @using (Html.BeginForm("CadastroPacote", "Sistema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <h1 class="text">VIAGEM</h1>
+            <div class="bodyInputs">
+                @Html.ActionLink("Voltar", "Viagens", "Sistema", new { htmlAttributes = new { @class = "link" } })
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="comrfimacao"> @ViewBag.sucesso</span>
+                <div class="group">
+                    @Html.EditorFor(model => model.nome_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Nome " } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_pacote)</span>
+                </div>
+                <div class="group">
+                    @Html.LabelFor(model => model.dt_chekinHotel)
+                    @Html.EditorFor(model => model.dt_chekinHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Entrada no Hotel", @type = "date" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekinHotel)</span>
+                </div>
+
+                <div class="group">
+                    @Html.LabelFor(model => model.dt_chekoutHotel)
+                    @Html.EditorFor(model => model.dt_chekoutHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Saída no Hotel", @type = "date" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekoutHotel)</span>
+                </div>
+
+                <div class="group">
+                    @Html.EditorFor(model => model.vl_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "R$0,00", @id = "currency" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.vl_pacote)</span>
+                </div>
+               
+
+
+                <div class="group">
+                    @Html.LabelFor(model => model.descricao_pacote)
+                    @Html.TextAreaFor(model => model.descricao_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Descrição" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.descricao_pacote)</span>
+                </div>
+                <div class="group">
+                    <div class="dropdown">
+                        @Html.DropDownList("cidade", "Destino")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_cidDestino)</span>
+
+                    </div>
+                    <br />
+                    <div class="dropdown">
+                        @Html.DropDownList("cidadeOrigem", "Origem")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_cidOrigem)</span>
+
+                    </div>
+                    <br />
+                    <div class="dropdown">
+                        @Html.DropDownList("tipo", "Tipo de Transporte")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.tipo_transporte)</span>
+
+                    </div>
+                    <div class="dropdown">
+                        @Html.DropDownList("hotel", "Hotel")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_hotel)</span>
+
+                    </div>
+                    <div class="dropdown">
+                        @Html.DropDownList("viagem", "Viagem")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_viagem)</span>
+
+                    </div>
+                </div>
+
+
+
+                <div class="group">
+
+                    <input class="input" type="file" name="file" id="file" />
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img_pacote)</span>
+
+                </div>
+
+                <div class="group">
+
+                    <input type="submit" value="Cadastrar" class="button" />
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+    <script src="~/Scripts/chosen.jquery.js"></script>
+</body>
+</html>
