@@ -114,6 +114,12 @@ $(function () {
 
 
 });
+$(function () {
+
+    $("#cidadeEscolhida").chosen();
+
+
+});
 
 
 

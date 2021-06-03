@@ -50,7 +50,6 @@ namespace Ecommerce.Models
         public string nome_pacote { get; set; }
 
         [Required]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [Display(Name = "Valor")]
         public Decimal vl_pacote { get; set; }
 
@@ -63,10 +62,10 @@ namespace Ecommerce.Models
         [Display(Name = "Descrição do Pacote")]
         public string descricao_pacote { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Preencha a Data de Entrada no hotel")]
         [Display(Name = "Data Chekin Hotel")]
         public string dt_chekinHotel { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preencha a Data de Saida no hotel")]
         [Display(Name = "Data Chekout Hotel")]
         public string dt_chekoutHotel { get; set; }
 

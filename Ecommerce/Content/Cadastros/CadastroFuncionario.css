@@ -14,7 +14,7 @@ body {
     width: 100vw;
     font-family: 'Poppins',sans-serif;
 }
-
+/*container geral*/
 .container {
     background-color: #fff;
     margin: 80px 120px 30px 120px;
@@ -28,6 +28,7 @@ body {
     position: absolute;
 }
 
+/*CONTAINER DOS INPUTS */
 .bodyInputs {
     position: absolute;
     background: #FFFDFD;
@@ -38,7 +39,7 @@ body {
     font-family: 'Poppins',sans-serif;
     overflow-y:auto;
 }
-
+/*TEXTO PRINCIPAL*/
 .text {
     position: relative;
     background: linear-gradient(180deg, #0766D6 0%, #FFFFFF 29.17%, #22A787 77.6%, #0C3E7C 100%, #384D49 100%);
@@ -50,7 +51,7 @@ body {
     font-weight: 500;
     z-index: 5;
 }
-
+/* INPUTS GERAIS*/
 .input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
@@ -78,7 +79,7 @@ body {
 .group {
     display: block;
 }
-
+/*INPUT DA FOTO*/
 input[type=file] {
     box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
     color: #6f6cde;
@@ -88,6 +89,15 @@ input[type=file] {
     top:0.5vh;
 
 
+}
+
+/*mensagem de comfirmação*/
+span.comrfimacao {
+    position: relative;
+    left: 12vw;
+    top: 20vw;
+    color: darkblue;
+    font-size: 1vw;
 }
 /*MENSAGEM DE ERRO*/
 .errorMessage {

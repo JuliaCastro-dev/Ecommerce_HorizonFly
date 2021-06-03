@@ -250,14 +250,14 @@ namespace Ecommerce.Controllers
         //---------------------- CADASTRO FUNCIONÁRIOS -------------------------------------------------
         public ActionResult CadastroFuncionario()
         {
-           
+            
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CadastroFuncionario(Funcionario func, HttpPostedFileBase file)
         {
-
+            ModelState.Clear();
             if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
@@ -265,16 +265,19 @@ namespace Ecommerce.Controllers
                 string _path = Path.Combine(Server.MapPath("~/ImagensFuncionario"), arquivo);
                 file.SaveAs(_path);
                 func.img = file2;
+                // -------------------
                 acF.inserirFuncionario(func);
-                return RedirectToAction("Funcionarios", "Sistema");
+                // -------------------
+                ViewBag.sucesso = "Funcionário Cadastrado com Sucesso";
+                return View();
 
             }
             else
             {
-                acF.inserirFuncionario(func);
-                return RedirectToAction("Funcionarios", "Sistema");
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
             }
-            
+
         }
 
 
@@ -318,7 +321,7 @@ namespace Ecommerce.Controllers
 
         }
 
-        //--------------------- CADASTRO TRANSPORTES ------------------------------------------
+        //--------------------- CADASTRO VIAGENS ------------------------------------------
         public ActionResult CadastroViagens()
         {
             carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
@@ -370,7 +373,7 @@ namespace Ecommerce.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastroHoteis(Hotel hotel, HttpPostedFileBase file)
+        public ActionResult CadastroHoteis(Hotel hotel, HttpPostedFileBase file, string nmcidade)
         {
             ModelState.Clear();
             
@@ -384,13 +387,10 @@ namespace Ecommerce.Controllers
                 string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
                 file.SaveAs(_path);
                 hotel.img_hotel = file2;
-                // pega nome da cidade escolhida 
-                acH.RetornaCidade(hotel);
-                Session["cidadeEscolhida"] = AcoesHotel.cidade.ToString();
-                Session["cdcidadeEscolhida"] = AcoesHotel.cd_cidade.ToString();
+
                 // Inseri hOTEL
-                hotel.cd_cidade = Session["cdcidadeEscolhida"].ToString();
-                hotel.cidade_hotel = Session["cidadeEscolhida"].ToString();
+
+                hotel.cidade_hotel = nmcidade; // pega nome da cidade através do arquivo TextoCidade.js
                 acH.inserirHotel(hotel);
                 ViewBag.sucesso = "Hotel Cadastrado com Sucesso";
                 return View();
@@ -434,20 +434,28 @@ namespace Ecommerce.Controllers
             pacote.cd_viagem = Request["viagem"];
             pacote.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
 
-            if (file != null && file.ContentLength > 0)
+            if (!ModelState.IsValid)
             {
-                string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensPacote/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
-                file.SaveAs(_path);
-                pacote.img_pacote = file2;
-                acP.inserirPacote(pacote);
-                return RedirectToAction("Pacotes", "Sistema");
+                if (file != null && file.ContentLength > 0)
+                {
+                    string arquivo = Path.GetFileName(file.FileName);
+                    string file2 = "/ImagensPacote/" + Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
+                    file.SaveAs(_path);
+                    pacote.img_pacote = file2;
+                    acP.inserirPacote(pacote);
+                    return RedirectToAction("Pacotes", "Sistema");
 
+                }
+                else
+                {
+                    ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                }
             }
             else
             {
-                ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                return View();
+
             }
             return View();
             
@@ -475,7 +483,7 @@ namespace Ecommerce.Controllers
 
         public ActionResult HoteisPageIntermediaria()
         {
-           
+            ModelState.Clear();
             return View();
         }
         public ActionResult Hoteis()
@@ -485,23 +493,23 @@ namespace Ecommerce.Controllers
         }
         public ActionResult Pacotes()
         {
-
-            return View();
+            ModelState.Clear();
+            return View(acP.ListarPacote());
         }
         public ActionResult Clientes()
         {
-
-            return View();
+            ModelState.Clear();
+            return View(acC.ListarCliente());
         }
         public ActionResult Funcionarios()
         {
-
-            return View();
+            ModelState.Clear();
+            return View(acF.ListarFuncionario());
         }
         public ActionResult Transportes()
         {
-
-            return View();
+            ModelState.Clear();
+            return View(acT.ListarTransporte());
         }
 
 

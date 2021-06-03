@@ -86,7 +86,7 @@
 
                 <div class="group">
 
-                    <input type="submit" value="Cadastrar" class="button" />
+                    <input type="submit" value="Cadastrar" class="button" onclick="GetSelectedText()" />
 
                 </div>
             </div>
@@ -95,6 +95,7 @@
 
 
     @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/TextoCidade.js");
     @Scripts.Render("~/Scripts/chosen.jquery.js");
     <script src="~/Scripts/chosen.jquery.js"></script>
 </body>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CadastroFuncionario</title>
+    <title>Cadastro de Funcionario</title>
 
     <link href="~/Content/Cadastros/CadastroFuncionario.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,9 +27,10 @@
         <div class="container">
             <h1 class="text">FUNCIONÁRIO</h1>
             <div class="bodyInputs">
-                @Html.ActionLink("Voltar", "Funcionarios","Sistema", new { htmlAttributes = new { @class = "link" } })
+                @Html.ActionLink("Voltar", "Funcionarios", "Sistema", new { htmlAttributes = new { @class = "link" } })
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="comrfimacao"> @ViewBag.sucesso</span>
 
                 <div class="group">
                     @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Completo" } })
@@ -103,7 +104,7 @@
 
                 <div class="group">
 
-                 <input type="submit" value="Cadastrar" class="button" onclick="ValidaCPF();"  />
+                    <input type="submit" value="Cadastrar" class="button" onclick="ValidaCPF();" />
 
                 </div>
             </div>

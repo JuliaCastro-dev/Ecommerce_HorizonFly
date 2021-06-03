@@ -68,19 +68,23 @@ li {
     font-weight: 400;
 }
 
+
 .foto {
-    width: 9vw;
-    height: 13vh;
-    position: absolute;
-    margin: 5px 17px;
-    border: 1px solid #808080;
-    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    left: 17%;
+    object-fit: cover;
+   
+    position: relative;
+    object-position: center;
+    top: 3vw;
 }
 
 cite {
     margin: 5px 20px;
     position: relative;
-    top: 8vw;
+    top: 3vw;
 }
 
 a {

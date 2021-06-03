@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Ecommerce.Models.Funcionario>
+
 @{
     Layout = null;
 }
@@ -9,10 +10,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Funcionarios</title>
+    <link href="~/Content/Listas/Funcionarios.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
-        
+    <div class="container">
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+        <span class="novo"> &nbsp;&nbsp;@Html.ActionLink(" Cadastrar Novo ", "CadastroFuncionario", "Sistema")&nbsp; &nbsp;</span>
+
+        <h3>Funcionários</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a href="/Sistema/DetalhesFuncionarios/@item.CPF">
+                        @if (@item.img != null)
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
+                        }
+                        else
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                        }
+                        <h2>@item.nome</h2>
+                        <h1>@item.cargo_func</h1>
+
+
+
+                    </a>
+
+                </div>
+            }
+
+
+        </div>
     </div>
 </body>
 </html>

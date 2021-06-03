@@ -27,7 +27,7 @@
         @Html.AntiForgeryToken()
 
         <div class="container">
-            <h1 class="text">VIAGEM</h1>
+            <h1 class="text">PACOTE</h1>
             <div class="bodyInputs">
                 @Html.ActionLink("Voltar", "Viagens", "Sistema", new { htmlAttributes = new { @class = "link" } })
 
@@ -89,11 +89,19 @@
                         <span class="errorMessage"> @Html.ValidationMessageFor(model => model.tipo_transporte)</span>
 
                     </div>
+                    <br />
+                    <div class="dropdown">
+                        @Html.DropDownList("transportes", "Transporte")
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_transporte)</span>
+
+                    </div>
+                    <br />
                     <div class="dropdown">
                         @Html.DropDownList("hotel", "Hotel")
                         <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_hotel)</span>
 
                     </div>
+                    <br />
                     <div class="dropdown">
                         @Html.DropDownList("viagem", "Viagem")
                         <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_viagem)</span>
