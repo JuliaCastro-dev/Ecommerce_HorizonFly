@@ -25,71 +25,71 @@
     {
         @Html.AntiForgeryToken()
 
-    <div class="container">
-        <h1 class="text">PACOTE</h1>
-        <div class="bodyInputs">
-            @Html.ActionLink("Voltar", "Pacotes", "Sistema", new { htmlAttributes = new { @class = "link" } })
+        <div class="container">
+            <h1 class="text">PACOTE</h1>
+            <div class="bodyInputs">
+                @Html.ActionLink("Voltar", "Pacotes", "Sistema", new { htmlAttributes = new { @class = "link" } })
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <span class="comrfimacao"> @ViewBag.sucesso</span>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span class="comrfimacao"> @ViewBag.sucesso</span>
 
 
 
-            <div class="group">
-                @Html.EditorFor(model => model.nome_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Nome " } })
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_pacote)</span>
+                <div class="group">
+                    @Html.EditorFor(model => model.nome_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Nome " } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_pacote)</span>
+                </div>
+                <div class="group">
+                    @Html.LabelFor(model => model.dt_chekinHotel)
+                    @Html.EditorFor(model => model.dt_chekinHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Ida", @type = "date", @id = "dataUm" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekinHotel)</span>
+                </div>
+
+                <div class="group">
+                    @Html.LabelFor(model => model.dt_chekoutHotel)
+                    @Html.EditorFor(model => model.dt_chekoutHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Chegada", @type = "date", @id = "dataDois" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekoutHotel)</span>
+                </div>
+
+
+                <div class="group">
+                    @Html.EditorFor(model => model.vl_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.vl_pacote)</span>
+                </div>
+
+
+                <div class="group">
+                    @Html.LabelFor(model => model.descricao_pacote)
+                    @Html.TextAreaFor(model => model.descricao_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Descrição" } })
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.descricao_pacote)</span>
+                </div>
+
+                <div class="group">
+
+                    <input class="input" type="file" name="file" id="file" />
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img_pacote)</span>
+
+                </div>
+
+                <div class="group">
+
+                    <input type="submit" value="Cadastrar" class="button" />
+
+                </div>
             </div>
-            <div class="group">
-                @Html.LabelFor(model => model.dt_chekinHotel)
-                @Html.EditorFor(model => model.dt_chekinHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Ida", @type = "date" } })
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekinHotel)</span>
-            </div>
 
-            <div class="group">
-                @Html.LabelFor(model => model.dt_chekoutHotel)
-                @Html.EditorFor(model => model.dt_chekoutHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Chegada", @type = "date" } })
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekoutHotel)</span>
-            </div>
-
-
-            <div class="group">
-                @Html.EditorFor(model => model.vl_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.vl_pacote)</span>
-            </div>
-
-
-            <div class="group">
-                @Html.LabelFor(model => model.descricao_pacote)
-                @Html.TextAreaFor(model => model.descricao_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "Descrição" } })
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.descricao_pacote)</span>
-            </div>
-
-            <div class="group">
-
-                <input class="input" type="file" name="file" id="file" />
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img_pacote)</span>
-
-            </div>
-
-            <div class="group">
-
-                <input type="submit" value="Cadastrar" class="button" />
-
-            </div>
+            <img class="pic" src="~/Imagens/travel.jpg" />
         </div>
-
-        <img class="pic" src="~/Imagens/travel.jpg" />
-    </div>
 
         <div class="lista">
             <div class="dropdown">
@@ -115,14 +115,16 @@
             </div>
         </div>
 
-     
-    
 
 
+
+        <input type='hidden' id='valor' value='@ViewBag.vlHotel' />
+        <input type='hidden' id='valorViagem' value='@ViewBag.vlviagem' />
     }
 
 
     @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/ContaDias.js");
     @Scripts.Render("~/Scripts/chosen.jquery.js");
     @Scripts.Render("~/bundles/inputmask")
     <script src="~/Scripts/chosen.jquery.js"></script>

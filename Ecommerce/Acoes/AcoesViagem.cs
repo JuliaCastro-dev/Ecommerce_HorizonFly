@@ -12,7 +12,7 @@ namespace Ecommerce.Acoes
     {
         conexao con = new conexao();
 
-
+        public static string valor;
         //INSERIR NOVA VIAGEM
         public void inserirViagem(Viagem viagem)
         {
@@ -129,6 +129,55 @@ namespace Ecommerce.Acoes
                 return true;
             else
                 return false;
+        }
+
+
+        public List<Viagem> ListarViagemValor(Viagem viagem )
+        {
+            List<Viagem> ViList = new List<Viagem>();
+            MySqlCommand cmd = new MySqlCommand("select * from Viagem where cd_viagem = @cd", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = viagem.cd_viagem;
+
+
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+
+            sd.Fill(dt);
+
+            if (leitor.HasRows)
+            {
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ViList.Add(
+
+                         new Viagem
+                         {
+                             cd_viagem = Convert.ToString(dr["cd_viagem"]),
+
+                             nome_viagem  = Convert.ToString(dr["nome_viagem"]),
+
+                             vl_total = Convert.ToString(dr["vl_total"])
+
+
+                         });
+
+                    valor = Convert.ToString(dr["vl_total"]);
+                }
+                return ViList;
+            }
+            else
+            {
+                valor = null;
+                return ViList;
+            }
+
+
         }
 
     }

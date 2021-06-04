@@ -13,8 +13,11 @@ using System.Web.UI.WebControls;
 
 namespace Ecommerce.Controllers
 {
+
     public class SistemaController : Controller
     {
+
+        conexao con = new conexao();
 
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesCliente acC = new AcoesCliente();
@@ -44,7 +47,7 @@ namespace Ecommerce.Controllers
                     {
                         Text = rdr[2].ToString(),
                         Value = rdr[0].ToString(),
-                        
+
                     });
                 }
                 con.Close();
@@ -140,7 +143,7 @@ namespace Ecommerce.Controllers
 
         public void carregaTiposTransporte()
         {
-            List<SelectListItem>tipo= new List<SelectListItem>();
+            List<SelectListItem> tipo = new List<SelectListItem>();
 
             using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
             {
@@ -187,8 +190,37 @@ namespace Ecommerce.Controllers
             }
 
 
+            ViewBag.hotel = new SelectList(hotel, "Value", "Text", "Valor");
+        }
+
+        public void carregaHoteisValor()
+        {
+            List<SelectListItem> hotel = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Hotel order by nome_hotel;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    hotel.Add(new SelectListItem
+                    {
+
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString()
+
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
             ViewBag.hotel = new SelectList(hotel, "Value", "Text");
         }
+
         //-------------- CARREGA VIAGENS --------------------------------------------
         public void carregaViagens()
         {
@@ -278,7 +310,7 @@ namespace Ecommerce.Controllers
         //---------------------- CADASTRO FUNCIONÁRIOS -------------------------------------------------
         public ActionResult CadastroFuncionario()
         {
-            
+
             return View();
         }
         [HttpPost]
@@ -381,13 +413,13 @@ namespace Ecommerce.Controllers
                 // ---------------------------------------
                 // retira cifrão e ponto do valor 
                 string preco = viagem.vl_total;
-              
+
                 preco = Regex.Replace(preco, "[^0-9]", "");
                 viagem.vl_total = preco;
                 //-------------------------------------
 
                 acV.inserirViagem(viagem);
-          
+
                 ViewBag.sucesso = "Viagem Cadastrada com Sucesso";
                 return View();
 
@@ -403,7 +435,7 @@ namespace Ecommerce.Controllers
         //------------------------- CADASTRO DE HOTÉIS ----------------------------------
         public ActionResult CadastroHoteis()
         {
-            
+
             carregaCidades(); // carrega a lista de cidades
             return View();
         }
@@ -412,7 +444,7 @@ namespace Ecommerce.Controllers
         public ActionResult CadastroHoteis(Hotel hotel, HttpPostedFileBase file, string nmcidade)
         {
             ModelState.Clear();
-            
+
             carregaCidades(); // carrega a lista de cidades
             hotel.cd_cidade = Request["cidade"];
 
@@ -424,7 +456,7 @@ namespace Ecommerce.Controllers
                 file.SaveAs(_path);
                 hotel.img_hotel = file2;
 
-               
+
                 // retira cifrão e ponto do valor 
                 string diaria = hotel.diaria_hotel;
                 diaria = Regex.Replace(diaria, "[^0-9]", "");
@@ -454,22 +486,24 @@ namespace Ecommerce.Controllers
             carregaTransportes();
             carregaTiposTransporte();
             carregaViagens();
-    
+
             carregaCategoria();
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastroPacote(Pacote pacote, HttpPostedFileBase file)
+        public ActionResult CadastroPacote(Pacote pacote, HttpPostedFileBase file, Hotel hotel, Viagem viagem)
         {
             carregaCidades();
             carregaHoteis();
             carregaTiposTransporte();
             carregaTransportes();
             carregaViagens();
-    
+
             carregaCategoria();
             carregaCidadesOrigem();
+
+
 
             if (!ModelState.IsValid)
             {
@@ -478,33 +512,48 @@ namespace Ecommerce.Controllers
                 pacote.cd_categoria = Request["categoria"];
                 pacote.cd_cidDestino = Request["cidade"];
                 pacote.cd_cidOrigem = Request["cidade"];
-                pacote.cd_hotel = Request["hotel"];
-          
-                pacote.cd_viagem = Request["viagem"];
+                string cdhotel = Request["hotel"];
+                string cdviagem = Request["viagem"];
                 pacote.tipo_transporte = Request["tipo"];
 
+                hotel.cd_hotel = cdhotel;
+                pacote.cd_hotel = cdhotel;
 
-                if (file != null && file.ContentLength > 0)
+                viagem.cd_viagem = cdviagem;
+                pacote.cd_viagem = cdviagem;
+
+                acH.ListarHotelValor(hotel);
+                acV.ListarViagemValor(viagem);
+
+                if (AcoesHotel.valor != null && AcoesViagem.valor != null)
                 {
-                    string arquivo = Path.GetFileName(file.FileName);
-                    string file2 = "/ImagensPacote/" + Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
-                    file.SaveAs(_path);
-                    pacote.img_pacote = file2;
-
-                    // retira cifrão e ponto do valor 
-                    string preco = pacote.vl_pacote;
-                    preco = Regex.Replace(preco, "[^0-9]", "");
-                    pacote.vl_pacote = preco;
+                    ViewBag.vlHotel = AcoesHotel.valor;
+                    ViewBag.vlviagem = AcoesViagem.valor;
+                    
 
 
-                    acP.inserirPacote(pacote);
-                    return RedirectToAction("Pacotes", "Sistema");
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string arquivo = Path.GetFileName(file.FileName);
+                        string file2 = "/ImagensPacote/" + Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
+                        file.SaveAs(_path);
+                        pacote.img_pacote = file2;
 
-                }
-                else
-                {
-                    ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                        // retira cifrão e ponto do valor 
+                        string preco = pacote.vl_pacote;
+                        preco = Regex.Replace(preco, "[^0-9]", "");
+                        pacote.vl_pacote = preco;
+
+
+                        acP.inserirPacote(pacote);
+                        return RedirectToAction("Pacotes", "Sistema");
+
+                    }
+                    else
+                    {
+                        ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                    }
                 }
             }
             else
@@ -513,7 +562,7 @@ namespace Ecommerce.Controllers
 
             }
             return View();
-            
+
         }
 
 
@@ -552,7 +601,7 @@ namespace Ecommerce.Controllers
         public ActionResult Pacotes()
         {
             ModelState.Clear();
-            
+
             return View(acP.ListarPacote());
         }
         public ActionResult Viagens()

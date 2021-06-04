@@ -14,6 +14,8 @@ namespace Ecommerce.Acoes
         conexao con = new conexao();
         public static string cidade;
         public static string cd_cidade;
+
+        public static string valor;
         public void inserirHotel(Hotel hotel)
 
         {
@@ -37,7 +39,7 @@ namespace Ecommerce.Acoes
             con.MyDesconectarBD();
 
         }
-
+       
         public List<Hotel> ListarHotel()
         {
             List<Hotel> HotList = new List<Hotel>();
@@ -68,6 +70,59 @@ namespace Ecommerce.Acoes
             }
             return HotList;
         }
+
+
+
+     
+
+        public List<Hotel> ListarHotelValor(Hotel hotel)
+        {
+            List<Hotel> HotList = new List<Hotel>();
+            MySqlCommand cmd = new MySqlCommand("select * from Hotel where cd_hotel = @cd", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = hotel.cd_hotel;
+        
+
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+            con.MyDesconectarBD();
+
+            sd.Fill(dt);
+
+            if (leitor.HasRows)
+            {
+               
+                foreach (DataRow dr in dt.Rows)
+                {
+                    HotList.Add(
+
+                         new Hotel
+                         {
+                             cd_hotel = Convert.ToString(dr["cd_hotel"]),
+
+                             nome_hotel = Convert.ToString(dr["nome_hotel"]),
+
+                             diaria_hotel = Convert.ToString(dr["diaria_hotel"])
+
+
+                         });
+
+                    valor = Convert.ToString(dr["diaria_hotel"]);
+                }
+                return HotList;
+            }
+            else
+            {
+                valor =null;
+                return HotList;
+            }
+
+
+        }
+
 
 
         public bool atualizarHotel(Hotel hot)
