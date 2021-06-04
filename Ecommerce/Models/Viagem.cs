@@ -58,19 +58,14 @@ namespace Ecommerce.Models
 
 
         [Required]
-        [Display(Name = "Duração")]
-        public string duracao { get; set; }
-
-
-
-        [Required]
         [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]
         [Display(Name = "Descrição")]
         public string descricao { get; set; }
 
 
 
-        [Required]
+  
+        [StringLength(1, ErrorMessage = "Valor Obrgatório")]
         [Display(Name = "Valor Total")]
         public string vl_total { get; set; }
 

@@ -41,10 +41,10 @@ body {
     overflow-x: hidden;
 }
 
+
 span.comrfimacao {
     position: relative;
-    left: 12vw;
-    top: 20vw;
+    left: 25vw;
     color: darkblue;
     font-size: 1vw;
 }

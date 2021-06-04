@@ -1,4 +1,5 @@
 ﻿
+
 /*MASCARA TELEFONE*/
 
 function mascara(o, f) {
@@ -46,6 +47,8 @@ function validacaoEmail(field) {
         alert("E-mail invalido");
     }
 }
+
+
 
 function ValidaCPF() {
     var RegraValida = document.getElementById("RegraValida").value;
@@ -122,40 +125,67 @@ $(function () {
 });
 
 
+$(document).ready(function () {
+    
+    $("#preco").inputmask('currency', {
+        "autoUnmask": true,
+        radixPoint: ",",
+        groupSeparator: ".",
+        allowMinus: false,
+        prefix: 'R$ ',
+        digits: 2,
+        digitsOptional: false,
+        rightAlign: false,
+        unmaskAsNumber: true
+    });
+    $("#valor").inputmask('currency', {
+        "autoUnmask": true,
+        radixPoint: ",",
+        groupSeparator: ".",
+        allowMinus: false,
+        prefix: 'R$ ',
+        digits: 2,
+        digitsOptional: false,
+        rightAlign: false,
+        unmaskAsNumber: true
+    });
+    $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+});
 
 
-// mascara para moeda
-var currencyInput = document.getElementById("currency")
-var currency = 'BRL' // https://www.currency-iso.org/dam/downloads/lists/list_one.xml
 
-// format inital value
-onBlur({ target: currencyInput })
+//// mascara para moeda
+//var currencyInput = document.getElementById("currency")
+//var currency = 'BRL' // https://www.currency-iso.org/dam/downloads/lists/list_one.xml
 
-// bind event listeners
-currencyInput.addEventListener('focus', onFocus)
-currencyInput.addEventListener('blur', onBlur)
+//// format inital value
+//onBlur({ target: currencyInput })
+
+//// bind event listeners
+//currencyInput.addEventListener('focus', onFocus)
+//currencyInput.addEventListener('blur', onBlur)
 
 
-function localStringToNumber(s) {
-    return Number(String(s).replace(/[^0-9.-]+/g, ""))
-}
+//function localStringToNumber(s) {
+//    return Number(String(s).replace(/[^0-9.-]+/g, ""))
+//}
 
-function onFocus(e) {
-    var value = e.target.value;
-    e.target.value = value ? localStringToNumber(value) : ''
-}
+//function onFocus(e) {
+//    var value = e.target.value;
+//    e.target.value = value ? localStringToNumber(value) : ''
+//}
 
-function onBlur(e) {
-    var value = e.target.value
+//function onBlur(e) {
+//    var value = e.target.value
 
-    var options = {
-        maximumFractionDigits: 2,
-        currency: currency,
-        style: "currency",
-        currencyDisplay: "symbol"
-    }
+//    var options = {
+//        maximumFractionDigits: 2,
+//        currency: currency,
+//        style: "currency",
+        
+//    }
 
-    e.target.value = (value || value === 0)
-        ? localStringToNumber(value).toLocaleString("pt-br", options)
-        : ''
-}
+//    e.target.value = (value || value === 0)
+//        ? localStringToNumber(value).toLocaleString("pt-br", options)
+//        : ''
+//}

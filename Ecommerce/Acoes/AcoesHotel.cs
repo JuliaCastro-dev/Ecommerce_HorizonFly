@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace Ecommerce.Acoes
 {
@@ -17,8 +18,8 @@ namespace Ecommerce.Acoes
 
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Hotel(cd_cidade, nome_hotel, diaria_hotel, descricao_hotel, cidade_hotel, endereco_hotel, telefone_hotel , img_hotel )" +
-                "values(@cid, @hotel, @diaria, @descri, @cidade, @end , @tel, @img )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Hotel(cd_cidade, nome_hotel, diaria_hotel, descricao_hotel, endereco_hotel, telefone_hotel , img_hotel )" +
+                "values(@cid, @hotel, @diaria, @descri, @end , @tel, @img ) order by nome_hotel", con.MyConectarBD());
 
 
 
@@ -26,7 +27,6 @@ namespace Ecommerce.Acoes
             cmd.Parameters.Add("@hotel", MySqlDbType.VarChar).Value = hotel.nome_hotel;
             cmd.Parameters.Add("@diaria", MySqlDbType.VarChar).Value = hotel.diaria_hotel;
             cmd.Parameters.Add("@descri", MySqlDbType.VarChar).Value = hotel.descricao_hotel;
-            cmd.Parameters.Add("@cidade", MySqlDbType.VarChar).Value = hotel.cidade_hotel;
             cmd.Parameters.Add("@end", MySqlDbType.VarChar).Value = hotel.endereco_hotel;
             cmd.Parameters.Add("@tel", MySqlDbType.VarChar).Value = hotel.telefone_hotel;
             cmd.Parameters.Add("@img", MySqlDbType.VarChar).Value = hotel.img_hotel;
@@ -64,7 +64,7 @@ namespace Ecommerce.Acoes
                          diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
                          img_hotel = Convert.ToString(dr["img_hotel"])
 
-                     });
+                     }); ;
             }
             return HotList;
         }

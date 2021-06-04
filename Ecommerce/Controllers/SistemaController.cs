@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -336,10 +337,11 @@ namespace Ecommerce.Controllers
             ModelState.Clear();
             carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
             carregaTransportes();// carrega a lista de Transportes
+            carregaTransportesOrigem(); // carrega a lista de Transportes para a Origem
             // ----------------------------------------------
             viagem.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
             viagem.destino = Request["transportes"];  // Atribui o Transporte escolhido ao campo Destino
-            viagem.origem = Request["transportes"];  // Atribui o Tipo escolhido ao campo  Origem
+            viagem.origem = Request["transportesOrigem"];  // Atribui o Tipo escolhido ao campo  Origem
 
 
             if (file != null && file.ContentLength > 0)
@@ -349,9 +351,16 @@ namespace Ecommerce.Controllers
                 string _path = Path.Combine(Server.MapPath("~/ImagensViagem"), arquivo);
                 file.SaveAs(_path);
                 viagem.img_viagem = file2;
-                // -------------------
+                // ---------------------------------------
+                // retira cifrão e ponto do valor 
+                string preco = viagem.vl_total;
+              
+                preco = Regex.Replace(preco, "[^0-8]", "");
+                viagem.vl_total = preco;
+                //-------------------------------------
+
                 acV.inserirViagem(viagem);
-                // -------------------
+          
                 ViewBag.sucesso = "Viagem Cadastrada com Sucesso";
                 return View();
 
@@ -383,14 +392,18 @@ namespace Ecommerce.Controllers
             if (file != null && file.ContentLength > 0)
             {
                 string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensTransporte/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
+                string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
                 file.SaveAs(_path);
                 hotel.img_hotel = file2;
 
-                // Inseri hOTEL
+               
+                // retira cifrão e ponto do valor 
+                string diaria = hotel.diaria_hotel;
+                diaria = Regex.Replace(diaria, "[^0-8]", "");
+                hotel.diaria_hotel = diaria;
 
-                hotel.cidade_hotel = nmcidade; // pega nome da cidade através do arquivo TextoCidade.js
+                // Inseri HOTEL
                 acH.inserirHotel(hotel);
                 ViewBag.sucesso = "Hotel Cadastrado com Sucesso";
                 return View();
@@ -443,6 +456,13 @@ namespace Ecommerce.Controllers
                     string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
                     file.SaveAs(_path);
                     pacote.img_pacote = file2;
+
+                    // retira cifrão e ponto do valor 
+                    string preco = pacote.vl_pacote;
+                    preco = Regex.Replace(preco, "[^0-8]", "");
+                    pacote.vl_pacote = preco;
+
+
                     acP.inserirPacote(pacote);
                     return RedirectToAction("Pacotes", "Sistema");
 
@@ -486,15 +506,25 @@ namespace Ecommerce.Controllers
             ModelState.Clear();
             return View();
         }
-        public ActionResult Hoteis()
+        public ActionResult Hoteis(Hotel hotel)
         {
             ModelState.Clear();
+            //string diaria = hotel.diaria_hotel;
+            //diaria = Regex.Replace(diaria," /[^0 - 9.-] +/ g", "");
+            //hotel.diaria_hotel = diaria;
             return View(acH.ListarHotel());
         }
         public ActionResult Pacotes()
         {
             ModelState.Clear();
+            
             return View(acP.ListarPacote());
+        }
+        public ActionResult Viagens()
+        {
+            ModelState.Clear();
+
+            return View(acV.ListarViagem());
         }
         public ActionResult Clientes()
         {

@@ -51,7 +51,7 @@ namespace Ecommerce.Models
 
         [Required]
         [Display(Name = "Valor")]
-        public Decimal vl_pacote { get; set; }
+        public string vl_pacote { get; set; }
 
 
         [Required]

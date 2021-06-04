@@ -17,8 +17,8 @@ namespace Ecommerce.Acoes
         public void inserirViagem(Viagem viagem)
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Viagem(cd_viagem, nome_viagem,  tipo_transporte, origem,destino,  dt_ida, dt_chegada, duracao ,descricao, vl_total, img_viagem)" +
-                "values(@cdV, @nm, @tpTrans, @orig, @dest, @dtI, @dtC , @Dura, @desc, @vlTotal, @img )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Viagem(cd_viagem, nome_viagem, cd_tipotransporte, origem,destino,  dt_ida, dt_chegada,descricao, vl_total, img_viagem)" +
+                "values(@cdV, @nm, @tpTrans, @orig, @dest, @dtI, @dtC , @desc, @vlTotal, @img )", con.MyConectarBD());
 
 
 
@@ -29,10 +29,9 @@ namespace Ecommerce.Acoes
             cmd.Parameters.Add("@dest", MySqlDbType.VarChar).Value = viagem.destino;
             cmd.Parameters.Add("@dtI", MySqlDbType.VarChar).Value = viagem.dt_ida;
             cmd.Parameters.Add("@dtC", MySqlDbType.VarChar).Value = viagem.dt_chegada;
-            cmd.Parameters.Add("@Dura", MySqlDbType.VarChar).Value = viagem.duracao;
             cmd.Parameters.Add("@desc", MySqlDbType.VarChar).Value = viagem.descricao;
             cmd.Parameters.Add("@vlTotal", MySqlDbType.VarChar).Value = viagem.vl_total;
-            cmd.Parameters.Add("@img ", MySqlDbType.VarChar).Value = viagem.img_viagem;
+            cmd.Parameters.Add("@img", MySqlDbType.VarChar).Value = viagem.img_viagem;
 
 
             cmd.ExecuteNonQuery();
@@ -66,11 +65,10 @@ namespace Ecommerce.Acoes
                          descricao = Convert.ToString(dr["descricao"]),
                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
                          dt_ida = Convert.ToString(dr["dt_ida"]),
-                         duracao = Convert.ToString(dr["duracao"]),
                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
                          vl_total = Convert.ToString(dr["vl_total"]),
                          img_viagem = Convert.ToString(dr["img_viagem"]),
-                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                      
 
                      });
             }
@@ -98,7 +96,7 @@ namespace Ecommerce.Acoes
 
             cmd.Parameters.Add("@dt_chegada", MySqlDbType.VarChar).Value = viag.dt_chegada;
 
-            cmd.Parameters.Add("@duracao", MySqlDbType.VarChar).Value = viag.duracao;
+      
 
             cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = viag.descricao;
 

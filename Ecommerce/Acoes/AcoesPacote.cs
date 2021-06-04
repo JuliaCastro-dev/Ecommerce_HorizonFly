@@ -66,7 +66,7 @@ namespace Ecommerce.Acoes
                          dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
                          descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
                          tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
-                         vl_pacote = Convert.ToDecimal(dr["vl_pacote"]),
+                         vl_pacote = Convert.ToString(dr["vl_pacote"]),
                          img_pacote = Convert.ToString(dr["img_pacote"])
 
                      });

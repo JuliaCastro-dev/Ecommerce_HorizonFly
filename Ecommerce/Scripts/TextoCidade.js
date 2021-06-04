@@ -1,9 +1,11 @@
 ﻿
     function GetSelectedText() {
         var value = document.getElementById("cidade");
-       
+        var drop = $("[id*='cidade'] :selected")
+
+        var resultado = drop.options[drop.selectedIndex].Text;
         var result = value.options[value.selectedIndex].Text;
-        alert(result);
+        alert(resultado);
 
         //$.ajax({
         //    url: '@Url.Action("CadastroHoteis", "Sistema")',

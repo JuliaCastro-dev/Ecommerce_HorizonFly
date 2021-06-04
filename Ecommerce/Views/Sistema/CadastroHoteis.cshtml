@@ -18,6 +18,7 @@
 <body>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
 
 
 
@@ -53,7 +54,7 @@
                 </div>
 
                 <div class="group">
-                    @Html.EditorFor(model => model.diaria_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "R$0,00", @id = "currency" } })
+                    @Html.EditorFor(model => model.diaria_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.diaria_hotel)</span>
@@ -86,7 +87,7 @@
 
                 <div class="group">
 
-                    <input type="submit" value="Cadastrar" class="button" onclick="GetSelectedText()" />
+                    <input type="submit" value="Cadastrar" class="button" />
 
                 </div>
             </div>
@@ -95,8 +96,12 @@
 
 
     @Scripts.Render("~/Scripts/Mascaras.js");
-    @Scripts.Render("~/Scripts/TextoCidade.js");
+    @Scripts.Render("~/Scripts/jQuery-Mask-Plugin-master/dist/jquery.mask.js");
     @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
     <script src="~/Scripts/chosen.jquery.js"></script>
+
+
+
 </body>
 </html>

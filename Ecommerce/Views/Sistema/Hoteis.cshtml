@@ -10,40 +10,64 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Hoteis</title>
-    <link href="~/Content/Hoteis.css" rel="stylesheet" />
+
+    <link href="~/Content/Listas/Hoteis.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
 
-        @Html.ActionLink("Sair", "Logout", new { htmlAttributes = new { @class = "sair" } })
+    <a href="/Sistema/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
     <div class="container">
-        <h1 class="horizonFly">Horizon Fly</h1>
-        <h3>Hotéis</h3>
-        <span>&nbsp; @Html.ActionLink("  Novo Hotel ", "CadastroHotel", new { htmlAttributes = new { @class = "botaoNovo" } })&nbsp;</span>
-        @foreach (var item in Model)
-        {
-            <div class="card">
-                <a href="/Sistema/DetalhesHotel/@item.cd_hotel">
-                    @if (@item.img_hotel != null)
-                    {
-                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 150px; height: 150px;" src="@item.img_hotel" data-holder-rendered="true">
-                    }
-                    else
-                    {
-                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " style="width: 250px; height: 250px;" src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                    }
-                    <h2>@item.nome_hotel</h2>
-                    <h1>@item.diaria_hotel</h1>
-                    <h2 class="tel">@item.telefone_hotel</h2>
-                    
+        <a href="/Sistema/Dashboard">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
 
-                </a>
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+        <span class="novo"> &nbsp;&nbsp;@Html.ActionLink(" Cadastrar Novo ", "CadastroHoteis", "Sistema")&nbsp; &nbsp;</span>
 
-            </div>
-        }
+        <h3>HOTEIS</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a href="/Sistema/DetalhesHotel/@item.cd_hotel">
+                        @if (@item.img_hotel != null)
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_hotel" data-holder-rendered="true">
+                        }
+                        else
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                        }
+                        <h2>@item.nome_hotel</h2>
+                        <h1>@item.telefone_hotel</h1>
+
+
+
+                    </a>
+
+                </div>
+            }
+
+
+        </div>
     </div>
-
 
 
 </body>

@@ -41,7 +41,7 @@
                 </div>
                 <div class="group">
                     @Html.LabelFor(model => model.dt_ida)
-                    @Html.EditorFor(model => model.dt_ida, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Ida", @type = "date" } })
+                    @Html.EditorFor(model => model.dt_ida, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Ida", @type = "datetime-local" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_ida)</span>
@@ -49,20 +49,19 @@
 
                 <div class="group">
                     @Html.LabelFor(model => model.dt_chegada)
-                    @Html.EditorFor(model => model.dt_chegada, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Chegada", @type = "date" } })
+                    @Html.EditorFor(model => model.dt_chegada, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Chegada", @type = "datetime-local" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chegada)</span>
                 </div>
 
+
                 <div class="group">
-                    @Html.LabelFor(model => model.duracao)
-                    @Html.EditorFor(model => model.duracao, new { htmlAttributes = new { @class = "input", @placeholder = "Duração", @type = "time" } })
+                    @Html.EditorFor(model => model.vl_total, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.duracao)</span>
+                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.vl_total)</span>
                 </div>
-
 
 
                 <div class="group">
@@ -113,6 +112,7 @@
 
     @Scripts.Render("~/Scripts/Mascaras.js");
     @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
     <script src="~/Scripts/chosen.jquery.js"></script>
 </body>
 </html>

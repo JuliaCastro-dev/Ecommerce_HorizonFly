@@ -36,7 +36,7 @@ namespace Ecommerce.Acoes
         {
             List<Transporte> TransList = new List<Transporte>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from Transporte", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from Transporte order by nome_transporte", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
@@ -52,7 +52,7 @@ namespace Ecommerce.Acoes
                          cd_transporte = Convert.ToString(dr["cd_transporte"]),
                          cidade_transporte = Convert.ToString(dr["cidade_transporte"]),
                          nome_transporte = Convert.ToString(dr["nome_transporte"]),
-                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                       
                          img_transporte = Convert.ToString(dr["img_transporte"])
 
                      });
