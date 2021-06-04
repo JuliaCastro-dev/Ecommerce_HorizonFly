@@ -23,17 +23,19 @@ namespace Ecommerce.Models
         [Display(Name = "Código")]
         public string cd_pacote { get; set; }
 
+        
         [Required]
-        [Display(Name = "Transporte")]
-        public string cd_transporte { get; set; }
-
-        [Required]
-        [Display(Name = "Transporte")]
+        [Display(Name = "Viagem")]
         public string cd_viagem { get; set; }
 
         [Required]
         [Display(Name = "Hotel")]
-        public string cd_hotel { get; set; }
+        public string cd_hotel { get; set; } 
+
+
+        [Required]
+        [Display(Name = "Categoria")]
+        public string cd_categoria { get; set; }
 
 
         [Required]

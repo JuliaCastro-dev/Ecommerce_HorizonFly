@@ -60,7 +60,6 @@ namespace Ecommerce.Acoes
                          cd_cidDestino = Convert.ToString(dr["cd_cidDestino"]),
                          cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
-                         cd_transporte = Convert.ToString(dr["cd_transporte"]),
                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
                          dt_chekinHotel = Convert.ToString(dr["dt_chekinHotel"]),
                          dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
@@ -99,8 +98,6 @@ namespace Ecommerce.Acoes
             cmd.Parameters.Add("@cd_hotel", MySqlDbType.VarChar).Value = pac.cd_hotel;
 
             cmd.Parameters.Add("@cd_cidOrigem", MySqlDbType.VarChar).Value = pac.cd_cidOrigem;
-
-            cmd.Parameters.Add("@cd_transporte", MySqlDbType.VarChar).Value = pac.cd_transporte;
 
             cmd.Parameters.Add("@cd_cidDestino", MySqlDbType.VarChar).Value = pac.cd_cidDestino;
 

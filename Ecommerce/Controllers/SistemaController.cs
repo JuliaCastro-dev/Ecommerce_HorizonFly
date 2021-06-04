@@ -107,7 +107,34 @@ namespace Ecommerce.Controllers
             }
 
 
-            ViewBag.cidade = new SelectList(categoria, "Value", "Text");
+            ViewBag.categoria = new SelectList(categoria, "Value", "Text");
+        }
+
+        //-------------- CARREGA CATEGORIAS---------------------------------------------------
+        public void carregaPacotes()
+        {
+            List<SelectListItem> pacote = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Pacote order by nome_pacote;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    pacote.Add(new SelectListItem
+                    {
+                        Text = rdr[1].ToString(),
+                        Value = rdr[0].ToString()
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.pacote = new SelectList(pacote, "Value", "Text");
         }
         //-------------- CARREGA TIPO DE TRANSPORTE ---------------------------------------------------
 
@@ -151,7 +178,7 @@ namespace Ecommerce.Controllers
                 {
                     hotel.Add(new SelectListItem
                     {
-                        Text = rdr[1].ToString(),
+                        Text = rdr[2].ToString(),
                         Value = rdr[0].ToString()
                     });
                 }
@@ -177,7 +204,7 @@ namespace Ecommerce.Controllers
                 {
                     Viagem.Add(new SelectListItem
                     {
-                        Text = rdr[1].ToString(),
+                        Text = rdr[2].ToString(),
                         Value = rdr[0].ToString()
                     });
                 }
@@ -355,7 +382,7 @@ namespace Ecommerce.Controllers
                 // retira cifrão e ponto do valor 
                 string preco = viagem.vl_total;
               
-                preco = Regex.Replace(preco, "[^0-8]", "");
+                preco = Regex.Replace(preco, "[^0-9]", "");
                 viagem.vl_total = preco;
                 //-------------------------------------
 
@@ -400,7 +427,7 @@ namespace Ecommerce.Controllers
                
                 // retira cifrão e ponto do valor 
                 string diaria = hotel.diaria_hotel;
-                diaria = Regex.Replace(diaria, "[^0-8]", "");
+                diaria = Regex.Replace(diaria, "[^0-9]", "");
                 hotel.diaria_hotel = diaria;
 
                 // Inseri HOTEL
@@ -419,7 +446,7 @@ namespace Ecommerce.Controllers
 
         //---------------------- CADASTRO DE PACOTES --------------------------------
 
-        public ActionResult CadastroPacote(Pacote pacote)
+        public ActionResult CadastroPacote()
         {
             carregaCidades();
             carregaCidadesOrigem();
@@ -427,6 +454,8 @@ namespace Ecommerce.Controllers
             carregaTransportes();
             carregaTiposTransporte();
             carregaViagens();
+    
+            carregaCategoria();
             return View();
         }
         [HttpPost]
@@ -438,17 +467,23 @@ namespace Ecommerce.Controllers
             carregaTiposTransporte();
             carregaTransportes();
             carregaViagens();
+    
+            carregaCategoria();
             carregaCidadesOrigem();
-
-            pacote.cd_cidDestino = Request["cidade"];
-            pacote.cd_cidOrigem = Request["cidade"];
-            pacote.cd_hotel = Request["hotel"];
-            pacote.cd_transporte = Request["transporte"];
-            pacote.cd_viagem = Request["viagem"];
-            pacote.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
 
             if (!ModelState.IsValid)
             {
+
+
+                pacote.cd_categoria = Request["categoria"];
+                pacote.cd_cidDestino = Request["cidade"];
+                pacote.cd_cidOrigem = Request["cidade"];
+                pacote.cd_hotel = Request["hotel"];
+          
+                pacote.cd_viagem = Request["viagem"];
+                pacote.tipo_transporte = Request["tipo"];
+
+
                 if (file != null && file.ContentLength > 0)
                 {
                     string arquivo = Path.GetFileName(file.FileName);
@@ -459,7 +494,7 @@ namespace Ecommerce.Controllers
 
                     // retira cifrão e ponto do valor 
                     string preco = pacote.vl_pacote;
-                    preco = Regex.Replace(preco, "[^0-8]", "");
+                    preco = Regex.Replace(preco, "[^0-9]", "");
                     pacote.vl_pacote = preco;
 
 

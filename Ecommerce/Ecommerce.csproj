@@ -123,6 +123,7 @@
     <Compile Include="Acoes\AcoesCliente.cs" />
     <Compile Include="Acoes\AcoesFuncionario.cs" />
     <Compile Include="Acoes\AcoesHotel.cs" />
+    <Compile Include="Acoes\AcoesItens.cs" />
     <Compile Include="Acoes\AcoesLogin.cs" />
     <Compile Include="Acoes\AcoesPacote.cs" />
     <Compile Include="Acoes\AcoesReserva.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Imagens\RioDeJaneiroWallpaper.jpg" />
     <Content Include="Imagens\RJWallpaper.png" />
     <Content Include="Imagens\sign-out-alt.png" />
+    <Content Include="Imagens\travel.jpg" />
     <Content Include="Imagens\TURISMO.jpg" />
     <Content Include="Imagens\viagemItaly.jpg" />
     <Content Include="Imagens\voltar.png" />

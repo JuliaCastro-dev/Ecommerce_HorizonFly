@@ -21,23 +21,36 @@ body {
     border-radius: 10px;
     height: 80vh;
     width: 80%;
-    background-image: url("../../Imagens/viagemItaly.jpg");
-    background-size: 30vw;
-    background-position: right;
-    background-repeat: no-repeat;
+
     position: absolute;
 }
 
 .bodyInputs {
     position: absolute;
     background: #FFFDFD;
-    height: 67.5vh;
-    width: 50vw;
+    height: 90%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins',sans-serif;
     overflow-y: auto;
     overflow-x: hidden;
+   
+}
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+    width: 40%;
+    position: absolute;
+    left: 46vw;
+    top:14.5vw;
+   
+    text-decoration: none;
+    background-color: #fff;
+  
 }
 
 span.comrfimacao {
@@ -127,6 +140,15 @@ input[type=file] {
     width: 20vw;
     top: 6vh;
 }
+/*IMAGEM */
+.pic{
+    z-index:10;
+    position:absolute;
+    width:25VW;
+    left:42VW;
+    top:20VW;
+    border-radius:10PX;
+}
 /*MENSAGEM DE ERRO*/
 .errorMessage {
     color: #b73535;
@@ -147,34 +169,48 @@ a {
 /*dropdown */
 .dropdown {
     position: relative;
-    left: 14vw;
-    top: 2vw;
-    display:flex;
+   
+   
+    margin: 10px 10px;
+    display: block;
 }
 
-#cidade{
+#cidade {
     width: 13vw;
     color: #6f6cde;
     position: relative;
     left: 4vw;
-   
+    margin: 10px 10px;
+}
+
+
+
+#categoria {
+    width: 13vw;
+    color: #6f6cde;
+    position: relative;
+    left: 4vw;
+    margin: 10px 10px;
 }
 #cidadeOrigem {
     width: 13vw;
     color: #6f6cde;
     position: relative;
     left: 4vw;
+    margin: 10px 10px;
 }
 #hotel {
     width: 13vw;
     color: #6f6cde;
     position: relative;
     left: 4vw;
+    margin: 10px 10px;
 }
 
-#viagem{
+#viagem {
     width: 13vw;
     color: #6f6cde;
+    margin: 10px 10px;
     position: relative;
     left: 4vw;
 }
@@ -196,6 +232,7 @@ a {
     color: #6f6cde;
     position: relative;
     left: 4vw;
+    top:2vw;
 }
 /*BARRA DE EFEITO INPUT*/
 .bar {

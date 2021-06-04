@@ -96,6 +96,16 @@ $(function () {
 });
 $(function () {
 
+    $("#pacote").chosen();
+
+});
+$(function () {
+
+    $("#categoria").chosen();
+
+});
+$(function () {
+
     $("#transportes").chosen();
 
 });

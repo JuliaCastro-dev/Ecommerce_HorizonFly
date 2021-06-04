@@ -16,7 +16,7 @@ namespace Ecommerce.Acoes
         {
 
             MySqlCommand cmd = new MySqlCommand("insert into Reserva(cd_reserva, CPF, cd_cartao,vl_total,  Status_Reserva, )" +
-                "values(@cdR, @cpf, @cdC, @vlTotal, @StaReserva )", con.MyConectarBD());
+                "values(@cdR, @cpf, @cdC, @vlTotal, 1)", con.MyConectarBD());
 
 
 

@@ -8,18 +8,26 @@ namespace Ecommerce.Models
 {
     public class Itens
     {
-        //CREATE TABLE Itens_escolhidos (
-        //cd_itensEscolhidos INTEGER not null primary key auto_increment,
-        //cd_reserva INTEGER not null,
-        //cd_pacote INTEGER not null,
-        //FOREIGN KEY (cd_reserva) REFERENCES Reserva (cd_reserva),/*Referencia */
-        //FOREIGN KEY (cd_pacote) REFERENCES Pacote (cd_pacote) /*Referencia */
-
+     //   cd_itensreserva INTEGER not null primary key,
+     //cd_pacote INTEGER not null,
+     //cd_reserva INTEGER not null,
+     //vl_unit DECIMAL(14,0) not null,
+     //        vl_parcial DECIMAL(14,0) not null,
+     //        qt_itens INTEGER  not null,
+     //        status_itens bit null,
+     //        CPF VARCHAR(20) not null,
 
         [Key]
         [Required]
         [Display(Name = "Código dos Itens Escolhidos")]
-        public string cd_itensEscolhidos { get; set; }
+        public Guid cd_itens{ get; set; }
+
+        [Required]
+        
+        [Display(Name = "CPF")]
+        [StringLength(14, MinimumLength = 12, ErrorMessage = "CPF Inválido")]
+        public string CPF { get; set; }
+
 
 
         [Required]
@@ -31,5 +39,22 @@ namespace Ecommerce.Models
         [Display(Name = "Pacote")]
         public string cd_pacote { get; set; }
 
+
+
+        [Required]
+        [Display(Name = "Valor Unitário")]
+        public string vl_unit { get; set; }
+
+
+        [Required]
+        [Display(Name = "Valor Parcial")]
+        public string vl_parcial{ get; set; }
+
+
+        [Display(Name = "Quantidade")]
+        public string qt { get; set; }
+
+        [Display(Name = "Status")]
+        public string status { get; set; }
     }
 }

@@ -183,3 +183,4 @@ C:\TCC\git\Ecommerce\bin\System.Memory.dll
 C:\TCC\git\Ecommerce\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\TCC\git\Ecommerce\bin\System.Numerics.Vectors.dll
 C:\TCC\git\Ecommerce\bin\MySql.Data.xml
+C:\TCC\git\Ecommerce\obj\Debug\Ecommerce.csprojAssemblyReference.cache

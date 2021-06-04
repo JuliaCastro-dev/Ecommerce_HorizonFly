@@ -19,7 +19,7 @@ namespace Ecommerce.Acoes
         {
 
             MySqlCommand cmd = new MySqlCommand("insert into Hotel(cd_cidade, nome_hotel, diaria_hotel, descricao_hotel, endereco_hotel, telefone_hotel , img_hotel )" +
-                "values(@cid, @hotel, @diaria, @descri, @end , @tel, @img ) order by nome_hotel", con.MyConectarBD());
+                "values(@cid, @hotel, @diaria, @descri, @end , @tel, @img ) ", con.MyConectarBD());
 
 
 
