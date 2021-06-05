@@ -1,0 +1,198 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #F3F3F3;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/*TEXTO HORIZON FLY */
+
+ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 6vh;
+    font-weight: 600;
+    left: 40vw;
+    position: relative;
+}
+
+li {
+    list-style: none;
+    letter-spacing: 10px;
+    transition: 8s;
+    font-family: 'Cormorant', serif;
+    color: #3A7BD5;
+    font-size: 2vw;
+}
+
+ul:hover li {
+    transform: rotate(360deg) translateY(-360px);
+    opacity: 0;
+    filter: blur(20px);
+}
+
+ul li:nth-child(1) {
+    transition-delay: 0;
+}
+
+ul li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+ul li:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+ul li:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+ul li:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+ul li:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+ul li:nth-child(7) {
+    transition-delay: 0.6s;
+}
+
+ul li:nth-child(8) {
+    transition-delay: 0.7s;
+}
+
+ul li:nth-child(9) {
+    transition-delay: 0.8s;
+}
+
+ul li:nth-child(10) {
+    transition-delay: 0.9s;
+}
+
+/*TEXTO FUNCIONÁRIOS*/
+h3 {
+    position: relative;
+    top: 16vh;
+    left: 5vw;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #3A7BD5;
+    font-size: 2.5vw;
+    width: 10vw;
+}
+
+/*BOTAO NOVO FUNCIONARIO*/
+
+.novo a {
+    background-color: transparent;
+    color: #46b517;
+    height: 1.5vw;
+    font-size: 1.5vw;
+    position: relative;
+    font-weight: 400;
+    top: 21vh;
+    left: 79vw;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Cormorant', serif;
+}
+
+    .novo a:hover {
+        text-shadow: 0px 4px 4px rgb(24,235, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 100%;
+    width: 90vw;
+    position: relative;
+    left: 5vw;
+    top: 10vw;
+    min-width: 500PX;
+    text-decoration: none;
+    background-color: #fff;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+.card {
+    background-color: #fff;
+    width: 27vw;
+    height: 10vw;
+    margin: 10px 10px;
+    align-content: flex-start;
+    border-radius: 10px;
+    text-decoration: none;
+    min-width: 80PX;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+    .card img {
+        position: fixed;
+        object-fit: cover;
+        position: relative;
+        object-position: center;
+        border-radius: 50%;
+        width: 7vw;
+        height: 7vw;
+        top: 1vw;
+        left: 1vw;
+    }
+
+
+
+    .card h2 {
+        color: #000000;
+        font-weight: bold;
+        position: relative;
+        left: 10vw;
+        bottom: 4.5vw;
+        font-size: 2vw;
+        text-decoration: none;
+    }
+
+
+    .card h1 {
+        color: #000000;
+        font-weight: bold;
+        position: relative;
+        left: 10vw;
+        bottom: 3.5vw;
+        font-size: 1vw;
+        font-style: normal;
+        text-decoration: none;
+    }
+/* barra de rolagem */
+.lista::-webkit-scrollbar {
+    width: 10px;
+    height: 15px;
+}
+
+
+
+.lista::-webkit-scrollbar-thumb {
+    background: rgb(20,100,128);
+    border-radius: 5px;
+    height: 1vw;
+}

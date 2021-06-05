@@ -213,5 +213,35 @@ namespace Ecommerce.Acoes
             else
                 return false;
         }
+
+
+        public List<Funcionario> GetDetalhesFuncionario()
+        {
+            List<Funcionario> Funclist = new List<Funcionario>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Funcionario", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Funclist.Add(
+                      new Funcionario
+                      {
+                          CPF = Convert.ToString(dr["CPF"]),
+                          nome = Convert.ToString(dr["nome"]),
+                          cargo_func = Convert.ToString(dr["cargo_func"]),
+                          email = Convert.ToString(dr["email"]),
+                          telefone = Convert.ToString(dr["telefone"]),
+                          rg = Convert.ToString(dr["descricao"]),
+                          img = Convert.ToString(dr["img"])
+
+                      });
+            }
+            return Funclist;
+        }
     }
 }

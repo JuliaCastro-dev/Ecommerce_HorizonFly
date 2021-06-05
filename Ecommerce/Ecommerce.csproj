@@ -173,6 +173,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
+    <Content Include="Content\Listas\Clientes.css" />
     <Content Include="Content\Listas\Hoteis.css" />
     <Content Include="Content\HotelPaginaInter.css" />
     <Content Include="Content\Cadastros\cadCli.css" />

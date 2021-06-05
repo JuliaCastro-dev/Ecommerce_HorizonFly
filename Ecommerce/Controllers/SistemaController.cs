@@ -626,6 +626,34 @@ namespace Ecommerce.Controllers
             return View(acT.ListarTransporte());
         }
 
+        //------------------- PAGINAS DE DETALHES ---------------------
+
+        //------------------- DETALHES FUNCIONARIO ---------------------
+        public ActionResult DetalhesFuncionario(string id, AcoesFuncionario func)
+        {
+            return View(func.GetDetalhesFuncionario().Find((smodel => smodel.CPF == id)));
+        }
+
+        //------------------- DETALHES HOTEIS ---------------------
+        public ActionResult DetalhesHoteis(string id, AcoesHotel hotel)
+        {
+            return View(hotel.GetDetalhesHotel().Find((smodel => smodel.cd_hotel == id)));
+        }
+
+        //------------------- DETALHES VIAGENS ---------------------
+
+        public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
+        {
+            return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd == id)));
+        }
+
+        //------------------- DETALHES TRANSPORTES ---------------------
+
+        public ActionResult DetalhesTransportes(string id, AcoesTransporte trans)
+        {
+            return View(trans.GetDetalhesTransportes().Find((smodel => smodel.cd_transporte == id)));
+        }
+
 
 
 

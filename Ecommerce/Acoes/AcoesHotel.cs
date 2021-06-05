@@ -199,5 +199,35 @@ namespace Ecommerce.Acoes
             
         }
 
+        public List<Hotel> GetDetalhesHotel()
+        {
+            List<Hotel> Hotellist = new List<Hotel>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from hoteis", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Hotellist.Add(
+                      new Hotel
+                      {
+                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
+                          nome_hotel = Convert.ToString(dr["nome_hotel"]),
+                          cidade_hotel = Convert.ToString(dr["cidade"]),
+                          telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
+                          endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
+                          diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
+                          descricao_hotel = Convert.ToString(dr["descricao_hotel"]),
+                          img_hotel = Convert.ToString(dr["img_hotel"])
+
+                      });
+            }
+            return Hotellist;
+        }
+
     }
 }

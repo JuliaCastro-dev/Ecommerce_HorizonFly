@@ -17,7 +17,7 @@ namespace Ecommerce.Controllers
         AcoesFuncionario acF = new AcoesFuncionario();
 
 
-        // GET: Site
+        // -------------------- PÁGINA PRINCIPAL -------------------
         public ActionResult Index()
         {
             ModelState.Clear();
@@ -33,7 +33,7 @@ namespace Ecommerce.Controllers
 
         }
 
-
+        // ------------- LOGIN ------------------
         public ActionResult Login()
         {
 
@@ -148,7 +148,7 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Index", "Site");
         }
 
-        /* PERFIL CLIENTE */
+        /* ------------------- PERFIL CLIENTE -------------------- */
 
         public ActionResult PerfilCliente()
         {
@@ -163,7 +163,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-
+        /* ----------------- CADASTRO CLIENTE ---------------- */
         public ActionResult CadastroCliente()
         {
 
@@ -226,6 +226,7 @@ namespace Ecommerce.Controllers
             }
 
         }
+
         public ActionResult AlterarSenha()
         {
             return View();

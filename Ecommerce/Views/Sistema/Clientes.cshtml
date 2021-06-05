@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Ecommerce.Models.Cliente>
 @{
     Layout = null;
 }
@@ -9,9 +9,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Clientes</title>
+    <link href="~/Content/Listas/Clientes.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div> 
+    <div class="container">
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+   
+
+        <h3>Clientes</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a href="/Sistema/DetalhesFuncionarios/@item.CPF">
+                        @if (@item.img != null)
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
+                        }
+                        else
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                        }
+                        <h2>@item.nome</h2>
+                      
+
+
+
+                    </a>
+
+                </div>
+            }
+
+
+        </div>
     </div>
 </body>
 </html>
