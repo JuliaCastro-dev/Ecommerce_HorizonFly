@@ -26,7 +26,7 @@
                     @Html.ActionLink("Voltar", "Index", new { htmlAttributes = new { @class = "link" } })<h1 class="text-login">CADASTRO</h1>
                     @Html.AntiForgeryToken()
                     <span>@ViewBag.Validação</span>
-
+                    <span>@ViewBag.erro</span>
                     <div class="group">
 
                         @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })

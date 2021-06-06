@@ -17,6 +17,21 @@ body {
 
  }
 
+.sair {
+    width: 30px;
+    position: absolute;
+    /* align-self: revert; */
+    left: 95%;
+    top: 1vw;
+}
+
+.voltar {
+    width: 30px;
+    position: absolute;
+    left: 2vw;
+    top: 1vw;
+}
+
 /*TEXTO HORIZON FLY */
 
 ul {

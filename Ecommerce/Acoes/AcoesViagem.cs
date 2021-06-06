@@ -80,7 +80,7 @@ namespace Ecommerce.Acoes
         public bool atualizarViagem(Viagem viag)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Viagem set nome_viagem=@nm tipo_transporte=@tipo_transporte,origem=@origem,destino=@destino,dt_ida=@dt_ida,dt_chegada=@dt_chegada,duracao=@duracao,descricao=@descricao,vl_total@vl_total,img_viagem=@img_viagem  where cd_viagem=@viagem,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Viagem set nome_viagem=@nm cd_tipotransporte=@tipo_transporte,origem=@origem,destino=@destino,dt_ida=@dt_ida,dt_chegada=@dt_chegada,duracao=@duracao,descricao=@descricao,vl_total@vl_total,img_viagem=@img_viagem  where cd_viagem=@viagem,", con.MyConectarBD());
 
             cmd.Parameters.Add("@viagem", MySqlDbType.VarChar).Value = viag.cd_viagem;
 
@@ -178,6 +178,40 @@ namespace Ecommerce.Acoes
             }
 
 
+        }
+
+
+        public List<Viagem> GetDetalhesViagem()
+        {
+            List<Viagem> Vilist = new List<Viagem>();
+
+            MySqlCommand cmd = new MySqlCommand("call buscarViagem()", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Vilist.Add(
+                      new Viagem
+                      {
+                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
+                          nome_viagem = Convert.ToString(dr["nome_viagem"]),
+                          origem = Convert.ToString(dr["CidadeOrigem"]),
+                          destino = Convert.ToString(dr["CidadeDestino"]),
+                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
+                          dt_ida = Convert.ToString(dr["dt_ida"]),
+                          vl_total = Convert.ToString(dr["vl_total"]),
+                          descricao = Convert.ToString(dr["descricao"]),
+                          img_viagem = Convert.ToString(dr["img_viagem"]),
+                          tipo_transporte = Convert.ToString(dr["tipo_transporte"])
+
+
+                      });
+            }
+            return Vilist;
         }
 
     }

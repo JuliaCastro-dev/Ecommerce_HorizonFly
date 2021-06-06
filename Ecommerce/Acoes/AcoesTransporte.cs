@@ -106,11 +106,11 @@ namespace Ecommerce.Acoes
 
 
 
-        public List<Hotel> GetDetalhesHotel()
+        public List<Transporte> GetDetalhesTransporte()
         {
-            List<Hotel> Hotellist = new List<Hotel>();
+            List<Transporte> Transportelist = new List<Transporte>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from hoteis", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from Transportes", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
@@ -119,21 +119,18 @@ namespace Ecommerce.Acoes
 
             foreach (DataRow dr in dt.Rows)
             {
-                Hotellist.Add(
-                      new Hotel
+                Transportelist.Add(
+                      new Transporte
                       {
-                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
-                          nome_hotel = Convert.ToString(dr["nome_hotel"]),
-                          cidade_hotel = Convert.ToString(dr["cidade"]),
-                          telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
-                          endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
-                          diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
-                          descricao_hotel = Convert.ToString(dr["descricao_hotel"]),
-                          img_hotel = Convert.ToString(dr["img_hotel"])
+                          cd_transporte = Convert.ToString(dr["cd_transporte"]),
+                          nome_transporte = Convert.ToString(dr["nome_transporte"]),
+                          cidade_transporte = Convert.ToString(dr["cidade_transporte"]),
+                          tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                          img_transporte = Convert.ToString(dr["img_transporte"])
 
                       });
             }
-            return Hotellist;
+            return Transportelist;
         }
 
 

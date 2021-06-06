@@ -79,8 +79,8 @@ namespace Ecommerce.Acoes
         public void inserirClienteFuncionario(Cliente cliente)
         {
 
-            MySqlCommand cmd = new MySqlCommand("START TRANSACTION; INSERT INTO Cliente(nome, senha, CPF, tipo, telefone, email, rg, img)VALUES(@nm,@senha,@CPF, '4',@tel,@email,@rg,@img);" +
-                "UPDATE Funcionario SET tipo = '4'  WHERE CPF = @CPF;COMMIT; ", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("START TRANSACTION; INSERT INTO Cliente(nome, senha, CPF, tipo, telefone, email, rg, img)VALUES(@nm,@senha,@CPF, 4,@tel,@email,@rg,@img);" +
+                "UPDATE Funcionario SET tipo = 4  WHERE CPF = @CPF; COMMIT; ", con.MyConectarBD());
 
             cmd.Parameters.Add("@nm", MySqlDbType.VarChar).Value = cliente.nome;
             cmd.Parameters.Add("@tel", MySqlDbType.VarChar).Value = cliente.telefone;
@@ -172,6 +172,35 @@ namespace Ecommerce.Acoes
                 return true;
             else
                 return false;
+        }
+
+
+        public List<Cliente> GetDetalhesCliente()
+        {
+            List<Cliente> Clientelist = new List<Cliente>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Cliente", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Clientelist.Add(
+                      new Cliente
+                      {
+                          CPF = Convert.ToString(dr["CPF"]),
+                          nome = Convert.ToString(dr["nome"]),
+                          email = Convert.ToString(dr["email"]),
+                          telefone = Convert.ToString(dr["telefone"]),
+                          rg = Convert.ToString(dr["descricao"]),
+                          img = Convert.ToString(dr["img"])
+
+                      });
+            }
+            return Clientelist;
         }
 
     }

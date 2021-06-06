@@ -644,14 +644,22 @@ namespace Ecommerce.Controllers
 
         public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
         {
-            return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd == id)));
+            return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
         }
 
         //------------------- DETALHES TRANSPORTES ---------------------
 
         public ActionResult DetalhesTransportes(string id, AcoesTransporte trans)
         {
-            return View(trans.GetDetalhesTransportes().Find((smodel => smodel.cd_transporte == id)));
+            return View(trans.GetDetalhesTransporte().Find((smodel => smodel.cd_transporte == id)));
+        }
+
+
+        //------------------- DETALHES Cliente ---------------------
+
+        public ActionResult DetalhesClientes(string id, AcoesCliente cliente)
+        {
+            return View(cliente.GetDetalhesCliente().Find((smodel => smodel.CPF == id)));
         }
 
 

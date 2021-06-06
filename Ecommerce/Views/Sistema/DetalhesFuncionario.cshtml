@@ -1,0 +1,73 @@
+﻿
+@model Ecommerce.Models.Funcionario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes do Funcionario</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="/Sistema/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Funcionarios">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+        <h3>Funcionário</h3>
+        <h2>Dados</h2>
+        <div class="foto-nome-cargo">
+            <img src=" @Html.DisplayFor(model => model.img)" />
+            <span class="dado">   @Html.DisplayFor(model => model.nome) </span>
+            <span class="dado">   @Html.DisplayFor(model => model.cargo_func) </span>
+        </div>
+        <div class="dados">
+            <h2>CPF</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.CPF)
+            </span>
+            <h2>RG</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.rg)
+            </span>
+            <h2>Telefone</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.telefone)
+            </span>
+            <h2>E-mail</h2>
+            <span class="dado">  @Html.DisplayFor(model => model.email)</span>
+        </div>
+
+
+
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaFuncionario", "Sistema", new { id = Model.CPF })&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiFuncionario", "Sistema", new { id = Model.CPF })&nbsp; &nbsp;</span>
+
+
+    </div>
+ 
+</body>
+</html>

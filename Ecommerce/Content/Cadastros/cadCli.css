@@ -25,6 +25,13 @@ body {
     left: 2vw;
 }
 
+body > div.container > div > div > form > div > span:nth-child(5){
+    position:relative;
+    color:#d7330e;
+    font-size:1vw;
+    left:2vw;
+}
+
 .container {
     background-color: #fff;
     margin: 80px 120px 30px 120px;

@@ -18,10 +18,10 @@ namespace Ecommerce.Acoes
         public List<Usuario> VerificaUsuarioCadastroCliente(Usuario user)
         {
             List<Usuario> VUL = new List<Usuario>();
-            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf and senha = @Senha", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where CPF = @cpf", con.MyConectarBD());
 
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = user.cpf;
-            cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = user.senha;
+           
 
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();

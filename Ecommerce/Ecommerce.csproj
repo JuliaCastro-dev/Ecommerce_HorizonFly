@@ -173,6 +173,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
     <Content Include="Content\DashboardGerente.css" />
+    <Content Include="Content\Detalhes\DetalhesFuncionario.css" />
     <Content Include="Content\Listas\Clientes.css" />
     <Content Include="Content\Listas\Hoteis.css" />
     <Content Include="Content\HotelPaginaInter.css" />
@@ -190,6 +191,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="ImagensFuncionario\daniel.jfif" />
     <Content Include="ImagensFuncionario\henrique.jfif" />
+    <Content Include="ImagensFuncionario\julia.jpeg" />
     <Content Include="ImagensFuncionario\vitor.jfif" />
     <Content Include="ImagensTransporte\AeroportoDeCongonhas.jpg" />
     <Content Include="ImagensTransporte\gruAirport.png" />
@@ -324,6 +326,7 @@
     <Content Include="Views\Sistema\CadastroPacote.cshtml" />
     <Content Include="Views\Sistema\Funcionarios.cshtml" />
     <Content Include="Views\Sistema\Viagens.cshtml" />
+    <Content Include="Views\Sistema\DetalhesFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

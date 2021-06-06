@@ -171,58 +171,65 @@ namespace Ecommerce.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastroCliente(Cliente cliente, HttpPostedFileBase file)
+        public ActionResult CadastroCliente(Cliente cliente, HttpPostedFileBase file, Usuario user)
         {
 
             //acF.VerificaUsuario(cliente);
-
-
-            if (AcoesFuncionario.Verifica == 1)// se houver um funcionário com o mesmo cpf, ele será cadastrado como ClienteFuncionário
+            if (ModelState.IsValid)
             {
 
+                acF.VerificaUsuarioCadastroCliente(user);
 
-
-                if (file != null && file.ContentLength > 0)
+                if (user.cpf != null)// se houver um funcionário com o mesmo cpf, ele será cadastrado como ClienteFuncionário
                 {
-                    string arquivo = Path.GetFileName(file.FileName);
-                    string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
-                    file.SaveAs(_path);
-                    cliente.img = file2;
-                    acC.inserirClienteFuncionario(cliente);
 
-                    return RedirectToAction("Login", "Site");
+
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string arquivo = Path.GetFileName(file.FileName);
+                        string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
+                        file.SaveAs(_path);
+                        cliente.img = file2;
+                        acC.inserirClienteFuncionario(cliente);
+
+                        return RedirectToAction("Login", "Site");
+                    }
+                    else
+                    {
+                        acC.inserirClienteFuncionario(cliente);
+
+                        return RedirectToAction("Login", "Site");
+                    }
+
+
                 }
                 else
                 {
-                    acC.inserirClienteFuncionario(cliente);
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string arquivo = Path.GetFileName(file.FileName);
+                        string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
+                        file.SaveAs(_path);
+                        cliente.img = file2;
+                        acC.inserirCliente(cliente);
+                        return RedirectToAction("Login", "Site");
+                    }
+                    else
+                    {
+                        acC.inserirCliente(cliente);
+                        return RedirectToAction("Login", "Site");
+                    }
 
-                    return RedirectToAction("Login", "Site");
                 }
-
 
             }
             else
             {
-                if (file != null && file.ContentLength > 0)
-                {
-                    string arquivo = Path.GetFileName(file.FileName);
-                    string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
-                    file.SaveAs(_path);
-                    cliente.img = file2;
-                    acC.inserirCliente(cliente);
-                    return RedirectToAction("Login", "Site");
-                }
-                else
-                {
-                    acC.inserirCliente(cliente);
-                    return RedirectToAction("Login", "Site");
-                }
-
-
-
-
+                ViewBag.erro = "Preencha Todos Os dados";
+                return View();
             }
 
         }
@@ -274,7 +281,7 @@ namespace Ecommerce.Controllers
             {
                 return View();
             }
-      
+
 
         }
 
