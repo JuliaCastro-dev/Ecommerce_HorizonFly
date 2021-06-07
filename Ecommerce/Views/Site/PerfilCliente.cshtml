@@ -16,6 +16,7 @@
 </head>
 <body>
     <header>
+        <span class="voltar"> @Html.ActionLink("Ir as Compras", "Index" )   </span> 
     </header>
     @*BANNER*@
 <div class="container">
@@ -25,7 +26,7 @@
         <table class="dados">
             <thead>
                 <tr>
-                    <th class="Titulo">NOME COMPLETO &ensp; &ensp;</th>
+                    <th class="Titulo">NOME COMPLETO &ensp;</th>
                     <th class="Titulo">EMAIL</th>
                 </tr>
             </thead>
@@ -52,6 +53,8 @@
                 </tr>
             </tbody>
         </table>
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarCliente", "Site", new { id = ViewBag.cpf })&nbsp; &nbsp;</span>
+        <h1 class="Titulo">Reservas</h1>
     </div>
 </div>
 </body>

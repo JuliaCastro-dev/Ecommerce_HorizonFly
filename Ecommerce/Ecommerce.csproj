@@ -327,6 +327,7 @@
     <Content Include="Views\Sistema\Funcionarios.cshtml" />
     <Content Include="Views\Sistema\Viagens.cshtml" />
     <Content Include="Views\Sistema\DetalhesFuncionario.cshtml" />
+    <Content Include="Views\Sistema\DetalhesHoteis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

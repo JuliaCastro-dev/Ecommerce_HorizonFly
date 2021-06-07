@@ -22,6 +22,12 @@ header {
     min-height: 4vh;
     z-index: 2;
 }
+.voltar a{
+    color:#fff;
+    font-size:1vw;
+    position:relative;
+    left:2vw;
+}
 .container {
     height: 90%;
     width: 70%;
@@ -56,7 +62,7 @@ thead{
 }
 .dados {
     position: absolute;
-    top: 25vw;
+    top: 26vw;
     left: 5vw;
 }
 .Titulo {
@@ -71,4 +77,10 @@ thead{
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
+}
+/*Reservas*/
+h1.Titulo {
+    position: absolute;
+    top: 40vw;
+    font-size: 1.5vw;
 }

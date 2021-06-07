@@ -34,9 +34,10 @@ namespace Ecommerce.Acoes
          
             if (leitor.HasRows)
             {
-                Verifica= 1;
+              
                 foreach (DataRow dr in dt.Rows)
                 {
+
                     VUL.Add(
 
                            new Usuario
@@ -57,6 +58,7 @@ namespace Ecommerce.Acoes
             else
             {
                 Verifica = 0;
+                user.cpf = null;
                 return VUL;
             }
             

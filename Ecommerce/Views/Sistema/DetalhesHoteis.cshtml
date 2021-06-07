@@ -1,0 +1,70 @@
+﻿@model Ecommerce.Models.Hotel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes do Funcionario</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="/Sistema/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Hoteis">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+        <h3>Hotel</h3>
+        <h2>Dados</h2>
+        <div class="foto-nome">
+            <img src=" @Html.DisplayFor(model => model.img_hotel)" />
+            <span class="dado">   @Html.DisplayFor(model => model.nome_hotel) </span>
+        </div>
+        <div class="dados">
+            <h2>Endereço</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.endereco_hotel)
+            </span>
+            <h2>Cidade</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.cidade_hotel)
+            </span>
+            <h2>Telefone</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.telefone_hotel)
+            </span>
+            <h2>Descrição</h2>
+            <span class="dado">  @Html.DisplayFor(model => model.descricao_hotel)</span>
+        </div>
+
+
+
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
+
+
+    </div>
+
+</body>
+</html>

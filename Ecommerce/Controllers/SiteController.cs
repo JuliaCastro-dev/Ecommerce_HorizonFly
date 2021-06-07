@@ -64,6 +64,9 @@ namespace Ecommerce.Controllers
                     Session["senhaLogado"] = user.senha.ToString();
                     Session["cpf"] = user.cpf.ToString();
                     Session["senha"] = user.senha.ToString();
+                    Session["rg"] = user.rg.ToString();
+                    Session["email"] = user.email.ToString();
+                    Session["tel"] = user.telefone.ToString();
                     Session["nome"] = user.nome.ToString();
                     Session["img"] = user.img.ToString();
                     Session["tipo"] = user.tipo.ToString();
@@ -98,7 +101,10 @@ namespace Ecommerce.Controllers
                         Session["UsuarioLogado"] = user.cpf.ToString();
                         Session["senhaLogado"] = user.senha.ToString();
                         Session["cpf"] = user.cpf.ToString();
+                        Session["rg"] = user.rg.ToString();
                         Session["senha"] = user.senha.ToString();
+                        Session["email"] = user.email.ToString();
+                        Session["tel"] = user.telefone.ToString();
                         Session["nome"] = user.nome.ToString();
                         Session["img"] = user.img.ToString();
                         Session["tipo"] = user.tipo.ToString();
