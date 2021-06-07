@@ -72,19 +72,47 @@ namespace Ecommerce.Acoes
             }
             return PacList;
         }
-        public void ProcuraPacotes(Pacote pac)
+
+        public List<Pacote> BuscaListaPacote( Pacote pac)
         {
+            List<Pacote> PacList = new List<Pacote>();
 
-            MySqlCommand cmd = new MySqlCommand("", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("call buscarPacote(@Origem, @destino);", con.MyConectarBD());
 
-            cmd.Parameters.Add("@usuario", MySqlDbType.VarChar).Value = pac.cd_cidDestino;
-        
+            cmd.Parameters.Add("@Origem", MySqlDbType.VarChar).Value = pac.Origem;
 
-            cmd.ExecuteNonQuery();
+            cmd.Parameters.Add("@Destino", MySqlDbType.VarChar).Value = pac.Destino;
 
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
             con.MyDesconectarBD();
 
+            foreach (DataRow dr in dt.Rows)
+            {
+                PacList.Add(
+
+                     new Pacote
+                     {
+                         cd_pacote = Convert.ToString(dr["cd_pacote"]),
+                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
+                         cd_cidDestino = Convert.ToString(dr["cd_cidDestino"]),
+                         cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
+                         cd_hotel = Convert.ToString(dr["cd_hotel"]),
+                         cd_viagem = Convert.ToString(dr["cd_viagem"]),
+                         dt_chekinHotel = Convert.ToString(dr["dt_chekinHotel"]),
+                         dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
+                         descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
+                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                         vl_pacote = Convert.ToString(dr["vl_pacote"]),
+                         img_pacote = Convert.ToString(dr["img_pacote"])
+
+                     });
+            }
+            return PacList;
         }
+      
 
         public bool atualizarPacote(Pacote pac)
         {

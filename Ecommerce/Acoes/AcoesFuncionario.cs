@@ -235,10 +235,10 @@ namespace Ecommerce.Acoes
                       {
                           CPF = Convert.ToString(dr["CPF"]),
                           nome = Convert.ToString(dr["nome"]),
-                          cargo_func = Convert.ToString(dr["cargo_func"]),
+                          cargo_func = Convert.ToString(dr["cargo"]),
                           email = Convert.ToString(dr["email"]),
                           telefone = Convert.ToString(dr["telefone"]),
-                          rg = Convert.ToString(dr["descricao"]),
+                          rg = Convert.ToString(dr["rg"]),
                           img = Convert.ToString(dr["img"])
 
                       });

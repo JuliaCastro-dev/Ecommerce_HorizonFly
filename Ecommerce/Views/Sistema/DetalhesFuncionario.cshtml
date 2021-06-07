@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Detalhes do Funcionario</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="~/Content/Detalhes/DetalhesFuncionario.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,11 +39,12 @@
         </ul>
 
         <h3>Funcionário</h3>
-        <h2>Dados</h2>
+       
         <div class="foto-nome-cargo">
             <img src=" @Html.DisplayFor(model => model.img)" />
-            <span class="dado">   @Html.DisplayFor(model => model.nome) </span>
-            <span class="dado">   @Html.DisplayFor(model => model.cargo_func) </span>
+            <span class="dado" id="nome">   @Html.DisplayFor(model => model.nome) </span>
+            </br>
+            <span class="dado" id="cargo">   @Html.DisplayFor(model => model.cargo_func) </span>
         </div>
         <div class="dados">
             <h2>CPF</h2>
@@ -63,8 +65,8 @@
 
 
 
-        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaFuncionario", "Sistema", new { id = Model.CPF })&nbsp; &nbsp;</span>
-        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiFuncionario", "Sistema", new { id = Model.CPF })&nbsp; &nbsp;</span>
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaFuncionario", "Sistema", new { id = Model.rg })&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiFuncionario", "Sistema", new { id = Model.rg })&nbsp; &nbsp;</span>
 
 
     </div>

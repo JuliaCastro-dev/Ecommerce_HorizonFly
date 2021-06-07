@@ -23,6 +23,7 @@
     <img class="banner" src="~/Imagens/RJWallpaper.png" alt="wallpaper" />
     <div class="Cliente">
         <img class="foto" src="@ViewBag.img" />
+        <h1 id="dados" class="Titulo">Dados <span id="barrinha"></span></h1>
         <table class="dados">
             <thead>
                 <tr>
@@ -53,8 +54,13 @@
                 </tr>
             </tbody>
         </table>
+        <a href="/Sistema/MeusCartoes/@ViewBag.cpf">
+            <div class="cartoes">
+                <p>MEUS CARTÕES</p>
+            </div>
+        </a>
         <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarCliente", "Site", new { id = ViewBag.cpf })&nbsp; &nbsp;</span>
-        <h1 class="Titulo">Reservas</h1>
+        <h1 class="Titulo" id="reserva">Reservas <span id="barrinhaReserva"></span > </h1>
     </div>
 </div>
 </body>

@@ -1,4 +1,4 @@
-﻿@model Ecommerce.Models.Hotel
+﻿@model Ecommerce.Models.Viagem
 @{
     Layout = null;
 }
@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Detalhes do Hotel</title>
+    <title>Detalhes da Viagem</title>
     <link href="~/Content/Detalhes/DetalhesHotel.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
         <img class="sair" src="~/Imagens/exit.png" />
     </a>
     <div class="container">
-        <a href="/Sistema/Hoteis">
+        <a href="/Sistema/Viagens">
             <img class="voltar" src="~/Imagens/voltar.png" />
         </a>
         <ul>
@@ -38,13 +38,13 @@
 
         <h3>Hotel</h3>
         <div class="foto-nome">
-            <img src=" @Html.DisplayFor(model => model.img_hotel)" />
-            <span class="dado">   @Html.DisplayFor(model => model.nome_hotel) </span>
+            <img src=" @Html.DisplayFor(model => model.img_viagem)" />
+            <span class="dado">   @Html.DisplayFor(model => model.nome_viagem) </span>
         </div>
         <div class="dados">
             <h2>Endereço</h2>
             <span class="dado">
-                @Html.DisplayFor(model => model.endereco_hotel)
+                @Html.DisplayFor(model => model)
             </span>
             <h2>Cidade</h2>
             <span class="dado">

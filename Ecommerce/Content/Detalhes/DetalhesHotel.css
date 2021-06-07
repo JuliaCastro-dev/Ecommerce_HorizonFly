@@ -97,10 +97,12 @@ h3 {
 }
 
 h2 {
+  
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     color: #3A7BD5;
     font-size: 1.5vw;
+
 }
 /*ICONS */
 
@@ -119,46 +121,29 @@ h2 {
     top: 1vw;
 }
 /* FOTO*/
-.foto-nome-cargo img {
-    width: 20VW;
-    position: relative;
-    left: 4vw;
-    top: 2vw;
-    border-radius:50%;
-    object-fit:contain;
+.foto-nome img{
+    width:30VW;
+    position:relative;
+    left:2vw;
+    top:2vw;
 }
-
-.foto-nome-cargo span {
-    position: relative;
-    left: 1VW;
-    top:3vw;
-    font-size: 2VW;
+.foto-nome span{
+    position:relative;
+    left:5VW;
+    font-size:2VW;
 }
-
-#nome {
-    left: -15vw;
-    top: 5vw;
-}
-#cargo {
-    top: 5vw;
-    left:6vw;
-    font-size:1.5vw;
-    color:#3A7BD5;
-}
-
-.foto-nome-cargo {
-    position: relative;
-    top: 5VW;
-    display: block;
+.foto-nome {
+    position:relative;
+    top:5VW;
+    display: flex;
     font-weight: 600;
- 
 }
 /* dados hotel*/
 .dados {
     position: absolute;
-    top: 18vw;
+    top: 16vw;
     left: 35vw;
-    width: 60vw;
+    width:60vw;
 }
 
 .dado {
@@ -168,17 +153,5 @@ h2 {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    letter-spacing:3px;
-}
-
-/*botoes atualizar e excluir*/
-.atualizar{
-    position:absolute;
-    top:20vw;
-    left:50vw;
-}
-.excluir {
-    position: absolute;
-    top: 20vw;
-    left: 65vw;
+   
 }

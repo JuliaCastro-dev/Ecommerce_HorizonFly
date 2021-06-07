@@ -29,7 +29,7 @@ header {
     left:2vw;
 }
 .container {
-    height: 90%;
+    height: 100%;
     width: 70%;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -56,13 +56,27 @@ header {
     object-position: center;
     top:13vw;
 }
+h1#dados {
+    position: absolute;
+    top: 25vw;
+    font-size: 1.5vw;
+}
+#barrinha {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 1.8vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
+}
 /*Tabela de dados*/
 thead{
   width:10vw;
 }
 .dados {
     position: absolute;
-    top: 26vw;
+    top: 29vw;
     left: 5vw;
 }
 .Titulo {
@@ -78,9 +92,40 @@ thead{
     font-style: normal;
     font-weight: 400;
 }
-/*Reservas*/
-h1.Titulo {
+
+/*Cartoes*/
+.cartoes {
     position: absolute;
-    top: 40vw;
+    color:#5FAD56;
+    font-size:1vw;
+    border: 2px solid;
+    border-color:  #A9D6FF;
+    border-image-slice: 1;
+    border-radius:15px;
+    height: 3vw;
+  cursor:pointer;
+    width: 10vw;
+    left: 50vw;
+    top: 25vw;
+}
+.cartoes p{
+   
+    top:0.5vw;
+    position:relative;
+    left:1vw;
+}
+/*Reservas*/
+h1#reserva {
+    position: absolute;
+    top: 45vw;
     font-size: 1.5vw;
+}
+#barrinhaReserva {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 1.8vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
 }

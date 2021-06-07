@@ -6,31 +6,19 @@ using System.Web;
 
 namespace Ecommerce.Models
 {
-    public class Pacote
+    public class IndexViewModel
     {
-        //CREATE TABLE Pacote(
-        //cd_pacote INTEGER PRIMARY KEY auto_increment,
-        //voo_ida INTEGER,
-        //voo_volta INTEGER,
-        //cd_hotel INTEGER,
-        //vl_total DECIMAL(10,2),
-        //img_pacote VARCHAR(300),
-        //foreign key(voo_ida) references Voo(cd_voo),
-        // foreign key(voo_volta) references Voo(cd_voo),
-        //  foreign key(cd_hotel) references Hotel(cd_hotel)
-        //);
-
         [Display(Name = "Código")]
         public string cd_pacote { get; set; }
 
-        
+
         [Required]
         [Display(Name = "Viagem")]
         public string cd_viagem { get; set; }
 
         [Required]
         [Display(Name = "Hotel")]
-        public string cd_hotel { get; set; } 
+        public string cd_hotel { get; set; }
 
 
         [Required]
@@ -82,6 +70,7 @@ namespace Ecommerce.Models
 
         [Display(Name = "Destino")]
         public string Destino { get; set; }
+
 
     }
 }

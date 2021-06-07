@@ -1,4 +1,4 @@
-﻿@model Ecommerce.Models.IndexViewModel
+﻿@model Ecommerce.Models.ViewsModels.IndexViewModel
 
 @{
     Layout = null;
@@ -49,10 +49,14 @@
             <button type="button" class="btn-dpw  " data-toggle="dropdown">
                 Pacotes
             </button>
-                @using (@Html.BeginForm())
-                {
-                
-                }
+            @using (@Html.BeginForm())
+            {
+                @Html.EditorFor(m => m.Origem, new { htmlAttributes = new { @class = "Input", @placeholder = "Origem" } })
+
+                @Html.EditorFor(m => m.Destino, new { htmlAttributes = new { @class = "Input", @placeholder = "Destino"} })
+
+
+            }
         </div>
     </div>
     <div class="base">

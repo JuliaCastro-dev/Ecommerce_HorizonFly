@@ -631,7 +631,7 @@ namespace Ecommerce.Controllers
         //------------------- DETALHES FUNCIONARIO ---------------------
         public ActionResult DetalhesFuncionario(string id, AcoesFuncionario func)
         {
-            return View(func.GetDetalhesFuncionario().Find((smodel => smodel.CPF == id)));
+            return View(func.GetDetalhesFuncionario().Find((smodel => smodel.rg == id)));
         }
 
         //------------------- DETALHES HOTEIS ---------------------

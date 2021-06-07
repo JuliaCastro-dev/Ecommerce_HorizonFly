@@ -15,6 +15,7 @@ namespace Ecommerce.Controllers
         AcoesCliente acC = new AcoesCliente();
         AcoesLogin acL = new AcoesLogin();
         AcoesFuncionario acF = new AcoesFuncionario();
+        AcoesPacote acP = new AcoesPacote();
 
 
         // -------------------- PÁGINA PRINCIPAL -------------------
@@ -29,8 +30,13 @@ namespace Ecommerce.Controllers
         {
 
 
-            return View();
+            return View(acP.BuscaListaPacote(pacote));
+        }
+        // ---------------------- SOBRE ---------------------
 
+        public ActionResult Sobre()
+        {
+            return View();
         }
 
         // ------------- LOGIN ------------------
@@ -292,50 +298,6 @@ namespace Ecommerce.Controllers
         }
 
 
-
-        //public ActionResult AlterarSenhaCliente()
-        //{
-
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult AlterarSenhaCliente(Cliente smodel)
-        //{
-        //    if (smodel.CPF != null && smodel.senha != null)
-        //    {
-        //        acL.AlterarSenhaCliente(smodel);
-        //    }
-
-        //    return View();
-        //}
-
-        //public ActionResult AlterarSenhaFuncionario()
-        //{
-
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult AlterarSenhaFuncionario(Funcionario smodel)
-        //{
-        //    if (smodel.CPF != null && smodel.senha != null)
-        //    {
-
-        //    }
-        //    else
-        //    {
-        //        ViewBag.usuarioNE = "Usuario não enconrado";
-        //    }
-
-        //    return View();
-        //}
-
-
-
-
-        public ActionResult Sobre()
-        {
-            return View();
-        }
 
     }
 }
