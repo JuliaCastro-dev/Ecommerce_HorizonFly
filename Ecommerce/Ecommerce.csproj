@@ -175,6 +175,8 @@
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Detalhes\DetalhesFuncionario.css" />
     <Content Include="Content\Detalhes\DetalhesHotel.css" />
+    <Content Include="Content\Detalhes\DetalhesTransportes.css" />
+    <Content Include="Content\Detalhes\DetalhesViagens.css" />
     <Content Include="Content\Listas\Clientes.css" />
     <Content Include="Content\Listas\Hoteis.css" />
     <Content Include="Content\HotelPaginaInter.css" />
@@ -329,6 +331,10 @@
     <Content Include="Views\Sistema\DetalhesFuncionario.cshtml" />
     <Content Include="Views\Sistema\DetalhesHoteis.cshtml" />
     <Content Include="Views\Sistema\DetalhesViagens.cshtml" />
+    <Content Include="Views\Sistema\DetalhesTransportes.cshtml" />
+    <Content Include="Views\Sistema\DetalhesClientes.cshtml" />
+    <Content Include="Views\Sistema\AtualizaFuncionario.cshtml" />
+    <Content Include="Views\Sistema\AtualizaHotel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

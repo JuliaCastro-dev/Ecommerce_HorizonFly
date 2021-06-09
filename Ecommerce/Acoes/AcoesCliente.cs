@@ -195,7 +195,7 @@ namespace Ecommerce.Acoes
                           nome = Convert.ToString(dr["nome"]),
                           email = Convert.ToString(dr["email"]),
                           telefone = Convert.ToString(dr["telefone"]),
-                          rg = Convert.ToString(dr["descricao"]),
+                          rg = Convert.ToString(dr["rg"]),
                           img = Convert.ToString(dr["img"])
 
                       });

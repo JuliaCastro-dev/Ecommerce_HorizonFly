@@ -18,8 +18,7 @@ body {
 }
 
 /*TEXTO HORIZON FLY */
-
-ul {
+#ulH {
     margin: 0;
     padding: 0;
     display: flex;
@@ -29,7 +28,7 @@ ul {
     position: relative;
 }
 
-li {
+ #ulH li {
     list-style: none;
     letter-spacing: 10px;
     transition: 8s;
@@ -38,50 +37,49 @@ li {
     font-size: 2vw;
 }
 
-ul:hover li {
+#ulH:hover li {
     transform: rotate(360deg) translateY(-360px);
     opacity: 0;
     filter: blur(20px);
 }
 
-ul li:nth-child(1) {
-    transition-delay: 0;
-}
+    #ulH li:nth-child(1) {
+        transition-delay: 0;
+    }
 
-ul li:nth-child(2) {
+#ulH li:nth-child(2) {
     transition-delay: 0.1s;
 }
 
-ul li:nth-child(3) {
+#ulH li:nth-child(3) {
     transition-delay: 0.2s;
 }
 
-ul li:nth-child(4) {
+#ulH li:nth-child(4) {
     transition-delay: 0.3s;
 }
 
-ul li:nth-child(5) {
-    transition-delay: 0.4s;
-}
+    #ulH li:nth-child(5) {
+        transition-delay: 0.4s;
+    }
 
-ul li:nth-child(6) {
+#ulH li:nth-child(6) {
     transition-delay: 0.5s;
 }
 
-ul li:nth-child(7) {
-    transition-delay: 0.6s;
-}
+    #ulH  li:nth-child(7) {
+        transition-delay: 0.6s;
+    }
 
-ul li:nth-child(8) {
-    transition-delay: 0.7s;
-}
+    #ulH li:nth-child(8) {
+        transition-delay: 0.7s;
+    }
 
-ul li:nth-child(9) {
-    transition-delay: 0.8s;
-}
+    #ulH li:nth-child(9) {
+        transition-delay: 0.8s;
+    }
 
-ul li:nth-child(10) {
-    transition-delay: 0.9s;
+#ulH transition-delay: 0.9s;
 }
 
 /*TEXTO Hotel*/
@@ -154,4 +152,340 @@ h2 {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
    
+}
+/* Atualizar e excluir*/
+
+.atualizar {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+
+    border: none;
+    font-size: 1.3vw;
+    position: absolute;
+    top: 35vw;
+    left:4vw;
+    border-radius: 10px;
+  
+    cursor: pointer;
+}
+
+
+    .atualizar:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atualizar:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .atualizar a {
+
+        color: #6f6cde;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+.excluir {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: absolute;
+    top: 35vw;
+    left: 17vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .excluir:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .excluir:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .excluir a {
+        color: #d72727;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+/* PARTE DE ATUALIZAR */
+#atualizar a{
+    font-weight:700;
+    color:#3A7BD5;
+    font-size:1.7vw;
+    left:10%;
+}
+#atualizar {
+    position: relative;
+    top: 50vw;
+    left: 0vw;
+    width: 100%;
+    height: 65vw;
+    background: #FFFDFD;
+}
+
+.bodyInputs {
+    position: relative;
+    background: #FFFDFD;
+    height: 70vw;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top:6vw;
+}
+
+#comeco{
+    visibility:hidden;
+}
+
+span.comrfimacao {
+    position: relative;
+    left: 25vw;
+    color: darkblue;
+    font-size: 1vw;
+}
+
+.text {
+    position: relative;
+    background: linear-gradient( 180deg, #027527 0%, #099049 29.17%, #22A787 77.6%, #0C3E7C 100%, #384D49 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4vw;
+    margin-left: 40%;
+    font-weight: 700;
+    z-index: 5;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    left: 35vw;
+    font-weight:700;
+    font-size: 1.5vw;
+}
+
+textarea {
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    left: 35vw;
+    padding: 0;
+    font-size: 1.2vw;
+    outline: none;
+    font-weight: 600;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+
+    textarea:focus {
+        border-bottom: 1px solid #004acf;
+        border-left: 1px solid #004acf;
+        border-right: 1px solid #004acf;
+    }
+
+.input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    left: 35vw;
+    padding: 0;
+    font-weight:600;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+
+    .input:focus {
+        outline: none;
+    }
+
+.group {
+    display: block;
+}
+
+input[type=file] {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 20vw;
+    top: 6vh;
+}
+/*MENSAGEM DE ERRO*/
+.errorMessage {
+    color: #b73535;
+    font-size: 1.5vh;
+    font-weight: 600;
+    font-family: 'Poppins',sans-serif;
+    position: relative;
+    left: 1vw;
+}
+/*LINKS*/
+a {
+    position: relative;
+    left: 4vw;
+    text-decoration: none;
+    color: #00a928;
+}
+
+/*dropdown */
+.dropdown {
+    position: relative;
+    left: 35vw;
+    top: 2vw;
+    font-size: 1.4vw;
+    font-weight: 600;
+}
+
+#cidade {
+    width: 10vw;
+    color: #6f6cde;
+    position: relative;
+    left: 25vw;
+    font-size:1.4vw;
+    font-weight:600;
+}
+    #cidade li {
+        font-size: 1.4vw;
+        font-weight: 600;
+    }
+
+#tipo {
+    width: 10vw;
+    color: #6f6cde;
+    position: relative;
+    left: 4vw;
+}
+/*BARRA DE EFEITO INPUT*/
+.bar {
+    position: relative;
+    display: block;
+    width: 24.5vw;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        left: 15vw;
+        bottom: 0.2PX;
+        position: absolute;
+        background: #5264AE;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 95%;
+    }
+
+    .bar:after {
+        right: 95%;
+    }
+
+/* BUTTON*/
+.button {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    left: 37vw;
+    border-radius: 10px;
+    top: 9vh;
+    cursor: pointer;
+}
+
+
+    .button:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
 }

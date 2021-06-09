@@ -185,7 +185,43 @@ namespace Ecommerce.Acoes
         {
             List<Viagem> Vilist = new List<Viagem>();
 
-            MySqlCommand cmd = new MySqlCommand("call buscarViagem()", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand(" select * from  vw_MostraViagemOrigem;", con.MyConectarBD());
+            MySqlCommand cmd2 = new MySqlCommand(" select * from  vw_MostraViagemDestino;", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            MySqlDataAdapter sd2 = new MySqlDataAdapter(cmd2);
+            DataTable dt = new DataTable();
+
+
+            sd.Fill(dt);
+            sd2.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows )
+            {
+                Vilist.Add(
+                      new Viagem
+                      {
+                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
+                          nome_viagem = Convert.ToString(dr["nome_viagem"]),
+                          origem = Convert.ToString(dr["CidadeOrigem"]),
+                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
+                          dt_ida = Convert.ToString(dr["dt_ida"]),
+                          destino = Convert.ToString(dr["CidadeDestino"]),
+                          vl_total = Convert.ToString(dr["vl_total"]),
+                          descricao = Convert.ToString(dr["descricao"]),
+                          img_viagem = Convert.ToString(dr["img_viagem"]),
+                          tipo_transporte = Convert.ToString(dr["tipo_transporte"])
+
+
+                      });
+            }
+            return Vilist;
+        }
+        public List<Viagem> GetDestinoViagem()
+        {
+            List<Viagem> Vilist = new List<Viagem>();
+
+            MySqlCommand cmd = new MySqlCommand("  select * from vw_MostraViagemDestino;", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
@@ -198,21 +234,13 @@ namespace Ecommerce.Acoes
                       new Viagem
                       {
                           cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                          nome_viagem = Convert.ToString(dr["nome_viagem"]),
-                          origem = Convert.ToString(dr["CidadeOrigem"]),
                           destino = Convert.ToString(dr["CidadeDestino"]),
-                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
-                          dt_ida = Convert.ToString(dr["dt_ida"]),
-                          vl_total = Convert.ToString(dr["vl_total"]),
-                          descricao = Convert.ToString(dr["descricao"]),
-                          img_viagem = Convert.ToString(dr["img_viagem"]),
-                          tipo_transporte = Convert.ToString(dr["tipo_transporte"])
+                       
 
 
                       });
             }
             return Vilist;
         }
-
     }
 }

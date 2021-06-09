@@ -25,6 +25,10 @@ body {
     top: 1vw;
 }
 
+a {
+    text-decoration: none;
+}
+
 .voltar {
     width: 30px;
     position: absolute;

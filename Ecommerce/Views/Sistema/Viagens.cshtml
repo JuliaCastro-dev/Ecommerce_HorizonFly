@@ -14,7 +14,7 @@
     <link href="~/Content/Listas/Viagens.css" rel="stylesheet" />
 </head>
 <body>
-    <a href="/Sistema/Logout">
+    <a href="/Site/Logout">
 
         <img class="sair" src="~/Imagens/exit.png" />
     </a>
@@ -43,7 +43,7 @@
             @foreach (var item in Model)
             {
                 <div class="card">
-                    <a href="/Sistema/DetalhesHotel/@item.cd_viagem">
+                    <a href="/Sistema/DetalhesViagens/@item.cd_viagem">
                         @if (@item.img_viagem != null)
                         {
                             <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_viagem" data-holder-rendered="true">

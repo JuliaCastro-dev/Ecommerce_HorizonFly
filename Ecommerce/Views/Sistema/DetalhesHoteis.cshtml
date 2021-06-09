@@ -10,11 +10,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Detalhes do Hotel</title>
     <link href="~/Content/Detalhes/DetalhesHotel.css" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
 </head>
 <body>
-    <a href="/Sistema/Logout">
+    <div id="comeco"> </div>
+    <a href="/Site/Logout">
 
         <img class="sair" src="~/Imagens/exit.png" />
     </a>
@@ -22,7 +28,7 @@
         <a href="/Sistema/Hoteis">
             <img class="voltar" src="~/Imagens/voltar.png" />
         </a>
-        <ul>
+        <ul id="ulH">
             <li>H</li>
             <li>O</li>
             <li>R</li>
@@ -60,11 +66,90 @@
 
 
 
-        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
-        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
+        <span class="link">   <a href="#atualizar"> Atualizar </a> &nbsp; &nbsp;</span>
+        @*<span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>*@
 
+
+        <section id="atualizar">
+            @using (Html.BeginForm("DetalhesHoteis", "Sistema"))
+            {
+                @Html.AntiForgeryToken()
+
+                <h1 class="text">HOTEL</h1>
+                <div class="bodyInputs" id="ATU">
+                    <a href="#comeco"> Voltar ao Topo</a> &nbsp; &nbsp;
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <span class="comrfimacao"> @ViewBag.sucesso</span>
+                    <div class="group">
+                        @Html.EditorFor(model => model.nome_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "Nome " } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_hotel)</span>
+                    </div>
+                    <div class="group">
+                        @Html.EditorFor(model => model.endereco_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "Endereço" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.endereco_hotel)</span>
+                    </div>
+
+                    <div class="group">
+                        @Html.EditorFor(model => model.telefone_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "Telefone", @id = "telefone", @name = "telefone" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.telefone_hotel)</span>
+                    </div>
+
+                    <div class="group">
+                        @Html.EditorFor(model => model.diaria_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.diaria_hotel)</span>
+                    </div>
+
+                    <div class="group">
+                        @Html.LabelFor(model => model.descricao_hotel)
+                        @Html.TextAreaFor(model => model.descricao_hotel, new { htmlAttributes = new { @class = "input", @placeholder = "Descrição" } })
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.descricao_hotel)</span>
+                    </div>
+                    <div class="group">
+                        <div class="dropdown">
+                            @Html.DropDownList("cidade", "cidade")
+                            <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_cidade)</span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="group">
+
+                        <input class="input" type="file" name="file" id="file" />
+                        <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img_hotel)</span>
+
+                    </div>
+
+                    <div class="group">
+
+                        <input type="submit" value="Cadastrar" class="button" />
+
+                    </div>
+
+                </div>
+
+            }
+        </section>
 
     </div>
-
+    @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/jQuery-Mask-Plugin-master/dist/jquery.mask.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
+    <script src="~/Scripts/chosen.jquery.js"></script>
 </body>
+
 </html>

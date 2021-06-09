@@ -1,4 +1,4 @@
-﻿@model Ecommerce.Models.ViewsModels.IndexViewModel
+﻿@model Ecommerce.Models.IndexViewModel
 
 @{
     Layout = null;
@@ -12,12 +12,10 @@
     <title>Horizon FLY</title>
     <link href="~/Content/Site/Index.css" rel="stylesheet" />
     <link href="~/Content/Site/loginEregistro.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
 
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
@@ -33,16 +31,50 @@
     <div class="Login-registro">
         <span id="login">
 
-            <h5 id="login-button">@Html.ActionLink("Login", "Login", new { htmlAttributes = new { @id = "login-button" } })</h5>
+            <h5 id="login-button"> @Html.ActionLink("Login", "Login", new { htmlAttributes = new { @id = "login-button" } })</h5>
 
-            <h5 id="login-buttonR">@Html.ActionLink("Registre-se", "CadastroCliente", new { htmlAttributes = new { @id = "login-buttonR" } })</h5>
+            <h5 id="login-buttonR"> @Html.ActionLink("Registre-se", "CadastroCliente", new { htmlAttributes = new { @id = "login-buttonR" } })</h5>
             
 
 
         </span>
     </div>
     <div class="frase">
-        <span id="frase"> Aonde gostaria de ir?</span>
+
+        <ul id="frase">
+            <li>O</li>
+            <li>  &nbsp;</li>
+            <li>T</li>
+            <li>U</li>
+            <li>R</li>
+            <li>I</li>
+            <li>S</li>
+            <li>M</li>
+            <li>O</li>
+            <li>  &nbsp;</li>
+            <li>V</li>
+            <li>A</li>
+            <li>I</li>
+            <li>  &nbsp;</li>
+            <li>A</li>
+            <li>L</li>
+            <li>É</li>
+            <li>M</li>
+            <li>  &nbsp;</li>
+            <li>D</li>
+            <li>O</li>
+            <li>S</li>
+            <li>  &nbsp;</li>
+            <li>s</li>
+            <li>O</li>
+            <li>N</li>
+            <li>H</li>
+            <li>O</li>
+            <li>S</li>
+
+        </ul>
+
+
     </div>
     <div class="search-container">
         <div class="dropdown">
@@ -55,13 +87,17 @@
 
                 @Html.EditorFor(m => m.Destino, new { htmlAttributes = new { @class = "Input", @placeholder = "Destino"} })
 
-
+                <input class="Input" type="submit" value="Buscar" />
             }
         </div>
     </div>
     <div class="base">
 
     </div>
+
+    <section class="pacotes">
+        <h1>Pacotes para as férias em Familía</h1>
+    </section>
 
 
   

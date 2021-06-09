@@ -633,19 +633,56 @@ namespace Ecommerce.Controllers
         {
             return View(func.GetDetalhesFuncionario().Find((smodel => smodel.rg == id)));
         }
+       
 
         //------------------- DETALHES HOTEIS ---------------------
         public ActionResult DetalhesHoteis(string id, AcoesHotel hotel)
         {
+            carregaCidades();
             return View(hotel.GetDetalhesHotel().Find((smodel => smodel.cd_hotel == id)));
         }
+        [HttpPost]
+        public ActionResult DetalhesHoteis(Hotel hotel, HttpPostedFileBase file)
+        {
+            carregaCidades();
+            hotel.cd_cidade = Request["cidade"];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    string arquivo = Path.GetFileName(file.FileName);
+                    string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
+                    file.SaveAs(_path);
+                    hotel.img_hotel = file2;
+
+
+                    // retira cifrão e ponto do valor 
+                    string diaria = hotel.diaria_hotel;
+                    diaria = Regex.Replace(diaria, "[^0-9]", "");
+                    hotel.diaria_hotel = diaria;
+
+
+                    acH.atualizarHotel(hotel);
+                    return RedirectToAction("Hoteis");
+
+                }
+                else
+                {
+                    ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                    return View();
+                }
+            }
 
         //------------------- DETALHES VIAGENS ---------------------
 
         public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
         {
+          
+          
             return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
         }
+   
+
 
         //------------------- DETALHES TRANSPORTES ---------------------
 
@@ -659,11 +696,101 @@ namespace Ecommerce.Controllers
 
         public ActionResult DetalhesClientes(string id, AcoesCliente cliente)
         {
-            return View(cliente.GetDetalhesCliente().Find((smodel => smodel.CPF == id)));
+            return View(cliente.GetDetalhesCliente().Find((smodel => smodel.rg == id)));
+        }
+
+
+        //----------------------- ATUALIZAR FUNCIONARIO --------------------
+
+
+        public ActionResult AtualizaFuncionario(string id)
+        {
+            return View(acF.GetDetalhesFuncionario().Find((func => func.rg == id)));
+        }
+        [HttpPost]
+        public ActionResult AtualizaFuncionario( Funcionario func)
+        {
+            try
+            {
+              
+                ViewBag.nome = func.nome;
+                ViewBag.email = func.senha;
+                ViewBag.tel = func.telefone;
+                ViewBag.senha = func.senha;
+                ViewBag.cargo = func.cargo_func;
+                acF.atualizarFuncionario(func);
+                return RedirectToAction("Funcionarios");
+            }
+            catch
+            {
+                return View();
+            }
+
+           
+        }
+
+
+        //----------------------- ATUALIAR HOTEIS --------------------
+
+        public ActionResult AtualizaHotel(Hotel hotel, HttpPostedFileBase file)
+        {
+            carregaCidades();
+            try
+            {
+                hotel.cd_cidade = Request["cidade"];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    string arquivo = Path.GetFileName(file.FileName);
+                    string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
+                    file.SaveAs(_path);
+                    hotel.img_hotel = file2;
+
+
+                    // retira cifrão e ponto do valor 
+                    string diaria = hotel.diaria_hotel;
+                    diaria = Regex.Replace(diaria, "[^0-9]", "");
+                    hotel.diaria_hotel = diaria;
+
+
+                    acH.atualizarHotel(hotel);
+                    return RedirectToAction("Hoteis");
+
+                }
+                else
+                {
+                    ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                    return View();
+                }
+
+
+            }
+            catch
+            {
+                return View();
+            }
+
+
+        }
+
+        //----------------------- ATUALIAR TRANSPORTES --------------------
+
+
+        public ActionResult AtualizaTransporte(string id)
+        {
+            return View(acT.GetDetalhesTransporte().Find((smodel => smodel.cd_transporte == id)));
         }
 
 
 
+        //----------------------- ATUALIAR VIAGENS --------------------
+
+
+        public ActionResult AtualizaViagem(string id)
+        {
+            return View(acV.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
+        }
 
 
 

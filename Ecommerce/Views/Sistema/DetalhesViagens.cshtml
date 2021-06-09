@@ -9,12 +9,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Detalhes da Viagem</title>
-    <link href="~/Content/Detalhes/DetalhesHotel.css" rel="stylesheet" />
+
+    <link href="~/Content/Detalhes/DetalhesViagens.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="/Sistema/Logout">
+    <a href="/Site/Logout">
 
         <img class="sair" src="~/Imagens/exit.png" />
     </a>
@@ -36,32 +37,44 @@
             <li>Y</li>
         </ul>
 
-        <h3>Hotel</h3>
+        <h3>Viagem</h3>
         <div class="foto-nome">
             <img src=" @Html.DisplayFor(model => model.img_viagem)" />
             <span class="dado">   @Html.DisplayFor(model => model.nome_viagem) </span>
         </div>
         <div class="dados">
-            <h2>Endereço</h2>
+            <h2>Tipo</h2>
             <span class="dado">
-                @Html.DisplayFor(model => model)
+                @Html.DisplayFor(model => model.tipo_transporte)
             </span>
-            <h2>Cidade</h2>
+            <h2>Origem </h2>
             <span class="dado">
-                @Html.DisplayFor(model => model.cidade_hotel)
+                @Html.DisplayFor(model => model.origem)
             </span>
-            <h2>Telefone</h2>
+            <h2>Destino</h2>
             <span class="dado">
-                @Html.DisplayFor(model => model.telefone_hotel)
+                @Html.DisplayFor(model => model.destino)
+            </span>
+            <h2>Data de Partida</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.dt_ida)
+            </span>
+            <h2>Data de Chegada</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.dt_chegada)
+            </span>
+            <h2>Preço</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.vl_total)
             </span>
             <h2>Descrição</h2>
-            <span class="dado">  @Html.DisplayFor(model => model.descricao_hotel)</span>
+            <span class="dado">  @Html.DisplayFor(model => model.descricao)</span>
         </div>
 
 
 
-        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
-        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_hotel })&nbsp; &nbsp;</span>
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarHotel", "Sistema", new { id = Model.cd_viagem })&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_viagem })&nbsp; &nbsp;</span>
 
 
     </div>

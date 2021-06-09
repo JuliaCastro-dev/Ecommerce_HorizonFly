@@ -12,18 +12,32 @@ body{
     overflow-x:hidden;
 }
 header {
-    position:absolute;
+    position: absolute;
     left: 0px;
     top: 0px;
-    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
-    font-family:var(--Poppins);
-    width:100vw;
-    height:4vh;
-    min-height:4vh;
+    background: linear-gradient( 270deg, #0550a2 40.68%, #054b98 94.55%);
+    font-family: var(--Poppins);
+    width: 100vw;
+    height: 4vh;
+    min-height: 4vh;
+}
+a:hover {
+    color: #3694f9;
+    text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
 
-#login-button {
+a {
+    color: #0cb5fb;
+    font-weight: 500;
+    text-shadow: 1px 1px #139cb5;
+    text-decoration: none;
+    background-color: transparent;
+}
+    #login-button {
     display: block;
     position: relative;
     border: none;
@@ -89,17 +103,89 @@ header {
     top: 10%;
 
 }
-.frase {
-    align-items: center;
-    text-transform: capitalize;
-    color: #2E7C25;
-    position: absolute;
-    top: 15%;
-    left: 33%;
-    min-width: 190px;
 
-    font-family: 'Poppins';
+
+/*TEXTO  DESCUBRA O MUNDO */
+
+#frase{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 20vh;
+    font-weight: 600;
+    left: 25vw;
+    position: relative;
 }
+
+    #frase li {
+        list-style: none;
+        letter-spacing: 5px;
+        transition: 1s;
+        font-family: system-ui;
+        color: #17a2b8;
+        text-shadow: 1px -1px 1px #007bff;
+        font-size: 1.8vw;
+        text-transform: uppercase;
+    }
+
+    #frase:hover li {
+        transform: rotate(360deg) translateY(-360px);
+        opacity: 0;
+        filter: blur(20px);
+    }
+
+    #frase li:nth-child(1) {
+        transition-delay: 0;
+    }
+
+    #frase li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    #frase li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+#frase li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+#frase li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+    #frase  li:nth-child(6) {
+        transition-delay: 0.6s;
+    }
+
+    #frase  li:nth-child(7) {
+        transition-delay: 0.7s;
+    }
+
+#frase li:nth-child(8) {
+    transition-delay: 0.8s;
+}
+
+#frase li:nth-child(9) {
+    transition-delay: 0.9s;
+}
+
+#frase li:nth-child(10) {
+    transition-delay: 0.10s;
+}
+
+    #frase li:nth-child(11) {
+        transition-delay: 0.11s;
+    }
+
+    #frase li:nth-child(12) {
+        transition-delay: 0.12s;
+    }
+
+    #frase li:nth-child(13) {
+        transition-delay: 0.13s;
+    }
+
 #aviao{
     position:relative;
     top:10px;
@@ -112,6 +198,7 @@ header {
     left: 7%;
     height: 17vh;
     display:flex;
+    z-index:1;
 }
 .btn-dpw {
     color: #fff;
@@ -142,6 +229,44 @@ header {
     height: 16.5vh;
     background: #254E70;
 }
+.Input {
+  
+    color: #07985a;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    left: 7vw;
+    outline:none;
+    margin: 10px 20px;
+    border-radius: 5px;
+    top: 5.5vh;
+    cursor: pointer;
+}
+
+    .Input[type="submit"] {
+        width: 10vw;
+        border-radius: 15px;
+        opacity: 0.9;
+    }
+
+    .Input::-webkit-input-placeholder {
+        color: #5e60ce;
+        position: relative;
+        left: 1vw;
+    }
+    .Input:hover {
+        box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+      
+      
+    }
+
+    .Input:active {
+        opacity: 1;
+        box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
 .base {
     position: absolute;
     top: 40%;
@@ -193,6 +318,18 @@ header {
     }
 }
 
+/* SESSÃO DE PACOTE PARA FAMILIA*/
+
+.pacotes {
+    position: absolute;
+    top: 65%;
+    font-family: 'Poppins';
+    left: 8%;
+  
+}
+    .pacotes h1 {
+        font-weight: 500;
+    }
 
     /*Medium devices (tablets, 768px and up)*/
     @media (min-width: 768px) {

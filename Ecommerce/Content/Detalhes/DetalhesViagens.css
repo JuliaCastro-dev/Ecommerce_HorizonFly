@@ -119,44 +119,29 @@ h2 {
     top: 1vw;
 }
 /* FOTO*/
-.foto-nome-cargo img {
-    width: 20VW;
+.foto-nome img {
+    width: 30VW;
     position: relative;
-    left: 4vw;
+    left: 2vw;
     top: 2vw;
-    border-radius:50%;
-    object-fit:contain;
 }
 
-.foto-nome-cargo span {
+.foto-nome span {
     position: relative;
-    left: 1VW;
-    top:3vw;
+    left: 5VW;
     font-size: 2VW;
 }
 
-#nome {
-    left: -15vw;
-    top: 5vw;
-}
-#cargo {
-    top: 5vw;
-    left:6vw;
-    font-size:1.5vw;
-    color:#3A7BD5;
-}
-
-.foto-nome-cargo {
+.foto-nome {
     position: relative;
     top: 5VW;
-    display: block;
+    display: flex;
     font-weight: 600;
- 
 }
 /* dados hotel*/
 .dados {
     position: absolute;
-    top: 18vw;
+    top: 16vw;
     left: 35vw;
     width: 60vw;
 }
@@ -168,39 +153,37 @@ h2 {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    letter-spacing:3px;
 }
-
-/*botoes atualizar e excluir*/
+/* Atualizar e excluir*/
 
 .atualizar {
     box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
     border: none;
     font-size: 1.3vw;
     position: absolute;
-    top: 42vw;
+    top: 35vw;
     left: 4vw;
     border-radius: 10px;
     cursor: pointer;
 }
 
 
-.atualizar:hover {
-    opacity: 0.3;
-    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-}
+    .atualizar:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
 
-.atualizar:active {
-    opacity: 1;
-    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-    color: #79e3b6;
-}
+    .atualizar:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
 
-.atualizar a {
-    color: #6f6cde;
-    font-weight: 700;
-    text-decoration: none;
-}
+    .atualizar a {
+        color: #6f6cde;
+        font-weight: 700;
+        text-decoration: none;
+    }
 
 
 .excluir {
@@ -208,7 +191,7 @@ h2 {
     border: none;
     font-size: 1.3vw;
     position: absolute;
-    top: 42vw;
+    top: 35vw;
     left: 17vw;
     border-radius: 10px;
     cursor: pointer;

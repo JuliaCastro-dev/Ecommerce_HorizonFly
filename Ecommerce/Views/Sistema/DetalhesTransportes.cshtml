@@ -1,0 +1,67 @@
+﻿@model Ecommerce.Models.Transporte
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes do Transporte</title>
+    <link href="~/Content/Detalhes/DetalhesTransportes.css" rel="stylesheet" />
+    <link href="~/Content/Detalhes/DetalhesViagens.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="/Site/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Transportes">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+        <h3>Transporte</h3>
+        <div class="foto-nome">
+            <img src=" @Html.DisplayFor(model => model.img_transporte)" />
+            <span class="dado">   @Html.DisplayFor(model => model.nome_transporte) </span>
+        </div>
+        <div class="dados">
+            <h2>Tipo</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.tipo_transporte)
+            </span>
+            <h2>Cidade </h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.cidade_transporte)
+            </span>
+            
+        </div>
+
+
+
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizarHotel", "Sistema", new { id = Model.cd_transporte })&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id = Model.cd_transporte })&nbsp; &nbsp;</span>
+
+
+    </div>
+
+</body>
+</html>
