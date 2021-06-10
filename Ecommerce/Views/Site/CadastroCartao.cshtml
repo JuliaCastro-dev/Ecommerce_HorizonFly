@@ -1,17 +1,76 @@
-﻿
+﻿@model Ecommerce.Models.Cartao
 @{
     Layout = null;
 }
 
+@using System.Web.Optimization
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CadastroCartao</title>
+
+    <title>Cadastro de Cartao</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="~/Content/Cadastros/CadastroCartao.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div> 
-    </div>
+    <h1 class="titulo">Novo cartão</h1>
+    <section class="cadastro">
+
+        <div class="form">
+            @using (Html.BeginForm("CadastroCartao", "Sistema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.EditorFor(model => model.nm_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Dê um Nome ao seu Cartão " } })
+
+                @Html.EditorFor(model => model.nm_impresso, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Impresso " } })
+
+                @Html.EditorFor(model => model.num_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Número do Cartão " } })
+
+                @Html.EditorFor(model => model.validade, new { htmlAttributes = new { @class = "input", @placeholder = "Validade" } })
+
+                @Html.EditorFor(model => model.cvv_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "CVV" } })
+
+                <input class="input" id="button" type="submit" value="Cadastrar" />
+            }
+        </div>
+    </section>
+
+    <section class="credit-card">
+        <div class="card">
+            <div class="face front absolute">
+
+                <img src="~/Imagens/chip.svg" alt="Chip" id="chip" class="absolute" />
+                <img src="~/Imagens/signal.svg" lt="Signal" id="signal" class="absolute" />
+
+
+                <p id="owner" class="absolute">Horizon fly</p>
+            </div>
+            <div class="face back absolute">
+                <div id="graybar" class="absolute"></div>
+                <div id="card-info" class="absolute">
+                    <p id="card-number">1234 5678 9999 0000</p>
+                    <div class="flex">
+                        <p class="flex informations">
+                            <span class="label">MEMBER SINCE</span>
+                            <span>01/01</span>
+                        </p>
+                        <p class="flex informations">
+                            <span class="label">VALID THRU</span>
+                            <span>12/29</span>
+                        </p>
+                        <p class="flex informations">
+                            <span class="label">SECURITY CODE</span>
+                            <span>000</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

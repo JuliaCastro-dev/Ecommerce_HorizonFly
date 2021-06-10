@@ -208,6 +208,7 @@
     <Content Include="Imagens\bag.png" />
     <Content Include="Imagens\ButtonDetalhes.png" />
     <Content Include="Imagens\CARDCREDIT.png" />
+    <Content Include="Imagens\chip.svg" />
     <Content Include="Imagens\clientes.png" />
     <Content Include="Imagens\coqueiro.png" />
     <Content Include="Imagens\exit.png" />
@@ -230,6 +231,7 @@
     <Content Include="Imagens\RioDeJaneiroWallpaper.jpg" />
     <Content Include="Imagens\RJWallpaper.png" />
     <Content Include="Imagens\sign-out-alt.png" />
+    <Content Include="Imagens\signal.svg" />
     <Content Include="Imagens\travel.jpg" />
     <Content Include="Imagens\TURISMO.jpg" />
     <Content Include="Imagens\viagemItaly.jpg" />

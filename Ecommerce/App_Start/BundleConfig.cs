@@ -26,6 +26,10 @@ namespace Ecommerce
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+
+            bundles.Add(new StyleBundle("~/Content/Cadastros/scss").Include(
+                      "~/Content/CadastroCartao.scss"));
+
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
             "~/Scripts/inputmask/jquery.inputmask.js"));
         }

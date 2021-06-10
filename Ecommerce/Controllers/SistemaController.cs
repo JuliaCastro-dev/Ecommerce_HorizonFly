@@ -510,7 +510,7 @@ namespace Ecommerce.Controllers
         public ActionResult EscolhaViagem()
         {
             Session["HotelEscolhido"] = Request["hotel"];
-       
+            Session["ViagemEscolhida"] = Request["viagem"];
 
             carregaViagens();
         
@@ -553,11 +553,14 @@ namespace Ecommerce.Controllers
 
             /* RECEBE VALORES */
 
-            viagem.cd_viagem = frm["viagem"];
+            Session["HotelEscolhido"] = Request["hotel"];
+            Session["ViagemEscolhida"] = Request["viagem"];
             Session["dtChekin"] = frm["dtChekin"];
             Session["dtChekout"] = frm["dtChekout"];
             string cdhotel = Session["HotelEscolhido"].ToString();
-           
+            string cdviagem = Session["ViagemEscolhida"].ToString();
+
+
             if (!ModelState.IsValid)
             {
                 /* ATRIBUI VALORES AO PACOTE */
@@ -571,7 +574,8 @@ namespace Ecommerce.Controllers
 
                 hotel.cd_hotel = cdhotel;
                 pacote.cd_hotel = cdhotel;
-                pacote.cd_viagem = viagem.cd_viagem;
+                pacote.cd_viagem = cdviagem;
+                viagem.cd_viagem = cdviagem;
                 /* PEGA O PREÇO DO HOTEL E VIAGEM */
                 acH.VerificaValor(hotel);
                 acV.VerificaValor(viagem);
@@ -604,6 +608,7 @@ namespace Ecommerce.Controllers
                     else
                     {
                         ViewBag.MessageError = "Para Continuar Adicione uma Imagem";
+                        return View();
                     }
                 }
             }
