@@ -1,0 +1,119 @@
+﻿@model  IEnumerable<Ecommerce.Models.Viagem>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Viagens</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+    <link href="~/Content/Cadastros/EscolhaViagem.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="/Site/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Dashboard">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul class="horizon">
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+        <h3>VIAGENS</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a href="/Sistema/DetalhesViagens/@item.cd_viagem">
+                        @if (@item.img_viagem != null)
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_viagem" data-holder-rendered="true">
+                        }
+                        else
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                        }
+                        <h2>@item.nome_viagem</h2>
+                        <h1>Data de Ida: @item.dt_ida</h1>
+                        <h1>Data de Chegada: @item.dt_chegada</h1>
+
+
+
+                    </a>
+
+                </div>
+            }
+
+
+        </div>
+
+        <div class="form">
+            @using (Html.BeginForm("CadastroPacote", "Sistema"))
+            {
+                @Html.AntiForgeryToken()
+
+                <h1 class="text">Escolha uma Viagem</h1>
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="group">
+
+
+                    @Html.DropDownList("viagem", "viagem")
+                    <div class="group">
+
+                        <input class="input" type="datetime" placeholder="Data de Chekin no Hotel" name="dtChekin" />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+
+                    </div>
+
+                    <div class="group">
+
+                        <input class="input" type="datetime" placeholder="Data de Chekout no Hotel" name="dtChekout" />
+
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+
+                    </div>
+
+
+                    <input type="submit" class="button" value="Prosseguir" />
+                </div>
+
+            }
+        </div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+
+    @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/jQuery-Mask-Plugin-master/dist/jquery.mask.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
+    <script src="~/Scripts/chosen.jquery.js"></script>
+</body>
+</html>

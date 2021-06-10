@@ -131,52 +131,38 @@ namespace Ecommerce.Acoes
                 return false;
         }
 
-
-        public List<Viagem> ListarViagemValor(Viagem viagem )
+        public void VerificaValor( Viagem viagem)
         {
-            List<Viagem> ViList = new List<Viagem>();
-            MySqlCommand cmd = new MySqlCommand("select * from Viagem where cd_viagem = @cd", con.MyConectarBD());
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Viagem where cd_viagem = @cd", con.MyConectarBD());
 
             cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = viagem.cd_viagem;
+          
 
-
-            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
             MySqlDataReader leitor;
 
             leitor = cmd.ExecuteReader();
-            con.MyDesconectarBD();
-
-            sd.Fill(dt);
 
             if (leitor.HasRows)
             {
-
-                foreach (DataRow dr in dt.Rows)
+               
+                while (leitor.Read())
                 {
-                    ViList.Add(
-
-                         new Viagem
-                         {
-                             cd_viagem = Convert.ToString(dr["cd_viagem"]),
-
-                             nome_viagem  = Convert.ToString(dr["nome_viagem"]),
-
-                             vl_total = Convert.ToString(dr["vl_total"])
+                   viagem.cd_viagem = Convert.ToString(leitor["cd_viagem"]);
+                   viagem.nome_viagem = Convert.ToString(leitor["nome_viagem"]);
+                   viagem.vl_total = Convert.ToString(leitor["vl_total"]);
 
 
-                         });
-
-                    valor = Convert.ToString(dr["vl_total"]);
                 }
-                return ViList;
             }
             else
             {
-                valor = null;
-                return ViList;
-            }
+                viagem.cd_viagem = null;
+                viagem.nome_viagem = null;
+                viagem.vl_total = null;
 
+
+            }
 
         }
 

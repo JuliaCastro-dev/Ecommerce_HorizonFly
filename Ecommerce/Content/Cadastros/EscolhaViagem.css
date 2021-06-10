@@ -1,0 +1,287 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.sair {
+    width: 30px;
+    position: absolute;
+    /* align-self: revert; */
+    left: 95%;
+    top: 1vw;
+}
+
+.voltar {
+    width: 30px;
+    position: absolute;
+    left: 2vw;
+    top: 1vw;
+}
+
+/*TEXTO HORIZON FLY */
+
+.horizon {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 6vh;
+    font-weight: 600;
+    left: 40vw;
+    position: relative;
+}
+
+    .horizon li {
+        list-style: none;
+        letter-spacing: 10px;
+        transition: 8s;
+        font-family: 'Cormorant', serif;
+        color: #3A7BD5;
+        font-size: 2vw;
+    }
+
+    .horizon:hover li {
+        transform: rotate(360deg) translateY(-360px);
+        opacity: 0;
+        filter: blur(20px);
+    }
+
+    .horizon li:nth-child(1) {
+        transition-delay: 0;
+    }
+
+    .horizon li:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .horizon li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .horizon li:nth-child(4) {
+        transition-delay: 0.3s;
+    }
+
+    .horizon li:nth-child(5) {
+        transition-delay: 0.4s;
+    }
+
+    .horizon li:nth-child(6) {
+        transition-delay: 0.5s;
+    }
+
+    .horizon li:nth-child(7) {
+        transition-delay: 0.6s;
+    }
+
+    .horizon li:nth-child(8) {
+        transition-delay: 0.7s;
+    }
+
+    .horizon li:nth-child(9) {
+        transition-delay: 0.8s;
+    }
+
+    .horizon li:nth-child(10) {
+        transition-delay: 0.9s;
+    }
+
+/*TEXTO FUNCIONÁRIOS*/
+h3 {
+    position: relative;
+    top: 14vh;
+    left: 5vw;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #3A7BD5;
+    font-size: 2.5vw;
+    font-weight: 600;
+    width: 10vw;
+}
+
+/*BOTAO NOVO FUNCIONARIO*/
+
+.novo a {
+    background-color: transparent;
+    color: #46b517;
+    height: 1.5vw;
+    font-size: 1.5vw;
+    position: relative;
+    font-weight: 400;
+    top: 21vh;
+    left: 79vw;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Cormorant', serif;
+}
+
+    .novo a:hover {
+        text-shadow: 0px 4px 4px rgb(24,235, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: auto;
+    width: 50vw;
+    position: absolute;
+    left: 5vw;
+    top: 14.2vw;
+    min-width: 500PX;
+    text-decoration: none;
+    background-color: #fff;
+    overflow: visible;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card {
+    background-color: #fff;
+    width: 33vw;
+    height: 10vw;
+    margin: 10px 10px;
+    align-content: flex-start;
+    border-radius: 10px;
+    text-decoration: none;
+    min-width: 80PX;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+    .card img {
+        position: fixed;
+        object-fit: cover;
+        position: relative;
+        object-position: center;
+        border-radius: 5%;
+        width: 10vw;
+        height: 10vw;
+    }
+
+
+
+    .card h2 {
+        color: #000000;
+        font-weight: bold;
+        position: relative;
+        left: 11vw;
+        bottom: 7.5vw;
+        font-size: 1.5vw;
+        text-decoration: none;
+    }
+
+
+    .card h1 {
+        color: #000000;
+        font-weight: bold;
+        position: relative;
+        left: 11vw;
+        bottom: 6.5vw;
+        font-size: 1vw;
+        font-style: normal;
+        text-decoration: none;
+    }
+/* barra de rolagem */
+.lista::-webkit-scrollbar {
+    width: 10px;
+    height: 15px;
+}
+
+
+
+.lista::-webkit-scrollbar-thumb {
+    background: rgb(20,100,128);
+    border-radius: 5px;
+    height: 1vw;
+}
+/* FORM*/
+.form {
+    position: absolute;
+    top: 14.2vw;
+    left: 55vw;
+    height: 100%;
+    width: 45vw;
+    background-color: #fff;
+    color: rgb(20,100,128);
+}
+
+
+
+#viagem {
+    width: 10vw;
+    color: #6f6cde;
+    position: relative;
+    font-weight: 600;
+}
+
+#viagem_chosen {
+    width: 174px;
+    color: blue;
+    left: 5vw;
+    font-weight: 700;
+}
+.input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    position: relative;
+    width: 20vw;
+    font-weight: 600;
+    padding: 0;
+    left: 5vw;
+    font-size: 1.5vw;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    color: var(--azul-claro);
+    transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-appearance: none;
+}
+
+    .input:focus {
+        outline: none;
+    }
+
+
+.button:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+}
+
+.button {
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+ left:5vw;
+    border-radius: 10px;
+    top: 9vh;
+    cursor: pointer;
+}

@@ -42,28 +42,21 @@
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome_pacote)</span>
                 </div>
                 <div class="group">
-                    @Html.LabelFor(model => model.dt_chekinHotel)
-                    @Html.EditorFor(model => model.dt_chekinHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Ida", @type = "date", @id = "dataUm" } })
+                    @Html.DisplayFor(model => model.dt_chekinHotel)
+                  
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekinHotel)</span>
                 </div>
 
                 <div class="group">
-                    @Html.LabelFor(model => model.dt_chekoutHotel)
-                    @Html.EditorFor(model => model.dt_chekoutHotel, new { htmlAttributes = new { @class = "input", @placeholder = "Data de Chegada", @type = "date", @id = "dataDois" } })
+                    @Html.DisplayFor(model => model.dt_chekoutHotel)
+                   
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.dt_chekoutHotel)</span>
                 </div>
 
-
-                <div class="group">
-                    @Html.EditorFor(model => model.vl_pacote, new { htmlAttributes = new { @class = "input", @placeholder = "R$ 0,00", @id = "preco" } })
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.vl_pacote)</span>
-                </div>
 
 
                 <div class="group">
@@ -101,13 +94,6 @@
 
                 @Html.DropDownList("tipo", "Tipo de Transporte")
                 <span class="errorMessage"> @Html.ValidationMessageFor(model => model.tipo_transporte)</span>
-
-                @Html.DropDownList("hotel", "Hotel")
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_hotel)</span>
-
-                @Html.DropDownList("viagem", "Viagem")
-                <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_viagem)</span>
-
 
                 @Html.DropDownList("categoria", "Categoria")
                 <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cd_categoria)</span>

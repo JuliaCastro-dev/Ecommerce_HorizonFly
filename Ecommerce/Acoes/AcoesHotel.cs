@@ -72,56 +72,42 @@ namespace Ecommerce.Acoes
         }
 
 
-
-     
-
-        public List<Hotel> ListarHotelValor(Hotel hotel)
+        public void VerificaValor(Hotel hotel)
         {
-            List<Hotel> HotList = new List<Hotel>();
-            MySqlCommand cmd = new MySqlCommand("select * from Hotel where cd_hotel = @cd", con.MyConectarBD());
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Hotel where cd_hotel = @cd", con.MyConectarBD());
 
             cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = hotel.cd_hotel;
-        
 
-            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
+
             MySqlDataReader leitor;
 
             leitor = cmd.ExecuteReader();
-            con.MyDesconectarBD();
-
-            sd.Fill(dt);
 
             if (leitor.HasRows)
             {
-               
-                foreach (DataRow dr in dt.Rows)
+
+                while (leitor.Read())
                 {
-                    HotList.Add(
-
-                         new Hotel
-                         {
-                             cd_hotel = Convert.ToString(dr["cd_hotel"]),
-
-                             nome_hotel = Convert.ToString(dr["nome_hotel"]),
-
-                             diaria_hotel = Convert.ToString(dr["diaria_hotel"])
+                    hotel.cd_hotel= Convert.ToString(leitor["cd_hotel"]);
+                    hotel.nome_hotel = Convert.ToString(leitor["nome_hotel"]);
+                    hotel.diaria_hotel = Convert.ToString(leitor["diaria_hotel"]);
 
 
-                         });
-
-                    valor = Convert.ToString(dr["diaria_hotel"]);
                 }
-                return HotList;
             }
             else
             {
-                valor =null;
-                return HotList;
+               
+                hotel.nome_hotel = null;
+               hotel.diaria_hotel = null;
+
+
             }
 
-
         }
+
+
 
 
 

@@ -478,8 +478,56 @@ namespace Ecommerce.Controllers
 
         //---------------------- CADASTRO DE PACOTES --------------------------------
 
+        // VIEW ESCOLHA DE HOTEL 
+        public ActionResult EscolhaHotel(Hotel hotel)
+        {
+            carregaHoteis();
+            return View(acH.ListarHotel());
+        }
+        [HttpPost]
+        public ActionResult EscolhaHotel( )
+        {
+            carregaHoteis();
+            
+           
+            if( Session["HotelEscolhido"] == null)
+            {
+                return View();
+            }
+
+
+           return RedirectToAction("EscolhaViagem");
+          
+        }
+
+
+        public ActionResult EscolhaViagem(Viagem viagem)
+        {
+            carregaViagens();
+            return View(acV.ListarViagem());
+        }
+        [HttpPost]
+        public ActionResult EscolhaViagem()
+        {
+            Session["HotelEscolhido"] = Request["hotel"];
+       
+
+            carregaViagens();
+        
+
+            if (Request["viagem"] != null)
+            {
+                
+               
+                return RedirectToAction("CadastroPacote");
+            }
+            return View(acV.ListarViagem());
+        }
+
+
         public ActionResult CadastroPacote()
         {
+
             carregaCidades();
             carregaCidadesOrigem();
             carregaHoteis();
@@ -492,43 +540,46 @@ namespace Ecommerce.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastroPacote(Pacote pacote, HttpPostedFileBase file, Hotel hotel, Viagem viagem)
+        public ActionResult CadastroPacote(Pacote pacote, HttpPostedFileBase file, Hotel hotel, FormCollection frm)
         {
+            Viagem viagem = new Viagem();
+            /* CARREGA LISTAS  */
             carregaCidades();
-            carregaHoteis();
             carregaTiposTransporte();
             carregaTransportes();
-            carregaViagens();
-
             carregaCategoria();
             carregaCidadesOrigem();
 
 
+            /* RECEBE VALORES */
 
+            viagem.cd_viagem = frm["viagem"];
+            Session["dtChekin"] = frm["dtChekin"];
+            Session["dtChekout"] = frm["dtChekout"];
+            string cdhotel = Session["HotelEscolhido"].ToString();
+           
             if (!ModelState.IsValid)
             {
-
-
+                /* ATRIBUI VALORES AO PACOTE */
                 pacote.cd_categoria = Request["categoria"];
                 pacote.cd_cidDestino = Request["cidade"];
                 pacote.cd_cidOrigem = Request["cidade"];
-                string cdhotel = Request["hotel"];
-                string cdviagem = Request["viagem"];
+           
+                pacote.dt_chekinHotel = frm["dtChekin"];
+                pacote.dt_chekoutHotel = frm["dtChekout"];
                 pacote.tipo_transporte = Request["tipo"];
 
                 hotel.cd_hotel = cdhotel;
                 pacote.cd_hotel = cdhotel;
+                pacote.cd_viagem = viagem.cd_viagem;
+                /* PEGA O PREÇO DO HOTEL E VIAGEM */
+                acH.VerificaValor(hotel);
+                acV.VerificaValor(viagem);
 
-                viagem.cd_viagem = cdviagem;
-                pacote.cd_viagem = cdviagem;
-
-                acH.ListarHotelValor(hotel);
-                acV.ListarViagemValor(viagem);
-
-                if (AcoesHotel.valor != null && AcoesViagem.valor != null)
+                if (hotel.cd_hotel != null && viagem.cd_viagem != null)
                 {
-                    ViewBag.vlHotel = AcoesHotel.valor;
-                    ViewBag.vlviagem = AcoesViagem.valor;
+                    ViewBag.vlHotel = hotel.diaria_hotel;
+                    ViewBag.vlviagem = viagem.vl_total;
                     
 
 

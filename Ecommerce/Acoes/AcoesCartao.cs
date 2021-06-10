@@ -13,6 +13,26 @@ namespace Ecommerce.Acoes
 
         conexao con = new conexao();
 
+        public void inserirCartao (Cartao card)
+
+        {
+
+            MySqlCommand cmd = new MySqlCommand("insert into Cartao(CPF, nome_cartao , nome_impresso, numero_cartao, cvv_cartao , validade_cartao)values(@cpf, @nome, @nmImpresso , @num, @cvv, @val)", con.MyConectarBD());
+
+
+            cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = card.nm_cartao;
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = card.cpf;
+            cmd.Parameters.Add("@nmImpresso", MySqlDbType.VarChar).Value = card.nm_impresso;
+            cmd.Parameters.Add("@num", MySqlDbType.VarChar).Value = card.num_cartao;
+            cmd.Parameters.Add("@cvv", MySqlDbType.VarChar).Value = card.cvv_cartao;
+            cmd.Parameters.Add("@val", MySqlDbType.VarChar).Value = card.validade;
+
+
+            cmd.ExecuteNonQuery();
+
+            con.MyDesconectarBD();
+
+        }
         public List<Cartao> ListarCartao()
         {
             List<Cartao> CarList = new List<Cartao>();

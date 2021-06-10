@@ -13,6 +13,7 @@ namespace Ecommerce.Controllers
     public class SiteController : Controller
     {
         AcoesCliente acC = new AcoesCliente();
+        AcoesCartao acCard = new AcoesCartao();
         AcoesLogin acL = new AcoesLogin();
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesPacote acP = new AcoesPacote();
@@ -246,6 +247,29 @@ namespace Ecommerce.Controllers
 
         }
 
+        // --------------------- CADASTRO CARTÃO CLIENTE ---------------------
+        public ActionResult CadastroCartao()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CadastroCartao(Cartao card)
+        {
+            card.cpf = Session["cpf"].ToString();
+            if (ModelState.IsValid)
+            {
+                acCard.inserirCartao(card);
+            }
+            else
+            {
+                ViewBag.erro = "Preencha Todos Os dados";
+                return View();
+            }
+                
+            return View();
+        }
+
+        // ------------------ ALTERA SENHA ( FUNCIONÁRIO E CLIENTE ) -----------------------
         public ActionResult AlterarSenha()
         {
             return View();

@@ -164,11 +164,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cadastros\CadastroCartao.css" />
     <Content Include="Content\Cadastros\CadastroFuncionario.css" />
     <Content Include="Content\Cadastros\CadastroHoteis.css" />
     <Content Include="Content\Cadastros\CadastroPacote.css" />
     <Content Include="Content\Cadastros\CadastroTransporte.css" />
     <Content Include="Content\Cadastros\CadastroViagem.css" />
+    <Content Include="Content\Cadastros\EscolhaHotel.css" />
+    <Content Include="Content\Cadastros\EscolhaViagem.css" />
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
@@ -335,6 +338,9 @@
     <Content Include="Views\Sistema\DetalhesClientes.cshtml" />
     <Content Include="Views\Sistema\AtualizaFuncionario.cshtml" />
     <Content Include="Views\Sistema\AtualizaHotel.cshtml" />
+    <Content Include="Views\Sistema\EscolhaHotel.cshtml" />
+    <Content Include="Views\Sistema\EscolhaViagem.cshtml" />
+    <Content Include="Views\Site\CadastroCartao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
