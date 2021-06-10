@@ -239,3 +239,22 @@ a {
     color: blue;
     font-weight: 700;
 }
+
+.button:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+}
+
+.button {
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+    color: #6f6cde;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    right: 16vw;
+    border-radius: 10px;
+    top: 9vh;
+    cursor: pointer;
+}

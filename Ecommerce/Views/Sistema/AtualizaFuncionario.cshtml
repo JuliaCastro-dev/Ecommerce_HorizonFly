@@ -38,7 +38,7 @@
                 <span class="comrfimacao"> @ViewBag.sucesso</span>
 
                 <div class="group">
-                    @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Completo" } })
+                    @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Completo", @Value = ViewBag.nome } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.nome)</span>
@@ -47,7 +47,7 @@
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.cargo_func, new { htmlAttributes = new { @class = "input"} })
+                    @Html.EditorFor(model => model.cargo_func, new { htmlAttributes = new { @class = "input", @Value = ViewBag.cargo } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.cargo_func)</span>
@@ -56,37 +56,30 @@
 
 
 
+
+
                 <div class="group">
 
-                    @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "input", @placeholder = "RG" } })
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input", @placeholder = "Seu melhor E-mail", @Value = ViewBag.email } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.rg)</span>
+                  
 
                 </div>
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "input", @placeholder = "Seu melhor E-mail" } })
+                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "input", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone", @Value = ViewBag.tel } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <span class="errorMessage"> @Html.ValidationMessageFor(model => model.email)</span>
-
-                </div>
-
-                <div class="group">
-
-                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "input", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <span class="errorMessage">  @Html.ValidationMessageFor(model => model.telefone)</span>
+                  
 
 
                 </div>
 
                 <div class="group">
 
-                    @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "input", @placeholder = "Senha", @type = "password" } })
+                    @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "input", @placeholder = "Senha", @type = "password", @Value = ViewBag.senha } })
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <span class="errorMessage">@Html.ValidationMessageFor(m => m.senha)</span>
@@ -99,10 +92,12 @@
                     <span class="errorMessage"> @Html.ValidationMessageFor(model => model.img)</span>
 
                 </div>
-
+                @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "input", @Value = ViewBag.rg, @Type = "hidden" } })
+                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "input", @Value = ViewBag.cpf, @Type = "hidden" } })
+                @Html.EditorFor(model => model.tipo, new { htmlAttributes = new { @class = "input", @Value = ViewBag.tipo, @Type = "hidden" } })
                 <div class="group">
 
-                    <input type="submit" value="save" class="button" />
+                    <input type="submit" value="Salvar" class="button" />
 
                 </div>
             </div>

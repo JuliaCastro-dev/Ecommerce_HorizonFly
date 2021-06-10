@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+    
 }
 
 <!DOCTYPE html>
@@ -41,28 +42,36 @@
 
             @foreach (var item in Model)
             {
-                <div class="card">
-                    <a href="/Sistema/DetalhesFuncionario/@item.rg">
-                        @if (@item.img != null)
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
-                        }
-                        else
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                        }
-                        <h2>@item.nome</h2>
-                        <h1>@item.cargo_func</h1>
+
+              
+                var id = @item.rg;
+
+                
+                    <div class="card">
+                        <a href="/Sistema/DetalhesFuncionario/@item.rg">
+                            @if (@item.img != null)
+                            {
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
+                            }
+                            else
+                            {
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                            }
+                            <h2>@item.nome</h2>
+                            <h1>@item.cargo_func</h1>
 
 
 
-                    </a>
+                        </a>
+                        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaFuncionario", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
 
-                </div>
-            }
+                        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiFuncionario", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
+
+                    </div>
+                }
 
 
-        </div>
+            </div>
     </div>
 </body>
 </html>

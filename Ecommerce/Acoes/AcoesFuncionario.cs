@@ -167,14 +167,14 @@ namespace Ecommerce.Acoes
             return FuncList;
         }
 
-        public bool atualizarFuncionario(Funcionario func)
+        public void atualizarFuncionario(Funcionario func)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Funcionario set nome=@nome,rg=@rg,@cargo=cargo,email=@email,tel=@tel,senha=@senha, img=@img  where CPF=@funcionario,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Funcionario set nome = @nome, rg = @rg, cargo = @cargo, email = @email,tel = @tel,senha = @senha, tipo = @tipo img=@img  where CPF = @funcionario", con.MyConectarBD());
 
 
 
-            cmd.Parameters.Add("@cliente", MySqlDbType.VarChar).Value = func.CPF;
+            cmd.Parameters.Add("@funcionario", MySqlDbType.VarChar).Value = func.CPF;
 
             cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = func.nome;
 
@@ -190,14 +190,13 @@ namespace Ecommerce.Acoes
 
             cmd.Parameters.Add("@img", MySqlDbType.VarChar).Value = func.img;
 
+            cmd.Parameters.Add("@tipo", MySqlDbType.VarChar).Value = func.tipo;
 
-            int i = cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
+        
             con.MyDesconectarBD();
 
-            if (i >= 1)
-                return true;
-            else
-                return false;
+            
 
         }
 
@@ -214,6 +213,51 @@ namespace Ecommerce.Acoes
                 return true;
             else
                 return false;
+        }
+
+        public void PegaDados(Funcionario func)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Funcionario where rg = @rg", con.MyConectarBD());
+
+            cmd.Parameters.Add("@rg", MySqlDbType.VarChar).Value = func.rg;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                    func.rg = Convert.ToString(leitor["rg"]);
+                    func.CPF = Convert.ToString(leitor["CPF"]);
+                    func.nome = Convert.ToString(leitor["nome"]);
+                    func.cargo_func = Convert.ToString(leitor["cargo"]);
+                    func.telefone = Convert.ToString(leitor["telefone"]);
+                    func.email = Convert.ToString(leitor["email"]);
+                    func.img = Convert.ToString(leitor["img"]);
+                    func.tipo = Convert.ToString(leitor["tipo"]);
+
+                }
+            }
+            else
+            {
+                func.rg = null;
+                func.CPF = null;
+                func.nome = null;
+                func.cargo_func = null;
+                func.telefone = null;
+                func.email = null;
+                func.tipo = null;
+
+                func.img = null;
+
+
+            }
+
         }
 
 

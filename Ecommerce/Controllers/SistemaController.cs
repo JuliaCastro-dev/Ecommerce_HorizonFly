@@ -485,19 +485,19 @@ namespace Ecommerce.Controllers
             return View(acH.ListarHotel());
         }
         [HttpPost]
-        public ActionResult EscolhaHotel( )
+        public ActionResult EscolhaHotel()
         {
             carregaHoteis();
-            
-           
-            if( Session["HotelEscolhido"] == null)
+
+
+            if (Session["HotelEscolhido"] == null)
             {
                 return View();
             }
 
 
-           return RedirectToAction("EscolhaViagem");
-          
+            return RedirectToAction("EscolhaViagem");
+
         }
 
 
@@ -510,18 +510,25 @@ namespace Ecommerce.Controllers
         public ActionResult EscolhaViagem()
         {
             Session["HotelEscolhido"] = Request["hotel"];
-            Session["ViagemEscolhida"] = Request["viagem"];
+
 
             carregaViagens();
-        
+
 
             if (Request["viagem"] != null)
             {
-                
-               
-                return RedirectToAction("CadastroPacote");
+
+
+                return RedirectToAction("PegaDados");
             }
             return View(acV.ListarViagem());
+        }
+
+
+        public ActionResult PegaDados(FormCollection frm)
+        {
+            Session["ViagemEscolhida"] = frm["viagem"];
+            return RedirectToAction("CadastroPacote");
         }
 
 
@@ -553,8 +560,7 @@ namespace Ecommerce.Controllers
 
             /* RECEBE VALORES */
 
-            Session["HotelEscolhido"] = Request["hotel"];
-            Session["ViagemEscolhida"] = Request["viagem"];
+
             Session["dtChekin"] = frm["dtChekin"];
             Session["dtChekout"] = frm["dtChekout"];
             string cdhotel = Session["HotelEscolhido"].ToString();
@@ -567,7 +573,7 @@ namespace Ecommerce.Controllers
                 pacote.cd_categoria = Request["categoria"];
                 pacote.cd_cidDestino = Request["cidade"];
                 pacote.cd_cidOrigem = Request["cidade"];
-           
+
                 pacote.dt_chekinHotel = frm["dtChekin"];
                 pacote.dt_chekoutHotel = frm["dtChekout"];
                 pacote.tipo_transporte = Request["tipo"];
@@ -584,7 +590,7 @@ namespace Ecommerce.Controllers
                 {
                     ViewBag.vlHotel = hotel.diaria_hotel;
                     ViewBag.vlviagem = viagem.vl_total;
-                    
+
 
 
                     if (file != null && file.ContentLength > 0)
@@ -689,7 +695,7 @@ namespace Ecommerce.Controllers
         {
             return View(func.GetDetalhesFuncionario().Find((smodel => smodel.rg == id)));
         }
-       
+
 
         //------------------- DETALHES HOTEIS ---------------------
         public ActionResult DetalhesHoteis(string id, AcoesHotel hotel)
@@ -703,41 +709,41 @@ namespace Ecommerce.Controllers
             carregaCidades();
             hotel.cd_cidade = Request["cidade"];
 
-                if (file != null && file.ContentLength > 0)
-                {
-                    string arquivo = Path.GetFileName(file.FileName);
-                    string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
-                    file.SaveAs(_path);
-                    hotel.img_hotel = file2;
+            if (file != null && file.ContentLength > 0)
+            {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
+                file.SaveAs(_path);
+                hotel.img_hotel = file2;
 
 
-                    // retira cifrão e ponto do valor 
-                    string diaria = hotel.diaria_hotel;
-                    diaria = Regex.Replace(diaria, "[^0-9]", "");
-                    hotel.diaria_hotel = diaria;
+                // retira cifrão e ponto do valor 
+                string diaria = hotel.diaria_hotel;
+                diaria = Regex.Replace(diaria, "[^0-9]", "");
+                hotel.diaria_hotel = diaria;
 
 
-                    acH.atualizarHotel(hotel);
-                    return RedirectToAction("Hoteis");
+                acH.atualizarHotel(hotel);
+                return RedirectToAction("Hoteis");
 
-                }
-                else
-                {
-                    ViewBag.erro = "Para Continuar Adicione uma Imagem";
-                    return View();
-                }
             }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
+        }
 
         //------------------- DETALHES VIAGENS ---------------------
 
         public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
         {
-          
-          
+
+
             return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
         }
-   
+
 
 
         //------------------- DETALHES TRANSPORTES ---------------------
@@ -759,30 +765,63 @@ namespace Ecommerce.Controllers
         //----------------------- ATUALIZAR FUNCIONARIO --------------------
 
 
-        public ActionResult AtualizaFuncionario(string id)
+        public ActionResult AtualizaFuncionario(string id, Funcionario func)
         {
-            return View(acF.GetDetalhesFuncionario().Find((func => func.rg == id)));
-        }
-        [HttpPost]
-        public ActionResult AtualizaFuncionario( Funcionario func)
-        {
-            try
+
+            if (id != null)
             {
-              
+                Session["rg"] = id;
+                func.rg = id;
+                acF.PegaDados(func);
+
                 ViewBag.nome = func.nome;
-                ViewBag.email = func.senha;
+                ViewBag.email = func.email;
                 ViewBag.tel = func.telefone;
+                ViewBag.cpf = func.CPF;
+                ViewBag.rg = func.rg;
+                ViewBag.tipo = func.tipo;
+
                 ViewBag.senha = func.senha;
                 ViewBag.cargo = func.cargo_func;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Funcionarios");
+            }
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizaFuncionario(Funcionario func, HttpPostedFileBase file, string id)
+        {
+
+            try
+            {
+
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensFuncionario"), arquivo);
+                file.SaveAs(_path);
+                func.img = file2;
+                //func.rg = Session["rg"].ToString();
+                func.rg = id;
+
+
                 acF.atualizarFuncionario(func);
                 return RedirectToAction("Funcionarios");
+
+
             }
             catch
             {
                 return View();
             }
 
-           
+
+
+
+
         }
 
 
@@ -848,6 +887,25 @@ namespace Ecommerce.Controllers
             return View(acV.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
         }
 
+
+
+        //-------------------EXCLUIR FUNCIONARIO ------------------------
+        public ActionResult ExcluirFuncionario(int id)
+        {
+            try
+            {
+
+                if (acF.excluirFuncionario(id))
+                {
+                    ViewBag.AlertMsg = "Funcionário excluído com sucesso";
+                }
+                return RedirectToAction("Funcionarios");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
 
     }
