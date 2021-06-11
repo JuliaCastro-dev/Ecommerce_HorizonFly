@@ -170,7 +170,7 @@ namespace Ecommerce.Acoes
         public void atualizarFuncionario(Funcionario func)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Funcionario set nome = @nome, rg = @rg, cargo = @cargo, email = @email,tel = @tel,senha = @senha, tipo = @tipo img=@img  where CPF = @funcionario", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Funcionario set nome = @nome, rg = @rg, cargo = @cargo, email = @email, telefone = @tel,senha = @senha, tipo = @tipo, img = @img where CPF = @funcionario", con.MyConectarBD());
 
 
 

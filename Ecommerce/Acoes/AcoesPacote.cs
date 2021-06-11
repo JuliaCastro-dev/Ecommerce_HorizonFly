@@ -15,15 +15,15 @@ namespace Ecommerce.Acoes
         public void inserirPacote(Pacote pacote)
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Pacote(cd_pacote, cd_viagem, cd_hotel, cd_cidOrigem, cd_cidDestino, nm_pacote, tipo_trasnporte , descricao_pacote, dtChekin_hotel, dtChekout_hotel, img_pacote, vl_pacote)" +
-                "values(@pac, @Viag, @hot, @cidO, @cidD, @nmPac , @tpTrans, @desc, @dtChekin, @dtChekout, @img, @valP )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Pacote(cd_pacote, cd_viagem, cd_hotel, cd_cidOrigem, cd_cidDestino, nome_pacote, cd_tipotransporte , descricao_pacote, dtChekin_hotel, dtChekout_hotel, img_pacote, vl_pacote)" +
+                "values(@pac, @Viag, @hot, @cidO, @cidD, @nm_pacote , @tpTrans, @desc, @dtChekin, @dtChekout, @img, @valP )", con.MyConectarBD());
 
             cmd.Parameters.Add("@pac", MySqlDbType.VarChar).Value = pacote.cd_pacote;
             cmd.Parameters.Add("@Viag", MySqlDbType.VarChar).Value = pacote.cd_viagem;
             cmd.Parameters.Add("@hot", MySqlDbType.VarChar).Value = pacote.cd_hotel;
             cmd.Parameters.Add("@cidO", MySqlDbType.VarChar).Value = pacote.cd_cidOrigem;
             cmd.Parameters.Add("@cidD", MySqlDbType.VarChar).Value = pacote.cd_cidDestino;
-            cmd.Parameters.Add("@nmPac", MySqlDbType.VarChar).Value = pacote.nome_pacote;
+            cmd.Parameters.Add("@nm_pacote", MySqlDbType.VarChar).Value = pacote.nome_pacote;
             cmd.Parameters.Add("@tpTrans", MySqlDbType.VarChar).Value = pacote.tipo_transporte;
             cmd.Parameters.Add("@desc", MySqlDbType.VarChar).Value = pacote.descricao_pacote;
             cmd.Parameters.Add("@dtChekin", MySqlDbType.VarChar).Value = pacote.dt_chekinHotel;
@@ -61,10 +61,10 @@ namespace Ecommerce.Acoes
                          cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                         dt_chekinHotel = Convert.ToString(dr["dt_chekinHotel"]),
-                         dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
+                         dt_chekinHotel = Convert.ToString(dr["dtChekin_Hotel"]),
+                         dt_chekoutHotel = Convert.ToString(dr["dtChekout_Hotel"]),
                          descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
-                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                         tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
                          vl_pacote = Convert.ToString(dr["vl_pacote"]),
                          img_pacote = Convert.ToString(dr["img_pacote"])
 

@@ -1,7 +1,8 @@
-﻿
+﻿@model IEnumerable<Ecommerce.Models.Pacote>
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 
@@ -9,8 +10,64 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Pacotes</title>
+
+
+    <link href="~/Content/Listas/Pacotes.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-   
+
+    <a href="/Site/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Dashboard">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+        <span class="novo"> &nbsp;&nbsp;@Html.ActionLink(" Cadastrar Novo ", "EscolhaHotel", "Sistema")&nbsp; &nbsp;</span>
+
+        <h3>Pacote</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a href="/Sistema/DetalhesHoteis/@item.cd_pacote">
+                        @if (@item.img_pacote != null)
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_pacote" data-holder-rendered="true">
+                        }
+                        else
+                        {
+                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                        }
+                        <h2>@item.nome_pacote</h2>
+                       
+
+                    </a>
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+
 </body>
 </html>

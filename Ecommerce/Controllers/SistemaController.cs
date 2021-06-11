@@ -528,6 +528,8 @@ namespace Ecommerce.Controllers
         public ActionResult PegaDados(FormCollection frm)
         {
             Session["ViagemEscolhida"] = frm["viagem"];
+            Session["dtChekin"] = Convert.ToDateTime(frm["dtChekin"]).ToString("yyyy/MM/dd"); 
+            Session["dtChekout"] = Convert.ToDateTime(frm["dtChekout"]).ToString("yyyy/MM/dd");
             return RedirectToAction("CadastroPacote");
         }
 
@@ -561,8 +563,7 @@ namespace Ecommerce.Controllers
             /* RECEBE VALORES */
 
 
-            Session["dtChekin"] = frm["dtChekin"];
-            Session["dtChekout"] = frm["dtChekout"];
+          
             string cdhotel = Session["HotelEscolhido"].ToString();
             string cdviagem = Session["ViagemEscolhida"].ToString();
 
@@ -573,11 +574,11 @@ namespace Ecommerce.Controllers
                 pacote.cd_categoria = Request["categoria"];
                 pacote.cd_cidDestino = Request["cidade"];
                 pacote.cd_cidOrigem = Request["cidade"];
-
-                pacote.dt_chekinHotel = frm["dtChekin"];
-                pacote.dt_chekoutHotel = frm["dtChekout"];
+                pacote.tipo_transporte = Request["tipotransporte"];
+                pacote.dt_chekinHotel = Session["dtChekin"].ToString();
+                pacote.dt_chekoutHotel = Session["dtChekout"].ToString();
                 pacote.tipo_transporte = Request["tipo"];
-
+                
                 hotel.cd_hotel = cdhotel;
                 pacote.cd_hotel = cdhotel;
                 pacote.cd_viagem = cdviagem;
@@ -586,11 +587,21 @@ namespace Ecommerce.Controllers
                 acH.VerificaValor(hotel);
                 acV.VerificaValor(viagem);
 
+                /* CONTAGEM DOS DIAS */
+                string dtChekin = frm["dtChekin"];
+                string dtChekout = frm["dtChekout"];
+
+                int chekin = Convert.ToInt16(dtChekin);
+                int chekout = Convert.ToInt16(dtChekout);
+                int dias = chekin - chekout / 24 * 3600 * 1000;
+
+                int vl_TotalHotel = (dias * (Convert.ToInt32(hotel.diaria_hotel)));
+                int valorTotal = vl_TotalHotel + Convert.ToInt32(viagem.vl_total);
+
+                pacote.vl_pacote = valorTotal.ToString();
                 if (hotel.cd_hotel != null && viagem.cd_viagem != null)
                 {
-                    ViewBag.vlHotel = hotel.diaria_hotel;
-                    ViewBag.vlviagem = viagem.vl_total;
-
+                  
 
 
                     if (file != null && file.ContentLength > 0)
@@ -796,8 +807,7 @@ namespace Ecommerce.Controllers
         public ActionResult AtualizaFuncionario(Funcionario func, HttpPostedFileBase file, string id)
         {
 
-            try
-            {
+           
 
                 string arquivo = Path.GetFileName(file.FileName);
                 string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
@@ -810,18 +820,6 @@ namespace Ecommerce.Controllers
 
                 acF.atualizarFuncionario(func);
                 return RedirectToAction("Funcionarios");
-
-
-            }
-            catch
-            {
-                return View();
-            }
-
-
-
-
-
         }
 
 

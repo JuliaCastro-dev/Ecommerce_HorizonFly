@@ -185,6 +185,7 @@
     <Content Include="Content\HotelPaginaInter.css" />
     <Content Include="Content\Cadastros\cadCli.css" />
     <Content Include="Content\Listas\Funcionarios.css" />
+    <Content Include="Content\Listas\Pacotes.css" />
     <Content Include="Content\Listas\Transportes.css" />
     <Content Include="Content\Listas\Viagens.css" />
     <Content Include="Content\Site\Carrinho.css" />
