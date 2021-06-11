@@ -187,6 +187,7 @@
     <Content Include="Content\Listas\Funcionarios.css" />
     <Content Include="Content\Listas\Transportes.css" />
     <Content Include="Content\Listas\Viagens.css" />
+    <Content Include="Content\Site\Carrinho.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
     <Content Include="Content\Site\Perfil.css" />
@@ -206,11 +207,13 @@
     <Content Include="ImagensTransporte\VillasDoTrancoso.jpg" />
     <Content Include="Imagens\aviao.png" />
     <Content Include="Imagens\bag.png" />
+    <Content Include="Imagens\Berlin-Germany.png" />
     <Content Include="Imagens\ButtonDetalhes.png" />
     <Content Include="Imagens\CARDCREDIT.png" />
     <Content Include="Imagens\chip.svg" />
     <Content Include="Imagens\clientes.png" />
     <Content Include="Imagens\coqueiro.png" />
+    <Content Include="Imagens\DiaNamorados.jpeg" />
     <Content Include="Imagens\exit.png" />
     <Content Include="Imagens\FUNCIONARIO.jpg" />
     <Content Include="Imagens\FuncionarioTerno.jpg" />
@@ -222,9 +225,12 @@
     <Content Include="Imagens\image-not-found.jpg" />
     <Content Include="Imagens\ImgLogin.jpg" />
     <Content Include="Imagens\LogoHorizon.png" />
+    <Content Include="Imagens\London-England.png" />
     <Content Include="Imagens\marBonito.png" />
     <Content Include="Imagens\navio1.jpg" />
+    <Content Include="Imagens\New-York-USA.png" />
     <Content Include="Imagens\Nota.png" />
+    <Content Include="Imagens\Paris-France.png" />
     <Content Include="Imagens\password.png" />
     <Content Include="Imagens\posterChance.jpeg" />
     <Content Include="Imagens\ResumoPng.png" />
@@ -343,6 +349,7 @@
     <Content Include="Views\Sistema\EscolhaHotel.cshtml" />
     <Content Include="Views\Sistema\EscolhaViagem.cshtml" />
     <Content Include="Views\Site\CadastroCartao.cshtml" />
+    <Content Include="Views\Site\Carrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

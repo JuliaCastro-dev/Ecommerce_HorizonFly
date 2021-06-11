@@ -265,7 +265,7 @@ namespace Ecommerce.Controllers
                 ViewBag.erro = "Preencha Todos Os dados";
                 return View();
             }
-                
+
             return View();
         }
 
@@ -322,6 +322,13 @@ namespace Ecommerce.Controllers
         }
 
 
+        // ----------------- CARRINHO ------------------------
 
+        public ActionResult Carrinho( )
+        {
+
+
+            return View();
+        }
     }
 }
