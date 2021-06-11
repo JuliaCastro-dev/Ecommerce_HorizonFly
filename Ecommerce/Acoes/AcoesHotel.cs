@@ -114,10 +114,10 @@ namespace Ecommerce.Acoes
         public bool atualizarHotel(Hotel hot)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Hotel set cd_cidade=@cd_cidade,nome_hotel=@nome_hotel, descricao_hotel=@descricao_hotel,telefone_hotel=@telefone_hotel,endereco_hotel=@endereco_hotel,diaria_hotel=@diaria_hotel,img_hotel=@img_hotel  where cd_hotel=@hotel,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Hotel set cd_cidade = @cd_cidade ,nome_hotel = @nome_hotel, descricao_hotel = @descricao_hotel, telefone_hotel = @telefone_hotel, endereco_hotel = @endereco_hotel, diaria_hotel= @diaria_hotel,img_hotel=@img_hotel  where cd_hotel=@hotel", con.MyConectarBD());
 
 
-            cmd.Parameters.Add("@cd_hotel", MySqlDbType.VarChar).Value = hot.cd_hotel;
+            cmd.Parameters.Add("@hotel", MySqlDbType.VarChar).Value = hot.cd_hotel;
             cmd.Parameters.Add("@cd_cidade", MySqlDbType.VarChar).Value = hot.cd_cidade;
 
             cmd.Parameters.Add("@nome_hotel", MySqlDbType.VarChar).Value = hot.nome_hotel;
@@ -214,6 +214,49 @@ namespace Ecommerce.Acoes
             }
             return Hotellist;
         }
+
+
+        public void PegaDados(Hotel hotel)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Hotel where cd_hotel = @cd", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = hotel.cd_hotel;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                    hotel.cd_hotel = Convert.ToString(leitor["cd_hotel"]);
+                    hotel.nome_hotel = Convert.ToString(leitor["nome_hotel"]);
+                    hotel.telefone_hotel = Convert.ToString(leitor["telefone_hotel"]);
+                    hotel.endereco_hotel = Convert.ToString(leitor["endereco_hotel"]);
+                    hotel.descricao_hotel = Convert.ToString(leitor["descricao_hotel"]);
+                    hotel.diaria_hotel = Convert.ToString(leitor["diaria_hotel"]);
+                    hotel.img_hotel = Convert.ToString(leitor["img_hotel"]);
+
+                }
+            }
+            else
+            {
+                hotel.nome_hotel = null;
+                hotel.telefone_hotel = null;
+                hotel.endereco_hotel = null;
+                hotel.descricao_hotel = null;
+                hotel.diaria_hotel = null;
+                hotel.img_hotel = null;
+
+            }
+
+        }
+
+
 
     }
 }

@@ -63,9 +63,9 @@ namespace Ecommerce.Acoes
         public bool atualizarTransporte(Transporte trans)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Transporte set cidade_transporte=@cidade_transporte,nome_transporte=@nome_transporte,tipo_transporte=@tipo_transporte,img_transporte=@img_transporte where cd_transporte=@transporte,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Transporte set cidade_transporte = @cidade_transporte, nome_transporte = @nome_transporte, cd_tipotransporte = @tipo_transporte, img_transporte = @img_transporte where cd_transporte = @transporte", con.MyConectarBD());
 
-
+            cmd.Parameters.Add("@transporte", MySqlDbType.VarChar).Value = trans.cd_transporte;
 
             cmd.Parameters.Add("@cidade_transporte", MySqlDbType.VarChar).Value = trans.cidade_transporte;
 
@@ -74,8 +74,6 @@ namespace Ecommerce.Acoes
             cmd.Parameters.Add("@tipo_transporte", MySqlDbType.VarChar).Value = trans.tipo_transporte;
 
             cmd.Parameters.Add("@img_transporte", MySqlDbType.VarChar).Value = trans.img_transporte;
-
-
 
 
             int i = cmd.ExecuteNonQuery();
@@ -132,6 +130,45 @@ namespace Ecommerce.Acoes
             }
             return Transportelist;
         }
+
+
+        public void PegaDados(Transporte trans)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Transporte where cd_transporte  = @cd", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = trans.cd_transporte;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                    trans.cd_transporte = Convert.ToString(leitor["cd_transporte"]);
+                    trans.nome_transporte = Convert.ToString(leitor["nome_transporte"]);
+                    trans.tipo_transporte = Convert.ToString(leitor["tipo_transporte"]);
+                    trans.cidade_transporte = Convert.ToString(leitor["cidade_transporte"]);
+                    trans.img_transporte = Convert.ToString(leitor["img_transporte"]);
+                  
+
+                }
+            }
+            else
+            {
+
+                trans.nome_transporte = null;
+                trans.tipo_transporte = null;
+                trans.cidade_transporte = null;
+                trans.img_transporte = null;
+            }
+
+        }
+
 
 
 

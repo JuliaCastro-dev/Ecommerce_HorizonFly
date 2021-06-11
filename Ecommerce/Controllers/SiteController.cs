@@ -324,7 +324,15 @@ namespace Ecommerce.Controllers
 
         // ----------------- CARRINHO ------------------------
 
-        public ActionResult Carrinho( )
+        public ActionResult Carrinho(Itens carrinho)
+        {
+
+
+            return View();
+        }
+        [HttpPost]
+
+        public ActionResult Carrinho()
         {
 
 

@@ -528,7 +528,7 @@ namespace Ecommerce.Controllers
         public ActionResult PegaDados(FormCollection frm)
         {
             Session["ViagemEscolhida"] = frm["viagem"];
-            Session["dtChekin"] = Convert.ToDateTime(frm["dtChekin"]).ToString("yyyy/MM/dd"); 
+            Session["dtChekin"] = Convert.ToDateTime(frm["dtChekin"]).ToString("yyyy/MM/dd");
             Session["dtChekout"] = Convert.ToDateTime(frm["dtChekout"]).ToString("yyyy/MM/dd");
             return RedirectToAction("CadastroPacote");
         }
@@ -563,7 +563,7 @@ namespace Ecommerce.Controllers
             /* RECEBE VALORES */
 
 
-          
+
             string cdhotel = Session["HotelEscolhido"].ToString();
             string cdviagem = Session["ViagemEscolhida"].ToString();
 
@@ -578,7 +578,7 @@ namespace Ecommerce.Controllers
                 pacote.dt_chekinHotel = Session["dtChekin"].ToString();
                 pacote.dt_chekoutHotel = Session["dtChekout"].ToString();
                 pacote.tipo_transporte = Request["tipo"];
-                
+
                 hotel.cd_hotel = cdhotel;
                 pacote.cd_hotel = cdhotel;
                 pacote.cd_viagem = cdviagem;
@@ -601,7 +601,7 @@ namespace Ecommerce.Controllers
                 pacote.vl_pacote = valorTotal.ToString();
                 if (hotel.cd_hotel != null && viagem.cd_viagem != null)
                 {
-                  
+
 
 
                     if (file != null && file.ContentLength > 0)
@@ -807,72 +807,129 @@ namespace Ecommerce.Controllers
         public ActionResult AtualizaFuncionario(Funcionario func, HttpPostedFileBase file, string id)
         {
 
-           
-
-                string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensFuncionario"), arquivo);
-                file.SaveAs(_path);
-                func.img = file2;
-                //func.rg = Session["rg"].ToString();
-                func.rg = id;
 
 
-                acF.atualizarFuncionario(func);
-                return RedirectToAction("Funcionarios");
+            string arquivo = Path.GetFileName(file.FileName);
+            string file2 = "/ImagensFuncionario/" + Path.GetFileName(file.FileName);
+            string _path = Path.Combine(Server.MapPath("~/ImagensFuncionario"), arquivo);
+            file.SaveAs(_path);
+            func.img = file2;
+            //func.rg = Session["rg"].ToString();
+            func.rg = id;
+
+
+            acF.atualizarFuncionario(func);
+            return RedirectToAction("Funcionarios");
         }
 
 
         //----------------------- ATUALIAR HOTEIS --------------------
 
-        public ActionResult AtualizaHotel(Hotel hotel, HttpPostedFileBase file)
+        public ActionResult AtualizaHotel(Hotel hotel, string id)
         {
             carregaCidades();
-            try
+            if (id != null)
             {
-                hotel.cd_cidade = Request["cidade"];
+                Session["cd"] = id;
+                hotel.cd_hotel = id;
+                acH.PegaDados(hotel);
 
-                if (file != null && file.ContentLength > 0)
-                {
-                    string arquivo = Path.GetFileName(file.FileName);
-                    string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
-                    file.SaveAs(_path);
-                    hotel.img_hotel = file2;
+                ViewBag.nome = hotel.nome_hotel;
+                ViewBag.end = hotel.endereco_hotel;
+                ViewBag.tel = hotel.telefone_hotel;
+                ViewBag.des = hotel.descricao_hotel;
+                ViewBag.diaria = hotel.diaria_hotel;
 
-
-                    // retira cifrão e ponto do valor 
-                    string diaria = hotel.diaria_hotel;
-                    diaria = Regex.Replace(diaria, "[^0-9]", "");
-                    hotel.diaria_hotel = diaria;
-
-
-                    acH.atualizarHotel(hotel);
-                    return RedirectToAction("Hoteis");
-
-                }
-                else
-                {
-                    ViewBag.erro = "Para Continuar Adicione uma Imagem";
-                    return View();
-                }
-
-
-            }
-            catch
-            {
                 return View();
             }
+            else
+            {
+                return RedirectToAction("Hoteis");
+            }
 
 
+
+        }
+        [HttpPost]
+        public ActionResult AtualizaHotel(HttpPostedFileBase file, Hotel hotel)
+        {
+            carregaCidades();
+            hotel.cd_cidade = Request["cidade"];
+            if (file != null && file.ContentLength > 0)
+            {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
+                file.SaveAs(_path);
+                hotel.img_hotel = file2;
+
+
+                // retira cifrão e ponto do valor 
+                string diaria = hotel.diaria_hotel;
+                diaria = Regex.Replace(diaria, "[^0-9]", "");
+                hotel.diaria_hotel = diaria;
+
+                hotel.cd_hotel = Session["cd"].ToString();
+                acH.atualizarHotel(hotel);
+                return RedirectToAction("Hoteis");
+
+            }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
         }
 
         //----------------------- ATUALIAR TRANSPORTES --------------------
 
 
-        public ActionResult AtualizaTransporte(string id)
+        public ActionResult AtualizaTransporte(string id, Transporte trans)
         {
-            return View(acT.GetDetalhesTransporte().Find((smodel => smodel.cd_transporte == id)));
+            carregaCidades();
+            if (id != null)
+            {
+                Session["cd"] = id;
+                trans.cd_transporte = id;
+                acT.PegaDados(trans);
+
+                ViewBag.nome = trans.nome_transporte;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Hoteis");
+            }
+            
+        }
+        [HttpPost]
+        public ActionResult AtualizaTransporte( HttpPostedFileBase file, Transporte trans)
+        {
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaCidades(); // carrega a lista de cidades
+            // ----------------------------------------------
+            trans.tipo_transporte = Request["tipo"];
+            trans.cidade_transporte = Request["cidade"];
+
+            if (file != null && file.ContentLength > 0)
+            {
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensTransporte/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensTransporte"), arquivo);
+                file.SaveAs(_path);
+                trans.img_transporte = file2;
+                // -------------------
+                acT.inserirTransporte(trans);
+                // -------------------
+                return RedirectToAction("Transportes");
+
+            }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
         }
 
 
@@ -880,9 +937,65 @@ namespace Ecommerce.Controllers
         //----------------------- ATUALIAR VIAGENS --------------------
 
 
-        public ActionResult AtualizaViagem(string id)
+        public ActionResult AtualizaViagem(string id, Viagem viagem )
         {
-            return View(acV.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
+            carregaCidades();
+            carregaTiposTransporte();
+            carregaTransportes();
+            carregaTransportesOrigem();
+            if (id != null)
+            {
+                Session["cd"] = id;
+                viagem.cd_viagem = id;
+                acV.PegaDados(viagem);
+
+                ViewBag.nome = viagem.nome_viagem;
+                ViewBag.end = viagem.dt_ida;
+                ViewBag.tel = viagem.dt_chegada;
+                ViewBag.des = viagem.descricao;
+                ViewBag.vl = viagem.vl_total;
+                ViewBag.trans = viagem.tipo_transporte;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Viagens");
+            }
+        }
+        [HttpPost]
+        public ActionResult AtualizaViagem(Viagem viagem, HttpPostedFileBase file)
+        {
+            carregaCidades();
+            carregaTiposTransporte();
+            carregaTransportes();
+            carregaTransportesOrigem();
+
+            if (file != null && file.ContentLength > 0)
+            {
+                viagem.tipo_transporte = Request["tipo"]; // Atribui o Tipo escolhido ao campo tipo_transporte
+                viagem.destino = Request["transportes"];  // Atribui o Transporte escolhido ao campo Destino
+                viagem.origem = Request["transportesOrigem"];  // Atribui o Tipo escolhido ao campo  Origem
+
+                string arquivo = Path.GetFileName(file.FileName);
+                string file2 = "/ImagensViagem/" + Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/ImagensViagem"), arquivo);
+                file.SaveAs(_path);
+                viagem.img_viagem = file2;
+                // ---------------------------------------
+                // retira cifrão e ponto do valor 
+                string preco = viagem.vl_total;
+
+                preco = Regex.Replace(preco, "[^0-9]", "");
+                viagem.vl_total = preco;
+                acV.atualizarViagem(viagem);
+                return RedirectToAction("Viagens");
+            }
+            else
+            {
+                ViewBag.erro = "Para Continuar Adicione uma Imagem";
+                return View();
+            }
         }
 
 

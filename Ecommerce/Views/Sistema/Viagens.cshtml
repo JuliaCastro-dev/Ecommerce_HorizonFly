@@ -42,24 +42,29 @@
 
             @foreach (var item in Model)
             {
-                <div class="card">
-                    <a href="/Sistema/DetalhesViagens/@item.cd_viagem">
-                        @if (@item.img_viagem != null)
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_viagem" data-holder-rendered="true">
-                        }
-                        else
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                        }
-                        <h2>@item.nome_viagem</h2>
-                        
+                var id = item.cd_viagem;
+            <div class="card">
+                <a href="/Sistema/DetalhesViagens/@item.cd_viagem">
+                    @if (@item.img_viagem != null)
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_viagem" data-holder-rendered="true">
+                    }
+                    else
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                    }
+                    <h2>@item.nome_viagem</h2>
 
 
 
-                    </a>
 
-                </div>
+                </a>
+
+
+
+                <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaViagem", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
+                <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiViagem", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
+            </div>
             }
 
 

@@ -215,3 +215,63 @@ a{
 }
 
 
+/*botoes atualizar e excluir*/
+
+.atualizar {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 2vw;
+    bottom: 1vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .atualizar:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atualizar:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .atualizar a {
+        color: #6f6cde;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+.excluir {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    left: 5vw;
+    font-size: 1.3vw;
+    position: relative;
+    bottom: 1vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .excluir:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .excluir:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .excluir a {
+        color: #d72727;
+        font-weight: 700;
+        text-decoration: none;
+    }

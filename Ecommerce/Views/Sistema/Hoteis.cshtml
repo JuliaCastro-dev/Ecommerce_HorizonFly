@@ -45,24 +45,29 @@
 
             @foreach (var item in Model)
             {
-                <div class="card">
-                    <a href="/Sistema/DetalhesHoteis/@item.cd_hotel">
-                        @if (@item.img_hotel != null)
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_hotel" data-holder-rendered="true">
-                        }
-                        else
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                        }
-                        <h2>@item.nome_hotel</h2>
-                        <h1>@item.telefone_hotel</h1>
+                var id = @item.cd_hotel;
+            <div class="card">
+                <a href="/Sistema/DetalhesHoteis/@item.cd_hotel">
+                    @if (@item.img_hotel != null)
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img_hotel" data-holder-rendered="true">
+                    }
+                    else
+                    {
+                        <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                    }
+                    <h2>@item.nome_hotel</h2>
+                    <h1>@item.telefone_hotel</h1>
 
 
 
-                    </a>
+                </a>
 
-                </div>
+
+
+                <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaHotel", "Sistema", new { id } , null)&nbsp; &nbsp;</span>
+                <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluirHotel", "Sistema", new { id } , null)&nbsp; &nbsp;</span>
+            </div>
             }
 
 
