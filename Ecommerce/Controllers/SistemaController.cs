@@ -886,7 +886,9 @@ namespace Ecommerce.Controllers
 
         public ActionResult AtualizaTransporte(string id, Transporte trans)
         {
-            carregaCidades();
+            
+            carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
+            carregaCidades(); // carrega a lista de cidades
             if (id != null)
             {
                 Session["cd"] = id;
@@ -899,7 +901,7 @@ namespace Ecommerce.Controllers
             }
             else
             {
-                return RedirectToAction("Hoteis");
+                return RedirectToAction("Transportes");
             }
             
         }
@@ -920,7 +922,8 @@ namespace Ecommerce.Controllers
                 file.SaveAs(_path);
                 trans.img_transporte = file2;
                 // -------------------
-                acT.inserirTransporte(trans);
+                trans.cd_transporte = Session["cd"].ToString();
+                acT.atualizarTransporte(trans);
                 // -------------------
                 return RedirectToAction("Transportes");
 
@@ -988,6 +991,7 @@ namespace Ecommerce.Controllers
 
                 preco = Regex.Replace(preco, "[^0-9]", "");
                 viagem.vl_total = preco;
+                viagem.cd_viagem = Session["cd"].ToString();
                 acV.atualizarViagem(viagem);
                 return RedirectToAction("Viagens");
             }

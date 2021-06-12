@@ -322,6 +322,57 @@ namespace Ecommerce.Controllers
         }
 
 
+
+        //----------------------- ATUALIZAR FUNCIONARIO --------------------
+
+
+        public ActionResult AtualizaCliente(string id, Cliente cliente)
+        {
+
+            if (id != null)
+            {
+                Session["rg"] = id;
+                cliente.rg = id;
+                acC.PegaDados(cliente);
+
+                ViewBag.nome = cliente.nome;
+                ViewBag.email = cliente.email;
+                ViewBag.tel = cliente.telefone;
+                ViewBag.cpf = cliente.CPF;
+                ViewBag.rg = cliente.rg;
+                ViewBag.tipo = cliente.tipo;
+
+                ViewBag.senha = cliente.senha;
+               
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Clientes");
+            }
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizaCliente(Cliente cliente, HttpPostedFileBase file, string id)
+        {
+
+
+
+            string arquivo = Path.GetFileName(file.FileName);
+            string file2 = "/ImagensCliente/" + Path.GetFileName(file.FileName);
+            string _path = Path.Combine(Server.MapPath("~/ImagensCliente"), arquivo);
+            file.SaveAs(_path);
+            cliente.img = file2;
+            //func.rg = Session["rg"].ToString();
+            cliente.rg = id;
+
+
+            acC.atualizarCliente(cliente);
+            return RedirectToAction("Clientes");
+        }
+
+
         // ----------------- CARRINHO ------------------------
 
         public ActionResult Carrinho(Itens carrinho)

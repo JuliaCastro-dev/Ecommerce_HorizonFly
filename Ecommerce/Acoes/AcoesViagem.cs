@@ -80,7 +80,7 @@ namespace Ecommerce.Acoes
         public bool atualizarViagem(Viagem viag)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Viagem set nome_viagem = @nm, cd_tipotransporte = @tipo,origem = @origem , destino = @destino, dt_ida = @dt_ida, dt_chegada = @dt_chegada,descricao=@descricao,vl_total=@vl_total, img_viagem = @img_viagem  where cd_viagem=@viagem", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Viagem set nome_viagem = @nm, cd_tipotransporte = @tipo,origem = @origem , destino = @destino, dt_ida = @dt_ida, dt_chegada = @dt_chegada,descricao = @descricao,vl_total = @vl_total, img_viagem = @img_viagem  where cd_viagem = @viagem", con.MyConectarBD());
 
             cmd.Parameters.Add("@viagem", MySqlDbType.VarChar).Value = viag.cd_viagem;
 

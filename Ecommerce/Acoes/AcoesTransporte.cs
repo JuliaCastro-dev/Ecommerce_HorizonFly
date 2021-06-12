@@ -151,7 +151,7 @@ namespace Ecommerce.Acoes
                 {
                     trans.cd_transporte = Convert.ToString(leitor["cd_transporte"]);
                     trans.nome_transporte = Convert.ToString(leitor["nome_transporte"]);
-                    trans.tipo_transporte = Convert.ToString(leitor["tipo_transporte"]);
+                    trans.tipo_transporte = Convert.ToString(leitor["cd_tipotransporte"]);
                     trans.cidade_transporte = Convert.ToString(leitor["cidade_transporte"]);
                     trans.img_transporte = Convert.ToString(leitor["img_transporte"]);
                   

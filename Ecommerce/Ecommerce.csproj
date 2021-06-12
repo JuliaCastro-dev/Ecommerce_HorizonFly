@@ -352,6 +352,8 @@
     <Content Include="Views\Site\CadastroCartao.cshtml" />
     <Content Include="Views\Site\Carrinho.cshtml" />
     <Content Include="Views\Sistema\AtualizaViagem.cshtml" />
+    <Content Include="Views\Sistema\AtualizaTransporte.cshtml" />
+    <Content Include="Views\Site\AtualizaCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

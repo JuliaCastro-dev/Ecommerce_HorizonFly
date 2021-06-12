@@ -203,5 +203,48 @@ namespace Ecommerce.Acoes
             return Clientelist;
         }
 
+
+        public void PegaDados(Cliente cli)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Cliente where rg = @rg", con.MyConectarBD());
+
+            cmd.Parameters.Add("@rg", MySqlDbType.VarChar).Value = cli.rg;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                    cli.rg = Convert.ToString(leitor["rg"]);
+                    cli.CPF = Convert.ToString(leitor["CPF"]);
+                    cli.nome = Convert.ToString(leitor["nome"]);
+                    cli.telefone = Convert.ToString(leitor["telefone"]);
+                    cli.email = Convert.ToString(leitor["email"]);
+                    cli.img = Convert.ToString(leitor["img"]);
+                    cli.tipo = Convert.ToString(leitor["tipo"]);
+
+                }
+            }
+            else
+            {
+                cli.rg = null;
+                cli.CPF = null;
+                cli.nome = null;
+                cli.telefone = null;
+                cli.email = null;
+                cli.tipo = null;
+                cli.img = null;
+
+
+            }
+
+        }
+
     }
 }

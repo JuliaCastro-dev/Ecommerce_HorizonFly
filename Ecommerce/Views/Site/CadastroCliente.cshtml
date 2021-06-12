@@ -29,7 +29,7 @@
                     <span>@ViewBag.erro</span>
                     <div class="group">
 
-                        @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
+                        @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo", @Value = ViewBag.nome } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.nome)</span>
@@ -37,28 +37,28 @@
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
+                        @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG", @Value = ViewBag.rg , @Type = "Hidden"} })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.rg)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );", @Value = ViewBag.cpf, @Type = "Hidden" } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.CPF)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail", @Value = ViewBag.email } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                        @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone", @Value = ViewBag.tel } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
@@ -73,7 +73,7 @@
 
                     <input class="loginInput" type="file" name="file" id="file"/>
 
-                    <input class="button" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
+                    <input class="button" type="submit" value="Salvar" data-backdrop="static" onclick="ValidaCPF();" />
 
                 </div>
                     }
