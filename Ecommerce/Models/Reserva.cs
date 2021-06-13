@@ -42,11 +42,13 @@ namespace Ecommerce.Models
        
         [Required]
         [Display(Name = "Valor Total")]
-        public Decimal vl_total { get; set; }
+        public double vl_total { get; set; }
 
 
         [Display(Name = "Status")]
         public string Status_Reserva { get; set; }
+
+        public List<Itens> ItensPedido = new List<Itens>();
 
     }
 }

@@ -20,7 +20,7 @@
         <div class="login">
             <div class="modal-content">
 
-                @using (@Html.BeginForm("CadastroCliente", "Site", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (@Html.BeginForm("AtualizaCliente", "Site", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="modal-body">
                         @Html.ActionLink("Voltar", "Index", new { htmlAttributes = new { @class = "link" } })<h1 class="text-login">CADASTRO</h1>
@@ -29,36 +29,29 @@
                         <span>@ViewBag.erro</span>
                         <div class="group">
 
-                            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo" } })
+                            @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Nome Completo", @Value = ViewBag.nome } })
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <span class="errorMessage">@Html.ValidationMessageFor(model => model.nome)</span>
 
                         </div>
-                        <div class="group">
+                       
 
-                            @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG" } })
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <span class="errorMessage">@Html.ValidationMessageFor(model => model.rg)</span>
-                        </div>
-                        <div class="group">
-
-                            @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );" } })
+                            @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );", @Value = ViewBag.cpf } })
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <span class="errorMessage">@Html.ValidationMessageFor(model => model.CPF)</span>
                         </div>
                         <div class="group">
 
-                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail" } })
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Seu melhor E-mail", @Value = ViewBag.email } })
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <span class="errorMessage">@Html.ValidationMessageFor(m => m.email)</span>
                         </div>
                         <div class="group">
 
-                            @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone" } })
+                            @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "loginInput", @placeholder = "Telefone Celular", @id = "telefone", @name = "telefone", @Value = ViewBag.tel } })
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <span class="errorMessage">@Html.ValidationMessageFor(m => m.telefone)</span>
@@ -75,7 +68,7 @@
 
                         <input class="button" type="submit" value="Cadastrar" data-backdrop="static" onclick="ValidaCPF();" />
 
-                    </div>
+                  
                 }
             </div>
         </div>

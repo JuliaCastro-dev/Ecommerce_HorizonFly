@@ -348,7 +348,7 @@ namespace Ecommerce.Controllers
             }
             else
             {
-                return RedirectToAction("Clientes");
+                return RedirectToAction("PerfilCliente");
             }
 
         }
@@ -375,19 +375,57 @@ namespace Ecommerce.Controllers
 
         // ----------------- CARRINHO ------------------------
 
-        public ActionResult Carrinho(Itens carrinho)
+        public static string codigo;
+
+        public ActionResult AdicionarCarrinho(int id, double pre)
         {
+            Reserva carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
+            var pacote = acP.GetConsPac(id);
+            codigo = id.ToString();
 
+            Pacote pac = new Pacote();
 
-            return View();
+            if (pacote != null)
+            {
+                var itemPedido = new Itens();
+                itemPedido.cd_itens = Guid.NewGuid();
+                itemPedido.cd_pacote = id.ToString();
+                itemPedido.nome_pacote = pacote[0].nome_pacote;
+                itemPedido.qt = 1;
+                itemPedido.vl_unit = pre;
+
+                List<Itens> x = carrinho.ItensPedido.FindAll(l => l.cd_pacote == itemPedido.cd_pacote);
+
+                if (x.Count != 0)
+                {
+                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].nome_pacote).qt += 1;
+                    itemPedido.vl_parcial = itemPedido.qt * itemPedido.vl_unit;
+                    carrinho.vl_total += itemPedido.vl_parcial;
+                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].nome_pacote).vl_parcial = carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].nome_pacote).qt * itemPedido.vl_unit;
+
+                }
+
+                else
+                {
+                    itemPedido.vl_parcial = itemPedido.qt * itemPedido.vl_unit;
+                    carrinho.vl_total += itemPedido.vl_parcial;
+                    carrinho.ItensPedido.Add(itemPedido);
+                }
+
+                /*carrinho.ValorTotal = carrinho.ItensPedido.Select(i => i.Produto).Sum(d => d.Valor);*/
+
+                Session["Carrinho"] = carrinho;
+            }
+
+            return RedirectToAction("Carrinho");
         }
-        [HttpPost]
 
         public ActionResult Carrinho()
         {
 
-
-            return View();
+            Reserva carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
+            return View(carrinho);
         }
+       
     }
 }

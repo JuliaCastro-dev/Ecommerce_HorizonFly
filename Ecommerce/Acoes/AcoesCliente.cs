@@ -130,7 +130,7 @@ namespace Ecommerce.Acoes
         public bool atualizarCliente(Cliente cli)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Cliente set nome=@nome,rg=@rg,email=@email,tel=@tel,senha=@senha, img=@img  where CPF=@cliente,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Cliente set nome=@nome,rg=@rg,email=@email,telefone=@tel,senha=@senha, img=@img  where CPF=@cliente", con.MyConectarBD());
 
 
 

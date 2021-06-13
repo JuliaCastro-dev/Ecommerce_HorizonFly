@@ -40,19 +40,23 @@ namespace Ecommerce.Models
         public string cd_pacote { get; set; }
 
 
+        [Display(Name = "Pacote")]
+        public string nome_pacote { get; set; }
+
+
 
         [Required]
         [Display(Name = "Valor Unitário")]
-        public string vl_unit { get; set; }
+        public double  vl_unit { get; set; }
 
 
         [Required]
         [Display(Name = "Valor Parcial")]
-        public string vl_parcial{ get; set; }
+        public double vl_parcial{ get; set; }
 
 
         [Display(Name = "Quantidade")]
-        public string qt { get; set; }
+        public int qt { get; set; }
 
         [Display(Name = "Status")]
         public string status { get; set; }
