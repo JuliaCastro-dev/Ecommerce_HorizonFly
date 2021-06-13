@@ -16,7 +16,8 @@
 </head>
 <body>
     <header>
-        <span class="voltar"> @Html.ActionLink("Ir as Compras", "Index" )   </span> 
+        <span class="voltar"> @Html.ActionLink("Ir as Compras", "Index")   </span>
+        <span class="sair"> @Html.ActionLink("Sair", "Logout")   </span>
     </header>
     @*BANNER*@
 <div class="container">
@@ -59,9 +60,10 @@
                 <p>MEUS CARTÕES</p>
             </div>
         </a>
-        
-        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaCliente", "Site", new { id = ViewBag.rg}, null)&nbsp; &nbsp;</span>
-        <h1 class="Titulo" id="reserva">Reservas <span id="barrinhaReserva"></span > </h1>
+
+        <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Editar Dados ", "AtualizaCliente", "Site", new { id = ViewBag.rg }, null)&nbsp; &nbsp;</span>
+        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Excluir Conta ", "ExcluiCliente", "Site", new { id = ViewBag.rg }, null)&nbsp; &nbsp;</span>
+        <h1 class="Titulo" id="reserva">Reservas <span id="barrinhaReserva"></span> </h1>
     </div>
 </div>
 </body>

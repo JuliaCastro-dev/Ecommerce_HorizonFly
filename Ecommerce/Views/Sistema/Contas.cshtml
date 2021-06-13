@@ -17,11 +17,14 @@
     <div class="container">
         <div class="one-half left">
             <h1>CLIENTE</h1>
-            @Html.ActionLink("VAMOS LÁ", "Index", "Site", new { htmlAttributes = new { @class = "opcao" } })
+            <a class="opcao" href="~/Site/PerfilCliente">
+                VAMOS LÁ
+            </a>
+            @*@Html.ActionLink("VAMOS LÁ", "PerfilCliente", "Site", new { htmlAttributes = new { @class = "opcao" } })*@
         </div>
         <div class="one-half right">
             <h1>FUNCIONÁRIO</h1>
-            @Html.ActionLink("VAMOS LÁ", "Dashboard", new { htmlAttributes = new { @class = "opcao" } })
+            @Html.ActionLink("VAMOS LÁ", "Dashboard","Sistema", new { htmlAttributes = new { @class = "opcao" } })
          
         </div>
     </div>

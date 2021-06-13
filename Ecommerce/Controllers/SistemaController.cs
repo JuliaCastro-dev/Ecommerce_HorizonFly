@@ -1022,6 +1022,24 @@ namespace Ecommerce.Controllers
             }
         }
 
+        //-------------------EXCLUIR CLIENTE ------------------------
+        public ActionResult ExcluirCliente(int id)
+        {
+            try
+            {
+
+                if (acC.excluirCliente(id))
+                {
+                    ViewBag.AlertMsg = "Cliente excluído com sucesso";
+                }
+                return RedirectToAction("Clientes");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
     }
 }

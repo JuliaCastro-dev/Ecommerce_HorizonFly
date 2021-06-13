@@ -95,25 +95,37 @@ thead{
 
 /*Cartoes*/
 .cartoes {
-    position: absolute;
-    color:#5FAD56;
-    font-size:1vw;
-    border: 2px solid;
-    border-color:  #A9D6FF;
-    border-image-slice: 1;
-    border-radius:15px;
-    height: 3vw;
-  cursor:pointer;
-    width: 10vw;
-    left: 50vw;
-    top: 25vw;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 51vw;
+    top: 13vw;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 15vw;
+    text-decoration: none;
 }
-.cartoes p{
-   
-    top:0.5vw;
-    position:relative;
-    left:1vw;
+    .cartoes:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .cartoes:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+a {
+    text-decoration: none;
 }
+    .cartoes p {
+        color: #6f6cde;
+        font-weight: 700;
+        position:relative;
+        left:2vw;
+        text-decoration: none;
+    }
 /*Reservas*/
 h1#reserva {
     position: absolute;
@@ -129,3 +141,62 @@ h1#reserva {
     background-color: #5FAD56;
     border: 1px solid #5FAD56;
 }
+.atualizar {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 53vw;
+    top: 15vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .atualizar:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atualizar:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .atualizar a {
+        color: #69dc61;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+.excluir {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    left: 41.5vw;
+    font-size: 1.3vw;
+    position: relative;
+    /* bottom: 1vw; */
+    top: 19vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .excluir:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .excluir:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .excluir a {
+        color: #d72727;
+        font-weight: 700;
+        text-decoration: none;
+    }
