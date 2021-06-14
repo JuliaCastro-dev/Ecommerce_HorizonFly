@@ -44,6 +44,10 @@ namespace Ecommerce.Models
         public string nome_pacote { get; set; }
 
 
+       
+        public string img_pacote { get; set; }
+
+
 
         [Required]
         [Display(Name = "Valor Unitário")]

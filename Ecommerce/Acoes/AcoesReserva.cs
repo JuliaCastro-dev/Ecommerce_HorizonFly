@@ -54,7 +54,7 @@ namespace Ecommerce.Acoes
                          cd_reserva = Convert.ToString(dr["cd_reserva"]),
                          cpf_cliente = Convert.ToString(dr["CPF"]),
                          cd_cartao = Convert.ToString(dr["cd_cartao"]),
-                         vl_total = Convert.ToDecimal(dr["vl_total"]),
+                         vl_total = Convert.ToDouble(dr["vl_total"]),
                          Status_Reserva = Convert.ToString(dr["Status_Reserva"]),
 
 

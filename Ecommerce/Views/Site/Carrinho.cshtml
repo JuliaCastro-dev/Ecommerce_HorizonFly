@@ -1,4 +1,4 @@
-﻿
+﻿@model Ecommerce.Models.Reserva
 @{
     Layout = null;
 }
@@ -17,6 +17,33 @@
     @*BANNER*@
     <div class="container">
         <h1 class="Titulo"> Seu Carrinho </h1>
+        @foreach (var item in Model.ItensPedido)
+        {
+            <div class="card">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="nome"> nome @item.nome_pacote </td>
+                            <td class="unit">unit @item.vl_unit  </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td class="qt"><input type="number" value="@item.qt" /> </td>
+                            <td class="parcial">
+                                @item.vl_parcial
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+        }
 
     </div>
     <img class="poster" src="~/Imagens/posterChance.jpeg" />
