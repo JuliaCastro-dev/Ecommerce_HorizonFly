@@ -216,6 +216,7 @@
     <Content Include="Imagens\coqueiro.png" />
     <Content Include="Imagens\DiaNamorados.jpeg" />
     <Content Include="Imagens\exit.png" />
+    <Content Include="Imagens\festivalViagens.png" />
     <Content Include="Imagens\FUNCIONARIO.jpg" />
     <Content Include="Imagens\FuncionarioTerno.jpg" />
     <Content Include="Imagens\grafico.png" />
@@ -234,14 +235,18 @@
     <Content Include="Imagens\Paris-France.png" />
     <Content Include="Imagens\password.png" />
     <Content Include="Imagens\posterChance.jpeg" />
+    <Content Include="Imagens\quinzenaViajante.png" />
+    <Content Include="Imagens\resorts.png" />
     <Content Include="Imagens\ResumoPng.png" />
     <Content Include="Imagens\RioDeJaneiroWallpaper.jpg" />
     <Content Include="Imagens\RJWallpaper.png" />
     <Content Include="Imagens\sign-out-alt.png" />
     <Content Include="Imagens\signal.svg" />
+    <Content Include="Imagens\stars.png" />
     <Content Include="Imagens\travel.jpg" />
     <Content Include="Imagens\TURISMO.jpg" />
     <Content Include="Imagens\viagemItaly.jpg" />
+    <Content Include="Imagens\viagensIncriveis.png" />
     <Content Include="Imagens\voltar.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

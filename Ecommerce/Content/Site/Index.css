@@ -1,16 +1,19 @@
 ﻿:root {
     --Poppins: "'Poppins', sans-serif";
 }
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    height:100vh;
-    width:100vw;
-    overflow-x:hidden;
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
 }
+
 header {
     position: absolute;
     left: 0px;
@@ -21,6 +24,7 @@ header {
     height: 4vh;
     min-height: 4vh;
 }
+
 a:hover {
     color: #3694f9;
     text-decoration: none;
@@ -37,7 +41,8 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
-    #login-button {
+
+#login-button {
     display: block;
     position: relative;
     border: none;
@@ -55,10 +60,11 @@ a {
     -webkit-appearance: none;
     background: none;
     left: 2vw;
-    text-align:center;
-        text-transform: none;
+    text-align: center;
+    text-transform: none;
     text-decoration: none;
 }
+
 #login-buttonR {
     display: block;
     position: relative;
@@ -76,7 +82,8 @@ a {
     -webkit-appearance: none;
     background: none;
 }
-#fone{
+
+#fone {
     font-style: normal;
     font-weight: 300;
     color: #fff;
@@ -84,30 +91,28 @@ a {
     position: relative;
     top: 10%;
 }
-.logo{
-  
-    position:absolute;
-    top:10%;
-    left:5%;
-    min-width:150px;
-    max-width:13vw;     
+
+.logo {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    min-width: 150px;
+    max-width: 13vw;
 }
 
 #login {
     position: absolute;
-    min-width:2vw;
+    min-width: 2vw;
     color: #FA7F72;
-   
     left: 70%;
     font-family: 'Poppins';
     top: 10%;
-
 }
 
 
 /*TEXTO  DESCUBRA O MUNDO */
 
-#frase{
+#frase {
     margin: 0;
     padding: 0;
     display: flex;
@@ -146,33 +151,33 @@ a {
         transition-delay: 0.3s;
     }
 
-#frase li:nth-child(4) {
-    transition-delay: 0.4s;
-}
+    #frase li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
 
-#frase li:nth-child(5) {
-    transition-delay: 0.5s;
-}
+    #frase li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
 
-    #frase  li:nth-child(6) {
+    #frase li:nth-child(6) {
         transition-delay: 0.6s;
     }
 
-    #frase  li:nth-child(7) {
+    #frase li:nth-child(7) {
         transition-delay: 0.7s;
     }
 
-#frase li:nth-child(8) {
-    transition-delay: 0.8s;
-}
+    #frase li:nth-child(8) {
+        transition-delay: 0.8s;
+    }
 
-#frase li:nth-child(9) {
-    transition-delay: 0.9s;
-}
+    #frase li:nth-child(9) {
+        transition-delay: 0.9s;
+    }
 
-#frase li:nth-child(10) {
-    transition-delay: 0.10s;
-}
+    #frase li:nth-child(10) {
+        transition-delay: 0.10s;
+    }
 
     #frase li:nth-child(11) {
         transition-delay: 0.11s;
@@ -186,20 +191,22 @@ a {
         transition-delay: 0.13s;
     }
 
-#aviao{
-    position:relative;
-    top:10px;
-    max-width:3vw;
+#aviao {
+    position: relative;
+    top: 10px;
+    max-width: 3vw;
 }
+
 .search-container {
     width: 80vw;
     position: absolute;
     top: 35%;
     left: 7%;
     height: 17vh;
-    display:flex;
-    z-index:1;
+    display: flex;
+    z-index: 1;
 }
+
 .btn-dpw {
     color: #fff;
     border: none;
@@ -210,15 +217,18 @@ a {
     height: 5vh;
     border-radius: 5px 5px 0px 0px;
 }
+
     .btn-dpw:active {
         background: #254E70;
         color: #fff;
-       voice-duration:5s;
+        voice-duration: 5s;
     }
+
     .btn-dpw:checked {
         background: #254E70;
         color: #fff;
     }
+
 .dropdown-menu {
     position: relative;
     border: none !important;
@@ -229,8 +239,8 @@ a {
     height: 16.5vh;
     background: #254E70;
 }
+
 .Input {
-  
     color: #07985a;
     border: none;
     font-size: 1.3vw;
@@ -238,7 +248,7 @@ a {
     height: 5vh;
     position: relative;
     left: 7vw;
-    outline:none;
+    outline: none;
     margin: 10px 20px;
     border-radius: 5px;
     top: 5.5vh;
@@ -256,10 +266,9 @@ a {
         position: relative;
         left: 1vw;
     }
+
     .Input:hover {
         box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-      
-      
     }
 
     .Input:active {
@@ -267,6 +276,7 @@ a {
         box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
         color: #79e3b6;
     }
+
 .base {
     position: absolute;
     top: 40%;
@@ -278,7 +288,6 @@ a {
 }
 
 @media (min-width: 300px) {
-   
 }
 
 @media (max-width: 600px) {
@@ -309,6 +318,7 @@ a {
         font-family: 'Poppins';
         top: 10%;
     }
+
     .frase {
         visibility: hidden;
     }
@@ -318,28 +328,118 @@ a {
     }
 }
 
+/* ANUNCIOS*/
+.anuncios {
+    position: absolute;
+    top: 65%;
+    font-family: 'Poppins';
+    left: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+    .anuncios img {
+        margin: 0px 0px 0px 90px;
+    }
+
 /* SESSÃO DE PACOTE PARA FAMILIA*/
 
 .pacotes {
     position: absolute;
-    top: 65%;
+    top: 70vw;
     font-family: 'Poppins';
     left: 8%;
-  
 }
+
     .pacotes h1 {
+        font-weight: 700;
+        color: #030d29;
+    }
+
+#oferta {
+    color: #1fff26;
+    /* text-shadow: 0 0 10px #004c00, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 70px #ffffff, 0 0 80px #ffffff, 0 0 100px #ffffff, 0 0 150px #ffffff; */
+    font-weight: 600;
+    font-size: 2.2vw;
+    letter-spacing: 2px;
+}
+
+/* Card de Pacote*/
+.barra {
+    background: #ff6c5c;
+    position: absolute;
+    top: 2vw;
+    HEIGHT: 3VW;
+    Z-INDEX: 5;
+    BORDER-RADIUS: 0PX 20PX 20PX 0PX;
+    COLOR: #FFF;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 2px 1px #fff6;
+}
+
+    .barra p {
+        position: relative;
+        top: 0.5vw;
         font-weight: 500;
+        text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.62);
+        font-size: 1.2vw;
     }
 
-    #oferta{
-        color:#07985a;
-        font-weight:600;
+.Card {
+    height: 30vw;
+    width: 25VW;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    font-family: 'Poppins',sans-serif;
+}
+
+    .Card img {
+        position: relative;
+        border-radius: 10px 10px 0px 0px;
+        width: 100%;
+        height: 55%;
     }
 
-    /*Medium devices (tablets, 768px and up)*/
-    @media (min-width: 768px) {
-    }
+.Titulo-pacote {
+    color: #1d66a2;
+    font-weight: 700;
+    position: relative;
+    left: 1vw;
+    text-transform: uppercase;
+    font-family: 'Poppins',sans-serif;
+    font-size: 1.5vw;
+}
 
-    /*Large devices (desktops, 992px and up)*/
-    @media (min-width: 992px) {
-    }
+img.stars {
+    position: relative;
+    width: 6vw;
+    height: auto;
+    left: 0.5vw;
+}
+
+.Card h1 {
+    font-weight: 300;
+    position:relative;
+    top:3.5vw;
+    left:1vw;
+    font-size:1.1vw;
+}
+
+#valor {
+    color: red;
+    font-size: 2vw;
+}
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+}

@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -237,7 +238,7 @@ namespace Ecommerce.Acoes
                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
                         img_pacote = Convert.ToString(dr["img_pacote"]),
                         tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
-                        vl_pacote = Convert.ToString(dr["vl_pacote"])
+                        vl_pacote = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", dr["vl_pacote"])
                     });
             }
             return Pacotelist;
