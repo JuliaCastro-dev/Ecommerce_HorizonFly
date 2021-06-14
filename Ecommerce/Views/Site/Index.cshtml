@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<Ecommerce.Models.IndexViewModel>
+﻿@model Ecommerce.Models.IndexViewModel
 
 @{
     Layout = null;
@@ -96,7 +96,7 @@
     </div>
 
     <section class="pacotes">
-        <h1>Pacotes em OFERTA para as férias em Familía</h1>
+        <h1>Pacotes em <span id="oferta">OFERTA</span> para as férias em Familía</h1>
         @foreach ( var item in ViewBag.oferta)
             {
                 <div class="Card">

@@ -23,13 +23,14 @@ namespace Ecommerce.Controllers
         public ActionResult Index()
         {
             ModelState.Clear();
+            ViewBag.oferta = acP.EmOferta();
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Pacote pacote)
         {
-            ViewBag.oferta = acP.EmOferta();
+           
 
             return View(acP.BuscaListaPacote(pacote));
         }

@@ -230,14 +230,13 @@ namespace Ecommerce.Acoes
                         cd_categoria = Convert.ToString(dr["cd_categoria"]),
                         cd_hotel = Convert.ToString(dr["cd_hotel"]),
                         cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                        Destino = Convert.ToString(dr["destino"]),
-                        Origem = Convert.ToString(dr["origem"]),
+                     
                         descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
-                        dt_chekinHotel = Convert.ToString(dr["dt_chekinHotel"]),
-                        dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
+                        dt_chekinHotel = Convert.ToString(dr["dtChekin_hotel"]),
+                        dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
                         img_pacote = Convert.ToString(dr["img_pacote"]),
-                        tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                        tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
                         vl_pacote = Convert.ToString(dr["vl_pacote"])
                     });
             }
