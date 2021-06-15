@@ -1,0 +1,130 @@
+﻿@model Ecommerce.Models.Pacote
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes do Pacote</title>
+
+    <link href="~/Content/Detalhes/DetalhesPacotes.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+</head>
+<body>
+    <div id="comeco"> </div>
+    <a href="/Site/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Pacotes">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul id="ulH">
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+
+        <h3>Pacote</h3>
+        <div class="foto-nome">
+            <img src=" @Html.DisplayFor(model => model.img_pacote)" />
+            <span class="dado">   @Html.DisplayFor(model => model.nome_pacote) </span>
+        </div>
+        <div class="dados">
+            <h2>Destino</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.destino)
+            </span>
+            <h2>Valor Total:</h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.vl_pacote)
+            </span>
+            <h2>Descrição</h2>
+            <span class="dado">  @Html.DisplayFor(model => model.descricao_pacote)</span>
+        </div>
+
+
+        <h3>Hotel</h3>
+        <div class="foto-nome-hotel">
+            <img src=" @Html.DisplayFor(model => model.img_hotel)" />
+            <span class="dadoHotel">   @Html.DisplayFor(model => model.nome_hotel) </span>
+        </div>
+        <div class="dadosHotel">
+            <h2>Endereço</h2>
+            <span class="dadoHotel">
+                @Html.DisplayFor(model => model.endereco_hotel)
+            </span>
+            <h2>Cidade</h2>
+            <span class="dadoHotel">
+                @Html.DisplayFor(model => model.cidade_hotel)
+            </span>
+            <h2>Telefone</h2>
+            <span class="dadoHotel">
+                @Html.DisplayFor(model => model.telefone_hotel)
+            </span>
+            <h2>Descrição</h2>
+            <span class="dadoHotel">  @Html.DisplayFor(model => model.descricao_hotel)</span>
+        </div>
+
+
+
+        <h3>Viagem</h3>
+        <div class="foto-nome-viagem">
+            <img src=" @Html.DisplayFor(model => model.img_viagem)" />
+        </div>
+        <div class="dadosViagem">
+            <h2>Tipo</h2>
+            <span class="dadoViagem">
+                @Html.DisplayFor(model => model.tipo_transporte)
+            </span>
+            <h2>Origem </h2>
+            <span class="dadoViagem">
+                @Html.DisplayFor(model => model.origem)
+            </span>
+            <h2>Destino</h2>
+            <span class="dadoViagem">
+                @Html.DisplayFor(model => model.destino)
+            </span>
+            <h2>Data de Partida</h2>
+            <span class="dadoViagem">
+                @Html.DisplayFor(model => model.dt_ida)
+            </span>
+            <h2>Data de Chegada</h2>
+            <span class="dadoViagem">
+                @Html.DisplayFor(model => model.dt_chegada)
+            </span>
+            <h2>Descrição</h2>
+            <span class="dadoViagem">  @Html.DisplayFor(model => model.descricao)</span>
+        </div>
+
+
+
+
+    </div>
+    @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/jQuery-Mask-Plugin-master/dist/jquery.mask.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
+    <script src="~/Scripts/chosen.jquery.js"></script>
+</body>
+
+</html>

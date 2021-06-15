@@ -83,5 +83,91 @@ namespace Ecommerce.Models
         [Display(Name = "Destino")]
         public string Destino { get; set; }
 
+
+
+        [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
+        [Display(Name = "Viagem")]
+        public string nome_viagem { get; set; }
+
+
+
+        [Required]
+        [Display(Name = "Origem")]
+        public string origem { get; set; }
+
+
+
+        [Required]
+        [Display(Name = "Destino")]
+        public string destino { get; set; }
+
+
+        [Required]
+        [Display(Name = "Data de Ida")]
+        public string dt_ida { get; set; }
+
+
+        [Required]
+        [Display(Name = "Data de Chegada")]
+        public string dt_chegada { get; set; }
+
+
+        [Required]
+        [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]
+        [Display(Name = "Descrição")]
+        public string descricao { get; set; }
+
+
+        [Required]
+        [Display(Name = "Código")]
+        public string cd_cidade { get; set; }
+
+
+        [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
+        [Display(Name = "Hotel")]
+        public string nome_hotel { get; set; }
+
+
+        [Display(Name = "Diaria")]
+
+
+        public string diaria_hotel { get; set; }
+
+
+        [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]
+        [Display(Name = "Descrição")]
+        public string descricao_hotel { get; set; }
+
+
+        [Display(Name = "Cidade")]
+        public string cidade_hotel { get; set; }
+
+
+        [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
+        [Display(Name = "Endereço")]
+        public string endereco_hotel { get; set; }
+
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Telefone")]
+        public string telefone_hotel { get; set; }
+
+
+        [Required]
+        [Display(Name = "Foto")]
+        public string img_hotel { get; set; }
+
+
+        [StringLength(1, ErrorMessage = "Valor Obrgatório")]
+        [Display(Name = "Valor Total")]
+        public string vl_total { get; set; }
+
+
+
+        [Required]
+        [StringLength(1000, ErrorMessage = "O limite é de 1000 caracteres.")]
+        [Display(Name = "Foto")]
+        public string img_viagem { get; set; }
+
     }
 }

@@ -1,0 +1,128 @@
+﻿:root {
+    --Poppins: "'Poppins', sans-serif";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient( 270deg, #0550a2 40.68%, #054b98 94.55%);
+    font-family: var(--Poppins);
+    width: 100vw;
+    height: 4.5vh;
+    min-height: 4vh;
+}
+
+.perfil {
+    position: relative;
+    left: 77%;
+    top: 10%;
+}
+
+.carrinho {
+    position: relative;
+    left: 80%;
+    top: 5%;
+}
+
+
+
+.listaPacotes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 100%;
+    width: 90vw;
+    position: relative;
+    left: 5vw;
+    top: 10vw;
+    min-width: 500PX;
+    text-decoration: none;
+    background-color: #fff;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+
+/* Card de Pacote*/
+.barra {
+    background: #ff6c5c;
+    position: absolute;
+    top: 2vw;
+    HEIGHT: 3VW;
+    Z-INDEX: 5;
+    BORDER-RADIUS: 0PX 20PX 20PX 0PX;
+    COLOR: #FFF;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 2px 1px #fff6;
+}
+
+    .barra p {
+        position: relative;
+        top: 0.5vw;
+        font-weight: 500;
+        text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.62);
+        font-size: 1.2vw;
+    }
+
+.Card {
+    height: 30vw;
+    width: 25VW;
+    border-radius: 0px 0px 10px 10px;
+    position: absolute;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    font-family: 'Poppins',sans-serif;
+}
+
+    .Card img {
+        position: relative;
+        border-radius: 10px 10px 0px 0px;
+        width: 100%;
+        height: 55%;
+    }
+
+.Titulo-pacote {
+    color: #1d66a2;
+    font-weight: 700;
+    position: relative;
+    left: 1vw;
+    text-transform: uppercase;
+    font-family: 'Poppins',sans-serif;
+    font-size: 1.5vw;
+}
+
+img.stars {
+    position: relative;
+    width: 6vw;
+    height: auto;
+    left: 0.5vw;
+}
+
+.Card h1 {
+    font-weight: 300;
+    position: relative;
+    top: 3.5vw;
+    left: 1vw;
+    font-size: 1.1vw;
+}
+
+#valor {
+    color: red;
+    font-size: 2vw;
+}

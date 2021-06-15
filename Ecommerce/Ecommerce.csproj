@@ -193,6 +193,7 @@
     <Content Include="Content\DashboardGerente.css" />
     <Content Include="Content\Detalhes\DetalhesFuncionario.css" />
     <Content Include="Content\Detalhes\DetalhesHotel.css" />
+    <Content Include="Content\Detalhes\DetalhesPacotes.css" />
     <Content Include="Content\Detalhes\DetalhesTransportes.css" />
     <Content Include="Content\Detalhes\DetalhesViagens.css" />
     <Content Include="Content\Listas\Clientes.css" />
@@ -203,6 +204,7 @@
     <Content Include="Content\Listas\Pacotes.css" />
     <Content Include="Content\Listas\Transportes.css" />
     <Content Include="Content\Listas\Viagens.css" />
+    <Content Include="Content\Site\BuscaPacotes.css" />
     <Content Include="Content\Site\Carrinho.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
@@ -226,6 +228,7 @@
     <Content Include="Imagens\Berlin-Germany.png" />
     <Content Include="Imagens\ButtonDetalhes.png" />
     <Content Include="Imagens\CARDCREDIT.png" />
+    <Content Include="Imagens\carrinho.png" />
     <Content Include="Imagens\chip.svg" />
     <Content Include="Imagens\clientes.png" />
     <Content Include="Imagens\coqueiro.png" />
@@ -249,6 +252,7 @@
     <Content Include="Imagens\Nota.png" />
     <Content Include="Imagens\Paris-France.png" />
     <Content Include="Imagens\password.png" />
+    <Content Include="Imagens\perfil.png" />
     <Content Include="Imagens\posterChance.jpeg" />
     <Content Include="Imagens\quinzenaViajante.png" />
     <Content Include="Imagens\resorts.png" />
@@ -380,6 +384,8 @@
     <Content Include="Views\Sistema\AtualizaViagem.cshtml" />
     <Content Include="Views\Sistema\AtualizaTransporte.cshtml" />
     <Content Include="Views\Site\AtualizaCliente.cshtml" />
+    <Content Include="Views\Sistema\DetalhesPacotes.cshtml" />
+    <Content Include="Views\Site\BuscaPacotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

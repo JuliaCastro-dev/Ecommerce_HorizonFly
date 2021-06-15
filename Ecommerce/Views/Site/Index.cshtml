@@ -24,6 +24,14 @@
 
     <header>
         <span id="fone">+55 011 3714-2125</span>
+        <a class="perfil" href="~/Site/PerfilCliente">
+            <img src="~/Imagens/perfil.png" />
+        </a>
+        <a class="carrinho"  href="~/Site/Carrinho">
+
+            <img src="~/Imagens/carrinho.png" />
+        </a>
+
     </header>
     <div class="logo">
         <img class="logo" src="~/Imagens/LogoHorizon.png" />
@@ -81,7 +89,7 @@
             <button type="button" class="btn-dpw  " data-toggle="dropdown">
                 Pacotes
             </button>
-            @using (@Html.BeginForm())
+            @using (@Html.BeginForm("BuscaPacotes","Site"))
             {
                 @Html.EditorFor(m => m.Origem, new { htmlAttributes = new { @class = "Input", @placeholder = "Origem" } })
 
@@ -129,15 +137,15 @@
             </card>
             <card data-image="https://images.unsplash.com/photo-1591870510323-e20965f14d69?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80">
                 <h1 slot="header">Maranhão</h1>
-                <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p slot="content">O litoral maranhense é um dos mais belos do Brasil, com praias imperdíveis de tirar o fôlego.</p>
             </card>
-            <card data-image="https://images.unsplash.com/photo-1479644025832-60dabb8be2a1?dpr=2&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=">
-                <h1 slot="header">Trees</h1>
-                <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <card data-image="https://wallpapercave.com/wp/wp1860194.jpg">
+                <h1 slot="header">Bahia</h1>
+                <p slot="content">Se você pensa que a Bahia tem apenas praias maravilhosas, espera só até você conhecer de perto a Chapada Diamantina! </p>
             </card>
-            <card data-image="https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop=">
-                <h1 slot="header">Lakes</h1>
-                <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <card data-image="https://images.unsplash.com/photo-1576548205372-6ccb6f1b3673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80">
+                <h1 slot="header">Fernando de Noronha</h1>
+                <p slot="content"> É reconhecidao pelas suas praias pouco urbanizadas e por atividades como mergulho e snorkeling. </p>
             </card>
         </div>
     </section>

@@ -21,8 +21,18 @@ header {
     background: linear-gradient( 270deg, #0550a2 40.68%, #054b98 94.55%);
     font-family: var(--Poppins);
     width: 100vw;
-    height: 4vh;
+    height: 4.5vh;
     min-height: 4vh;
+}
+.perfil {
+    position: relative;
+    left: 77%;
+    top:10%;
+}
+.carrinho {
+    position: relative;
+    left: 80%;
+    top: 5%;
 }
 
 a:hover {
@@ -89,7 +99,8 @@ a {
     color: #fff;
     margin: 15px;
     position: relative;
-    top: 10%;
+  
+    top: -10%;
 }
 
 .logo {
@@ -354,11 +365,6 @@ a {
     font-family: 'Poppins';
     left: 8%;
 }
-
-
-
-
-
 
     .pacotes h1 {
         font-weight: 700;

@@ -714,38 +714,6 @@ namespace Ecommerce.Controllers
             carregaCidades();
             return View(hotel.GetDetalhesHotel().Find((smodel => smodel.cd_hotel == id)));
         }
-        [HttpPost]
-        public ActionResult DetalhesHoteis(Hotel hotel, HttpPostedFileBase file)
-        {
-            carregaCidades();
-            hotel.cd_cidade = Request["cidade"];
-
-            if (file != null && file.ContentLength > 0)
-            {
-                string arquivo = Path.GetFileName(file.FileName);
-                string file2 = "/ImagensHoteis/" + Path.GetFileName(file.FileName);
-                string _path = Path.Combine(Server.MapPath("~/ImagensHoteis"), arquivo);
-                file.SaveAs(_path);
-                hotel.img_hotel = file2;
-
-
-                // retira cifrão e ponto do valor 
-                string diaria = hotel.diaria_hotel;
-                diaria = Regex.Replace(diaria, "[^0-9]", "");
-                hotel.diaria_hotel = diaria;
-
-
-                acH.atualizarHotel(hotel);
-                return RedirectToAction("Hoteis");
-
-            }
-            else
-            {
-                ViewBag.erro = "Para Continuar Adicione uma Imagem";
-                return View();
-            }
-        }
-
         //------------------- DETALHES VIAGENS ---------------------
 
         public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
@@ -770,6 +738,15 @@ namespace Ecommerce.Controllers
         public ActionResult DetalhesClientes(string id, AcoesCliente cliente)
         {
             return View(cliente.GetDetalhesCliente().Find((smodel => smodel.rg == id)));
+        }
+
+
+
+        //------------------- DETALHES PACOTES ---------------------
+
+        public ActionResult DetalhesPacotes(string id, AcoesPacote pacote)
+        {
+            return View(pacote.GetDetalhesPacote().Find((smodel => smodel.cd_pacote == id)));
         }
 
 

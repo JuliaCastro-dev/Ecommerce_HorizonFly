@@ -20,18 +20,19 @@ namespace Ecommerce.Controllers
 
 
         // -------------------- PÁGINA PRINCIPAL -------------------
+
         public ActionResult Index()
         {
             ModelState.Clear();
             ViewBag.oferta = acP.EmOferta();
             return View();
         }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(Pacote pacote)
+        /* RETORNA A BUSCA DE PACOTE */
+        public ActionResult BuscaPacotes(Pacote pacote)
         {
            
-
             return View(acP.BuscaListaPacote(pacote));
         }
         // ---------------------- SOBRE ---------------------

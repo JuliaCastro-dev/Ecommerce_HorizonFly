@@ -171,6 +171,45 @@ namespace Ecommerce.Acoes
         }
 
 
+
+        public List<Pacote> GetDetalhesPacote()
+        {
+            List<Pacote> paclist = new List<Pacote>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from DetalhesPacote", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                paclist.Add(
+                      new Pacote
+                      {
+                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
+                          nome_hotel = Convert.ToString(dr["nome_hotel"]),
+                          cidade_hotel = Convert.ToString(dr["cidade"]),
+                          telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
+                          endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
+                          diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
+                          descricao_hotel = Convert.ToString(dr["descricao_hotel"]),
+                          img_hotel = Convert.ToString(dr["img_hotel"]),
+                          dt_chegada = Convert.ToString(dr["dt_chegada"]),
+                          dt_ida = Convert.ToString(dr["dt_ida"]),
+                          destino = Convert.ToString(dr["Cidade"]),
+                          vl_total = Convert.ToString(dr["vl_total"]),
+                          descricao = Convert.ToString(dr["descricao"]),
+                          img_viagem = Convert.ToString(dr["img_viagem"]),
+                          tipo_transporte = Convert.ToString(dr["tipo_transporte"])
+
+                      });
+            }
+            return paclist;
+        }
+
+
         public List<Pacote> GetConsPac(int id)
         {
             List<Pacote> Produtoslist = new List<Pacote>();

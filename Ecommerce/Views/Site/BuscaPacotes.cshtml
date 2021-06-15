@@ -1,0 +1,84 @@
+﻿@model  IEnumerable<Ecommerce.Models.Pacote>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pacotes</title>
+</head>
+<body>
+    <header>
+        <span id="fone">+55 011 3714-2125</span>
+        <a class="perfil" href="~/Site/PerfilCliente">
+            <img src="~/Imagens/perfil.png" />
+        </a>
+        <a class="carrinho" href="~/Site/Carrinho">
+
+            <img src="~/Imagens/carrinho.png" />
+        </a>
+
+    </header>
+    <div class="logo">
+        <img class="logo" src="~/Imagens/LogoHorizon.png" />
+    </div>
+    <div class="frase">
+
+        <ul id="frase">
+            <li>O</li>
+            <li>  &nbsp;</li>
+            <li>T</li>
+            <li>U</li>
+            <li>R</li>
+            <li>I</li>
+            <li>S</li>
+            <li>M</li>
+            <li>O</li>
+            <li>  &nbsp;</li>
+            <li>V</li>
+            <li>A</li>
+            <li>I</li>
+            <li>  &nbsp;</li>
+            <li>A</li>
+            <li>L</li>
+            <li>É</li>
+            <li>M</li>
+            <li>  &nbsp;</li>
+            <li>D</li>
+            <li>O</li>
+            <li>S</li>
+            <li>  &nbsp;</li>
+            <li>s</li>
+            <li>O</li>
+            <li>N</li>
+            <li>H</li>
+            <li>O</li>
+            <li>S</li>
+
+        </ul>
+
+
+    </div>
+    <div class="listaPacotes">
+
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="barra"> <p> Transporte + Hospedagem  &nbsp;</p></div>
+                <img src="@item.img_pacote" alt="Imagem" />
+                <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                <img class="stars" src="~/Imagens/stars.png" />
+
+                <h1>a partir de <span id="valor">@item.vl_pacote</span> por pessoa </h1>
+            </div>
+
+        }
+
+    </div>
+
+
+</body>
+</html>

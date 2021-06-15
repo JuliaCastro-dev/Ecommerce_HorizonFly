@@ -14,48 +14,56 @@
 </head>
 <body>
     <div class="container">
-        <ul>
-            <li>H</li>
-            <li>O</li>
-            <li>R</li>
-            <li>I</li>
-            <li>Z</li>
-            <li>O</li>
-            <li>N</li>
+        <a href="/Site/Logout">
 
-            <li>F</li>
-            <li>L</li>
-            <li>Y</li>
-        </ul>
-   
+            <img class="sair" src="~/Imagens/exit.png" />
+        </a>
+        <div class="container">
+            <a href="/Sistema/Dashboard">
+                <img class="voltar" src="~/Imagens/voltar.png" />
+            </a>
+            <ul>
+                <li>H</li>
+                <li>O</li>
+                <li>R</li>
+                <li>I</li>
+                <li>Z</li>
+                <li>O</li>
+                <li>N</li>
 
-        <h3>Clientes</h3>
-        <div class="lista">
-
-            @foreach (var item in Model)
-            {
-                <div class="card">
-                    <a href="/Sistema/DetalhesClientes/@item.rg">
-                        @if (@item.img != null)
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
-                        }
-                        else
-                        {
-                            <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
-                        }
-                        <h2>@item.nome</h2>
-                      
+                <li>F</li>
+                <li>L</li>
+                <li>Y</li>
+            </ul>
 
 
+            <h3>Clientes</h3>
+            <div class="lista">
 
-                    </a>
+                @foreach (var item in Model)
+                {
+                    <div class="card">
+                        <a href="/Sistema/DetalhesClientes/@item.rg">
+                            @if (@item.img != null)
+                            {
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="@item.img" data-holder-rendered="true">
+                            }
+                            else
+                            {
+                                <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
+                            }
+                            <h2>@item.nome</h2>
 
-                </div>
-            }
 
 
+
+                        </a>
+
+                    </div>
+                }
+
+
+            </div>
         </div>
-    </div>
 </body>
 </html>
