@@ -24,7 +24,7 @@ namespace Ecommerce
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/card.scss"));
 
 
             bundles.Add(new StyleBundle("~/Content/Cadastros/scss").Include(

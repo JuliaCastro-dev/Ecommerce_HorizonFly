@@ -355,6 +355,11 @@ a {
     left: 8%;
 }
 
+
+
+
+
+
     .pacotes h1 {
         font-weight: 700;
         color: #030d29;
@@ -436,6 +441,27 @@ img.stars {
     color: red;
     font-size: 2vw;
 }
+
+
+/* destinos mais procurados*/
+
+.maisProcurados {
+    position: absolute;
+    top: 110vw;
+    font-family: 'Poppins';
+    left: 8%;
+}
+
+.title {
+    font-family: "poppins";
+    font-size: 24px;
+    font-weight: 500;
+    color: #ff6959;
+    /* text-align: center; */
+    position: relative;
+    left: 7%;
+}
+
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
 }

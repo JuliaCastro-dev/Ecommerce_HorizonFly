@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxMin, Version=5.14.5506.26196, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>packages\AjaxMin.5.14.5506.26202\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -102,6 +108,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebCompiler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WebCompiler.1.0.1\lib\WebCompiler.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -172,6 +181,12 @@
     <Content Include="Content\Cadastros\CadastroViagem.css" />
     <Content Include="Content\Cadastros\EscolhaHotel.css" />
     <Content Include="Content\Cadastros\EscolhaViagem.css" />
+    <Content Include="Content\card.css">
+      <DependentUpon>card.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\card.min.css">
+      <DependentUpon>card.css</DependentUpon>
+    </Content>
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Contas.css" />
@@ -253,8 +268,14 @@
     <Content Include="Content\Contas.scss" />
     <Content Include="Content\bootstrap-chosen.scss" />
     <Content Include="Content\bootstrap-chosen.less" />
+    <Content Include="Content\card.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\BotoesDrop.js" />
+    <Content Include="Scripts\card.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
