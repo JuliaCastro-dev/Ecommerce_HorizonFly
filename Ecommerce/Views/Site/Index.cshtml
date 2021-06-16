@@ -13,12 +13,13 @@
     <link href="~/Content/Site/Index.css" rel="stylesheet" />
     <link href="~/Content/Site/loginEregistro.css" rel="stylesheet" />
     <link href="~/Content/card.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
 </head>
 <body>
 
@@ -27,7 +28,7 @@
         <a class="perfil" href="~/Site/PerfilCliente">
             <img src="~/Imagens/perfil.png" />
         </a>
-        <a class="carrinho"  href="~/Site/Carrinho">
+        <a class="carrinho" href="~/Site/Carrinho">
 
             <img src="~/Imagens/carrinho.png" />
         </a>
@@ -89,11 +90,13 @@
             <button type="button" class="btn-dpw  " data-toggle="dropdown">
                 Pacotes
             </button>
-            @using (@Html.BeginForm("BuscaPacotes","Site"))
+            @using (@Html.BeginForm("BuscaPacotes", "Site"))
             {
-                @Html.EditorFor(m => m.Origem, new { htmlAttributes = new { @class = "Input", @placeholder = "Origem" } })
 
-                @Html.EditorFor(m => m.Destino, new { htmlAttributes = new { @class = "Input", @placeholder = "Destino" } })
+                @Html.DropDownList("cidadeOrigem", "Origem")
+                @Html.DropDownList("cidade", "Destino")
+
+
 
                 <input class="Input" type="submit" value="Buscar" />
             }
@@ -127,7 +130,7 @@
     </section>
 
     <section class="maisProcurados">
-     
+
         <h1 class="title">DESTINOS MAIS PROCURADOS</h1>
 
         <div id="app" class="container" translate="no">
@@ -152,9 +155,14 @@
 
 
 
- 
+
 
     @Scripts.Render("~/Scripts/Mascaras.js");
+    @Scripts.Render("~/Scripts/chosen.jquery.js");
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/chosen.jquery.js"></script>
     @Scripts.Render("~/Scripts/card.js");
 
 </body>

@@ -1,4 +1,5 @@
-﻿@model  IEnumerable<Ecommerce.Models.Pacote>
+﻿
+@model  IEnumerable<Ecommerce.Models.Pacote>
 @{
     Layout = null;
 }
@@ -9,10 +10,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Pacotes</title>
+    <link href="~/Content/Site/BuscaPacotes.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    @Scripts.Render("~/Scripts/tilt.js");
 </head>
 <body>
     <header>
-        <span id="fone">+55 011 3714-2125</span>
+        <a class="voltar" href="~/Site/Index">
+            Voltar
+        </a>
         <a class="perfil" href="~/Site/PerfilCliente">
             <img src="~/Imagens/perfil.png" />
         </a>
@@ -66,10 +74,10 @@
 
         @foreach (var item in Model)
         {
-            <div class="card">
-                <div class="barra"> <p> Transporte + Hospedagem  &nbsp;</p></div>
-                <img src="@item.img_pacote" alt="Imagem" />
-                <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+            <div class="Card">
+               
+                <img src="@item.img_pacote" alt="Imagem">
+                <h2 class="Titulo-pacote">Pacote @item.nome_pacote</h2>
                 <img class="stars" src="~/Imagens/stars.png" />
 
                 <h1>a partir de <span id="valor">@item.vl_pacote</span> por pessoa </h1>
@@ -79,6 +87,6 @@
 
     </div>
 
-
+    @Scripts.Render("~/Scripts/tilt.js");
 </body>
 </html>

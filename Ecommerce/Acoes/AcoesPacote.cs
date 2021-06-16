@@ -78,11 +78,11 @@ namespace Ecommerce.Acoes
         {
             List<Pacote> PacList = new List<Pacote>();
 
-            MySqlCommand cmd = new MySqlCommand("call buscarPacote(@Origem, @destino);", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand(" select * from Pacote where cd_cidDestino = @destino and cd_cidOrigem = @Origem;", con.MyConectarBD());
 
-            cmd.Parameters.Add("@Origem", MySqlDbType.VarChar).Value = pac.Origem;
+            cmd.Parameters.Add("@Origem", MySqlDbType.VarChar).Value = pac.cd_cidOrigem;
 
-            cmd.Parameters.Add("@Destino", MySqlDbType.VarChar).Value = pac.Destino;
+            cmd.Parameters.Add("@Destino", MySqlDbType.VarChar).Value = pac.cd_cidDestino;
 
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -96,16 +96,16 @@ namespace Ecommerce.Acoes
 
                      new Pacote
                      {
-                         cd_pacote = Convert.ToString(dr["cd_pacote"]),
+                     
                          nome_pacote = Convert.ToString(dr["nome_pacote"]),
                          cd_cidDestino = Convert.ToString(dr["cd_cidDestino"]),
                          cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
                          cd_hotel = Convert.ToString(dr["cd_hotel"]),
                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                         dt_chekinHotel = Convert.ToString(dr["dt_chekinHotel"]),
-                         dt_chekoutHotel = Convert.ToString(dr["dt_chekoutHotel"]),
+                         dt_chekinHotel = Convert.ToString(dr["dtChekin_hotel"]),
+                         dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
                          descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
-                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
+                         tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
                          vl_pacote = Convert.ToString(dr["vl_pacote"]),
                          img_pacote = Convert.ToString(dr["img_pacote"])
 
@@ -198,7 +198,7 @@ namespace Ecommerce.Acoes
                           img_hotel = Convert.ToString(dr["img_hotel"]),
                           dt_chegada = Convert.ToString(dr["dt_chegada"]),
                           dt_ida = Convert.ToString(dr["dt_ida"]),
-                          destino = Convert.ToString(dr["Cidade"]),
+                          Destino = Convert.ToString(dr["Cidade"]),
                           vl_total = Convert.ToString(dr["vl_total"]),
                           descricao = Convert.ToString(dr["descricao"]),
                           img_viagem = Convert.ToString(dr["img_viagem"]),

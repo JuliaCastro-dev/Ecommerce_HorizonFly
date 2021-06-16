@@ -338,6 +338,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\TextoCidade.js" />
     <Content Include="Scripts\ContaDias.js" />
+    <Content Include="Scripts\tilt.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

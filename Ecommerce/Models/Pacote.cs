@@ -91,16 +91,6 @@ namespace Ecommerce.Models
 
 
 
-        [Required]
-        [Display(Name = "Origem")]
-        public string origem { get; set; }
-
-
-
-        [Required]
-        [Display(Name = "Destino")]
-        public string destino { get; set; }
-
 
         [Required]
         [Display(Name = "Data de Ida")]

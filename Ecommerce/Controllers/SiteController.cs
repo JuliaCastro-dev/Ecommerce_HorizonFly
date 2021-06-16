@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Acoes;
 using Ecommerce.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,11 +19,68 @@ namespace Ecommerce.Controllers
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesPacote acP = new AcoesPacote();
 
+        //-------------- CARREGA CIDADES ---------------------------------------------------
+        public void carregaCidades()
+        {
+            List<SelectListItem> cidade = new List<SelectListItem>();
 
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Cidade;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cidade.Add(new SelectListItem
+                    {
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString(),
+
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.cidade = new SelectList(cidade, "Value", "Text");
+        }
+
+        //-------------- CARREGA CIDADES PARA ORIGEM ---------------------------------------------------
+
+        public void carregaCidadesOrigem()
+        {
+            List<SelectListItem> cidadeOrigem = new List<SelectListItem>();
+
+            using (MySqlConnection con = new MySqlConnection("Server=localhost;DataBase=db_horizon;User=root;pwd=scorpia"))
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from Cidade;", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    cidadeOrigem.Add(new SelectListItem
+                    {
+                        Text = rdr[2].ToString(),
+                        Value = rdr[0].ToString(),
+
+                    });
+                }
+                con.Close();
+                con.Open();
+            }
+
+
+            ViewBag.cidadeOrigem = new SelectList(cidadeOrigem, "Value", "Text");
+        }
         // -------------------- PÁGINA PRINCIPAL -------------------
 
         public ActionResult Index()
         {
+            carregaCidades();
+            carregaCidadesOrigem();
             ModelState.Clear();
             ViewBag.oferta = acP.EmOferta();
             return View();
@@ -30,9 +88,10 @@ namespace Ecommerce.Controllers
 
         [HttpPost]
         /* RETORNA A BUSCA DE PACOTE */
-        public ActionResult BuscaPacotes(Pacote pacote)
+        public ActionResult BuscaPacotes(Pacote pacote, FormCollection frm)
         {
-           
+            pacote.cd_cidDestino = frm["cidade"].ToString();
+            pacote.cd_cidOrigem =  frm["cidadeOrigem"].ToString();
             return View(acP.BuscaListaPacote(pacote));
         }
         // ---------------------- SOBRE ---------------------

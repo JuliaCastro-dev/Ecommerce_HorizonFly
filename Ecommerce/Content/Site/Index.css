@@ -24,11 +24,13 @@ header {
     height: 4.5vh;
     min-height: 4vh;
 }
+
 .perfil {
     position: relative;
     left: 77%;
-    top:10%;
+    top: 10%;
 }
+
 .carrinho {
     position: relative;
     left: 80%;
@@ -99,7 +101,6 @@ a {
     color: #fff;
     margin: 15px;
     position: relative;
-  
     top: -10%;
 }
 
@@ -253,7 +254,7 @@ a {
 
 .Input {
     color: #07985a;
-    border: none;
+    important ! border: none;
     font-size: 1.3vw;
     width: 15vw;
     height: 5vh;
@@ -266,27 +267,85 @@ a {
     cursor: pointer;
 }
 
-    .Input[type="submit"] {
-        width: 10vw;
-        border-radius: 15px;
-        opacity: 0.9;
-    }
+#cidade_chosen {
+    color: #07985a;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    left: 7vw;
+    outline: none;
+    box-shadow:none;
+    margin: 10px 20px;
+    border-radius: 5px;
+    top: 5.5vh;
+    cursor: pointer;
+}
 
-    .Input::-webkit-input-placeholder {
-        color: #5e60ce;
-        position: relative;
-        left: 1vw;
-    }
 
-    .Input:hover {
-        box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-    }
+#cidadeOrigem_chosen {
+    color: #07985a;
+    border: none;
+    font-size: 1.3vw;
+    width: 15vw;
+    height: 5vh;
+    position: relative;
+    left: 7vw;
+    box-shadow: none;
+    outline: none;
+    margin: 10px 20px;
+    border-radius: 10px;
+    top: 5.5vh;
+    cursor: pointer;
+}
 
-    .Input:active {
-        opacity: 1;
-        box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-        color: #79e3b6;
-    }
+#cidade_chosen a {
+    color: #07985a;
+    border: none;
+    text-decoration: none;
+    text-shadow: none;
+    font-family: var(--Poppins);
+}
+
+#cidadeOrigem_chosen a {
+    color: #07985a;
+    border: none;
+    text-decoration: none;
+    text-shadow: none;
+    font-family: var(--Poppins);
+}
+
+.Input[type="submit"] {
+    width: 10vw;
+    border-radius: 15px;
+    opacity: 0.9;
+    border: none;
+}
+
+.Input::-webkit-input-placeholder {
+    color: #5e60ce;
+    position: relative;
+    left: 1vw;
+}
+
+.Input:hover {
+    box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cidadeOrigem_chosen:hover {
+    box-shadow: -1px -1px 10px rgba(255, 255, 255, 0.8), 6px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#cidade_chosen:hover {
+    box-shadow: -1px -1px 10px rgba(255, 255, 255, 0.8), 6px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Input:active {
+    opacity: 1;
+    box-shadow: inset -2px -2px 2px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+    color: #79e3b6;
+}
 
 .base {
     position: absolute;
@@ -437,10 +496,10 @@ img.stars {
 
 .Card h1 {
     font-weight: 300;
-    position:relative;
-    top:3.5vw;
-    left:1vw;
-    font-size:1.1vw;
+    position: relative;
+    top: 3.5vw;
+    left: 1vw;
+    font-size: 1.1vw;
 }
 
 #valor {
