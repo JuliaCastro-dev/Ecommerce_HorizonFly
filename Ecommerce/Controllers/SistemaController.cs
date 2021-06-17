@@ -3,6 +3,7 @@ using Ecommerce.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -414,7 +415,8 @@ namespace Ecommerce.Controllers
                 // retira cifrão e ponto do valor 
                 string preco = viagem.vl_total;
 
-                preco = Regex.Replace(preco, "[^0-9]", "");
+                preco = String.Format("{0:C}", preco);
+           
                 viagem.vl_total = preco;
                 //-------------------------------------
 
@@ -459,7 +461,9 @@ namespace Ecommerce.Controllers
 
                 // retira cifrão e ponto do valor 
                 string diaria = hotel.diaria_hotel;
-                diaria = Regex.Replace(diaria, "[^0-9]", "");
+                diaria = String.Format("{0:C}", diaria);
+                //diaria = diaria.Remove(0, 2);
+                //diaria = Regex.Replace(diaria, "[^0-9]", "");
                 hotel.diaria_hotel = diaria;
 
                 // Inseri HOTEL
@@ -588,17 +592,23 @@ namespace Ecommerce.Controllers
                 acV.VerificaValor(viagem);
 
                 /* CONTAGEM DOS DIAS */
-                string dtChekin = frm["dtChekin"];
-                string dtChekout = frm["dtChekout"];
+                string dtChekin = Session["dtChekin"].ToString();
+                string dtChekout = Session["dtChekout"].ToString();
 
-                int chekin = Convert.ToInt16(dtChekin);
-                int chekout = Convert.ToInt16(dtChekout);
-                int dias = chekin - chekout / 24 * 3600 * 1000;
+                //int chekin = Convert.ToInt16(dtChekin);
+                //int chekout = Convert.ToInt16(dtChekout);
+                int totaldias = (DateTime.Parse(dtChekout).Subtract(DateTime.Parse(dtChekin))).Days;
+                //double dias = chekin - chekout / 24 * 3600 * 1000;
+                string diaria = hotel.diaria_hotel;
+                string Vlviagem = viagem.vl_total;
 
-                int vl_TotalHotel = (dias * (Convert.ToInt32(hotel.diaria_hotel)));
-                int valorTotal = vl_TotalHotel + Convert.ToInt32(viagem.vl_total);
-
-                pacote.vl_pacote = valorTotal.ToString();
+                diaria = Regex.Replace(diaria, "[^0-9]", "");
+                Vlviagem = Regex.Replace(Vlviagem, "[^0-9]", "");
+                int vl_TotalHotel = (totaldias * Convert.ToInt32(diaria));
+                double valorTotal = vl_TotalHotel + Convert.ToInt32(Vlviagem);
+                string valor = Convert.ToString(valorTotal);
+               
+                pacote.vl_pacote = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
                 if (hotel.cd_hotel != null && viagem.cd_viagem != null)
                 {
 

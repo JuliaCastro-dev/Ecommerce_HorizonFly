@@ -170,15 +170,13 @@ namespace Ecommerce.Acoes
         {
             List<Viagem> Vilist = new List<Viagem>();
 
-            MySqlCommand cmd = new MySqlCommand(" select * from  vw_MostraViagemOrigem;", con.MyConectarBD());
-            MySqlCommand cmd2 = new MySqlCommand(" select * from  vw_MostraViagemDestino;", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("  select * from vw_mostraviagem", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            MySqlDataAdapter sd2 = new MySqlDataAdapter(cmd2);
+     
             DataTable dt = new DataTable();
 
 
             sd.Fill(dt);
-            sd2.Fill(dt);
             con.MyDesconectarBD();
 
             foreach (DataRow dr in dt.Rows )
@@ -202,32 +200,7 @@ namespace Ecommerce.Acoes
             }
             return Vilist;
         }
-        public List<Viagem> GetDestinoViagem()
-        {
-            List<Viagem> Vilist = new List<Viagem>();
-
-            MySqlCommand cmd = new MySqlCommand("  select * from vw_MostraViagemDestino;", con.MyConectarBD());
-            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            sd.Fill(dt);
-            con.MyDesconectarBD();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                Vilist.Add(
-                      new Viagem
-                      {
-                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                          destino = Convert.ToString(dr["CidadeDestino"]),
-                       
-
-
-                      });
-            }
-            return Vilist;
-        }
-
+      
 
         public void PegaDados(Viagem viagem)
         {

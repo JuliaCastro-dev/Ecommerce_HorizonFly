@@ -108,7 +108,7 @@ h2 {
     width: 30px;
     position: absolute;
     /* align-self: revert; */
-    left: 95%;
+    left: 90vw;
     top: 1vw;
 }
 
