@@ -46,6 +46,8 @@
 
             @foreach (var item in Model)
             {
+
+                var id = item.cd_pacote;
                 <div class="card">
                     <a href="/Sistema/DetalhesPacotes/@item.cd_pacote">
                         @if (@item.img_pacote != null)
@@ -57,11 +59,16 @@
                             <img class="card-img-right flex-auto d-none d-md-block" data-src=" " src="~/Imagens/image-not-found.jpg" data-holder-rendered="true">
                         }
                         <h2>@item.nome_pacote</h2>
-                       
+
 
                     </a>
+                    @if (Session["tipoLogado1"] != null)
+                    {
 
+                        <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiViagem", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
+                    }
                 </div>
+
             }
 
 

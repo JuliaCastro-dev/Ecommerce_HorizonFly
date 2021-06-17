@@ -84,6 +84,8 @@ namespace Ecommerce.Models
         public string Destino { get; set; }
 
 
+        [Display(Name = "Destino")]
+        public string Transportedestino { get; set; }
 
         [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
         [Display(Name = "Viagem")]

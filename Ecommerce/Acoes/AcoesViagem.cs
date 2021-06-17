@@ -175,8 +175,8 @@ namespace Ecommerce.Acoes
      
             DataTable dt = new DataTable();
 
-
             sd.Fill(dt);
+          
             con.MyDesconectarBD();
 
             foreach (DataRow dr in dt.Rows )
@@ -186,10 +186,9 @@ namespace Ecommerce.Acoes
                       {
                           cd_viagem = Convert.ToString(dr["cd_viagem"]),
                           nome_viagem = Convert.ToString(dr["nome_viagem"]),
-                          origem = Convert.ToString(dr["CidadeOrigem"]),
+                          destino = Convert.ToString(dr["TransporteDestino"]),
                           dt_chegada = Convert.ToString(dr["dt_chegada"]),
                           dt_ida = Convert.ToString(dr["dt_ida"]),
-                          destino = Convert.ToString(dr["CidadeDestino"]),
                           vl_total = Convert.ToString(dr["vl_total"]),
                           descricao = Convert.ToString(dr["descricao"]),
                           img_viagem = Convert.ToString(dr["img_viagem"]),
@@ -200,7 +199,31 @@ namespace Ecommerce.Acoes
             }
             return Vilist;
         }
-      
+
+        public List<Viagem> GetDestinoViagem()
+        {
+            List<Viagem> Vilist = new List<Viagem>();
+
+            MySqlCommand cmd = new MySqlCommand(" select * from vw_mostraviagemDestino", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Vilist.Add(
+                      new Viagem
+                      {
+                          cd_viagem = Convert.ToString(dr["cd_viagem"]),
+                          destino = Convert.ToString(dr["TransporteDestino"]),
+                      });
+            }
+            return Vilist;
+        }
 
         public void PegaDados(Viagem viagem)
         {

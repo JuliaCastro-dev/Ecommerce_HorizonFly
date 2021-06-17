@@ -119,12 +119,13 @@
         {
 
             <div class="Card">
-                <div class="barra"> <p> Transporte + Hospedagem  &nbsp;</p></div>
+
                 <img src="@item.img_pacote" alt="Imagem" />
                 <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
                 <img class="stars" src="~/Imagens/stars.png" />
 
-                <h1>a partir de <span id="valor">@item.vl_pacote</span> por pessoa </h1>
+                <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
+                @Html.ActionLink("+ Detalhes ", "DetalhesPacote", new { htmlAttributes = new { @id = "detalhes" } })
             </div>
         }
     </section>

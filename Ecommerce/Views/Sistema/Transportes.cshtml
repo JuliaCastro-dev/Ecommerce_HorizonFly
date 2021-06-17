@@ -62,8 +62,11 @@
                 </a>
 
                 <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Atualizar ", "AtualizaTransporte", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
-                <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiTransporte", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
-            </div>
+                @if (Session["tipoLogado1"] != null)
+                {
+                    <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Deletar ", "ExcluiTransporte", "Sistema", new { id }, null)&nbsp; &nbsp;</span>
+                }
+                </div>
             }
 
 

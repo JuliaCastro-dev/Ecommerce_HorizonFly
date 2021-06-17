@@ -50,9 +50,13 @@
             <span class="dado">   @Html.DisplayFor(model => model.nome_pacote) </span>
         </div>
         <div class="dados">
+            <h2>Origem </h2>
+            <span class="dado">
+                @Html.DisplayFor(model => model.Origem)
+            </span>
             <h2>Destino</h2>
             <span class="dado">
-                @Html.DisplayFor(model => model.destino)
+                @Html.DisplayFor(model => model.Transportedestino)
             </span>
             <h2>Valor Total:</h2>
             <span class="dado">
@@ -96,13 +100,9 @@
             <span class="dadoViagem">
                 @Html.DisplayFor(model => model.tipo_transporte)
             </span>
-            <h2>Origem </h2>
-            <span class="dadoViagem">
-                @Html.DisplayFor(model => model.origem)
-            </span>
             <h2>Destino</h2>
             <span class="dadoViagem">
-                @Html.DisplayFor(model => model.destino)
+                @Html.DisplayFor(model => model.Transportedestino)
             </span>
             <h2>Data de Partida</h2>
             <span class="dadoViagem">

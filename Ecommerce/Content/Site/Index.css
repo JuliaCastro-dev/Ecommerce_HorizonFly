@@ -481,7 +481,7 @@ a {
     color: #1d66a2;
     font-weight: 700;
     position: relative;
-    left: 1vw;
+    left: 0.3vw;
     text-transform: uppercase;
     font-family: 'Poppins',sans-serif;
     font-size: 1.5vw;
@@ -505,6 +505,15 @@ img.stars {
 #valor {
     color: red;
     font-size: 2vw;
+}
+
+body > section.pacotes > div > a {
+    position: relative;
+    top: 3.5vw;
+    left: 1vw;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: none;
 }
 
 

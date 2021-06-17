@@ -186,10 +186,11 @@ a {
         font-weight: bold;
         position: relative;
         left: 11vw;
-        bottom: 7.5vw;
+        bottom: 10vw;
         font-size: 1.3vw;
+        width: 16.8vw;
         text-decoration: none;
-        word-wrap:break-word;
+        word-wrap: break-word;
     }
 
 
@@ -225,8 +226,8 @@ a {
     border: none;
     font-size: 1.3vw;
     position: relative;
-    left: 2vw;
-    bottom: 1vw;
+    left: 10vw;
+    bottom: 7vw;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -253,10 +254,10 @@ a {
 .excluir {
     box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
     border: none;
-    left: 5vw;
+    left: 13vw;
     font-size: 1.3vw;
     position: relative;
-    bottom: 1vw;
+    bottom: 7vw;
     border-radius: 10px;
     cursor: pointer;
 }

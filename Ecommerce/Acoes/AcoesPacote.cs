@@ -190,7 +190,6 @@ namespace Ecommerce.Acoes
                       {
                           cd_hotel = Convert.ToString(dr["cd_hotel"]),
                           nome_hotel = Convert.ToString(dr["nome_hotel"]),
-                          cidade_hotel = Convert.ToString(dr["cidade"]),
                           telefone_hotel = Convert.ToString(dr["telefone_hotel"]),
                           endereco_hotel = Convert.ToString(dr["endereco_hotel"]),
                           diaria_hotel = Convert.ToString(dr["diaria_hotel"]),
@@ -198,7 +197,8 @@ namespace Ecommerce.Acoes
                           img_hotel = Convert.ToString(dr["img_hotel"]),
                           dt_chegada = Convert.ToString(dr["dt_chegada"]),
                           dt_ida = Convert.ToString(dr["dt_ida"]),
-                          Destino = Convert.ToString(dr["Cidade"]),
+                          Origem = Convert.ToString(dr["CidadeOrigem"]),
+                          Transportedestino = Convert.ToString(dr["TransporteDestino"]),
                           vl_total = Convert.ToString(dr["vl_total"]),
                           descricao = Convert.ToString(dr["descricao"]),
                           img_viagem = Convert.ToString(dr["img_viagem"]),
@@ -251,7 +251,7 @@ namespace Ecommerce.Acoes
         {
             List<Pacote> Pacotelist = new List<Pacote>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from Pacote where cd_categoria = 1", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from Pacote where cd_categoria = 2", con.MyConectarBD());
           
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -270,15 +270,15 @@ namespace Ecommerce.Acoes
                         cd_categoria = Convert.ToString(dr["cd_categoria"]),
                         cd_hotel = Convert.ToString(dr["cd_hotel"]),
                         cd_viagem = Convert.ToString(dr["cd_viagem"]),
-                     
+
                         descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
                         dt_chekinHotel = Convert.ToString(dr["dtChekin_hotel"]),
                         dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
                         img_pacote = Convert.ToString(dr["img_pacote"]),
                         tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
-                        vl_pacote = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", dr["vl_pacote"])
-                    });
+                        vl_pacote = dr["vl_pacote"].ToString().Insert(4, ",")
+            }); 
             }
             return Pacotelist;
         }

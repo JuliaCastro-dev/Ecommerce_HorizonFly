@@ -728,9 +728,13 @@ namespace Ecommerce.Controllers
 
         public ActionResult DetalhesViagens(string id, AcoesViagem viagem)
         {
-
-
             return View(viagem.GetDetalhesViagem().Find((smodel => smodel.cd_viagem == id)));
+        }
+        [HttpPost]
+        public ActionResult DetalhesViagens(string id)
+        {
+            
+            return View(acV.GetDestinoViagem().Find((smodel => smodel.cd_viagem == id)));
         }
 
 
