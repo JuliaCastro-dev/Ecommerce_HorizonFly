@@ -223,6 +223,7 @@
     <Content Include="ImagensTransporte\pierMauá-rj.jpg" />
     <Content Include="ImagensTransporte\Term.Cruzeiro itj.jpg" />
     <Content Include="ImagensTransporte\VillasDoTrancoso.jpg" />
+    <Content Include="Imagens\addCarrinho.png" />
     <Content Include="Imagens\aviao.png" />
     <Content Include="Imagens\bag.png" />
     <Content Include="Imagens\Berlin-Germany.png" />
@@ -387,6 +388,7 @@
     <Content Include="Views\Site\AtualizaCliente.cshtml" />
     <Content Include="Views\Sistema\DetalhesPacotes.cshtml" />
     <Content Include="Views\Site\BuscaPacotes.cshtml" />
+    <Content Include="Views\Site\DetalhePacote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

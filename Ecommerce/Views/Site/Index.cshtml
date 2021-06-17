@@ -117,18 +117,22 @@
         <h1>Pacotes em <span id="oferta">OFERTA</span>  para as férias em Familía</h1>
         @foreach (var item in ViewBag.oferta)
         {
+            var id = item.cd_pacote;
+            <a href="~/Site/DetalhePacote/@item.cd_pacote">
+                <div class="Card">
 
-            <div class="Card">
+                    <img src="@item.img_pacote" alt="Imagem" />
+                    <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                    <img class="stars" src="~/Imagens/stars.png" />
+                    <a href="~/Site/AddCarrinho">
+                        <img src="~/Imagens/addCarrinho.png" />
+                    </a>
 
-                <img src="@item.img_pacote" alt="Imagem" />
-                <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
-                <img class="stars" src="~/Imagens/stars.png" />
-
-                <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
-                @Html.ActionLink("+ Detalhes ", "DetalhesPacote", new { htmlAttributes = new { @id = "detalhes" } })
-            </div>
-        }
-    </section>
+                    <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
+                </div>
+                </a>
+                }
+        </section>
 
     <section class="maisProcurados">
 

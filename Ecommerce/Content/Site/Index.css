@@ -439,27 +439,6 @@ a {
 }
 
 /* Card de Pacote*/
-.barra {
-    background: #ff6c5c;
-    position: absolute;
-    top: 2vw;
-    HEIGHT: 3VW;
-    Z-INDEX: 5;
-    BORDER-RADIUS: 0PX 20PX 20PX 0PX;
-    COLOR: #FFF;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 1px 1px 2px 1px #fff6;
-}
-
-    .barra p {
-        position: relative;
-        top: 0.5vw;
-        font-weight: 500;
-        text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.62);
-        font-size: 1.2vw;
-    }
 
 .Card {
     height: 30vw;
@@ -468,6 +447,7 @@ a {
     position: absolute;
     box-shadow: 0px 4px 4px 0px #00000040;
     font-family: 'Poppins',sans-serif;
+    text-shadow:none;
 }
 
     .Card img {
@@ -485,6 +465,7 @@ a {
     text-transform: uppercase;
     font-family: 'Poppins',sans-serif;
     font-size: 1.5vw;
+    text-shadow: none;
 }
 
 img.stars {
@@ -494,10 +475,17 @@ img.stars {
     left: 0.5vw;
 }
 
+body > section.pacotes > div > a:nth-child(2) > img {
+    width: 4vw;
+    height: 4vw;
+    position: absolute;
+    left: 17vw;
+    top: 21vw;
+}
 .Card h1 {
     font-weight: 300;
     position: relative;
-    top: 3.5vw;
+    top: 5vw;
     left: 1vw;
     font-size: 1.1vw;
 }
@@ -507,14 +495,7 @@ img.stars {
     font-size: 2vw;
 }
 
-body > section.pacotes > div > a {
-    position: relative;
-    top: 3.5vw;
-    left: 1vw;
-    font-weight: bold;
-    cursor: pointer;
-    text-shadow: none;
-}
+
 
 
 /* destinos mais procurados*/

@@ -94,6 +94,12 @@ namespace Ecommerce.Controllers
             pacote.cd_cidOrigem =  frm["cidadeOrigem"].ToString();
             return View(acP.BuscaListaPacote(pacote));
         }
+
+        //------------------- DETALHE PACOTES ---------------------
+        public ActionResult DetalhePacote(string id, AcoesPacote pacote)
+        {
+            return View(pacote.GetDetalhesPacote().Find((smodel => smodel.cd_pacote == id)));
+        }
         // ---------------------- SOBRE ---------------------
 
         public ActionResult Sobre()
