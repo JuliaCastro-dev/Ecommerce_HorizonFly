@@ -577,7 +577,7 @@ namespace Ecommerce.Controllers
                 /* ATRIBUI VALORES AO PACOTE */
                 pacote.cd_categoria = Request["categoria"];
                 pacote.cd_cidDestino = Request["cidade"];
-                pacote.cd_cidOrigem = Request["cidade"];
+                pacote.cd_cidOrigem = Request["cidadeOrigem"];
                 pacote.tipo_transporte = Request["tipotransporte"];
                 pacote.dt_chekinHotel = Session["dtChekin"].ToString();
                 pacote.dt_chekoutHotel = Session["dtChekout"].ToString();
