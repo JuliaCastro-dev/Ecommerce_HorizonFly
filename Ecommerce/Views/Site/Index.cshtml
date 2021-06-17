@@ -115,24 +115,31 @@
 
     <section class="pacotes">
         <h1>Pacotes em <span id="oferta">OFERTA</span>  para as férias em Familía</h1>
-        @foreach (var item in ViewBag.oferta)
-        {
-            var id = item.cd_pacote;
-            <a href="~/Site/DetalhePacote/@item.cd_pacote">
-                <div class="Card">
+         @foreach (var item in ViewBag.oferta)
+          {
+                var id = item.cd_pacote;
 
-                    <img src="@item.img_pacote" alt="Imagem" />
-                    <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
-                    <img class="stars" src="~/Imagens/stars.png" />
-                    <a href="~/Site/AddCarrinho">
-                        <img src="~/Imagens/addCarrinho.png" />
-                    </a>
+                <div class="Card">
+                        <a href="~/Site/DetalhePacote/@item.cd_pacote">
+                        <img src="@item.img_pacote" alt="Imagem" />
+                        <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                        <img class="stars" src="~/Imagens/stars.png" />
+                        </a>
+                        @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
+                        {
+                        <input type="hidden" name="id" value=@item.cd_pacote>
+                        <input type="hidden" name="pre" value=@item.vl_pacote>
+                        <input type="hidden" name="quantidade" value="1">
+
+
+                        <input type="submit" value="" class="add">
+                        }
 
                     <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
                 </div>
-                </a>
-                }
-        </section>
+
+          }
+    </section>
 
     <section class="maisProcurados">
 
@@ -157,7 +164,9 @@
             </card>
         </div>
     </section>
-
+    <footer>
+        @DateTime.Now.Year
+    </footer>
 
 
 
