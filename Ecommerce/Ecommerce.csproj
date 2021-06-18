@@ -208,6 +208,7 @@
     <Content Include="Content\Site\Carrinho.css" />
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
+    <Content Include="Content\Site\MeusCartões.css" />
     <Content Include="Content\Site\Perfil.css" />
     <Content Include="Content\Site\Sobre.css" />
     <Content Include="favicon.ico" />
@@ -389,6 +390,7 @@
     <Content Include="Views\Sistema\DetalhesPacotes.cshtml" />
     <Content Include="Views\Site\BuscaPacotes.cshtml" />
     <Content Include="Views\Site\DetalhePacote.cshtml" />
+    <Content Include="Views\Site\MeusCartoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

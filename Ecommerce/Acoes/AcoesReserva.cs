@@ -63,6 +63,36 @@ namespace Ecommerce.Acoes
             return ResList;
         }
 
+        public List<Reserva> GetReservas(Reserva reser)
+        {
+            List<Reserva> ResList = new List<Reserva>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Reserva where CPF = @cpf", con.MyConectarBD());
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = reser.cpf_cliente;
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                ResList.Add(
+
+                     new Reserva
+                     {
+                         cd_reserva = Convert.ToString(dr["cd_reserva"]),
+                         cpf_cliente = Convert.ToString(dr["CPF"]),
+                         cd_cartao = Convert.ToString(dr["cd_cartao"]),
+                         vl_total = Convert.ToDouble(dr["vl_total"]),
+                         Status_Reserva = Convert.ToString(dr["Status_Reserva"]),
+
+
+                     });
+            }
+            return ResList;
+        }
+
         public bool atualizarReserva(Reserva reser)
         {
 

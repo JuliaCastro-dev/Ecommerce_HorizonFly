@@ -1,0 +1,216 @@
+﻿* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+    z-index: 2;
+}
+
+header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
+    width: 100vw;
+    height: 4vh;
+    min-height: 4vh;
+    z-index: 2;
+}
+
+.voltar a {
+    color: #fff;
+    font-size: 1vw;
+    position: relative;
+    left: 2vw;
+}
+
+.container {
+    height: 100%;
+    width: 70%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    left: 15%;
+    position: relative;
+    z-index: 1;
+}
+
+.banner {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 4vh;
+}
+
+.foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    left: 10%;
+    object-fit: cover;
+    bottom: 40px;
+    position: relative;
+    object-position: center;
+    top: 13vw;
+}
+
+h1#dados {
+    position: absolute;
+    top: 25vw;
+    font-size: 1.5vw;
+}
+
+#barrinha {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 1.8vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
+}
+/*Tabela de dados*/
+thead {
+    width: 10vw;
+}
+
+.dados {
+    position: absolute;
+    top: 29vw;
+    left: 5vw;
+}
+
+.Titulo {
+    color: #0C3E7C;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 2vw;
+}
+
+.dado {
+    color: #0C3E7C;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/*Cartoes*/
+.cartoes {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 51vw;
+    top: 13vw;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 15vw;
+    text-decoration: none;
+}
+
+    .cartoes:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .cartoes:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+a {
+    text-decoration: none;
+}
+
+.cartoes p {
+    color: #6f6cde;
+    font-weight: 700;
+    position: relative;
+    left: 2vw;
+    text-decoration: none;
+}
+/*Reservas*/
+h1#reserva {
+    position: absolute;
+    top: 45vw;
+    font-size: 1.5vw;
+}
+
+#barrinhaReserva {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 1.8vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
+}
+
+.atualizar {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 53vw;
+    top: 15vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .atualizar:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atualizar:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .atualizar a {
+        color: #69dc61;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+.excluir {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    left: 41.5vw;
+    font-size: 1.3vw;
+    position: relative;
+    /* bottom: 1vw; */
+    top: 19vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .excluir:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .excluir:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .excluir a {
+        color: #d72727;
+        font-weight: 700;
+        text-decoration: none;
+    }

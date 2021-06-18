@@ -53,5 +53,11 @@ namespace Ecommerce.Models
         [CreditCard]
         [Display(Name = "Número do cartão")]
         public string num_cartao { get; set; }
+
+        /* ADICIONAIS */
+      
+        [Display(Name = "Registro geral")]
+        [StringLength(9, MinimumLength = 9, ErrorMessage = "RG Inválido")]
+        public string rg { get; set; }
     }
 }

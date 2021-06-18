@@ -37,14 +37,14 @@
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG", @Value = ViewBag.rg , @Type = "Hidden"} })
+                        @Html.EditorFor(model => model.rg, new { htmlAttributes = new { @class = "loginInput", @placeholder = "RG", @Value = ViewBag.rg } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.rg)</span>
                     </div>
                     <div class="group">
 
-                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );", @Value = ViewBag.cpf, @Type = "Hidden" } })
+                        @Html.EditorFor(m => m.CPF, new { htmlAttributes = new { @class = "loginInput", @placeholder = "CPF", @id = "RegraValida", @name = "RegraValida", @onkeydown = "javascript: fMasc( this, mCPF );", @Value = ViewBag.cpf } })
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <span class="errorMessage">@Html.ValidationMessageFor(model => model.CPF)</span>

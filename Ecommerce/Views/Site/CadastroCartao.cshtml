@@ -29,13 +29,13 @@
 
                 @Html.EditorFor(model => model.nm_impresso, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Impresso " } })
 
-                @Html.EditorFor(model => model.num_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Número do Cartão " } })
+                @Html.EditorFor(model => model.num_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Número do Cartão ", @name = "cc", @id = "cc" } })
 
-                @Html.EditorFor(model => model.validade, new { htmlAttributes = new { @class = "input", @placeholder = "Validade" } })
+                @Html.EditorFor(model => model.validade, new { htmlAttributes = new { @class = "input", @placeholder = "Validade", maxlength = "5", @name = "data", @onkeypress = "checaData();" } })
 
                 @Html.EditorFor(model => model.cvv_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "CVV" } })
 
-                <input class="input" id="button" type="submit" value="Cadastrar" />
+                <input class="input" id="button" type="submit" value="Cadastrar" Onclick="checaData();"/>
             }
         </div>
     </section>
@@ -72,5 +72,6 @@
             </div>
         </div>
     </section>
+    @Scripts.Render("~/Scripts/Mascaras.js");
 </body>
 </html>

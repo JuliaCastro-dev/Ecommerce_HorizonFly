@@ -106,5 +106,66 @@ namespace Ecommerce.Acoes
             else
                 return false;
         }
+
+        public List<Cartao> GetDetalhesCartao()
+        {
+            List<Cartao> Cartaolist = new List<Cartao>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Cartoes", con.MyConectarBD());
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Cartaolist.Add(
+                      new Cartao
+                      {
+                          cd_cartao = Convert.ToString(dr["cd_cartao"]),
+                          cpf = Convert.ToString(dr["CPF"]),
+                          rg = Convert.ToString(dr["rg"]),
+                          cvv_cartao = Convert.ToString(dr["cvv_cartao"]),
+                          nm_cartao = Convert.ToString(dr["numero_cartao"]),
+                          nm_impresso = Convert.ToString(dr["nome_impresso"]),
+                          num_cartao = Convert.ToString(dr["nome_cartao"]),
+                          validade = Convert.ToString(dr["validade_cartao"])
+
+                      });
+            }
+            return Cartaolist;
+        }
+
+        public List<Cartao> GetCartoes(Cartao card)
+        {
+            List<Cartao> Cartaolist = new List<Cartao>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Cartoes where CPF = @cpf", con.MyConectarBD());
+            cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = card.cpf;
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Cartaolist.Add(
+                      new Cartao
+                      {
+                          cd_cartao = Convert.ToString(dr["cd_cartao"]),
+                          cpf = Convert.ToString(dr["CPF"]),
+                          rg = Convert.ToString(dr["rg"]),
+                          cvv_cartao = Convert.ToString(dr["cvv_cartao"]),
+                          nm_cartao = Convert.ToString(dr["numero_cartao"]),
+                          nm_impresso = Convert.ToString(dr["nome_impresso"]),
+                          num_cartao = Convert.ToString(dr["nome_cartao"]),
+                          validade = Convert.ToString(dr["validade_cartao"])
+
+                      });
+            }
+            return Cartaolist;
+        }
     }
 }

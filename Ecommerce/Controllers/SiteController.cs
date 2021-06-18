@@ -15,6 +15,7 @@ namespace Ecommerce.Controllers
     {
         AcoesCliente acC = new AcoesCliente();
         AcoesCartao acCard = new AcoesCartao();
+        AcoesReserva acR = new AcoesReserva();
         AcoesLogin acL = new AcoesLogin();
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesPacote acP = new AcoesPacote();
@@ -230,7 +231,7 @@ namespace Ecommerce.Controllers
 
         /* ------------------- PERFIL CLIENTE -------------------- */
 
-        public ActionResult PerfilCliente()
+        public ActionResult PerfilCliente(Cartao card, Cliente cli, Reserva reser)
         {
             ViewBag.nome = Session["nome"];
             ViewBag.img = Session["img"];
@@ -240,6 +241,10 @@ namespace Ecommerce.Controllers
             ViewBag.rg = Session["rg"];
             ViewBag.senha = Session["senha"];
 
+            card.cpf = Session["cpf"].ToString();
+            ViewBag.listaCartoes = acCard.GetCartoes(card);
+            reser.cpf_cliente = Session["cpf"].ToString();
+            ViewBag.listaReservas = acR.GetReservas(reser);
             return View();
         }
 
@@ -335,6 +340,14 @@ namespace Ecommerce.Controllers
 
             return View();
         }
+
+
+        //------------------- VIEW MEUS CARTÕES---------------------
+        public ActionResult MeusCartoes(string id, AcoesCartao cartao)
+        {
+            return View(cartao.GetDetalhesCartao().Find((smodel => smodel.rg == id)));
+        }
+
 
         // ------------------ ALTERA SENHA ( FUNCIONÁRIO E CLIENTE ) -----------------------
         public ActionResult AlterarSenha()
