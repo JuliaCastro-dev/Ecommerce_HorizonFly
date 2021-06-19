@@ -120,6 +120,12 @@ namespace Ecommerce.Acoes
 
             foreach (DataRow dr in dt.Rows)
             {
+                string card1 = dr["numero_cartao"].ToString().Insert(4, " ");
+                string card2 = card1.Insert(9, " ");
+                string card3 = card2.Insert(14, " ");
+                string val1 = dr["validade_cartao"].ToString().Remove(0, 3);
+                string val2 = val1.Remove(8, 8);
+
                 Cartaolist.Add(
                       new Cartao
                       {
@@ -127,12 +133,12 @@ namespace Ecommerce.Acoes
                           cpf = Convert.ToString(dr["CPF"]),
                           rg = Convert.ToString(dr["rg"]),
                           cvv_cartao = Convert.ToString(dr["cvv_cartao"]),
-                          nm_cartao = Convert.ToString(dr["numero_cartao"]),
+                          num_cartao = card3.ToString(),
                           nm_impresso = Convert.ToString(dr["nome_impresso"]),
-                          num_cartao = Convert.ToString(dr["nome_cartao"]),
-                          validade = Convert.ToString(dr["validade_cartao"])
+                          nm_cartao = Convert.ToString(dr["nome_cartao"]),
+                          validade = val2.ToString()
 
-                      });
+                      }); 
             }
             return Cartaolist;
         }
@@ -151,17 +157,24 @@ namespace Ecommerce.Acoes
 
             foreach (DataRow dr in dt.Rows)
             {
+
+                string card1 = dr["numero_cartao"].ToString().Insert(4, " ");
+                string card2 = card1.Insert(9, " ");
+                string card3 = card2.Insert(14, " ");
+                string val1 = dr["validade_cartao"].ToString().Remove(0, 3);
+                string val2 = val1.Remove(8, 8);
                 Cartaolist.Add(
                       new Cartao
                       {
+                         
+                          rg = Convert.ToString(dr["rg"]),
                           cd_cartao = Convert.ToString(dr["cd_cartao"]),
                           cpf = Convert.ToString(dr["CPF"]),
-                          rg = Convert.ToString(dr["rg"]),
                           cvv_cartao = Convert.ToString(dr["cvv_cartao"]),
-                          nm_cartao = Convert.ToString(dr["numero_cartao"]),
+                          num_cartao = card3.ToString(),
                           nm_impresso = Convert.ToString(dr["nome_impresso"]),
-                          num_cartao = Convert.ToString(dr["nome_cartao"]),
-                          validade = Convert.ToString(dr["validade_cartao"])
+                          nm_cartao = Convert.ToString(dr["nome_cartao"]),
+                          validade = val2.ToString()
 
                       });
             }

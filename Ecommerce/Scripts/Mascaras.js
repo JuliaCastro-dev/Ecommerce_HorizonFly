@@ -162,7 +162,7 @@ $(document).ready(function () {
     $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
 });
 
-function mascara(o, f) {
+function mascaracc(o, f) {
     v_obj = o
     v_fun = f
     setTimeout("execmascara()", 1)
@@ -186,11 +186,6 @@ window.onload = function () {
     }
 }
 
-function checaData() {
-    if (document.teste.data.value.length == "2") {
-        document.teste.data.value += "/";
-    }
-}
 
 //// mascara para moeda
 //var currencyInput = document.getElementById("currency")

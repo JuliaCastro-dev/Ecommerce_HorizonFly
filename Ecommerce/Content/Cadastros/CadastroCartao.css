@@ -24,6 +24,16 @@
     font-family: Poppins, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+.voltar {
+    width: 30px;
+    position: absolute;
+    left: 2vw;
+    top: 1vw;
+}
 
 .titulo {
     font-weight: 500;
@@ -67,6 +77,18 @@
     margin-right: calc(1vw/2);
   
     box-shadow: inset 2px 2px 5px #bdcace, inset -5px -5px 10px var(--color-white);
+}
+
+#mes {
+    width: 8vw;
+}
+#ano {
+    width: 8vw;
+    bottom:4vw;
+    left:12vw;
+}
+#cvv_cartao{
+    bottom:3vw;
 }
 .input::-webkit-input-placeholder {
     color: #0058a3;

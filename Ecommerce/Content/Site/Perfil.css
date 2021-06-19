@@ -36,6 +36,7 @@ header {
     border-radius: 0px;
     left: 15%;
     position: relative;
+    overflow-y:auto;
     z-index: 1;
 }
 .banner {
@@ -99,11 +100,11 @@ thead{
     border: none;
     font-size: 1.3vw;
     position: relative;
-    left: 51vw;
+    left: 52vw;
     top: 13vw;
     border-radius: 10px;
     cursor: pointer;
-    width: 15vw;
+    width: 13vw;
     text-decoration: none;
 }
     .cartoes:hover {
@@ -129,7 +130,6 @@ a {
 /*Reservas*/
 h1#reserva {
     position: absolute;
-    top: 45vw;
     font-size: 1.5vw;
 }
 #barrinhaReserva {
@@ -200,3 +200,89 @@ h1#reserva {
         font-weight: 700;
         text-decoration: none;
     }
+
+
+    /* LISTAS*/
+.listas {
+    position: absolute;
+    top: 90%;
+}
+.reserva {
+    top: 2vw;
+    position: relative;
+    height:25vw;
+}
+.cartao{
+    position:relative;
+    top:5vw;
+}
+#tituloCartao{
+    font-size:1.5vw;
+}
+.numero {
+    font-weight: 500;
+    font-size: 1.2vw;
+    left:2vw;
+    position:relative;
+}
+
+.atualizarCartao {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 1.3vw;
+    position: relative;
+    left: 25vw;
+    bottom: 8.5vw;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .atualizarCartao:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atualizarCartao:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .atualizarCartao a {
+        color: #69dc61;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+.excluirCartao {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    left: 17vw;
+    bottom: 6vw;
+    font-size: 1.3vw;
+    position: relative;
+    /* bottom: 1vw; */
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+    .excluirCartao:hover {
+        opacity: 0.3;
+        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .excluirCartao:active {
+        opacity: 1;
+        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+        color: #79e3b6;
+    }
+
+    .excluirCartao a {
+        color: #d72727;
+        font-weight: 700;
+        text-decoration: none;
+    }
+

@@ -17,11 +17,14 @@
 
 </head>
 <body>
+    <a href="/Site/PerfilCliente">
+        <img class="voltar" src="~/Imagens/voltar.png" />
+    </a>
     <h1 class="titulo">Novo cartão</h1>
     <section class="cadastro">
 
         <div class="form">
-            @using (Html.BeginForm("CadastroCartao", "Sistema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("CadastroCartao", "Site", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -29,13 +32,15 @@
 
                 @Html.EditorFor(model => model.nm_impresso, new { htmlAttributes = new { @class = "input", @placeholder = "Nome Impresso " } })
 
-                @Html.EditorFor(model => model.num_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Número do Cartão ", @name = "cc", @id = "cc" } })
+                @Html.EditorFor(model => model.num_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "Número do Cartão ", @name = "cc", @id = "cc", @type = "tel" } })
+                <span>Validade</span>
+                @Html.EditorFor(model => model.mes, new { htmlAttributes = new { @class = "input", @placeholder = "Mês", @maxlength = 2 } })
 
-                @Html.EditorFor(model => model.validade, new { htmlAttributes = new { @class = "input", @placeholder = "Validade", maxlength = "5", @name = "data", @onkeypress = "checaData();" } })
+                @Html.EditorFor(model => model.ano, new { htmlAttributes = new { @class = "input", @placeholder = "Ano", @maxlength = 4 } })
 
-                @Html.EditorFor(model => model.cvv_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "CVV" } })
+                @Html.EditorFor(model => model.cvv_cartao, new { htmlAttributes = new { @class = "input", @placeholder = "CVV", @maxlength = 3 } })
 
-                <input class="input" id="button" type="submit" value="Cadastrar" Onclick="checaData();"/>
+                <input class="input" id="button" type="submit" value="Cadastrar" Onclick="checaData();" />
             }
         </div>
     </section>
@@ -56,7 +61,7 @@
                     <p id="card-number">1234 5678 9999 0000</p>
                     <div class="flex">
                         <p class="flex informations">
-                            <span class="label">MEMBER SINCE</span>
+                            <span class="label"></span>
                             <span>01/01</span>
                         </p>
                         <p class="flex informations">

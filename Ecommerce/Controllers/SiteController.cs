@@ -325,17 +325,23 @@ namespace Ecommerce.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CadastroCartao(Cartao card)
         {
             card.cpf = Session["cpf"].ToString();
-            if (ModelState.IsValid)
+            string mes = card.mes;
+            string ano = card.ano;
+            card.validade = ano + "/" + mes + "/01" ;
+
+            if (card.cpf != null && card.num_cartao != null)
             {
                 acCard.inserirCartao(card);
+                return RedirectToAction("PerfilCliente");
             }
             else
             {
                 ViewBag.erro = "Preencha Todos Os dados";
-                return View();
+                
             }
 
             return View();

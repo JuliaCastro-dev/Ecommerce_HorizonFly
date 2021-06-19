@@ -248,7 +248,7 @@ namespace Ecommerce.Acoes
                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
                         img_pacote = Convert.ToString(dr["img_pacote"]),
                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
-                        vl_pacote = Convert.ToString(dr["vl_pacote"])
+                        vl_pacote = dr["vl_pacote"].ToString().Insert(4, ",")
                     });
             }
             return Produtoslist;

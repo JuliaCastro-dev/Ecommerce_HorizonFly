@@ -59,5 +59,10 @@ namespace Ecommerce.Models
         [Display(Name = "Registro geral")]
         [StringLength(9, MinimumLength = 9, ErrorMessage = "RG Inválido")]
         public string rg { get; set; }
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "Mês Inválido")]
+        public string mes { get; set; }
+
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "Ano Inválido")]
+        public string ano{ get; set; }
     }
 }
