@@ -125,7 +125,7 @@
                         <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
                         <img class="stars" src="~/Imagens/stars.png" />
                         </a>
-                        @using (Html.BeginForm("AdicionarCarrinho", "Home", FormMethod.Post))
+                        @using (Html.BeginForm("AdicionarCarrinho", "Site", FormMethod.Post))
                         {
                         <input type="hidden" name="id" value=@item.cd_pacote>
                         <input type="hidden" name="pre" value=@item.vl_pacote>

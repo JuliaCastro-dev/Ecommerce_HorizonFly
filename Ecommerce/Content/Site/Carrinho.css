@@ -64,3 +64,44 @@ header {
     font-size:2vw;
     color:#3A7BD5;
 }
+.card {
+    position: relative;
+    top: 8vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 30vw;
+    left: 5vw;
+    border-radius:15px;
+}
+.nome {
+    font-weight: 700;
+    color: cornflowerblue;
+    font-size: 1.5vw;
+}
+.unit {
+    left: 1vw;
+    position: relative;
+    color: #3a7bd5;
+    font-weight: 600;
+}
+.parcial {
+    color: #08880c;
+    font-size: 1.5vw;
+}
+input {
+    position: relative;
+    display: block;
+    margin: 10px 10px;
+    border: 0;
+    outline: 0;
+    width: 5vw;
+    font-size: 1vw;
+    border-radius: 5vw;
+    padding: 1vw;
+    height: 2.5vw;
+
+    transition: all 0.2s ease-in-out;
+    -webkit-appearance: none;
+    background-color: #b7c1ff;
+    text-shadow: 1px 1px 0 var(--color-white);
+    margin-right: calc(1vw/2);
+}

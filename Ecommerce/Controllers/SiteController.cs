@@ -477,7 +477,6 @@ namespace Ecommerce.Controllers
                 itemPedido.cd_itens = Guid.NewGuid();
                 itemPedido.cd_pacote = id.ToString();
                 itemPedido.nome_pacote = pacote[0].nome_pacote;
-                itemPedido.img_pacote = pacote[1].img_pacote;
                 itemPedido.qt = 1;
                 itemPedido.vl_unit = pre;
 
