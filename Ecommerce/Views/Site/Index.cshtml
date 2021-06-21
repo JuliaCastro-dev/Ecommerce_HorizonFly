@@ -25,6 +25,7 @@
 
     <header>
         <span id="fone">+55 011 3714-2125</span>
+        <span> @Html.ActionLink("Sobre", "Site", new { htmlAttributes = new { @id = "sobre" } })</span>
         <a class="perfil" href="~/Site/PerfilCliente">
             <img src="~/Imagens/perfil.png" />
         </a>
@@ -165,7 +166,9 @@
         </div>
     </section>
     <footer>
-        <h1> @DateTime.Now.Year </h1> 
+      
+        <h1> Horizon Fly @DateTime.Now.Year </h1>
+
     </footer>
 
 
