@@ -513,6 +513,65 @@ namespace Ecommerce.Controllers
             Reserva carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
             return View(carrinho);
         }
-       
+
+
+        //public ActionResult SalvarCarrinho(Reserva x)
+        //{
+
+        //    if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
+
+        //    {
+        //        return RedirectToAction("Login", "Site");
+        //    }
+        //    else
+        //    {
+        //        var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
+
+        //        Reserva md = new Reserva();
+        //        Itens mdV = new Itens();
+
+        //        md.dt = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy");
+        //        md.horaVenda = DateTime.Now.ToLocalTime().ToString("HH:mm");
+        //        md.cpf_cliente = Session["cpf"].ToString();
+        //        md.vl_total = carrinho.vl_total;
+        //        md.cd_cartao = carrinho.vl_total;
+
+        //        acV.inserirVenda(md);
+
+
+        //        acV.buscaIdVenda(x);
+
+        //        for (int i = 0; i < carrinho.ItensPedido.Count; i++)
+        //        {
+
+        //            mdV.PedidoID = x.codVenda;
+        //            mdV.ProdutoID = carrinho.ItensPedido[i].ProdutoID;
+        //            mdV.Qtd = carrinho.ItensPedido[i].Qtd;
+        //            mdV.valorParcial = carrinho.ItensPedido[i].valorParcial;
+        //            acI.inserirItem(mdV);
+        //        }
+
+        //        carrinho.ValorTotal = 0;
+        //        carrinho.ItensPedido.Clear();
+
+        //        return RedirectToAction("confVenda");
+        //    }
+        //}
+
+
+
+        public ActionResult ExcluirItem(Guid id)
+        {
+            var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
+            var itemExclusao = carrinho.ItensPedido.FirstOrDefault(i => i.cd_itens == id);
+
+            carrinho.vl_total -= itemExclusao.vl_parcial;
+
+            carrinho.ItensPedido.Remove(itemExclusao);
+
+            Session["Carrinho"] = carrinho;
+            return RedirectToAction("Carrinho");
+        }
+
     }
 }

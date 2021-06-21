@@ -9,14 +9,16 @@ namespace Ecommerce.Models
 {
     public class Reserva
     {
-     //   cd_reserva INTEGER not null primary key auto_increment,
-     //   CPF VARCHAR(20) not null,
-     //   cd_cartao INTEGER not null,
-     //   vl_total Decimal(14,0) not null,
-	    //status_reserva bit null,
+        //   cd_reserva INTEGER not null primary key auto_increment,
+        //   CPF VARCHAR(20) not null,
+        //   cd_cartao INTEGER not null,
+        //   vl_total Decimal(14,0) not null,
+        //status_reserva bit null,
 
 
 
+
+        public List<Itens> ItensPedido = new List<Itens>();
 
         [Required]
         [Key]
@@ -48,7 +50,6 @@ namespace Ecommerce.Models
         [Display(Name = "Status")]
         public string Status_Reserva { get; set; }
 
-        public List<Itens> ItensPedido = new List<Itens>();
 
     }
 }
