@@ -75,13 +75,24 @@
         @foreach (var item in Model)
         {
             <div class="Card">
-               
-                <img src="@item.img_pacote" alt="Imagem">
-                <h2 class="Titulo-pacote">Pacote @item.nome_pacote</h2>
-                <img class="stars" src="~/Imagens/stars.png" />
+                <a href="~/Site/DetalhePacote/@item.cd_pacote">
+                    <img src="@item.img_pacote" alt="Imagem" />
+                    <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                    <img class="stars" src="~/Imagens/stars.png" />
+                </a>
+                @using (Html.BeginForm("AdicionarCarrinho", "Site", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value=@item.cd_pacote>
+                    <input type="hidden" name="pre" value=@item.vl_pacote>
+                    <input type="hidden" name="quantidade" value="1">
 
-                <h1>a partir de <span id="valor">@item.vl_pacote</span> por pessoa </h1>
+
+                    <input type="submit" value="" class="add">
+                }
+
+                <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
             </div>
+
 
         }
 
