@@ -66,7 +66,7 @@ namespace Ecommerce.Acoes
                          dt_chekoutHotel = Convert.ToString(dr["dtChekout_Hotel"]),
                          descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
                          tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
-                         vl_pacote = Convert.ToString(dr["vl_pacote"]),
+                         vl_pacote = dr["vl_pacote"].ToString().Insert(4, ","),
                          img_pacote = Convert.ToString(dr["img_pacote"])
 
                      });
@@ -96,7 +96,7 @@ namespace Ecommerce.Acoes
 
                      new Pacote
                      {
-                     
+                         cd_pacote = Convert.ToString(dr["cd_pacote"]),
                          nome_pacote = Convert.ToString(dr["nome_pacote"]),
                          cd_cidDestino = Convert.ToString(dr["cd_cidDestino"]),
                          cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
@@ -106,7 +106,7 @@ namespace Ecommerce.Acoes
                          dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
                          descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
                          tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
-                         vl_pacote = Convert.ToString(dr["vl_pacote"]),
+                         vl_pacote = dr["vl_pacote"].ToString().Insert(4, ","),
                          img_pacote = Convert.ToString(dr["img_pacote"])
 
                      });

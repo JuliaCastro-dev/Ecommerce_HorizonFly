@@ -87,13 +87,14 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        [HttpPost]
+     
         /* RETORNA A BUSCA DE PACOTE */
         public ActionResult BuscaPacotes(Pacote pacote, FormCollection frm)
         {
             pacote.cd_cidDestino = frm["cidade"].ToString();
             pacote.cd_cidOrigem =  frm["cidadeOrigem"].ToString();
-            return View(acP.BuscaListaPacote(pacote));
+            ViewBag.listaPacotes = acP.BuscaListaPacote(pacote);
+            return View();
         }
 
         //------------------- DETALHE PACOTES ---------------------

@@ -23,12 +23,22 @@ header {
     min-height: 4vh;
     z-index: 2;
 }
+.voltar {
+    font-style: normal;
+    font-weight: 300;
+    color: #fff;
+    margin: 15px;
+    position: relative;
+    font-family: 'Poppins';
+    top: -10%;
+}
+
 
 .voltar a {
     color: #fff;
     font-size: 1vw;
     position: relative;
-    left: 2vw;
+    
 }
 .poster {
  
