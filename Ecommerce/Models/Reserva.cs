@@ -47,6 +47,12 @@ namespace Ecommerce.Models
         public double vl_total { get; set; }
 
 
+        [Required]
+        [Display(Name = "Data e Hora da Compra")]
+        public string dt_reserva { get; set; }
+
+
+
         [Display(Name = "Status")]
         public string Status_Reserva { get; set; }
 

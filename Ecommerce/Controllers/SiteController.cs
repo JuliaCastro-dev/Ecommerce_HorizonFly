@@ -17,6 +17,7 @@ namespace Ecommerce.Controllers
         AcoesCartao acCard = new AcoesCartao();
         AcoesReserva acR = new AcoesReserva();
         AcoesLogin acL = new AcoesLogin();
+        AcoesItens acI = new AcoesItens();
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesPacote acP = new AcoesPacote();
 
@@ -514,49 +515,57 @@ namespace Ecommerce.Controllers
             return View(carrinho);
         }
 
+        public ActionResult EscolherCartao(Cartao card)
+        {
 
-        //public ActionResult SalvarCarrinho(Reserva x)
-        //{
-
-        //    if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
-
-        //    {
-        //        return RedirectToAction("Login", "Site");
-        //    }
-        //    else
-        //    {
-        //        var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
-
-        //        Reserva md = new Reserva();
-        //        Itens mdV = new Itens();
-
-        //        md.dt = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy");
-        //        md.horaVenda = DateTime.Now.ToLocalTime().ToString("HH:mm");
-        //        md.cpf_cliente = Session["cpf"].ToString();
-        //        md.vl_total = carrinho.vl_total;
-        //        md.cd_cartao = carrinho.vl_total;
-
-        //        acV.inserirVenda(md);
+            Reserva carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
+            card.cpf = Session["cpf"].ToString();
+            ViewBag.listaCartoes = acCard.GetCartoes(card);
+            return View();
+        }
 
 
-        //        acV.buscaIdVenda(x);
+        public ActionResult SalvarCarrinho(Reserva x, string card)
+        {
 
-        //        for (int i = 0; i < carrinho.ItensPedido.Count; i++)
-        //        {
+            if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
-        //            mdV.PedidoID = x.codVenda;
-        //            mdV.ProdutoID = carrinho.ItensPedido[i].ProdutoID;
-        //            mdV.Qtd = carrinho.ItensPedido[i].Qtd;
-        //            mdV.valorParcial = carrinho.ItensPedido[i].valorParcial;
-        //            acI.inserirItem(mdV);
-        //        }
+            {
+                return RedirectToAction("Login", "Site");
+            }
+            else
+            {
+                var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
 
-        //        carrinho.ValorTotal = 0;
-        //        carrinho.ItensPedido.Clear();
+                Reserva md = new Reserva();
+                Itens mdV = new Itens();
 
-        //        return RedirectToAction("confVenda");
-        //    }
-        //}
+                md.dt_reserva = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy HH:mm");
+                md.cpf_cliente = Session["cpf"].ToString();
+                md.vl_total = carrinho.vl_total;
+                md.cd_cartao = carrinho.cd_cartao;
+
+                acR.inserirReserva(md);
+
+
+                //acV.buscaIdVenda(x);
+
+                for (int i = 0; i < carrinho.ItensPedido.Count; i++)
+                {
+
+                    mdV.cd_reserva = x.cd_reserva;
+                    mdV.cd_pacote = carrinho.ItensPedido[i].cd_reserva;
+                    mdV.qt = carrinho.ItensPedido[i].qt;
+                    mdV.vl_parcial = carrinho.ItensPedido[i].vl_parcial;
+                    acI.inserirItem(mdV);
+                }
+
+                carrinho.vl_total = 0;
+                carrinho.ItensPedido.Clear();
+
+                return RedirectToAction("ResumoCompra");
+            }
+        }
 
 
 

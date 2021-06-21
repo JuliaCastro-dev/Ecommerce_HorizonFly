@@ -31,6 +31,15 @@ header {
     left: 2vw;
 }
 
+.sair {
+    position: absolute;
+    left: 90%;
+    color: #fff;
+}
+    .sair a {
+        color: #fff;
+        font-size: 1vw;
+    }
 .container {
     height: 100%;
     width: 70%;
@@ -63,7 +72,8 @@ header {
 
 h1#dados {
     position: absolute;
-    top: 25vw;
+    top: 6vw;
+    left: 2vw;
     font-size: 1.5vw;
 }
 
@@ -76,84 +86,43 @@ h1#dados {
     background-color: #5FAD56;
     border: 1px solid #5FAD56;
 }
-/*Tabela de dados*/
-thead {
-    width: 10vw;
-}
-
-.dados {
-    position: absolute;
-    top: 29vw;
-    left: 5vw;
-}
-
-.Titulo {
-    color: #0C3E7C;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    margin-left: 2vw;
-}
-
-.dado {
-    color: #0C3E7C;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 400;
-}
-
-/*Cartoes*/
-.cartoes {
-    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-    border: none;
-    font-size: 1.3vw;
+body > div > div > h1:nth-child(2) {
+    top: 10vw;
+    left: 36vw;
+    font-size: 1.2vw;
     position: relative;
-    left: 51vw;
-    top: 13vw;
+    font-weight: 400;
+    color: darkblue;
+}
+.cards {
+    position: absolute; top: 20vh;
+}
+.card {
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+    color: #166ac1;
+    border: none;
+    font-size: 1vw;
+    width: 32vw;
+    height: 30vh;
+    position: relative;
+    left: 1vw;
+    text-decoration: none;
     border-radius: 10px;
     cursor: pointer;
-    width: 15vw;
-    text-decoration: none;
+}
+.card:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-    .cartoes:hover {
-        opacity: 0.3;
-        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .cartoes:active {
-        opacity: 1;
-        box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-        color: #79e3b6;
-    }
-
-a {
-    text-decoration: none;
+.card:active {
+    opacity: 1;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+    color: #79e3b6;
 }
 
-.cartoes p {
-    color: #6f6cde;
-    font-weight: 700;
-    position: relative;
-    left: 2vw;
-    text-decoration: none;
-}
-/*Reservas*/
-h1#reserva {
-    position: absolute;
-    top: 45vw;
-    font-size: 1.5vw;
-}
 
-#barrinhaReserva {
-    position: absolute;
-    width: 50px;
-    height: 1px;
-    left: 1px;
-    top: 1.8vw;
-    background-color: #5FAD56;
-    border: 1px solid #5FAD56;
-}
 
 .atualizar {
     box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
@@ -179,7 +148,7 @@ h1#reserva {
     }
 
     .atualizar a {
-        color: #69dc61;
+        color: #d72727;
         font-weight: 700;
         text-decoration: none;
     }
@@ -210,7 +179,8 @@ h1#reserva {
     }
 
     .excluir a {
-        color: #d72727;
+       
+        color: #69dc61;
         font-weight: 700;
         text-decoration: none;
     }

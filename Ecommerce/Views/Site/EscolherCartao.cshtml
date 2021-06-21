@@ -1,0 +1,52 @@
+﻿@model  IEnumerable<Ecommerce.Models.Cartao>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Meus Cartões</title>
+
+    <link href="~/Content/Site/MeusCartões.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <span class="voltar"> @Html.ActionLink("Ir as Compras", "Index")   </span>
+        <span class="sair"> @Html.ActionLink("Sair", "Logout")   </span>
+    </header>
+    @*BANNER*@
+    <div class="container">
+        <div class="Cliente">
+            <h1 id="dados" class="Titulo">Cartões <span id="barrinha"></span></h1>
+            <h1>Selecione o Cartão para Proseguir</h1>
+            <div class="cards"
+            @foreach (var item in ViewBag.listaCartoes)
+            {
+                var id = @item.cd_cartao;
+                <a href="Site/SalvarCarrinho/@id">
+                    <div class="card">
+
+                        <h2 class="Titulo">@item.nm_cartao</h2>
+                        <h2 class="Titulo" id="tituloCartao">Titular: @item.nm_impresso</h2>
+                        <h1 class="numero"> Número: @item.num_cartao</h1>
+                        <h2 class="numero"> Validade: @item.validade</h2>
+                        <h2 class="numero">CVV: @item.cvv_cartao</h2>
+                    </div>
+                </a>
+
+            }
+            </div>
+
+
+            <span class="atualizar"> &nbsp;&nbsp;@Html.ActionLink(" Cancelar Compra", "ExcluirItem", "Site")&nbsp; &nbsp;</span>
+            <span class="excluir"> &nbsp;&nbsp;@Html.ActionLink(" Novo Cartão ", "CadastroCartao", "Site")&nbsp; &nbsp;</span>
+        </div>
+    </div>
+</body>
+</html>

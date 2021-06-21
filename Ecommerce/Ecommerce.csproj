@@ -390,7 +390,7 @@
     <Content Include="Views\Sistema\DetalhesPacotes.cshtml" />
     <Content Include="Views\Site\BuscaPacotes.cshtml" />
     <Content Include="Views\Site\DetalhePacote.cshtml" />
-    <Content Include="Views\Site\MeusCartoes.cshtml" />
+    <Content Include="Views\Site\EscolherCartao.cshtml" />
     <Content Include="Views\Site\AdicionarCarrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
