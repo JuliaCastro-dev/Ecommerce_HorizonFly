@@ -7,6 +7,16 @@
     padding: 0;
 }
 
+.voltar {
+    text-decoration: none;
+    color: #0031bd;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Poppins;
+    position: relative;
+    left: 1vw;
+}
+
 .content-asset p {
     margin: 0 auto;
 }

@@ -25,7 +25,14 @@ header {
     height: 4.5vh;
     min-height: 4vh;
 }
-
+body > header > span.sobre > a {
+    color: #fff;
+    text-shadow: none;
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    bottom: 0.3vw;
+    position: relative;
+}
 .perfil {
     position: relative;
     left: 77%;
