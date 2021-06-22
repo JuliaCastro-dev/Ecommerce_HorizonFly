@@ -1,4 +1,5 @@
 ﻿@model  Ecommerce.Models.Reserva
+@{
     Layout = null;
 }
 
@@ -17,43 +18,43 @@
         </a>
     </header>
     @*BANNER*@
-<div class="container">
-    <h1 class="Titulo"> Seu Carrinho </h1>
-    @foreach (var item in Model.ItensPedido)
-    {
-        var id = item.cd_pacote;
-        <div class="card">
-            <table>
-                <tbody>
-                    <tr>
-                        <td class="nome"> @item.nome_pacote </td>
-                        <td class="unit">Unidade: @item.vl_unit  </td>
-                    </tr>
+    <div class="container">
+        <h1 class="Titulo"> Seu Carrinho </h1>
+        @foreach (var item in Model.ItensPedido)
+        {
+            var id = item.cd_pacote;
+            <div class="card">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="nome"> @item.nome_pacote </td>
+                            <td class="unit">Unidade: @item.vl_unit  </td>
+                        </tr>
 
 
 
-                    <tr>
-                        <td class="qt"><input type="number" value="@item.qt" /> </td>
-                        <td class="parcial">
-                            @item.vl_parcial
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a class="voltar" href="~/Site/ExcluirItem/@id"> </a>
-                        </td>
-          
-                    </tr>
+                        <tr>
+                            <td class="qt"><input type="number" value="@item.qt" /> </td>
+                            <td class="parcial">
+                                @item.vl_parcial
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="voltar" href="~/Site/ExcluirItem/@id"> </a>
+                            </td>
 
-                </tbody>
-            </table>
-        </div>
+                        </tr>
 
-    }
-    <br />@Html.ActionLink("Continuar Comprando", "Index", "Site")
+                    </tbody>
+                </table>
+            </div>
 
-    <br />@Html.ActionLink("Finalizar Compra", "EscolherCartao", "Site")
-</div>
+        }
+        <br />@Html.ActionLink("Continuar Comprando", "Index", "Site")
+
+        <br />@Html.ActionLink("Finalizar Compra", "EscolherCartao", "Site")
+    </div>
     <img class="poster" src="~/Imagens/posterChance.jpeg" />
 
     <img class="poster2" src="~/Imagens/DiaNamorados.jpeg" />

@@ -15,12 +15,13 @@ namespace Ecommerce.Acoes
 
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Reserva(cd_reserva, CPF, cd_cartao,vl_total,  Status_Reserva, )" +
-                "values(@cdR, @cpf, @cdC, @vlTotal, 1)", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Reserva(CPF, cd_cartao,vl_total, Status_Reserva, dthr_reserva)" +
+                "values( @cpf, @cdC, @vlTotal, 1, @dt)", con.MyConectarBD());
 
 
 
             cmd.Parameters.Add("@cdR", MySqlDbType.VarChar).Value = reserva.cd_reserva;
+            cmd.Parameters.Add("@dt", MySqlDbType.VarChar).Value = reserva.dt_reserva;
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = reserva.cpf_cliente;
             cmd.Parameters.Add("@cdC", MySqlDbType.VarChar).Value = reserva.cd_cartao;
             cmd.Parameters.Add("@vlTotal", MySqlDbType.VarChar).Value = reserva.vl_total;
@@ -137,6 +138,20 @@ namespace Ecommerce.Acoes
                 return false;
         }
 
+
+        MySqlDataReader dr;
+        public void buscaReserva(Reserva reser)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT cd_reserva FROM Reserva ORDER BY cd_reserva DESC limit 1", con.MyConectarBD());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                reser.cd_reserva = dr[0].ToString();
+
+            }
+            con.MyDesconectarBD();
+        }
 
 
     }

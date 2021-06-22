@@ -80,14 +80,11 @@ namespace Ecommerce.Controllers
         }
         // -------------------- PÁGINA PRINCIPAL -------------------
 
-        public ActionResult Index(int? pagina)
+        public ActionResult Index()
         {
             carregaCidades();
             carregaCidadesOrigem();
-            ModelState.Clear();
-            int tamanhoPag = 3;
-            int numeroPag = pagina ?? 1;
-            ViewBag.oferta = acP.EmOferta().ToPagedList(numeroPag, tamanhoPag);
+            ViewBag.oferta = acP.EmOferta();
             return View();
         }
 
@@ -530,7 +527,7 @@ namespace Ecommerce.Controllers
 
         public ActionResult SalvarCarrinho(Reserva x, string card)
         {
-
+            Session["cd_card"] = card;
             if ((Session["usuarioLogado"] == null) || (Session["senhaLogado"] == null))
 
             {
@@ -543,23 +540,27 @@ namespace Ecommerce.Controllers
                 Reserva md = new Reserva();
                 Itens mdV = new Itens();
 
-                md.dt_reserva = DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy HH:mm");
+                md.dt_reserva = DateTime.Now.ToLocalTime().ToString("yyyy/MM/dd HH:mm");
                 md.cpf_cliente = Session["cpf"].ToString();
                 md.vl_total = carrinho.vl_total;
-                md.cd_cartao = carrinho.cd_cartao;
+                md.cd_cartao = card;
+                
 
                 acR.inserirReserva(md);
 
 
-                //acV.buscaIdVenda(x);
+                acR.buscaReserva(x);
+
 
                 for (int i = 0; i < carrinho.ItensPedido.Count; i++)
                 {
-
+                    
                     mdV.cd_reserva = x.cd_reserva;
-                    mdV.cd_pacote = carrinho.ItensPedido[i].cd_reserva;
+                    mdV.cd_pacote = carrinho.ItensPedido[i].cd_pacote;
                     mdV.qt = carrinho.ItensPedido[i].qt;
                     mdV.vl_parcial = carrinho.ItensPedido[i].vl_parcial;
+                    mdV.vl_unit = carrinho.ItensPedido[i].vl_unit;
+                    mdV.CPF = Session["cpf"].ToString();
                     acI.inserirItem(mdV);
                 }
 
@@ -570,9 +571,15 @@ namespace Ecommerce.Controllers
             }
         }
 
+        public ActionResult ResumoCompra()
+        {
+            return View();
+
+        }
 
 
-        public ActionResult ExcluirItem(Guid id)
+
+            public ActionResult ExcluirItem(Guid id)
         {
             var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
             var itemExclusao = carrinho.ItensPedido.FirstOrDefault(i => i.cd_itens == id);

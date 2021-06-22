@@ -25,22 +25,23 @@
         <div class="Cliente">
             <h1 id="dados" class="Titulo">Cartões <span id="barrinha"></span></h1>
             <h1>Selecione o Cartão para Proseguir</h1>
-            <div class="cards"
-            @foreach (var item in ViewBag.listaCartoes)
-            {
-                var id = @item.cd_cartao;
-                <a href="Site/SalvarCarrinho/@id">
-                    <div class="card">
+            <div class="cards">
+                @foreach (var item in ViewBag.listaCartoes)
+                {
+                    var card = @item.cd_cartao;
+     
+                        <div class="card">
 
-                        <h2 class="Titulo">@item.nm_cartao</h2>
-                        <h2 class="Titulo" id="tituloCartao">Titular: @item.nm_impresso</h2>
-                        <h1 class="numero"> Número: @item.num_cartao</h1>
-                        <h2 class="numero"> Validade: @item.validade</h2>
-                        <h2 class="numero">CVV: @item.cvv_cartao</h2>
-                    </div>
-                </a>
-
-            }
+                            <h2 class="Titulo">@item.nm_cartao</h2>
+                            <h2 class="Titulo" id="tituloCartao">Titular: @item.nm_impresso</h2>
+                            <h1 class="numero"> Número: @item.num_cartao</h1>
+                            <h2 class="numero"> Validade: @item.validade</h2>
+                            <h2 class="numero">CVV: @item.cvv_cartao</h2>
+                            @Html.ActionLink(" Escolher ", "SalvarCarrinho", "Site", new { card }, null)
+                        </div>
+                    
+                 
+                }
             </div>
 
 

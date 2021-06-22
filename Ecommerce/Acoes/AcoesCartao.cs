@@ -166,7 +166,7 @@ namespace Ecommerce.Acoes
                 Cartaolist.Add(
                       new Cartao
                       {
-                         
+                        
                           rg = Convert.ToString(dr["rg"]),
                           cd_cartao = Convert.ToString(dr["cd_cartao"]),
                           cpf = Convert.ToString(dr["CPF"]),

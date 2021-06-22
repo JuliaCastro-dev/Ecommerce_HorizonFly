@@ -1,5 +1,5 @@
-﻿@model PagedList.IPagedList<Ecommerce.Models.IndexViewModel>
-    @using PagedList.Mvc;
+﻿@model IEnumerable<Ecommerce.Models.IndexViewModel>
+
 
 @{
     Layout = null;
@@ -120,7 +120,6 @@
          @foreach (var item in ViewBag.oferta)
           {
                 var id = item.cd_pacote;
-
                 <div class="Card">
                         <a href="~/Site/DetalhePacote/@item.cd_pacote">
                         <img src="@item.img_pacote" alt="Imagem" />

@@ -265,7 +265,7 @@ namespace Ecommerce.Acoes
         {
             List<Pacote> Pacotelist = new List<Pacote>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from Pacote where cd_categoria = 2", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from Pacote where cd_categoria = 2 limit 3", con.MyConectarBD());
           
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();

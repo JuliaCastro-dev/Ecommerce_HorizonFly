@@ -190,3 +190,7 @@ C:\TCC\git\Ecommerce\bin\HtmlAgilityPack.pdb
 C:\TCC\git\Ecommerce\bin\HtmlAgilityPack.xml
 C:\TCC\git\Ecommerce\bin\WebCompiler.pdb
 C:\TCC\git\Ecommerce\obj\Debug\Ecommerce.csproj.AssemblyReference.cache
+C:\TCC\git\Ecommerce\bin\PagedList.dll
+C:\TCC\git\Ecommerce\bin\PagedList.Mvc.dll
+C:\TCC\git\Ecommerce\bin\PagedList.xml
+C:\TCC\git\Ecommerce\bin\PagedList.Mvc.xml
