@@ -486,10 +486,10 @@ namespace Ecommerce.Controllers
 
                 if (x.Count != 0)
                 {
-                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].vl_pacote).qt += 1;
+                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].cd_pacote).qt += 1;
                     itemPedido.vl_parcial = itemPedido.qt * itemPedido.vl_unit;
                     carrinho.vl_total += itemPedido.vl_parcial;
-                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].nome_pacote).vl_parcial = carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].nome_pacote).qt * itemPedido.vl_unit;
+                    carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].cd_pacote).vl_parcial = carrinho.ItensPedido.FirstOrDefault(p => p.cd_pacote == pacote[0].cd_pacote).qt * itemPedido.vl_unit;
 
                 }
 

@@ -22,6 +22,15 @@ header {
     min-height: 4vh;
     z-index: 2;
 }
+.sair {
+    position: relative;
+    left: 85%;
+    color: #fff;
+}
+.sair a {
+    color:#fff;
+
+}
 .voltar a{
     color:#fff;
     font-size:1vw;

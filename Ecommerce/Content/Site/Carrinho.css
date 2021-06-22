@@ -23,14 +23,27 @@ header {
     min-height: 4vh;
     z-index: 2;
 }
+
+body > div > a:nth-child(6) {
+    position: relative;
+    top: 0vw;
+    left: 39vw;
+}
+
+body > div > a:nth-child(4) {
+    position: relative;
+    top: 0vw;
+    left: 39vw;
+}
 .voltar {
     font-style: normal;
     font-weight: 300;
     color: #fff;
     margin: 15px;
+    top: 5px;
+    text-transform: uppercase;
     position: relative;
-    font-family: 'Poppins';
-    top: -10%;
+    font-family: 'Poppins',sans-serif;
 }
 
 
@@ -38,7 +51,11 @@ header {
     color: #fff;
     font-size: 1vw;
     position: relative;
+    text-decoration:none;
     
+}
+a{
+    text-decoration:none;
 }
 .poster {
  

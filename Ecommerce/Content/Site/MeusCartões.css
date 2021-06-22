@@ -47,6 +47,7 @@ header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
     left: 15%;
+    overflow-y:auto;
     position: relative;
     z-index: 1;
 }
@@ -74,6 +75,10 @@ h1#dados {
     position: absolute;
     top: 6vw;
     left: 2vw;
+    font-size: 1.5vw;
+}
+
+.numero {
     font-size: 1.5vw;
 }
 
@@ -136,10 +141,17 @@ body > div > div > h1:nth-child(2) {
 }
 
 
-    .atualizar:hover {
-        opacity: 0.3;
-        box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-    }
+body > div > div > div > div > a{
+        font-size: 1.2vw;
+    text-decoration: none;
+    color: #08a068;
+    cursor: pointer;
+}
+
+.atualizar:hover {
+    opacity: 0.3;
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
 
     .atualizar:active {
         opacity: 1;
