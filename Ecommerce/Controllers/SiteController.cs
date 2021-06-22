@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Acoes;
 using Ecommerce.Models;
 using MySql.Data.MySqlClient;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,12 +80,14 @@ namespace Ecommerce.Controllers
         }
         // -------------------- PÁGINA PRINCIPAL -------------------
 
-        public ActionResult Index()
+        public ActionResult Index(int? pagina)
         {
             carregaCidades();
             carregaCidadesOrigem();
             ModelState.Clear();
-            ViewBag.oferta = acP.EmOferta();
+            int tamanhoPag = 3;
+            int numeroPag = pagina ?? 1;
+            ViewBag.oferta = acP.EmOferta().ToPagedList(numeroPag, tamanhoPag);
             return View();
         }
 
