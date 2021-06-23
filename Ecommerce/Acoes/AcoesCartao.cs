@@ -64,6 +64,47 @@ namespace Ecommerce.Acoes
             return CarList;
         }
 
+        public void PegaDados(Cartao card)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Select * from Cartao where cd_cartao = @cd", con.MyConectarBD());
+
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = card.cd_cartao;
+
+
+            MySqlDataReader leitor;
+
+            leitor = cmd.ExecuteReader();
+
+            if (leitor.HasRows)
+            {
+
+                while (leitor.Read())
+                {
+                    card.cd_cartao = Convert.ToString(leitor["cd_cartao"]);
+                    card.cpf = Convert.ToString(leitor["CPF"]);
+                    card.nm_cartao = Convert.ToString(leitor["nome_cartao"]);
+                    card.nm_impresso = Convert.ToString(leitor["nome_impresso"]);
+                    card.num_cartao = Convert.ToString(leitor["num_cartao"]);
+                    card.cvv_cartao = Convert.ToString(leitor["cvv_cartao"]);
+                    card.validade = Convert.ToString(leitor["validade_cartao"]);
+
+                }
+            }
+            else
+            {
+                card.cd_cartao = null;
+                card.nm_cartao = null;
+                card.nm_impresso = null;
+                card.num_cartao = null;
+                card.cvv_cartao = null;
+                card.validade = null;
+
+
+            }
+
+        }
+
         public bool atualizarCartao(Cartao cart)
         {
 

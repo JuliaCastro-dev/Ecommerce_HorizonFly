@@ -461,6 +461,44 @@ namespace Ecommerce.Controllers
         }
 
 
+        public ActionResult AtualizaCartao(string id, Cartao card)
+        {
+
+            if (id != null)
+            {
+                Session["cd"] = id;
+                card.cd_cartao = id;
+                acCard.PegaDados(card);
+
+                ViewBag.nome = card.nm_cartao;
+                ViewBag.nomeI = card.nm_impresso;
+                ViewBag.num = card.num_cartao;
+                ViewBag.val = card.validade;
+                ViewBag.cvv = card.cvv_cartao;
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("PerfilCliente");
+            }
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizaCartao(Cartao card, string id)
+        {
+            //func.rg = Session["rg"].ToString();
+            card.cd_cartao = id;
+
+
+            acCard.atualizarCartao(card);
+            return RedirectToAction("PerfilCliente");
+        }
+
+
+
+
         // ----------------- CARRINHO ------------------------
 
         public static string codigo;
