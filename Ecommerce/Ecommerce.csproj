@@ -399,6 +399,7 @@
     <Content Include="Views\Site\DetalhePacote.cshtml" />
     <Content Include="Views\Site\EscolherCartao.cshtml" />
     <Content Include="Views\Site\AdicionarCarrinho.cshtml" />
+    <Content Include="Views\Site\AtualizaCartao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

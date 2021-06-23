@@ -491,7 +491,9 @@ namespace Ecommerce.Controllers
             //func.rg = Session["rg"].ToString();
             card.cd_cartao = id;
 
-
+            string mes = card.mes;
+            string ano = card.ano;
+            card.validade = ano + "/" + mes + "/01";
             acCard.atualizarCartao(card);
             return RedirectToAction("PerfilCliente");
         }

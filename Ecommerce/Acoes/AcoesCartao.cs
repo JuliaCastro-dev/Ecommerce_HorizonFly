@@ -85,7 +85,7 @@ namespace Ecommerce.Acoes
                     card.cpf = Convert.ToString(leitor["CPF"]);
                     card.nm_cartao = Convert.ToString(leitor["nome_cartao"]);
                     card.nm_impresso = Convert.ToString(leitor["nome_impresso"]);
-                    card.num_cartao = Convert.ToString(leitor["num_cartao"]);
+                    card.num_cartao = Convert.ToString(leitor["numero_cartao"]);
                     card.cvv_cartao = Convert.ToString(leitor["cvv_cartao"]);
                     card.validade = Convert.ToString(leitor["validade_cartao"]);
 
@@ -108,7 +108,7 @@ namespace Ecommerce.Acoes
         public bool atualizarCartao(Cartao cart)
         {
 
-            MySqlCommand cmd = new MySqlCommand("update Cartao set nome_cartao=@nome_cartao,@nome_impresso=nome_impresso,numero_cartao=@numero_cartao,cvv_cartao=@cvv_cartao,validade_cartao=@validade_cartao where cd_cartao=@cartao,", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("update Cartao set nome_cartao=@nome_cartao,nome_impresso=@nome_impresso,numero_cartao=@numero_cartao,cvv_cartao=@cvv_cartao,validade_cartao=@validade_cartao where cd_cartao=@cartao", con.MyConectarBD());
 
             cmd.Parameters.Add("@cartao", MySqlDbType.VarChar).Value = cart.cd_cartao;
 
