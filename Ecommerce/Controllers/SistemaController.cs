@@ -1013,23 +1013,79 @@ namespace Ecommerce.Controllers
             }
         }
 
-        //-------------------EXCLUIR CLIENTE ------------------------
-        public ActionResult ExcluirCliente(int id)
+        //-------------------EXCLUIR HOTEL ------------------------
+        public ActionResult ExcluiHotel(int id)
         {
             try
             {
 
-                if (acC.excluirCliente(id))
+                if (acH.excluirHotel(id))
                 {
-                    ViewBag.AlertMsg = "Cliente excluído com sucesso";
+                    ViewBag.AlertMsg = "Hotel excluído com sucesso";
                 }
-                return RedirectToAction("Clientes");
+                return RedirectToAction("Hoteis");
             }
             catch
             {
                 return View();
             }
         }
+
+        //-------------------EXCLUIR Viagem ------------------------
+        public ActionResult ExcluiViagem(int id)
+        {
+            try
+            {
+
+                if (acV.excluirViagem(id))
+                {
+                    ViewBag.AlertMsg = "Viagem excluída com sucesso";
+                }
+                return RedirectToAction("Viagens");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        //-------------------EXCLUIR PACOTE ------------------------
+        public ActionResult ExcluiPacote(int id)
+        {
+            try
+            {
+
+                if (acP.excluirPacote(id))
+                {
+                    ViewBag.AlertMsg = "Pacote excluído com sucesso";
+                }
+                return RedirectToAction("Pacotes");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //-------------------EXCLUIR TRANSPORTE ------------------------
+        public ActionResult ExcluiTransporte(int id)
+        {
+            try
+            {
+
+                if (acT.excluirTransporte(id))
+                {
+                    ViewBag.AlertMsg = "Transporte excluído com sucesso";
+                }
+                return RedirectToAction("Transportes");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
 
     }

@@ -404,6 +404,11 @@
     <Content Include="Views\Site\AtualizaCartao.cshtml" />
     <Content Include="Views\Site\ExcluirCartao.cshtml" />
     <Content Include="Views\Site\ResumoCompra.cshtml" />
+    <Content Include="Views\Sistema\ExcluirFuncionario.cshtml" />
+    <Content Include="Views\Sistema\ExcluiHotel.cshtml" />
+    <Content Include="Views\Sistema\ExcluiViagem.cshtml" />
+    <Content Include="Views\Sistema\ExcluiPacote.cshtml" />
+    <Content Include="Views\Sistema\ExcluiTransporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
