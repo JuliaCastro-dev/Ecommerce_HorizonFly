@@ -89,6 +89,13 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        //-------------------- PACOTES EM OFERTA --------------------
+        public ActionResult EmOferta()
+        {
+            return View(acP.EmOfertaCompleto());
+        }
+
+
 
         /* RETORNA A BUSCA DE PACOTE */
         public ActionResult BuscaPacotes(Pacote pacote, FormCollection frm)
@@ -214,7 +221,7 @@ namespace Ecommerce.Controllers
 
         }
 
-
+        /* ------------------- LOGOUT -------------------- */
         public ActionResult Logout()
         {
             Session["usuarioLogado"] = null;

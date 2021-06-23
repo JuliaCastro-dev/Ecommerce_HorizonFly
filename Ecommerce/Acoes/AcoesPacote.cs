@@ -296,5 +296,41 @@ namespace Ecommerce.Acoes
             }
             return Pacotelist;
         }
+
+        public List<Pacote> EmOfertaCompleto()
+        {
+            List<Pacote> Pacotelist = new List<Pacote>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from Pacote where cd_categoria = 2 ", con.MyConectarBD());
+
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Pacotelist.Add(
+                    new Pacote
+                    {
+                        cd_pacote = Convert.ToString(dr["cd_pacote"]),
+                        cd_cidDestino = Convert.ToString(dr["cd_cidDestino"]),
+                        cd_cidOrigem = Convert.ToString(dr["cd_cidOrigem"]),
+                        cd_categoria = Convert.ToString(dr["cd_categoria"]),
+                        cd_hotel = Convert.ToString(dr["cd_hotel"]),
+                        cd_viagem = Convert.ToString(dr["cd_viagem"]),
+
+                        descricao_pacote = Convert.ToString(dr["descricao_pacote"]),
+                        dt_chekinHotel = Convert.ToString(dr["dtChekin_hotel"]),
+                        dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
+                        nome_pacote = Convert.ToString(dr["nome_pacote"]),
+                        img_pacote = Convert.ToString(dr["img_pacote"]),
+                        tipo_transporte = Convert.ToString(dr["cd_tipotransporte"]),
+                        vl_pacote = dr["vl_pacote"].ToString().Insert(4, ",")
+                    });
+            }
+            return Pacotelist;
+        }
     }
 }
