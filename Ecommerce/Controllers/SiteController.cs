@@ -88,12 +88,12 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-     
+
         /* RETORNA A BUSCA DE PACOTE */
         public ActionResult BuscaPacotes(Pacote pacote, FormCollection frm)
         {
             pacote.cd_cidDestino = frm["cidade"].ToString();
-            pacote.cd_cidOrigem =  frm["cidadeOrigem"].ToString();
+            pacote.cd_cidOrigem = frm["cidadeOrigem"].ToString();
             ViewBag.listaPacotes = acP.BuscaListaPacote(pacote);
             return View();
         }
@@ -243,10 +243,30 @@ namespace Ecommerce.Controllers
             ViewBag.rg = Session["rg"];
             ViewBag.senha = Session["senha"];
 
-            card.cpf = Session["cpf"].ToString();
-            ViewBag.listaCartoes = acCard.GetCartoes(card);
-            reser.cpf_cliente = Session["cpf"].ToString();
-            ViewBag.listaReservas = acR.GetReservas(reser);
+            card.cpf = ViewBag.cpf;
+            if (acCard.GetCartoes(card).Count == 0)
+             {
+                ViewBag.listaCartoes = acCard.GetCartoes(card);
+                ViewBag.cardne = "Nenhum Cartão Cadastrado";
+             }
+            else
+            {
+                ViewBag.cardne = "";
+              ViewBag.listaCartoes = acCard.GetCartoes(card);
+            }
+
+            reser.cpf_cliente = ViewBag.cpf;
+            if (acR.GetReservas(reser) == null)
+            {
+                ViewBag.listaReservas = acR.GetReservas(reser);
+                ViewBag.reserne = "Nenhuma Reserva Cadastrado";
+            }
+            else
+            {
+                ViewBag.reserne = "";
+                ViewBag.listaReservas = acR.GetReservas(reser);
+            }
+         
             return View();
         }
 
@@ -333,7 +353,7 @@ namespace Ecommerce.Controllers
             card.cpf = Session["cpf"].ToString();
             string mes = card.mes;
             string ano = card.ano;
-            card.validade = ano + "/" + mes + "/01" ;
+            card.validade = ano + "/" + mes + "/01";
 
             if (card.cpf != null && card.num_cartao != null)
             {
@@ -343,7 +363,7 @@ namespace Ecommerce.Controllers
             else
             {
                 ViewBag.erro = "Preencha Todos Os dados";
-                
+
             }
 
             return View();
@@ -431,7 +451,7 @@ namespace Ecommerce.Controllers
                 ViewBag.tipo = cliente.tipo;
 
                 ViewBag.senha = cliente.senha;
-               
+
                 return View();
             }
             else
@@ -584,7 +604,7 @@ namespace Ecommerce.Controllers
                 md.cpf_cliente = Session["cpf"].ToString();
                 md.vl_total = carrinho.vl_total;
                 md.cd_cartao = card;
-                
+
 
                 acR.inserirReserva(md);
 
@@ -594,7 +614,7 @@ namespace Ecommerce.Controllers
 
                 for (int i = 0; i < carrinho.ItensPedido.Count; i++)
                 {
-                    
+
                     mdV.cd_reserva = x.cd_reserva;
                     mdV.cd_pacote = carrinho.ItensPedido[i].cd_pacote;
                     mdV.qt = carrinho.ItensPedido[i].qt;
@@ -619,7 +639,7 @@ namespace Ecommerce.Controllers
 
 
 
-            public ActionResult ExcluirItem(Guid id)
+        public ActionResult ExcluirItem(Guid id)
         {
             var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
             var itemExclusao = carrinho.ItensPedido.FirstOrDefault(i => i.cd_itens == id);
@@ -632,5 +652,23 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Carrinho");
         }
 
+
+        //-------------------EXCLUIR CARTAO ------------------------
+        public ActionResult ExcluirCartao(int id)
+        {
+            try
+            {
+
+                if (acCard.excluirCartao(id))
+                {
+                    ViewBag.AlertMsg = "Cartão excluído com sucesso";
+                }
+                return RedirectToAction("PerfilCliente");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

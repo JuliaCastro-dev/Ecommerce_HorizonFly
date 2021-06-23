@@ -221,10 +221,23 @@ h1#reserva {
     position: relative;
     height:25vw;
 }
+body > div > div > section > section.reserva > h1 {
+    position: relative;
+    left: 1vw;
+    font-weight: 400;
+}
+
 .cartao{
     position:relative;
     top:5vw;
 }
+
+body > div > div > section > section.cartao > h1 {
+    position: relative;
+    left: 1vw;
+    font-weight: 400;
+}
+
 #tituloCartao{
     font-size:1.5vw;
 }

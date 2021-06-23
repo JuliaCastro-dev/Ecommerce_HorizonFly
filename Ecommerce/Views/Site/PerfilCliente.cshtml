@@ -66,9 +66,11 @@
             <section class="listas">
                 <h1 class="Titulo" id="reserva">Reservas <span id="barrinhaReserva"></span> </h1>
                 <section class="reserva">
+                    <h1>@ViewBag.reserne </h1>
                 </section>
                 <h1 class="Titulo" id="reserva">Cartões <span id="barrinhaReserva"></span> </h1>
                 <section class="cartao">
+                    <h1>@ViewBag.cardne </h1>
                     @foreach (var item in ViewBag.listaCartoes)
                     {
                         var id = @item.cd_cartao;
