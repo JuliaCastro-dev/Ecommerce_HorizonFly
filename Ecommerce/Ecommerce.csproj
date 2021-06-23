@@ -218,6 +218,7 @@
     <Content Include="Content\Site\login.css" />
     <Content Include="Content\Site\MeusCartões.css" />
     <Content Include="Content\Site\Perfil.css" />
+    <Content Include="Content\Site\ResumoCompra.css" />
     <Content Include="Content\Site\Sobre.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -402,6 +403,7 @@
     <Content Include="Views\Site\AdicionarCarrinho.cshtml" />
     <Content Include="Views\Site\AtualizaCartao.cshtml" />
     <Content Include="Views\Site\ExcluirCartao.cshtml" />
+    <Content Include="Views\Site\ResumoCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

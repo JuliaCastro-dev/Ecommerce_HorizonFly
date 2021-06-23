@@ -1,0 +1,67 @@
+﻿* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+    z-index: 2;
+}
+
+header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(270deg, #3A7BD5 40.68%, #254E70 94.55%);
+    width: 100vw;
+    height: 4vh;
+    min-height: 4vh;
+    z-index: 2;
+}
+
+.sair {
+    position: relative;
+    left: 85%;
+    color: #fff;
+}
+
+    .sair a {
+        color: #fff;
+    }
+
+.voltar a {
+    color: #fff;
+    font-size: 1vw;
+    position: relative;
+    left: 2vw;
+}
+
+.container {
+    height: 100%;
+    width: 70%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    left: 15%;
+    position: relative;
+    overflow-y: auto;
+    z-index: 1;
+}
+h1#reserva {
+    position: absolute;
+    font-size: 1.5vw;
+}
+#barrinhaReserva {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 1.8vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
+}

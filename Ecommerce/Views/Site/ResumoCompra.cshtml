@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Ecommerce.Models.ViewsModels.RRViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Resumo da Compra</title>
+    <link href="~/Content/Site/Perfil.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <span class="voltar"> @Html.ActionLink("Ir as Compras", "Index")   </span>
+        <span class="sair"> @Html.ActionLink("Sair", "Logout")   </span>
+    </header>
+    <div class="container">
+        <h2> Obrigada por comprar conosco!</h2>
+        <h1 class="Titulo" id="reserva">Reserva<span id="barrinhaReserva"></span> </h1>
+        <section class="reserva">
+            @foreach (var item in ViewBag.reserva)
+            {
+                <h1>@item.dt_reserva</h1>
+                <h1>@item.nome_cliente</h1>
+                <h1>@item.nome_cartao</h1>
+                <h1>R$ @item.vl_total</h1>
+            }
+        </section>
+
+        <h1 class="Titulo" id="itens">Itens da Compra<span id="barrinhaReserva"></span> </h1>
+        <section class="itens">
+            @foreach (var item in ViewBag.itens)
+            {
+                <img src="@item.img_pacote"/>
+                <h1>@item.nome_pacote</h1>
+                <h1>R$ @item.vl_unit</h1>
+            }
+        </section>
+
+    </div>
+</body>
+</html>

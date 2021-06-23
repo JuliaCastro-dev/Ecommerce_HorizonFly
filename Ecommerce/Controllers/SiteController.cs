@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Acoes;
 using Ecommerce.Models;
+using Ecommerce.Models.ViewsModels;
 using MySql.Data.MySqlClient;
 using PagedList;
 using System;
@@ -611,6 +612,7 @@ namespace Ecommerce.Controllers
 
                 acR.buscaReserva(x);
 
+                Session["reserva"] = x.cd_reserva;
 
                 for (int i = 0; i < carrinho.ItensPedido.Count; i++)
                 {
@@ -631,10 +633,12 @@ namespace Ecommerce.Controllers
             }
         }
 
-        public ActionResult ResumoCompra()
+        public ActionResult ResumoCompra(RRViewModel reser)
         {
+            reser.cd_reserva = Session["reserva"].ToString();
+            ViewBag.reserva = acR.ResumoReserva(reser);
+            ViewBag.itens = acR.ItensReserva(reser);
             return View();
-
         }
 
 
