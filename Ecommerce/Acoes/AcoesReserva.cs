@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Models;
+using Ecommerce.Models.ViewsModels;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -94,6 +95,66 @@ namespace Ecommerce.Acoes
             return ResList;
         }
 
+        public List<RRViewModel> ResumoReserva(RRViewModel reser)
+        {
+            List<RRViewModel> ResList = new List<RRViewModel>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva where cd_reserva = @cd", con.MyConectarBD());
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = reser.cd_reserva;
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                ResList.Add(
+
+                     new RRViewModel
+                     {
+                         cd_reserva = Convert.ToString(dr["cd_reserva"]),
+                         cpf_cliente = Convert.ToString(dr["CPF"]),
+                         cd_cartao = Convert.ToString(dr["cd_cartao"]),
+                         nome_cartao = Convert.ToString(dr["nome_cartao"]),
+                         nome_cliente = Convert.ToString(dr["nome"]),
+                         dt_reserva = Convert.ToString(dr["dthr_reserva"]),
+                         vl_total = dr["vl_total"].ToString().Insert(4, ","),
+
+
+                     });
+            }
+            return ResList;
+        }
+
+        public List<RRViewModel> ItensReserva(RRViewModel reser)
+        {
+            List<RRViewModel> ResList = new List<RRViewModel>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva where cd_reserva = @cd", con.MyConectarBD());
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = reser.cd_reserva;
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                ResList.Add(
+
+                     new RRViewModel
+                     {
+                         cd_reserva = Convert.ToString(dr["cd_reserva"]),
+                         cpf_cliente = Convert.ToString(dr["CPF"]),
+                         nome_pacote = Convert.ToString(dr["nome_pacote"]),
+                         img = Convert.ToString(dr["img_pacote"]),
+                         vl_unit = dr["vl_total"].ToString().Insert(4, ",")
+
+                     });
+            }
+            return ResList;
+        }
         public bool atualizarReserva(Reserva reser)
         {
 

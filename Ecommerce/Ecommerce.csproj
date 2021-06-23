@@ -170,6 +170,7 @@
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Viagem.cs" />
     <Compile Include="Models\ViewsModels\AlterarSenhaViewModel.cs" />
+    <Compile Include="Models\ViewsModels\RRViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
