@@ -50,18 +50,72 @@ header {
     left: 15%;
     position: relative;
     overflow-y: auto;
+    overflow-x:hidden;
     z-index: 1;
 }
+.obrigado {
+    font-size: 1vw;
+    position: relative;
+    top: 5vw;
+    left: 50vw;
+}
+
 h1#reserva {
+    top: 5vw;
     position: absolute;
-    font-size: 1.5vw;
+    font-size: 1.7vw;
+    left: 1vw;
+}
+h1#itens{
+    top: 25vw;
+    position: absolute;
+    font-size: 1.7vw;
+    left:1vw;
 }
 #barrinhaReserva {
     position: absolute;
     width: 50px;
     height: 1px;
     left: 1px;
-    top: 1.8vw;
+    top: 2vw;
     background-color: #5FAD56;
     border: 1px solid #5FAD56;
 }
+.dadosreserva{
+   position:relative;
+   top:7vw;
+}
+.dadosreserva span{
+    position:relative;
+    left:1vw;
+}
+    .dadosreserva h1{
+        font-size:1.5vw;
+        left:2vw;
+        position:relative;
+        font-weight:500;
+    }
+    .itens {
+        position: relative;
+        top: 14vw;
+      
+    }
+.item {
+    display: flex;
+    -webkit-box-shadow: -6px 7px 10px -1px rgba(44,48,89,0.73);
+    box-shadow: -6px 7px 10px -1px rgba(44,48,89,0.73);
+    width: 50vw;
+    position:relative;
+    left:1vw;
+}
+
+    .item img{
+        width:20vw;
+    }
+    .item h1 {
+        width: 25vw;
+        left: 1vw;
+        position: relative;
+        white-space: nowrap;
+        margin: 0px 0px 0px 15px;font-weight:500;
+    }
