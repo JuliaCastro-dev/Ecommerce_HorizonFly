@@ -120,7 +120,7 @@ namespace Ecommerce.Acoes
                          nome_cartao = Convert.ToString(dr["nome_cartao"]),
                          nome_cliente = Convert.ToString(dr["nome"]),
                          dt_reserva = Convert.ToString(dr["dthr_reserva"]),
-                         vl_total = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "US$ {0:#,###.##}", dr["vl_total"])
+                         vl_total = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "R$ {0:#,###.##}", dr["vl_total"])
 
 
                      });

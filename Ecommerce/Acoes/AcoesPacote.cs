@@ -231,6 +231,8 @@ namespace Ecommerce.Acoes
 
             foreach (DataRow dr in dt.Rows)
             {
+                string valor = dr["vl_pacote"].ToString().Insert(1, ".");
+
                 Produtoslist.Add(
                     new Pacote
                     {
@@ -250,8 +252,7 @@ namespace Ecommerce.Acoes
                         dt_chekoutHotel = Convert.ToString(dr["dtChekout_hotel"]),
                         Origem = Convert.ToString(dr["CidadeOrigem"]),
                         Transportedestino = Convert.ToString(dr["TransporteDestino"]),
-                        vl_total = dr["vl_total"].ToString().Insert(4, ","),
-                        vl_pacote = dr["vl_pacote"].ToString().Insert(4, ","),
+                        vl_pacote = valor.ToString().Insert(4, ","),
                         tipo_transporte = Convert.ToString(dr["tipo_transporte"]),
                         img_pacote = Convert.ToString(dr["img_pacote"]),
                         img_hotel = Convert.ToString(dr["img_hotel"]),
