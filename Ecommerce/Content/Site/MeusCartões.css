@@ -76,12 +76,13 @@ h1#dados {
     position: absolute;
     top: 6vw;
     left: 2vw;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 
 .numero {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
+
 
 #barrinha {
     position: absolute;
@@ -108,9 +109,9 @@ body > div > div > h1:nth-child(2) {
     box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
     color: #166ac1;
     border: none;
-    font-size: 1vw;
-    width: 32vw;
-    height: 30vh;
+    font-size: 1.2vw;
+    width: 25vw;
+    height: 39vh;
     position: relative;
     left: 1vw;
     text-decoration: none;

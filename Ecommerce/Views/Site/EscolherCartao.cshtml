@@ -30,15 +30,16 @@
                 {
                     var card = @item.cd_cartao;
      
-                        <div class="card">
+                <div class="card">
 
-                            <h2 class="Titulo">@item.nm_cartao</h2>
-                            <h2 class="Titulo" id="tituloCartao">Titular: @item.nm_impresso</h2>
-                            <h1 class="numero"> Número: @item.num_cartao</h1>
-                            <h2 class="numero"> Validade: @item.validade</h2>
-                            <h2 class="numero">CVV: @item.cvv_cartao</h2>
-                            @Html.ActionLink(" Escolher ", "SalvarCarrinho", "Site", new { card }, null)
-                        </div>
+                    <h2 class="Titulo">@item.nm_cartao</h2>
+                    Titular:
+                    <h2 class="numero"> @item.nm_impresso</h2>
+                    Número: <h1 class="numero"> @item.num_cartao</h1>
+                    Validade:  <h2 class="numero"> @item.validade</h2>
+                    CVV:<h2 class="numero"> @item.cvv_cartao</h2>
+                    @Html.ActionLink(" Escolher ", "SalvarCarrinho", "Site", new { card }, null)
+                </div>
                     
                  
                 }
