@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Ecommerce.Models.Pacote>
+
 @{
     Layout = null;
 }
@@ -8,10 +9,61 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>EmOferta</title>
+    <title>Pacotes em Oferta</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="~/Content/Site/ofertas.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    @Scripts.Render("~/Scripts/tilt.js");
 </head>
 <body>
-    <div> 
+    <header>
+        <a class="voltar" href="~/Site/Index">
+            Voltar
+        </a>
+        <a class="perfil" href="~/Site/PerfilCliente">
+            <img src="~/Imagens/perfil.png" />
+        </a>
+        <a class="carrinho" href="~/Site/Carrinho">
+
+            <img src="~/Imagens/carrinho.png" />
+        </a>
+
+    </header>
+    <div class="logo">
+        <img class="logo" src="~/Imagens/LogoHorizon.png" />
     </div>
+    <img src="~/Imagens/OFERTAS.png" class="banner" />
+    @*<h1>Estes destinos maravilhosos estão a um clique de distância</h1>*@
+    <div class="listaPacotes">
+
+        @foreach (var item in Model)
+        {
+            var id = item.cd_pacote;
+            <div class="Card">
+                <a href="~/Site/DetalhePacote/@id">
+                    <img src="@item.img_pacote" alt="Imagem" />
+                    <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                    <img class="stars" src="~/Imagens/stars.png" />
+                </a>
+                @using (Html.BeginForm("AdicionarCarrinho", "Site", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value=@item.cd_pacote>
+                    <input type="hidden" name="pre" value=@item.vl_pacote>
+                    <input type="hidden" name="quantidade" value="1">
+
+
+                    <input type="submit" value="" class="add">
+                }
+
+                <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
+            </div>
+
+
+        }
+
+    </div>
+
+    @Scripts.Render("~/Scripts/tilt.js");
 </body>
 </html>

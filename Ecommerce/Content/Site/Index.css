@@ -455,7 +455,8 @@ a {
     position: absolute;
     box-shadow: 0px 4px 4px 0px #00000040;
     font-family: 'Poppins',sans-serif;
-    text-shadow:none;
+    text-shadow: none;
+    background-color: #f9f9f9;
 }
 
     .Card img {
@@ -489,7 +490,7 @@ img.stars {
     position: absolute;
     left: 17vw;
     border: none;
-    background-color: #fff;
+    background-color: #f9f9f9;
     top: 21vw;
     cursor: pointer;
     outline: none;
@@ -509,17 +510,24 @@ img.stars {
     font-size: 2vw;
 }
 
-
-
-
-/* destinos mais procurados*/
-
-.maisProcurados {
-    position: absolute;
-    top: 110vw;
-    font-family: 'Poppins';
-    left: 8%;
+body > section.pacotes > cite {
+    top: 31vw;
+    font-size: 1.2vw;
+    text-shadow: none;
+    position: relative;
 }
+
+    body > section.pacotes > cite > a{
+        text-shadow:none;
+
+    }
+    /* destinos mais procurados*/
+    .maisProcurados {
+        position: absolute;
+        top: 110vw;
+        font-family: 'Poppins';
+        left: 8%;
+    }
 
 .title {
     font-family: "poppins";

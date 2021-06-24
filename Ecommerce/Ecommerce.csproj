@@ -217,6 +217,7 @@
     <Content Include="Content\Site\Index.css" />
     <Content Include="Content\Site\login.css" />
     <Content Include="Content\Site\MeusCartões.css" />
+    <Content Include="Content\Site\ofertas.css" />
     <Content Include="Content\Site\Perfil.css" />
     <Content Include="Content\Site\ResumoCompra.css" />
     <Content Include="Content\Site\Sobre.css" />
@@ -236,6 +237,7 @@
     <Content Include="Imagens\addCarrinho.png" />
     <Content Include="Imagens\aviao.png" />
     <Content Include="Imagens\bag.png" />
+    <Content Include="Imagens\bannerOferta.png" />
     <Content Include="Imagens\Berlin-Germany.png" />
     <Content Include="Imagens\ButtonDetalhes.png" />
     <Content Include="Imagens\CARDCREDIT.png" />
@@ -261,6 +263,7 @@
     <Content Include="Imagens\navio1.jpg" />
     <Content Include="Imagens\New-York-USA.png" />
     <Content Include="Imagens\Nota.png" />
+    <Content Include="Imagens\OFERTAS.png" />
     <Content Include="Imagens\Paris-France.png" />
     <Content Include="Imagens\password.png" />
     <Content Include="Imagens\perfil.png" />

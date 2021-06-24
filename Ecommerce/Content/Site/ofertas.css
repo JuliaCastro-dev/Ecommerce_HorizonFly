@@ -43,7 +43,7 @@ header {
     color: #fff;
     margin: 15px;
     position: relative;
-    font-family:'Poppins';
+    font-family: 'Poppins';
     top: -10%;
 }
 
@@ -56,16 +56,13 @@ header {
 }
 
 /*TEXTO  DESCUBRA O MUNDO */
-.frase {
-    top: 5vh;
-    position:relative;
-}
+
 #frase {
     margin: 0;
     margin: 0;
     padding: 0;
     display: flex;
-    top: 5vh;
+    top: 6vh;
     font-weight: 600;
     left: 25vw;
     position: relative;
@@ -140,12 +137,11 @@ header {
         transition-delay: 0.13s;
     }
 
-.banner{
-    position:absolute;
-    top:10vw;
-    width:100%;
-    z-index:5;
-    
+.banner {
+    position: absolute;
+    top: 10vw;
+    width: 100%;
+    z-index: 5;
 }
 
 .listaPacotes {
@@ -156,7 +152,7 @@ header {
     width: 90vw;
     position: relative;
     left: 5vw;
-    top: 15vw;
+    top: 29vw;
     min-width: 500PX;
     text-decoration: none;
     background-color: #fff;
@@ -208,9 +204,11 @@ header {
         width: 100%;
         height: 55%;
     }
-a{
-    text-decoration:none;
+
+a {
+    text-decoration: none;
 }
+
 .Titulo-pacote {
     color: #1d66a2;
     font-weight: 700;
@@ -256,6 +254,3 @@ img.stars {
     color: red;
     font-size: 1.6vw;
 }
-
-
-
