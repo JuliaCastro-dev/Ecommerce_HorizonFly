@@ -152,7 +152,7 @@ namespace Ecommerce.Acoes
                          cpf_cliente = Convert.ToString(dr["CPF"]),
                          nome_pacote = Convert.ToString(dr["nome_pacote"]),
                          img = Convert.ToString(dr["img_pacote"]),
-                         vl_unit = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "US$ {0:#,###.##}", dr["vl_unit"])
+                         vl_unit = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:#,###.##}", dr["vl_unit"])
                
 
                      });

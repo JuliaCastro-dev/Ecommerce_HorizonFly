@@ -68,18 +68,22 @@
                 <section class="reserva">
                     <h1>@ViewBag.reserne </h1>
                     @foreach (var item in ViewBag.reserva)
-                    {<div class="dadosreserva">
-                            <span>Data:</span>
-                            <h1>@item.dt_reserva</h1>
-                            <span>Cliente:</span>
-                            <h1>@item.nome_cliente</h1>
-                            <span>Pagamento:</span>
-                            <h1>@item.nome_cartao</h1>
-                            <span>Total:</span>
-                            <h1> @item.vl_total</h1>
-                        </div>
-                    }
-                </section>
+                    {
+                        var id = item.cd_reserva;
+                        <a href="~/Site/DetalhesReserva/@id">
+                            <div class="dadosreserva">
+                                <span>Data:</span>
+                                <h1>@item.dt_reserva</h1>
+                                <span>Cliente:</span>
+                                <h1>@item.nome_cliente</h1>
+                                <span>Pagamento:</span>
+                                <h1>@item.nome_cartao</h1>
+                                <span>Total:</span>
+                                <h1> @item.vl_total</h1>
+                            </div>
+                            </a>
+                            }
+                    </section>
                 <h1 class="Titulo" id="reserva">Cartões <span id="barrinhaReserva"></span> </h1>
                 <section class="cartao">
                     <h1>@ViewBag.cardne </h1>

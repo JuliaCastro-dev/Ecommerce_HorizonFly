@@ -648,6 +648,14 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        public ActionResult DetalhesReserva(RRViewModel reser, string id)
+        {
+            reser.cd_reserva = id;
+            ViewBag.reserva = acR.ResumoReserva(reser);
+            ViewBag.itens = acR.ItensReserva(reser);
+            return View();
+        }
+
 
 
         public ActionResult ExcluirItem(Guid id)
