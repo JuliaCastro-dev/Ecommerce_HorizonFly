@@ -3,15 +3,21 @@
     Layout = null;
 }
 
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ExcluiTransporte</title>
+    <title>Excluir Transporte</title>
+    <link href="~/Content/Excluir/excluirHotel.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
+    @Html.ActionLink(" Voltar ", "Transportes")
+    <div>
+        <img src="~/Imagens/pagina-de-erro.png" />
+        <h1> Não é Possível excluir este Transporte, pois ele está incluido em uma viagem!</h1>
+        <span> Caso realmente precise exclui-lo é necessário remover a viagem primeiro </span>
     </div>
 </body>
 </html>

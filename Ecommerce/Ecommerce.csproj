@@ -204,6 +204,7 @@
     <Content Include="Content\Detalhes\DetalhesTransportes.css" />
     <Content Include="Content\Detalhes\DetalhesVenda.css" />
     <Content Include="Content\Detalhes\DetalhesViagens.css" />
+    <Content Include="Content\Excluir\excluirHotel.css" />
     <Content Include="Content\Listas\Clientes.css" />
     <Content Include="Content\Listas\Hoteis.css" />
     <Content Include="Content\HotelPaginaInter.css" />
@@ -266,6 +267,7 @@
     <Content Include="Imagens\New-York-USA.png" />
     <Content Include="Imagens\Nota.png" />
     <Content Include="Imagens\OFERTAS.png" />
+    <Content Include="Imagens\pagina-de-erro.png" />
     <Content Include="Imagens\Paris-France.png" />
     <Content Include="Imagens\password.png" />
     <Content Include="Imagens\perfil.png" />

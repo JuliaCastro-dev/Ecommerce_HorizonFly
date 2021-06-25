@@ -5,13 +5,20 @@
 
 <!DOCTYPE html>
 
+
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ExcluiPacote</title>
+    <title>Excluir Pacote</title>
+    <link href="~/Content/Excluir/excluirHotel.css" rel="stylesheet" />
 </head>
 <body>
-    <div> 
+    @Html.ActionLink(" Voltar ", "Pacotes")
+    <div>
+        <img src="~/Imagens/pagina-de-erro.png" />
+        <h1> Não é Possível excluir este Pacote, pois ele está incluido em uma Reserva!</h1>
+        <span> Caso realmente precise exclui-lo é necessário remover a reserva primeiro </span>
     </div>
 </body>
 </html>

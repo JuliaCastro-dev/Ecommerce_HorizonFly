@@ -1,0 +1,26 @@
+﻿body > div > h1 {
+    position: relative;
+    top: 5vw;
+    left: 1vw;
+    font-family: -webkit-pictograph;
+}
+
+div{
+    display:flex;
+}
+body > div > span {
+    position: relative;
+    top: 15vw;
+    right: 40vw;
+    color: rebeccapurple;
+}
+
+a {
+    position: absolute;
+    top: 1vw;
+    font-size: 1.3vw;
+    font-weight: 800;
+    font-family: sans-serif;
+    color: #2196f3;
+    text-decoration: none;
+}
