@@ -29,7 +29,7 @@ namespace Ecommerce.Models
         [Display(Name = "Código")]
         public string cd_cidade { get; set; }
 
-
+        [Required]
         [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
         [Display(Name = "Hotel")]
         public string nome_hotel { get; set; }
@@ -40,21 +40,21 @@ namespace Ecommerce.Models
        
         public string diaria_hotel { get; set; }
 
-
+        [Required]
         [StringLength(400, ErrorMessage = "O limite é de 400 caracteres.")]
         [Display(Name = "Descrição")]
         public string descricao_hotel { get; set; }
 
-
+        [Required]
         [Display(Name = "Cidade")]
         public string cidade_hotel { get; set; }
 
-
+        [Required]
         [StringLength(100, ErrorMessage = "O limite é de 100 caracteres.")]
         [Display(Name = "Endereço")]
         public string endereco_hotel { get; set; }
 
-
+        [Required]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Telefone")]
         public string telefone_hotel { get; set; }
