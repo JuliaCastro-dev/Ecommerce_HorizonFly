@@ -66,11 +66,11 @@ namespace Ecommerce.Acoes
             return ResList;
         }
 
-        public List<Reserva> GetReservas(Reserva reser)
+        public List<RRViewModel> GetReservas(RRViewModel reser)
         {
-            List<Reserva> ResList = new List<Reserva>();
+            List<RRViewModel> ResList = new List<RRViewModel>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from Reserva where CPF = @cpf", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva where CPF = @cpf", con.MyConectarBD());
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = reser.cpf_cliente;
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -82,13 +82,15 @@ namespace Ecommerce.Acoes
             {
                 ResList.Add(
 
-                     new Reserva
+                     new RRViewModel
                      {
                          cd_reserva = Convert.ToString(dr["cd_reserva"]),
                          cpf_cliente = Convert.ToString(dr["CPF"]),
                          cd_cartao = Convert.ToString(dr["cd_cartao"]),
-                         vl_total = Convert.ToDouble(dr["vl_total"]),
-                         Status_Reserva = Convert.ToString(dr["Status_Reserva"]),
+                         nome_cartao = Convert.ToString(dr["nome_cartao"]),
+                         nome_cliente = Convert.ToString(dr["nome"]),
+                         dt_reserva = Convert.ToString(dr["dthr_reserva"]),
+                         vl_total = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "R$ {0:#,###.##}", dr["vl_total"])
 
 
                      });

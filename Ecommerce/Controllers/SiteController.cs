@@ -241,7 +241,7 @@ namespace Ecommerce.Controllers
 
         /* ------------------- PERFIL CLIENTE -------------------- */
 
-        public ActionResult PerfilCliente(Cartao card, Cliente cli, Reserva reser)
+        public ActionResult PerfilCliente(Cartao card, Cliente cli, RRViewModel reser)
         {
             ViewBag.nome = Session["nome"];
             ViewBag.img = Session["img"];
@@ -264,15 +264,16 @@ namespace Ecommerce.Controllers
             }
 
             reser.cpf_cliente = ViewBag.cpf;
-            if (acR.GetReservas(reser) == null)
+            if (acR.GetReservas(reser).Count == 0)
             {
-                ViewBag.listaReservas = acR.GetReservas(reser);
+                ViewBag.reserva = acR.GetReservas(reser);
                 ViewBag.reserne = "Nenhuma Reserva Cadastrado";
             }
             else
             {
                 ViewBag.reserne = "";
-                ViewBag.listaReservas = acR.GetReservas(reser);
+               
+                ViewBag.reserva = acR.GetReservas(reser);
             }
          
             return View();

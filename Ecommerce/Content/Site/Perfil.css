@@ -215,12 +215,40 @@ h1#reserva {
 .listas {
     position: absolute;
     top: 90%;
+    width:90%;
 }
 .reserva {
     top: 2vw;
     position: relative;
     height:25vw;
 }
+.dadosreserva {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    width: 28vw;
+    top: 1vw;
+    border-radius: 15px;
+    /* padding-right: 10px; */
+    position: relative;
+    align-content: space-around;
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+    justify-content: flex-start;
+}
+    .dadosreserva span {
+        position: relative;
+        color: #0c3e7c;
+        width: 10vw;
+        font-weight: 600;
+        left: 2vw;
+    }
+
+    .dadosreserva h1 {
+        left: 3vw;
+        position: relative;
+        width: 15vw;
+        font-weight: 500;
+    }
 body > div > div > section > section.reserva > h1 {
     position: relative;
     left: 1vw;
