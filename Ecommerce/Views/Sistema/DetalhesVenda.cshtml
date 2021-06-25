@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Ecommerce.Models.ViewsModels.RRViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Resumo da Compra</title>
+    <link href="~/Content/Site/ResumoCompra.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,700;1,100;1,400;1,600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <a href="/Site/Logout">
+
+            <img class="sair" src="~/Imagens/exit.png" />
+        </a>
+        <div class="container">
+            <a href="/Sistema/Hoteis">
+                <img class="voltar" src="~/Imagens/voltar.png" />
+            </a>
+            <ul id="ulH">
+                <li>H</li>
+                <li>O</li>
+                <li>R</li>
+                <li>I</li>
+                <li>Z</li>
+                <li>O</li>
+                <li>N</li>
+
+                <li>F</li>
+                <li>L</li>
+                <li>Y</li>
+            </ul>
+            <h1 class="Titulo" id="reserva">Reserva<span id="barrinhaReserva"></span> </h1>
+            <section class="reserva">
+                @foreach (var item in ViewBag.reserva)
+                {<div class="dadosreserva">
+                        <span>Data:</span>
+                        <h1>@item.dt_reserva</h1>
+                        <span>Cliente:</span>
+                        <h1>@item.nome_cliente</h1>
+                        <span>Pagamento:</span>
+                        <h1>@item.nome_cartao</h1>
+                        <span>Total:</span>
+                        <h1> @item.vl_total</h1>
+                    </div>
+                }
+            </section>
+
+            <h1 class="Titulo" id="itens">Itens da Compra<span id="barrinhaReserva"></span> </h1>
+            <section class="itens">
+                @foreach (var item in ViewBag.itens)
+                {
+                    <div class="item">
+                        <img src="@item.img" />
+                        <h1>@item.nome_pacote</h1>
+                        <h1>R$ @item.vl_unit</h1>
+                    </div>
+                }
+            </section>
+
+        </div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Acoes;
 using Ecommerce.Models;
+using Ecommerce.Models.ViewsModels;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -681,32 +682,43 @@ namespace Ecommerce.Controllers
             //hotel.diaria_hotel = diaria;
             return View(acH.ListarHotel());
         }
+        // --------------------- LISTA DE PACOTES ---------------------------
         public ActionResult Pacotes()
         {
             ModelState.Clear();
 
             return View(acP.ListarPacote());
         }
+        // --------------------- LISTA DE VIAGENS ---------------------------
         public ActionResult Viagens()
         {
             ModelState.Clear();
 
             return View(acV.ListarViagem());
         }
+        // --------------------- LISTA DE CLIENTES ---------------------------
         public ActionResult Clientes()
         {
             ModelState.Clear();
             return View(acC.ListarCliente());
         }
+        // --------------------- LISTA DE FUNCIONÁRIOS ---------------------------
         public ActionResult Funcionarios()
         {
             ModelState.Clear();
             return View(acF.ListarFuncionario());
         }
+        // --------------------- LISTA DE TRANSPORTES ---------------------------
         public ActionResult Transportes()
         {
             ModelState.Clear();
             return View(acT.ListarTransporte());
+        }
+        // --------------------- LISTA DE VENDAS ---------------------------
+        public ActionResult Vendas()
+        {
+            ModelState.Clear();
+            return View(acR.Vendas());
         }
 
         //------------------- PAGINAS DE DETALHES ---------------------
@@ -763,6 +775,15 @@ namespace Ecommerce.Controllers
             return View(pacote.GetDetalhesPacote().Find((smodel => smodel.cd_pacote == id)));
         }
 
+        //------------------- DETALHES VENDAS ---------------------
+
+        public ActionResult DetalhesVenda(RRViewModel reser, string id)
+        {
+            reser.cd_reserva = id;
+            ViewBag.reserva = acR.ResumoReserva(reser);
+            ViewBag.itens = acR.ItensReserva(reser);
+            return View();
+        }
 
         //----------------------- ATUALIZAR FUNCIONARIO --------------------
 

@@ -210,6 +210,7 @@
     <Content Include="Content\Listas\Funcionarios.css" />
     <Content Include="Content\Listas\Pacotes.css" />
     <Content Include="Content\Listas\Transportes.css" />
+    <Content Include="Content\Listas\Vendas.css" />
     <Content Include="Content\Listas\Viagens.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site\BuscaPacotes.css" />
@@ -414,6 +415,8 @@
     <Content Include="Views\Sistema\ExcluiTransporte.cshtml" />
     <Content Include="Views\Site\EmOferta.cshtml" />
     <Content Include="Views\Site\DetalhesReserva.cshtml" />
+    <Content Include="Views\Sistema\Vendas.cshtml" />
+    <Content Include="Views\Sistema\DetalhesVenda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

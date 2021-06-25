@@ -37,11 +37,11 @@ namespace Ecommerce.Acoes
         }
 
 
-        public List<Reserva> ListarReserva()
+        public List<RRViewModel> Vendas()
         {
-            List<Reserva> ResList = new List<Reserva>();
+            List<RRViewModel> ResList = new List<RRViewModel>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from Reserva", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
@@ -52,19 +52,22 @@ namespace Ecommerce.Acoes
             {
                 ResList.Add(
 
-                     new Reserva
+                     new RRViewModel
                      {
                          cd_reserva = Convert.ToString(dr["cd_reserva"]),
                          cpf_cliente = Convert.ToString(dr["CPF"]),
                          cd_cartao = Convert.ToString(dr["cd_cartao"]),
-                         vl_total = Convert.ToDouble(dr["vl_total"]),
-                         Status_Reserva = Convert.ToString(dr["Status_Reserva"]),
+                         nome_cartao = Convert.ToString(dr["nome_cartao"]),
+                         nome_cliente = Convert.ToString(dr["nome"]),
+                         dt_reserva = Convert.ToString(dr["dthr_reserva"]),
+                         vl_total = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "R$ {0:#,###.##}", dr["vl_total"])
 
 
                      });
             }
             return ResList;
         }
+
 
         public List<RRViewModel> GetReservas(RRViewModel reser)
         {

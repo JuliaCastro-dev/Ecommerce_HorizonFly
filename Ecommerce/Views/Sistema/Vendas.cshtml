@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Hoteis</title>
+    <link href="~/Content/Listas/Vendas.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Poppins:ital,wght@0,100;1,100;1,200;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <a href="/Site/Logout">
+
+        <img class="sair" src="~/Imagens/exit.png" />
+    </a>
+    <div class="container">
+        <a href="/Sistema/Dashboard">
+            <img class="voltar" src="~/Imagens/voltar.png" />
+        </a>
+        <ul>
+            <li>H</li>
+            <li>O</li>
+            <li>R</li>
+            <li>I</li>
+            <li>Z</li>
+            <li>O</li>
+            <li>N</li>
+
+            <li>F</li>
+            <li>L</li>
+            <li>Y</li>
+        </ul>
+
+        <h3>Vendas</h3>
+        <div class="lista">
+
+            @foreach (var item in Model)
+            {
+                var id = item.cd_reserva;
+                <a href="~/Sistema/DetalhesVenda/@id">
+                    <div class="dadosreserva">
+                        <span>Data:</span>
+                        <h1>@item.dt_reserva</h1>
+                        <span>Cliente:</span>
+                        <h1>@item.nome_cliente</h1>
+                        <span>Pagamento:</span>
+                        <h1>@item.nome_cartao</h1>
+                        <span>Total:</span>
+                        <h1> @item.vl_total</h1>
+
+                    </div>
+                </a>
+            }
+
+
+        </div>
+    </div>
+
+
+</body>
+</html>

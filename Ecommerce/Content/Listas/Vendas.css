@@ -1,0 +1,188 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #F3F3F3;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.sair {
+    width: 30px;
+    position: absolute;
+    /* align-self: revert; */
+    left: 95%;
+    top: 1vw;
+}
+
+.voltar {
+    width: 30px;
+    position: absolute;
+    left: 2vw;
+    top: 1vw;
+}
+
+/*TEXTO HORIZON FLY */
+
+ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 6vh;
+    font-weight: 600;
+    left: 40vw;
+    position: relative;
+}
+
+li {
+    list-style: none;
+    letter-spacing: 10px;
+    transition: 8s;
+    font-family: 'Cormorant', serif;
+    color: #3A7BD5;
+    font-size: 2vw;
+}
+
+ul:hover li {
+    transform: rotate(360deg) translateY(-360px);
+    opacity: 0;
+    filter: blur(20px);
+}
+
+ul li:nth-child(1) {
+    transition-delay: 0;
+}
+
+ul li:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+ul li:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+ul li:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+ul li:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+ul li:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+ul li:nth-child(7) {
+    transition-delay: 0.6s;
+}
+
+ul li:nth-child(8) {
+    transition-delay: 0.7s;
+}
+
+ul li:nth-child(9) {
+    transition-delay: 0.8s;
+}
+
+ul li:nth-child(10) {
+    transition-delay: 0.9s;
+}
+
+/*TEXTO FUNCIONÁRIOS*/
+h3 {
+    position: relative;
+    top: 16vh;
+    left: 5vw;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #3A7BD5;
+    font-size: 2.5vw;
+    font-weight: 600;
+    width: 10vw;
+}
+
+/*BOTAO NOVO FUNCIONARIO*/
+
+.novo a {
+    background-color: transparent;
+    color: #46b517;
+    height: 1.5vw;
+    font-size: 1.5vw;
+    position: relative;
+    font-weight: 400;
+    top: 21vh;
+    left: 79vw;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Cormorant', serif;
+}
+
+    .novo a:hover {
+        text-shadow: 0px 4px 4px rgb(24,235, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+
+.lista {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 100%;
+    width: 90vw;
+    position: relative;
+    left: 5vw;
+    top: 10vw;
+    min-width: 500PX;
+    text-decoration: none;
+    background-color: #fff;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+a {
+    text-decoration: none;
+}
+
+.dadosreserva {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
+    width: 28vw;
+    top: 1vw;
+    border-radius: 15px;
+    /* padding-right: 10px; */
+    position: relative;
+    align-content: space-around;
+    box-shadow: -6px -6px 10px rgb(255 255 255 / 80%), 6px 6px 10px rgb(0 0 0 / 20%);
+    justify-content: flex-start;
+}
+
+    .dadosreserva span {
+        position: relative;
+        color: #0c3e7c;
+        width: 10vw;
+        font-weight: 700;
+        left: 2vw;
+    }
+
+    .dadosreserva h1 {
+        left: 3vw;
+        position: relative;
+        width: 15vw;
+        font-size: 1.3vw;
+        font-weight: 700;
+    }
