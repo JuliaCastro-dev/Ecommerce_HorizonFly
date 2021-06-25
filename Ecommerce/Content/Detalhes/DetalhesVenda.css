@@ -1,0 +1,188 @@
+﻿* {
+    margin: 0PX;
+    padding: 0PX;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins',sans-serif;
+    z-index: 2;
+}
+
+.container {
+    height: 100%;
+    */
+    /* width: 70%; */
+    background: #FFFFFF;
+    /* box-shadow: 0px 4px 4px rgb(0 0 0 / 25%); */
+    border-radius: 0px;
+    /* left: 15%; */
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+/*TEXTO HORIZON FLY */
+#ulH {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    top: 6vh;
+    font-weight: 600;
+    left: 40vw;
+    position: relative;
+}
+
+    #ulH li {
+        list-style: none;
+        letter-spacing: 10px;
+        transition: 8s;
+        font-family: 'Cormorant', serif;
+        color: #3A7BD5;
+        font-size: 2vw;
+    }
+
+    #ulH:hover li {
+        transform: rotate(360deg) translateY(-360px);
+        opacity: 0;
+        filter: blur(20px);
+    }
+
+    #ulH li:nth-child(1) {
+        transition-delay: 0;
+    }
+
+    #ulH li:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    #ulH li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    #ulH li:nth-child(4) {
+        transition-delay: 0.3s;
+    }
+
+    #ulH li:nth-child(5) {
+        transition-delay: 0.4s;
+    }
+
+    #ulH li:nth-child(6) {
+        transition-delay: 0.5s;
+    }
+
+    #ulH li:nth-child(7) {
+        transition-delay: 0.6s;
+    }
+
+    #ulH li:nth-child(8) {
+        transition-delay: 0.7s;
+    }
+
+    #ulH li:nth-child(9) {
+        transition-delay: 0.8s;
+    }
+
+    #ulH{ transition-delay: 0.9s;
+}
+
+
+h1#reserva {
+    top: 5vw;
+    position: absolute;
+    font-size: 1.7vw;
+    left: 22vw;
+}
+
+h1#itens {
+    top: 27vw;
+    position: absolute;
+    font-size: 1.7vw;
+    left: 22vw;
+}
+.reserva {
+    position: absolute;
+    left: 25%;
+    bottom: 23vw;
+}
+#barrinhaReserva {
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    left: 1px;
+    top: 2vw;
+    background-color: #5FAD56;
+    border: 1px solid #5FAD56;
+}
+
+.dadosreserva {
+    position: relative;
+    
+    left:2vw;
+}
+
+    .dadosreserva span {
+        position: relative;
+        left: 1vw;
+    }
+
+    .dadosreserva h1 {
+        font-size: 1.5vw;
+        left: 2vw;
+        position: relative;
+        font-weight: 500;
+    }
+
+.itens {
+    position: relative;
+    top: 29vw;
+    transition: none;
+}
+
+.item {
+    display: flex;
+    -webkit-box-shadow: -6px 7px 10px -1px rgb(44 48 89 / 73%);
+    box-shadow: -6px 7px 10px -1px rgb(44 48 89 / 73%);
+    width: 50vw;
+    position: relative;
+    left: 22vw;
+ top:2vw;
+    transition: none;
+}
+
+    .item img {
+        width: 20vw;
+    }
+
+    .item h1 {
+        width: 25vw;
+        left: 1vw;
+        position: relative;
+        white-space: nowrap;
+        margin: 0px 0px 0px 15px;
+        font-weight: 500;
+    }
+
+
+
+
+.sair {
+    width: 30px;
+    position: absolute;
+    /* align-self: revert; */
+    left: 95%;
+    top: 1vw;
+}
+
+.voltar {
+    width: 30px;
+    position: absolute;
+    left: 2vw;
+    top: 1vw;
+}

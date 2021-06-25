@@ -79,7 +79,7 @@ body {
         transition-delay: 0.8s;
     }
 
-#ulH transition-delay: 0.9s;
+#ulH{ transition-delay: 0.9s;
 }
 
 /*TEXTO Hotel*/

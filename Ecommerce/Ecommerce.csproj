@@ -202,6 +202,7 @@
     <Content Include="Content\Detalhes\DetalhesHotel.css" />
     <Content Include="Content\Detalhes\DetalhesPacotes.css" />
     <Content Include="Content\Detalhes\DetalhesTransportes.css" />
+    <Content Include="Content\Detalhes\DetalhesVenda.css" />
     <Content Include="Content\Detalhes\DetalhesViagens.css" />
     <Content Include="Content\Listas\Clientes.css" />
     <Content Include="Content\Listas\Hoteis.css" />
