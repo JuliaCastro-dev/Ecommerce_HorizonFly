@@ -96,8 +96,7 @@ namespace Ecommerce.Controllers
         }
 
 
-
-        /* RETORNA A BUSCA DE PACOTE */
+        // --------------- RETORNA A BUSCA DE PACOTE ------------------
         public ActionResult BuscaPacotes(Pacote pacote, FormCollection frm)
         {
             pacote.cd_cidDestino = frm["cidade"].ToString();
@@ -118,7 +117,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        // ------------- LOGIN ------------------
+        // ------------------- LOGIN -------------------------
         public ActionResult Login()
         {
 
@@ -279,7 +278,9 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        /* ----------------- CADASTRO CLIENTE ---------------- */
+        // ----------------- CADASTROS ---------------- //
+
+        // ----------------- CADASTRO CLIENTE ---------------- //
         public ActionResult CadastroCliente()
         {
 
@@ -379,14 +380,9 @@ namespace Ecommerce.Controllers
         }
 
 
-        //------------------- VIEW MEUS CARTÕES---------------------
-        public ActionResult MeusCartoes(string id, AcoesCartao cartao)
-        {
-            return View(cartao.GetDetalhesCartao().Find((smodel => smodel.rg == id)));
-        }
+        //------------------------------- ATUALIZAR -----------------------------------------------
 
-
-        // ------------------ ALTERA SENHA ( FUNCIONÁRIO E CLIENTE ) -----------------------
+        // ------------------ ATUALIZA SENHA  ( FUNCIONÁRIO E CLIENTE ) -----------------------
         public ActionResult AlterarSenha()
         {
             return View();
@@ -438,9 +434,7 @@ namespace Ecommerce.Controllers
 
         }
 
-
-
-        //----------------------- ATUALIZAR FUNCIONARIO --------------------
+        //----------------------- ATUALIZA DADOS DO CLIENTE --------------------
 
 
         public ActionResult AtualizaCliente(string id, Cliente cliente)
@@ -489,7 +483,7 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Clientes");
         }
 
-
+        //------------------- ATUALIZA DADOS DO  CARTAO ------------------------
         public ActionResult AtualizaCartao(string id, Cartao card)
         {
 
@@ -530,9 +524,10 @@ namespace Ecommerce.Controllers
 
 
 
-        // ----------------- CARRINHO ------------------------
+        // ----------------- PARTES DO CARRINHO ------------------------
 
         public static string codigo;
+        //------------------- ADICONAR UM ITEM AO CARRINHO ------------------------
 
         public ActionResult AdicionarCarrinho(int id, double pre)
         {
@@ -575,7 +570,7 @@ namespace Ecommerce.Controllers
           
             return RedirectToAction("Carrinho");
         }
-
+        //------------------- CARRINHO ------------------------
         public ActionResult Carrinho()
         {
 
@@ -583,6 +578,7 @@ namespace Ecommerce.Controllers
             return View(carrinho);
         }
 
+        //------------------- ESCOLHER CARTAO PARA COMPRA ------------------------
         public ActionResult EscolherCartao(Cartao card)
         {
 
@@ -592,7 +588,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-
+        //------------------- FINALIZAR COMPRA  ------------------------
         public ActionResult SalvarCarrinho(Reserva x, string card)
         {
             Session["cd_card"] = card;
@@ -639,7 +635,7 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("ResumoCompra");
             }
         }
-
+        //------------------- RESUMO DA COMPRA EFETUADA ------------------------
         public ActionResult ResumoCompra(RRViewModel reser)
         {
             reser.cd_reserva = Session["reserva"].ToString();
@@ -647,7 +643,7 @@ namespace Ecommerce.Controllers
             ViewBag.itens = acR.ItensReserva(reser);
             return View();
         }
-
+        //------------------- DETALHES DA RESERVA  ------------------------
         public ActionResult DetalhesReserva(RRViewModel reser, string id)
         {
             reser.cd_reserva = id;
@@ -657,7 +653,7 @@ namespace Ecommerce.Controllers
         }
 
 
-
+        //-------------------EXCLUIR ITEM DO CARRINHO  ------------------------
         public ActionResult ExcluirItem(Guid id)
         {
             var carrinho = Session["Carrinho"] != null ? (Reserva)Session["Carrinho"] : new Reserva();
