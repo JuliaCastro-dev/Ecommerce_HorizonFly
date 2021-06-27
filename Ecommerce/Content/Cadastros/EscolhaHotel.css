@@ -8,7 +8,8 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #F3F3F3;
+    overflow-y:visible;
+    background-color: #fff;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -253,7 +254,7 @@ a {
     width: 15vw;
     height: 5vh;
     position: relative;
-    right: 16vw;
+    right: 13vw;
     border-radius: 10px;
     top: 9vh;
     cursor: pointer;

@@ -301,12 +301,30 @@ namespace Ecommerce.Controllers
 
             ViewBag.transportesOrigem = new SelectList(transportesOrigem, "Value", "Text");
         }
-        //------------------------- VIEW ESCOLHA DE CONTAS CLIENTE E FUNCIONÁRIO -----------------------
-        public ActionResult Contas()
+
+        //-------------- DASHBOARD -----------
+        public ActionResult Dashboard()
         {
+            ModelState.Clear();
+            ViewBag.nome = Session["nome"];
+            ViewBag.img = Session["img"];
+            ViewBag.qtFuncionários = acS.ListarQuantidadeFuncionarios();
+            ViewBag.qtViagens = acS.ListarQuantidadeViagens();
+            ViewBag.qtClientes = acS.ListarQuantidadeClientes();
+            ViewBag.qtTransportes = acS.ListarQuantidadeTransportes();
+            ViewBag.qtPacotes = acS.ListarQuantidadePacotes();
+            ViewBag.qtReservas = acS.ListarQuantidadeReservas();
+            ViewBag.qtHoteis = acS.ListarQuantidadeHoteis();
 
             return View();
         }
+
+        //------------------------- VIEW ESCOLHA DE CONTAS CLIENTE E FUNCIONÁRIO -----------------------
+        public ActionResult Contas()
+        {
+            return View();
+        }
+
         //-------------------------- VIEWS CADASTRO ----------------------------------------------------
 
         //---------------------- CADASTRO FUNCIONÁRIOS -------------------------------------------------
@@ -417,7 +435,7 @@ namespace Ecommerce.Controllers
                 string preco = viagem.vl_total;
 
                 preco = String.Format("{0:C}", preco);
-           
+
                 viagem.vl_total = preco;
                 //-------------------------------------
 
@@ -483,16 +501,16 @@ namespace Ecommerce.Controllers
 
         //---------------------- CADASTRO DE PACOTES --------------------------------
 
-        // VIEW ESCOLHA DE HOTEL 
+        // --------------- CADASTRO DO PACOTE PARTE 1 ----------------------------
         public ActionResult EscolhaHotel(Hotel hotel)
         {
-            carregaHoteis();
+            carregaHoteis(); // carrega a lista de HOTEIS
             return View(acH.ListarHotel());
         }
         [HttpPost]
         public ActionResult EscolhaHotel()
         {
-            carregaHoteis();
+            carregaHoteis(); // carrega a lista de HOTEIS
 
 
             if (Session["HotelEscolhido"] == null)
@@ -505,10 +523,11 @@ namespace Ecommerce.Controllers
 
         }
 
+        // --------------- CADASTRO DO PACOTE PARTE 2 ----------------------------
 
         public ActionResult EscolhaViagem(Viagem viagem)
         {
-            carregaViagens();
+            carregaViagens(); // carrega a lista de VIAGENS
             return View(acV.ListarViagem());
         }
         [HttpPost]
@@ -529,7 +548,7 @@ namespace Ecommerce.Controllers
             return View(acV.ListarViagem());
         }
 
-
+        // --------------- PEGA DADOS PARA CADASTRO DO PACOTE  ----------------------------
         public ActionResult PegaDados(FormCollection frm)
         {
             Session["ViagemEscolhida"] = frm["viagem"];
@@ -538,18 +557,17 @@ namespace Ecommerce.Controllers
             return RedirectToAction("CadastroPacote");
         }
 
-
+        // --------------- CADASTRO DO PACOTE PARTE 3 ----------------------------
         public ActionResult CadastroPacote()
         {
-
-            carregaCidades();
-            carregaCidadesOrigem();
-            carregaHoteis();
-            carregaTransportes();
-            carregaTiposTransporte();
-            carregaViagens();
-
-            carregaCategoria();
+            /* CARREGA LISTAS  */
+            carregaCidades(); // carrega a lista de CIDADES
+            carregaCidadesOrigem(); // carrega a lista de CIDADES PARA ORIGEM
+            carregaHoteis(); // carrega a lista de HOTEIS
+            carregaTransportes(); // carrega a lista de TRANSPORTES
+            carregaTiposTransporte(); // carrega a lista de TIPOS DE TRANSPORTE
+            carregaViagens(); // carrega a lista de VIAGENS
+            carregaCategoria(); // carrega a lista de CATEGORIAS
             return View();
         }
         [HttpPost]
@@ -558,17 +576,16 @@ namespace Ecommerce.Controllers
         {
             Viagem viagem = new Viagem();
             /* CARREGA LISTAS  */
-            carregaCidades();
-            carregaTiposTransporte();
-            carregaTransportes();
-            carregaCategoria();
-            carregaCidadesOrigem();
+            carregaCidades(); // carrega a lista de CIDADES
+            carregaCidadesOrigem(); // carrega a lista de CIDADES PARA ORIGEM
+            carregaHoteis(); // carrega a lista de HOTEIS
+            carregaTransportes(); // carrega a lista de TRANSPORTES
+            carregaTiposTransporte(); // carrega a lista de TIPOS DE TRANSPORTE
+            carregaViagens(); // carrega a lista de VIAGENS
+            carregaCategoria(); // carrega a lista de CATEGORIAS
 
 
             /* RECEBE VALORES */
-
-
-
             string cdhotel = Session["HotelEscolhido"].ToString();
             string cdviagem = Session["ViagemEscolhida"].ToString();
 
@@ -583,38 +600,42 @@ namespace Ecommerce.Controllers
                 pacote.dt_chekinHotel = Session["dtChekin"].ToString();
                 pacote.dt_chekoutHotel = Session["dtChekout"].ToString();
                 pacote.tipo_transporte = Request["tipo"];
-
                 hotel.cd_hotel = cdhotel;
                 pacote.cd_hotel = cdhotel;
                 pacote.cd_viagem = cdviagem;
                 viagem.cd_viagem = cdviagem;
+
                 /* PEGA O PREÇO DO HOTEL E VIAGEM */
                 acH.VerificaValor(hotel);
                 acV.VerificaValor(viagem);
 
                 /* CONTAGEM DOS DIAS */
-                string dtChekin = Session["dtChekin"].ToString();
-                string dtChekout = Session["dtChekout"].ToString();
 
-                //int chekin = Convert.ToInt16(dtChekin);
-                //int chekout = Convert.ToInt16(dtChekout);
+                string dtChekin = Session["dtChekin"].ToString();   /* PEGA DATA DE CHEKIN */
+                string dtChekout = Session["dtChekout"].ToString();   /* PEGA DATA DE CHEKOUT */
+
+                /* FAZ A CONTA DOS DIAS NO HOTEL USANDO AS DATAS*/
                 int totaldias = (DateTime.Parse(dtChekout).Subtract(DateTime.Parse(dtChekin))).Days;
-                //double dias = chekin - chekout / 24 * 3600 * 1000;
+
+                /* PASSA DADOS PARA PROXIMA CONTA */
                 string diaria = hotel.diaria_hotel;
                 string Vlviagem = viagem.vl_total;
-
+                /* RETIRA PONTO VIRGULAS DOS DADOS EM MOEDA*/
                 diaria = Regex.Replace(diaria, "[^0-9]", "");
                 Vlviagem = Regex.Replace(Vlviagem, "[^0-9]", "");
+                /* FAZ A CONTA DO VALOR TOTAL DO HOTEL ( DIAS * DIARIA)  */
                 int vl_TotalHotel = (totaldias * Convert.ToInt32(diaria));
+                /* FAZ A CONTA DO VALOR TOTAL DO PACOTE */
                 double valorTotal = vl_TotalHotel + Convert.ToInt32(Vlviagem);
+                /* ATRIBUI O VALOR TOTAL DO PACOTE A UMA VARIAVÉL */
                 string valor = Convert.ToString(valorTotal);
-               
-                pacote.vl_pacote = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                /* CONVERTEO VALOR TOTAL PARA MOEDA */
+                valor = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valor);
+                pacote.vl_pacote = valor;
+                   
+
                 if (hotel.cd_hotel != null && viagem.cd_viagem != null)
                 {
-
-
-
                     if (file != null && file.ContentLength > 0)
                     {
                         string arquivo = Path.GetFileName(file.FileName);
@@ -622,12 +643,6 @@ namespace Ecommerce.Controllers
                         string _path = Path.Combine(Server.MapPath("~/ImagensPacote"), arquivo);
                         file.SaveAs(_path);
                         pacote.img_pacote = file2;
-
-                        // retira cifrão e ponto do valor 
-                        string preco = pacote.vl_pacote;
-                        preco = Regex.Replace(preco, "[^0-9]", "");
-                        pacote.vl_pacote = preco;
-
 
                         acP.inserirPacote(pacote);
                         return RedirectToAction("Pacotes", "Sistema");
@@ -650,24 +665,8 @@ namespace Ecommerce.Controllers
         }
 
 
-        //-------------- DASHBOARDS -----------
-        public ActionResult Dashboard()
-        {
-            ModelState.Clear();
-            ViewBag.nome = Session["nome"];
-            ViewBag.img = Session["img"];
-            ViewBag.qtFuncionários = acS.ListarQuantidadeFuncionarios();
-            ViewBag.qtViagens = acS.ListarQuantidadeViagens();
-            ViewBag.qtClientes = acS.ListarQuantidadeClientes();
-            ViewBag.qtTransportes = acS.ListarQuantidadeTransportes();
-            ViewBag.qtPacotes = acS.ListarQuantidadePacotes();
-            ViewBag.qtReservas = acS.ListarQuantidadeReservas();
-            ViewBag.qtHoteis = acS.ListarQuantidadeHoteis();
-
-            return View();
-        }
-
-        //-------------- VIEWS DE CARREGAMENTO/ LISTA/ALTERAÇÃO E CONSULTA -----------
+      
+        //------------------ CARREGAMENTO / LISTAS -----------------------------
 
         public ActionResult HoteisPageIntermediaria()
         {
@@ -721,7 +720,7 @@ namespace Ecommerce.Controllers
             return View(acR.Vendas());
         }
 
-        //------------------- PAGINAS DE DETALHES ---------------------
+        //----------------------------  DETALHES --------------------------------
 
         //------------------- DETALHES FUNCIONARIO ---------------------
         public ActionResult DetalhesFuncionario(string id, AcoesFuncionario func)
@@ -745,7 +744,7 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult DetalhesViagens(string id)
         {
-            
+
             return View(acV.GetDestinoViagem().Find((smodel => smodel.cd_viagem == id)));
         }
 
@@ -759,7 +758,7 @@ namespace Ecommerce.Controllers
         }
 
 
-        //------------------- DETALHES Cliente ---------------------
+        //------------------- DETALHES CLIENTES ---------------------
 
         public ActionResult DetalhesClientes(string id, AcoesCliente cliente)
         {
@@ -784,6 +783,7 @@ namespace Ecommerce.Controllers
             ViewBag.itens = acR.ItensReserva(reser);
             return View();
         }
+        //------------------------------ ATUALIZAR  -----------------------------------------
 
         //----------------------- ATUALIZAR FUNCIONARIO --------------------
 
@@ -835,7 +835,7 @@ namespace Ecommerce.Controllers
         }
 
 
-        //----------------------- ATUALIAR HOTEIS --------------------
+        //----------------------- ATUALIZAR HOTEIS --------------------
 
         public ActionResult AtualizaHotel(Hotel hotel, string id)
         {
@@ -893,12 +893,11 @@ namespace Ecommerce.Controllers
             }
         }
 
-        //----------------------- ATUALIAR TRANSPORTES --------------------
-
+        //----------------------- ATUALIZAR TRANSPORTES --------------------
 
         public ActionResult AtualizaTransporte(string id, Transporte trans)
         {
-            
+
             carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
             carregaCidades(); // carrega a lista de cidades
             if (id != null)
@@ -915,10 +914,10 @@ namespace Ecommerce.Controllers
             {
                 return RedirectToAction("Transportes");
             }
-            
+
         }
         [HttpPost]
-        public ActionResult AtualizaTransporte( HttpPostedFileBase file, Transporte trans)
+        public ActionResult AtualizaTransporte(HttpPostedFileBase file, Transporte trans)
         {
             carregaTiposTransporte(); // carrega a lista de Tipos de Transporte
             carregaCidades(); // carrega a lista de cidades
@@ -949,10 +948,10 @@ namespace Ecommerce.Controllers
 
 
 
-        //----------------------- ATUALIAR VIAGENS --------------------
+        //----------------------- ATUALIZAR VIAGENS --------------------
 
 
-        public ActionResult AtualizaViagem(string id, Viagem viagem )
+        public ActionResult AtualizaViagem(string id, Viagem viagem)
         {
             carregaCidades();
             carregaTiposTransporte();
@@ -1015,6 +1014,7 @@ namespace Ecommerce.Controllers
         }
 
 
+        //-------------------------- EXCLUIR -----------------------------------------
 
         //-------------------EXCLUIR FUNCIONARIO ------------------------
         public ActionResult ExcluirFuncionario(int id)

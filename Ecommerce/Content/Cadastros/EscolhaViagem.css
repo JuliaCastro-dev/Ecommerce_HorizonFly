@@ -8,6 +8,7 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    overflow-y: visible;
     background-color: #fff;
     font-family: 'Poppins', sans-serif;
 }

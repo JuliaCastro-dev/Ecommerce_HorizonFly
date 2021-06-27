@@ -15,6 +15,7 @@ namespace Ecommerce.Controllers
 {
     public class SiteController : Controller
     {
+        //--------------------- REFERÊNCIAS -----------------------------------------
         AcoesCliente acC = new AcoesCliente();
         AcoesCartao acCard = new AcoesCartao();
         AcoesReserva acR = new AcoesReserva();
@@ -23,7 +24,7 @@ namespace Ecommerce.Controllers
         AcoesFuncionario acF = new AcoesFuncionario();
         AcoesPacote acP = new AcoesPacote();
 
-        //-------------- CARREGA CIDADES ---------------------------------------------------
+        //--------------------- CARREGA CIDADES -----------------------------------------
         public void carregaCidades()
         {
             List<SelectListItem> cidade = new List<SelectListItem>();
