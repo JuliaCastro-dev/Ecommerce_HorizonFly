@@ -9,6 +9,7 @@ body {
     width: 100vw;
     overflow: hidden;
     background-color: #F3F3F3;
+    overflow-y: visible;
     font-family: 'Poppins', sans-serif;
 }
 
