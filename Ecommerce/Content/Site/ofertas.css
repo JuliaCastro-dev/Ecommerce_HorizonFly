@@ -146,7 +146,7 @@ header {
 
 .listaPacotes {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     height: 100%;
     width: 90vw;
@@ -191,10 +191,12 @@ header {
     height: 27vw;
     width: 23VW;
     border-radius: 0px 0px 10px 10px;
-    position: absolute;
+    position: relative;
     box-shadow: 0px 4px 4px 0px #00000040;
     font-family: 'Poppins',sans-serif;
     text-shadow: none;
+    align-content: flex-start;
+    margin: 0px 0px 0px 20px;
     background-color: #f9f9f9;
 }
 
