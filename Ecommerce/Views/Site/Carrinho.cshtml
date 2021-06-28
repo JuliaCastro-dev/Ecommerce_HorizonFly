@@ -53,7 +53,7 @@
         }
         <br />@Html.ActionLink("Continuar Comprando", "Index", "Site")
 
-        <br />@Html.ActionLink("Finalizar Compra", "EscolherCartao", "Site")
+        <br /> <span id="finalizar">@Html.ActionLink("Finalizar Compra", "EscolherCartao", "Site", new { htmlAttributes = new { @id = "finalizar" } }) </span>
     </div>
     <img class="poster" src="~/Imagens/posterChance.jpeg" />
 

@@ -146,7 +146,7 @@ h2 {
 .foto-nome span {
     position: relative;
     left: 5VW;
-    bottom: 1.5vw;
+    bottom: 2vw;
     font-size: 2VW;
 }
 
@@ -216,6 +216,7 @@ h2 {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    bottom:5vw;
 }
 
 

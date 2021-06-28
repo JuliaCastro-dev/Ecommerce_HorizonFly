@@ -105,7 +105,7 @@ namespace Ecommerce.Acoes
         {
             List<RRViewModel> ResList = new List<RRViewModel>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva where cd_reserva = @cd", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva ORDER BY cd_reserva DESC limit 1", con.MyConectarBD());
             cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = reser.cd_reserva;
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
