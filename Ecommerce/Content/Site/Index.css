@@ -430,13 +430,22 @@ a {
     position: absolute;
     top: 70vw;
     font-family: 'Poppins';
-    left: 8%;
+    display: flex;
+    flex-wrap: nowrap;
+    left:8%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    align-content: flex-start;
 }
 
-    .pacotes h1 {
-        font-weight: 700;
-        color: #030d29;
-    }
+.h1Pacote {
+    position: absolute;
+    top: 70vw;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: #030d29;left:8%;
+}
 
 #oferta {
     color: #1fff26;
@@ -452,10 +461,13 @@ a {
     height: 30vw;
     width: 25VW;
     border-radius: 0px 0px 10px 10px;
-    position: absolute;
+    position: relative;
     box-shadow: 0px 4px 4px 0px #00000040;
     font-family: 'Poppins',sans-serif;
     text-shadow: none;
+    top:3.5vw;
+    align-content: flex-start;
+    margin: 0px 0px 0px 20px;
     background-color: #f9f9f9;
 }
 
@@ -510,17 +522,18 @@ img.stars {
     font-size: 2vw;
 }
 
-body > section.pacotes > cite {
-    top: 31vw;
+
+body > cite > a {
+    top: 100vw;
+    position: relative;
     font-size: 1.2vw;
     text-shadow: none;
-    position: relative;
+    left: 10%;
 }
 
-    body > section.pacotes > cite > a{
-        text-shadow:none;
-
-    }
+body > section.pacotes > cite > a {
+    text-shadow: none;
+}
     /* destinos mais procurados*/
     .maisProcurados {
         position: absolute;
@@ -536,7 +549,7 @@ body > section.pacotes > cite {
     color: #ff6959;
     /* text-align: center; */
     position: relative;
-    left: 7%;
+    left: 2%;
 }
 
 footer {

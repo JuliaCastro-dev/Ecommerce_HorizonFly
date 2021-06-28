@@ -114,34 +114,35 @@
         <img src="~/Imagens/quinzenaViajante.png" />
         <img src="~/Imagens/resorts.png" />
     </section>
-
+    <h1 class="h1Pacote">Pacotes em <span id="oferta">OFERTA</span>  para as férias em Familía</h1>
     <section class="pacotes">
-        <h1>Pacotes em <span id="oferta">OFERTA</span>  para as férias em Familía</h1>
-         @foreach (var item in ViewBag.oferta)
-          {
-                var id = item.cd_pacote;
-                <div class="Card">
-                        <a href="~/Site/DetalhePacote/@item.cd_pacote">
-                        <img src="@item.img_pacote" alt="Imagem" />
-                        <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
-                        <img class="stars" src="~/Imagens/stars.png" />
-                        </a>
-                        @using (Html.BeginForm("AdicionarCarrinho", "Site", FormMethod.Post))
-                        {
-                        <input type="hidden" name="id" value=@item.cd_pacote>
-                        <input type="hidden" name="pre" value=@item.vl_pacote>
-                        <input type="hidden" name="quantidade" value="1">
+
+        @foreach (var item in ViewBag.oferta)
+        {
+            var id = item.cd_pacote;
+            <div class="Card">
+                <a href="~/Site/DetalhePacote/@item.cd_pacote">
+                    <img src="@item.img_pacote" alt="Imagem" />
+                    <h2 class="Titulo-pacote">PACOTE PARA @item.nome_pacote</h2>
+                    <img class="stars" src="~/Imagens/stars.png" />
+                </a>
+                @using (Html.BeginForm("AdicionarCarrinho", "Site", FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value=@item.cd_pacote>
+                    <input type="hidden" name="pre" value=@item.vl_pacote>
+                    <input type="hidden" name="quantidade" value="1">
 
 
-                        <input type="submit" value="" class="add">
-                        }
+                    <input type="submit" value="" class="add">
+                }
 
-                    <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
-                </div>
+                <h1>a partir de <span id="valor">R$ @item.vl_pacote</span> por pessoa </h1>
+            </div>
 
-          }
-    <cite> @Html.ActionLink("Ver mais Pacotes em oferta", "EmOferta")</cite>
+        }
+
     </section>
+    <cite> @Html.ActionLink("Ver mais Pacotes em oferta", "EmOferta")</cite>
 
     <section class="maisProcurados">
 
@@ -167,7 +168,7 @@
         </div>
     </section>
     <footer>
-      
+
         <h1> Horizon Fly @DateTime.Now.Year </h1>
 
     </footer>
