@@ -16,10 +16,11 @@ namespace Ecommerce.Acoes
         public void inserirPacote(Pacote pacote)
         {
 
-            MySqlCommand cmd = new MySqlCommand("insert into Pacote(cd_pacote, cd_viagem, cd_hotel, cd_cidOrigem, cd_cidDestino, nome_pacote, cd_tipotransporte , descricao_pacote, dtChekin_hotel, dtChekout_hotel, img_pacote, vl_pacote)" +
-                "values(@pac, @Viag, @hot, @cidO, @cidD, @nm_pacote , @tpTrans, @desc, @dtChekin, @dtChekout, @img, @valP )", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("insert into Pacote(cd_pacote,cd_categoria, cd_viagem, cd_hotel, cd_cidOrigem, cd_cidDestino, nome_pacote, cd_tipotransporte , descricao_pacote, dtChekin_hotel, dtChekout_hotel, img_pacote, vl_pacote)" +
+                "values(@pac, @cate, @Viag, @hot, @cidO, @cidD, @nm_pacote , @tpTrans, @desc, @dtChekin, @dtChekout, @img, @valP )", con.MyConectarBD());
 
             cmd.Parameters.Add("@pac", MySqlDbType.VarChar).Value = pacote.cd_pacote;
+            cmd.Parameters.Add("@cate", MySqlDbType.VarChar).Value = pacote.cd_categoria;
             cmd.Parameters.Add("@Viag", MySqlDbType.VarChar).Value = pacote.cd_viagem;
             cmd.Parameters.Add("@hot", MySqlDbType.VarChar).Value = pacote.cd_hotel;
             cmd.Parameters.Add("@cidO", MySqlDbType.VarChar).Value = pacote.cd_cidOrigem;
