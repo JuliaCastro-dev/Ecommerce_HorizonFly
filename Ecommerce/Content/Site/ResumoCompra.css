@@ -106,6 +106,7 @@ h1#itens{
     box-shadow: -6px 7px 10px -1px rgba(44,48,89,0.73);
     width: 50vw;
     position:relative;
+    margin-bottom:20px;
     left:1vw;
 }
 
