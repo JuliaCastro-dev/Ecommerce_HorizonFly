@@ -89,7 +89,8 @@ body {
         transition-delay: 0.8s;
     }
 
-    #ulH{ transition-delay: 0.9s;
+#ulH {
+    transition-delay: 0.9s;
 }
 
 
@@ -106,11 +107,13 @@ h1#itens {
     font-size: 1.7vw;
     left: 22vw;
 }
+
 .reserva {
     position: absolute;
     left: 25%;
     bottom: 23vw;
 }
+
 #barrinhaReserva {
     position: absolute;
     width: 50px;
@@ -123,8 +126,7 @@ h1#itens {
 
 .dadosreserva {
     position: relative;
-    
-    left:2vw;
+    left: 2vw;
 }
 
     .dadosreserva span {
@@ -147,12 +149,11 @@ h1#itens {
 
 .item {
     display: flex;
-
     width: 50vw;
     position: relative;
     left: 22vw;
- top:2vw;
- margin-bottom:10px;
+    top: 2vw;
+    margin-bottom: 10px;
     transition: none;
 }
 
