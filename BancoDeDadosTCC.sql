@@ -224,6 +224,18 @@ SELECT nome,telefone from Funcionário;
 -- Views logo Abaixo;
     
 
+Create View Reservas
+as select 
+Reserva.cd_reserva,
+Reserva.dthr_reserva,
+Reserva.CPF,
+Reserva.cd_cartao,
+Reserva.vl_total,
+Cliente.nome,
+Cartao.nome_cartao
+from Reserva
+inner join Cliente on Cliente.CPF = Reserva.CPF
+inner join Cartao on Cartao.cd_cartao = Reserva.cd_cartao;
 
 /* VIEW DE DETALHES DE Pacote */
 CREATE VIEW
