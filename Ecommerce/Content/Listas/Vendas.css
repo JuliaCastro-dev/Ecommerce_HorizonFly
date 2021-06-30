@@ -163,6 +163,7 @@ a {
     flex-wrap: wrap-reverse;
     flex-direction: row;
     width: 28vw;
+    margin-bottom:20px;
     top: 1vw;
     border-radius: 15px;
     /* padding-right: 10px; */
