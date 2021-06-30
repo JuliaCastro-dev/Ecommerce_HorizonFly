@@ -202,9 +202,9 @@ namespace Ecommerce.Acoes
 
         public bool excluirFuncionario(int id)
         {
-            MySqlCommand cmd = new MySqlCommand("delete from Funcionario where CPF = @CPF", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("delete from Funcionario where rg = @rg", con.MyConectarBD());
 
-            cmd.Parameters.AddWithValue("@CPF", id);
+            cmd.Parameters.AddWithValue("@rg", id);
 
             int i = cmd.ExecuteNonQuery();
             con.MyDesconectarBD();

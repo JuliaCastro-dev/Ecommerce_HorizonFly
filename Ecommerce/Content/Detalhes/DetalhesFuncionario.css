@@ -122,10 +122,12 @@ h2 {
 .foto-nome-cargo img {
     width: 20VW;
     position: relative;
+    width: 20VW;
+    height: 20vw;
     left: 4vw;
     top: 2vw;
-    border-radius:50%;
-    object-fit:contain;
+    border-radius: 50%;
+    object-fit: contain;
 }
 
 .foto-nome-cargo span {
