@@ -133,6 +133,38 @@ namespace Ecommerce.Acoes
             return ResList;
         }
 
+        public List<RRViewModel> ResumoReservas(RRViewModel reser)
+        {
+            List<RRViewModel> ResList = new List<RRViewModel>();
+
+            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva", con.MyConectarBD());
+            cmd.Parameters.Add("@cd", MySqlDbType.VarChar).Value = reser.cd_reserva;
+            MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            sd.Fill(dt);
+            con.MyDesconectarBD();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                ResList.Add(
+
+                     new RRViewModel
+                     {
+                         cd_reserva = Convert.ToString(dr["cd_reserva"]),
+                         cpf_cliente = Convert.ToString(dr["CPF"]),
+                         cd_cartao = Convert.ToString(dr["cd_cartao"]),
+                         nome_cartao = Convert.ToString(dr["nome_cartao"]),
+                         nome_cliente = Convert.ToString(dr["nome"]),
+                         dt_reserva = Convert.ToString(dr["dthr_reserva"]),
+                         vl_total = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "R$ {0:#,###.##}", dr["vl_total"])
+
+
+                     });
+            }
+            return ResList;
+        }
+
         public List<RRViewModel> ItensReserva(RRViewModel reser)
         {
             List<RRViewModel> ResList = new List<RRViewModel>();

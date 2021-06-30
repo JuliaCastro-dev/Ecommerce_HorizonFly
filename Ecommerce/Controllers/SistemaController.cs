@@ -779,7 +779,7 @@ namespace Ecommerce.Controllers
         public ActionResult DetalhesVenda(RRViewModel reser, string id)
         {
             reser.cd_reserva = id;
-            ViewBag.reserva = acR.ResumoReserva(reser);
+            ViewBag.reserva = acR.ResumoReservas(reser);
             ViewBag.itens = acR.ItensReserva(reser);
             return View();
         }
