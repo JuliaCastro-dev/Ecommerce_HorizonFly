@@ -41,7 +41,7 @@ namespace Ecommerce.Acoes
         {
             List<RRViewModel> ResList = new List<RRViewModel>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from Reservas", con.MyConectarBD());
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 

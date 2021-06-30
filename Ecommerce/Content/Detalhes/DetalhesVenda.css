@@ -147,12 +147,12 @@ h1#itens {
 
 .item {
     display: flex;
-    -webkit-box-shadow: -6px 7px 10px -1px rgb(44 48 89 / 73%);
-    box-shadow: -6px 7px 10px -1px rgb(44 48 89 / 73%);
+
     width: 50vw;
     position: relative;
     left: 22vw;
  top:2vw;
+ margin-bottom:10px;
     transition: none;
 }
 
@@ -163,6 +163,7 @@ h1#itens {
     .item h1 {
         width: 25vw;
         left: 1vw;
+        align-self: center;
         position: relative;
         white-space: nowrap;
         margin: 0px 0px 0px 15px;
