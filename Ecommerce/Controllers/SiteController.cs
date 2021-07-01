@@ -296,7 +296,7 @@ namespace Ecommerce.Controllers
             if (ModelState.IsValid)
             {
 
-                acF.VerificaUsuarioCadastroCliente(user);
+                acF.VerificafUNC(user);
 
                 if (user.cpf != null)// se houver um funcionário com o mesmo cpf, ele será cadastrado como ClienteFuncionário
                 {
@@ -481,7 +481,7 @@ namespace Ecommerce.Controllers
 
 
             acC.atualizarCliente(cliente);
-            return RedirectToAction("Clientes");
+            return RedirectToAction("PerfilCliente");
         }
 
         //------------------- ATUALIZA DADOS DO  CARTAO ------------------------
