@@ -73,7 +73,7 @@ namespace Ecommerce.Acoes
         {
             List<RRViewModel> ResList = new List<RRViewModel>();
 
-            MySqlCommand cmd = new MySqlCommand("select * from ResumoReserva where CPF = @cpf", con.MyConectarBD());
+            MySqlCommand cmd = new MySqlCommand("select * from reservas where CPF = @cpf", con.MyConectarBD());
             cmd.Parameters.Add("@cpf", MySqlDbType.VarChar).Value = reser.cpf_cliente;
             MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();

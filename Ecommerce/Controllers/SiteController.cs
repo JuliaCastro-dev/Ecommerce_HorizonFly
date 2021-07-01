@@ -243,12 +243,18 @@ namespace Ecommerce.Controllers
 
         public ActionResult PerfilCliente(Cartao card, Cliente cli, RRViewModel reser)
         {
+            cli.rg = Session["rg"].ToString();
+
+            acC.PegaDados(cli);
+            Session["tel"] = cli.telefone;
+        
             ViewBag.nome = Session["nome"];
+            ViewBag.rg = Session["rg"];
             ViewBag.img = Session["img"];
             ViewBag.email = Session["email"];
             ViewBag.tel = Session["tel"];
             ViewBag.cpf = Session["cpf"];
-            ViewBag.rg = Session["rg"];
+            
             ViewBag.senha = Session["senha"];
 
             card.cpf = ViewBag.cpf;
