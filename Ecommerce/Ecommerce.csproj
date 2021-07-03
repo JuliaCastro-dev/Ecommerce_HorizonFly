@@ -420,7 +420,6 @@
     <Content Include="Views\Site\DetalhesReserva.cshtml" />
     <Content Include="Views\Sistema\Vendas.cshtml" />
     <Content Include="Views\Sistema\DetalhesVenda.cshtml" />
-    <Content Include="Views\Site\ExcluirCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

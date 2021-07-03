@@ -22,7 +22,7 @@ header {
     background: linear-gradient( 270deg, #0550a2 40.68%, #054b98 94.55%);
     font-family: var(--Poppins);
     width: 100vw;
-    height: 4.5vh;
+    height: 5vh;
     min-height: 4vh;
 }
 body > header > span.sobre > a {
