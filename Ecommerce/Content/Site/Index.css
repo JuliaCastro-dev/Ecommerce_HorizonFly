@@ -25,6 +25,7 @@ header {
     height: 5vh;
     min-height: 4vh;
 }
+
 body > header > span.sobre > a {
     color: #fff;
     text-shadow: none;

@@ -106,7 +106,7 @@ h1#itens{
     border-radius: 22px;
     background: #fafafa;
     box-shadow: 20px 20px 60px #d5d5d5, -20px -20px 60px #ffffff;
-    width: 50vw;
+    width: auto;
     align-items: center;
     color: #616161;
     position: relative;
