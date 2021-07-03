@@ -692,5 +692,23 @@ namespace Ecommerce.Controllers
                 return View();
             }
         }
+
+        //-------------------EXCLUIR CARTAO ------------------------
+        public ActionResult ExcluirCliente(int id)
+        {
+            try
+            {
+
+                if (acC.excluirCliente(id))
+                {
+                    ViewBag.AlertMsg = "Cliente excluído com sucesso";
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

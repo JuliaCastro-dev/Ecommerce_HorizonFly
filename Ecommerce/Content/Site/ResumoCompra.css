@@ -89,11 +89,12 @@ h1#itens{
     position:relative;
     left:1vw;
 }
-    .dadosreserva h1{
-        font-size:1.5vw;
-        left:2vw;
-        position:relative;
-        font-weight:500;
+    .dadosreserva h1 {
+        font-size: 1.5vw;
+        left: 2vw;
+        position: relative;
+        font-weight: 500;
+        color: #2969ca;
     }
     .itens {
         position: relative;
@@ -102,16 +103,20 @@ h1#itens{
     }
 .item {
     display: flex;
-    -webkit-box-shadow: -6px 7px 10px -1px rgba(44,48,89,0.73);
-    box-shadow: -6px 7px 10px -1px rgba(44,48,89,0.73);
+    border-radius: 22px;
+    background: #fafafa;
+    box-shadow: 20px 20px 60px #d5d5d5, -20px -20px 60px #ffffff;
     width: 50vw;
-    position:relative;
-    margin-bottom:20px;
-    left:1vw;
+    align-items: center;
+    color: #616161;
+    position: relative;
+    margin-bottom: 20px;
+    left: 1vw;
 }
 
-    .item img{
-        width:20vw;
+    .item img {
+        width: 20vw;
+        border-radius: 22px 0px 0px 22px;
     }
     .item h1 {
         width: 25vw;
