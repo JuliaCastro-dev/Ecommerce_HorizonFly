@@ -4,6 +4,7 @@ Foi criado a Horizon Fly uma agência ficticia de turismo, O Ecommerce conta com
 Palavra chave: Trabalho de Conclusão de Curso.
 
 # Web
+ - Plataforma  ASP.NET Framework
  - Arquitetura: MVC 
  - Linguagens: C#, JAVASCRIPT, HTML, CSS
  - Banco de dados: Mysql
@@ -12,6 +13,7 @@ Palavra chave: Trabalho de Conclusão de Curso.
  - Arquitetura: MVVM
  - Linguagens: JAVA, PHP
  - Banco de dados: Mysql
+ - Repositório: https://github.com/DanielSRibeiro/Ecommerce-TCC
 
 
 # Responsáveis
